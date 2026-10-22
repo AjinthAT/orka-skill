@@ -12,6 +12,12 @@ Ces règles organisent le travail des rôles existants ; elles n'ajoutent aucun 
 
 Une fiche de service n'impose pas de lancer un responsable et ses spécialistes pour une tâche qu'une personne peut réaliser correctement. Un rôle de contrôle supplémentaire se justifie par un risque concret ou une compétence distincte, pas par l'organigramme.
 
+## Adapter aussi la documentation
+
+Choisir les pièces nécessaires à la décision avant de déléguer. Pour une étude, prévoir une synthèse dirigeant d'environ une page, les analyses utiles et leurs preuves ; ajouter les autres documents seulement s'ils servent à exécuter, vérifier ou reprendre le travail. Dans une mission compacte, regrouper ces éléments plutôt que créer une nouvelle arborescence. Préciser aux spécialistes le destinataire et le niveau de détail attendu, sans faire d'un nombre de fichiers ou de mots un indicateur de qualité.
+
+Chaque analyse commence par sa conclusion actuelle et les éléments qui la justifient. Ne pas recopier le brief, les règles communes ou les réserves déjà exposées ailleurs : donner le lien et développer seulement l'apport propre à la tâche. Une condition déterminante doit toutefois rester visible dans une synthèse susceptible d'être lue seule. Si le détail gêne la décision, garder la preuve en annexe et raccourcir la lecture principale sans affaiblir l'analyse.
+
 ## Préparer une tâche exécutable
 
 Chaque tâche possède un identifiant unique dans sa mission, un seul responsable du résultat, les entrées et versions utiles, ses dépendances, un livrable distinct et des critères vérifiables. Utiliser le [contrat de tâche](modeles.md) pour les travaux délégués ; une ligne concise suffit pour une tâche simple.

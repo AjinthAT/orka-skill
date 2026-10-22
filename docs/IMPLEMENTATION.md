@@ -62,6 +62,8 @@ Les [processus communs](../.agents/skills/orka/references/processus-transverses.
 
 ## Premier essai utile
 
+La version 0.1.1 renforce la restitution après revue d'usage : synthèse dirigeant visant une page pour les études et décisions entre équipes, conclusion actuelle avant l'historique, référence unique des critères et liens relatifs entre pièces d'un dossier partageable. Les missions compactes gardent un livrable regroupé ; les étapes de découverte et de confirmation sont distinguées selon les inconnues réelles. Ces règles sont documentaires, sans nouveau moteur ni contrôle automatique de longueur. La [trace d'évaluation](../.agents/skills/orka/references/evaluation-agents.md) précise ce qui a été examiné et ce qui reste à éprouver sur d'autres missions.
+
 Choisir un vrai projet, un marché cible et les contraintes déjà connues. Lancer le skill avec le prompt du [guide de démarrage](../README.md). Examiner ensuite le dossier : les sources justifient-elles les conclusions ? Les objections ont-elles changé quelque chose ? Le prochain test permet-il de réduire une incertitude importante ?
 
 Faire évoluer les instructions à partir des problèmes observés. Les [scénarios de validation](../.agents/skills/orka/references/validation.md) couvrent les cas incomplets, les désaccords et les outils indisponibles.

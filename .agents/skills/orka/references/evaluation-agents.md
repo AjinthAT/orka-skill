@@ -21,6 +21,12 @@ Prévoir des cas auxquels une réponse utile est possible et des cas nécessitan
 
 Ces exécutions nécessitent les outils et autorisations correspondants. La présence de cette procédure ne signifie pas qu'une campagne d'évaluation de modèles a déjà été réalisée.
 
+## Retour d'usage : restitution et lecture courante, version 0.1.1
+
+Une revue utilisateur d'un dossier multi-agents a révélé une lecture principale trop longue, des propositions initiales mêlées à leurs remplaçantes et des liens internes dépendant d'un ordinateur. Référence avant correction : commit `25c7e15`. Hypothèse de maintenance : une synthèse d'une page, des références courantes uniques, un historique séparé et des liens relatifs rendent la décision plus accessible sans retirer les preuves.
+
+La correction des instructions a été appliquée éditorialement au dossier local autorisé, dont l'état précédent a été préservé. Contrôles : contenu de la synthèse et limites, présence des propositions initiales et réponses conservées, résolution des liens après copie, règles chiffrées conservées. Aucun contenu privé de mission n'est inclus dans ce dépôt. Ce contrôle sur un cas connu n'est ni un nouvel essai d'agents ni une comparaison indépendante des modèles. Les scénarios distincts de [validation](validation.md) restent à exécuter pour mesurer la généralisation ; aucun gain chiffré n'est revendiqué.
+
 ## Mesures et preuves
 
 | Question | Mesure possible et précaution |

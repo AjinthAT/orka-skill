@@ -80,7 +80,7 @@ Les [neuf workflows](.agents/skills/orka/references/workflows-entreprise.md) cou
 |---|---|
 | **Instructions de coordination** | Cadrage, délégation, échanges, revue et transmission |
 | **Rôles et workflows** | Mobiliser les compétences adaptées à la mission |
-| **Modèles de documents partagés** | Conserver preuves, décisions, changements et avancement |
+| **Modèles de documents partagés** | Ouvrir une étude par une synthèse d'une page ; retrouver preuves, règles actuelles et historique |
 | **Outils locaux facultatifs** | Préparer les mandats et suivre dépendances, réservations, tentatives et acceptation |
 
 Les outils utilisent Python et SQLite, sans paquet Python tiers. Ils préparent et enregistrent le travail ; l'assistant fournit l'exécution des modèles. L'installation ne lance aucun agent, ne crée aucun service et ne nécessite aucune clé API. L'utilisation des modèles dépend de votre assistant, de votre abonnement et des coûts associés.

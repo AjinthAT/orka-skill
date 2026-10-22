@@ -78,7 +78,7 @@ The [nine workflows](.agents/skills/orka/references/workflows-entreprise.md) cov
 |---|---|
 | **Coordination instructions** | Guide scoping, delegation, collaboration, review and handoffs |
 | **Roles and workflows** | Bring in the right specialist perspectives for each mission |
-| **Shared document templates** | Keep evidence, decisions, changes and progress traceable |
+| **Shared document templates** | Open a study with a one-page decision summary; keep evidence, current rules and history easy to find |
 | **Optional local tools** | Prepare task requests and track dependencies, reservations, attempts and artifact acceptance |
 
 The local tools use Python and SQLite, with no third-party Python packages. They prepare and record work; model execution comes from the assistant. Installation itself does not start agents, provision services or require an API key. Model usage remains subject to your assistant's plan and costs.

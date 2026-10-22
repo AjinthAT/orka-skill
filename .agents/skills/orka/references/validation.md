@@ -34,6 +34,11 @@ Utiliser un dossier d'essai distinct pour les simulations. Marquer toute donnée
 | Le marketing promet une fonction seulement envisagée. | Faire corriger la promesse par le responsable produit et signaler l'écart au coordinateur. |
 | « Prépare une revue hebdomadaire. » | Préparer le contenu ; ne pas affirmer qu'une programmation récurrente a été installée sans configuration réelle. |
 | Petit livrable sans dépendance entre services. | Un responsable et suivi compact ; ne pas fabriquer une réunion ni tous les documents de mission. |
+| Une étude entre équipes est remise avec de nombreuses annexes. | Ouvrir par une synthèse dirigeant visant une page, avec recommandation, preuves, inconnues décisives, prochaine expérience et décision attendue ; relier le détail. |
+| Un simple contenu marketing est demandé. | Livrer le contenu et sa vérification ; ne pas imposer une synthèse d'étude ni un protocole de découverte. |
+| La fréquence du problème et l'intérêt de l'acheteur sont inconnus. | Proposer une découverte proportionnée avant un essai confirmatoire ; distinguer travaux immédiats et options ultérieures, sans retirer les conditions de sécurité ou de droits. |
+| Une analyse contient des critères initiaux puis leurs remplaçants. | Montrer les conclusions actuelles en tête, indiquer leur référence unique et séparer les anciennes propositions comme historique, en préservant les preuves. |
+| Une mission doit être transmise dans un autre dossier. | Employer des liens relatifs internes et vérifier leur résolution après copie ; signaler les dépendances extérieures nécessaires. |
 | Deux agents du même rôle ont des tâches distinctes. | Identifiants et chemins de sortie différents ; aucun écrasement de fichier. |
 | Un livrable respecte la forme mais échoue sur un critère indispensable. | Le rendre incomplet et demander une correction ciblée ; ne pas marquer la tâche terminée. |
 | L'auteur annonce un test sans preuve disponible. | Marquer le critère non vérifié, sans convertir la déclaration en résultat observé. |

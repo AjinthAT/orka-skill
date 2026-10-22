@@ -33,11 +33,15 @@ Pour un document substantiel, préciser : identifiant ou chemin stable, proprié
 
 Une date et une version explicite comme `v2` suffisent sans gestionnaire de versions. Une version Git existante peut identifier le code ou le document ; ne pas créer des commits ou des copies d'archives uniquement pour remplir ce champ.
 
+Présenter la conclusion actuelle au début du document. Après un arbitrage, désigner une seule référence pour les règles et critères applicables et y faire pointer les autres pièces. Les propositions retirées restent dans une section historique clairement délimitée, une annexe ou une version antérieure reliée ; ne pas demander au lecteur de reconstituer seul quelle règle remplace laquelle. Conserver les preuves et les motifs de révision sans recopier tout l'historique dans chaque livrable.
+
 Ne pas annoncer une sauvegarde ou une possibilité de restauration sans dispositif réellement disponible. Avant une modification importante, préserver l'état précédent par le moyen accessible et autorisé ; ne pas écraser l'unique preuve utile d'une décision ou d'un incident.
 
 ## Retrouver et réexaminer
 
 Pour un dossier comportant plusieurs documents de référence, utiliser un index avec liens, propriétaires, états et versions, selon les [modèles](modeles.md). Un suivi compact ne nécessite pas un registre supplémentaire.
+
+Pour les liens persistés entre fichiers d'un dossier partageable, utiliser des chemins relatifs au fichier qui contient le lien, puis vérifier qu'ils restent valides après copie du dossier. Garder les URL externes complètes. Un lien absolu vers un dépôt distinct peut être nécessaire : le signaler comme dépendance extérieure et identifier sa destination sans recopier de donnée privée inutile. Les liens absolus utiles dans la réponse de l'application ne doivent pas être recopiés automatiquement dans les documents distribuables.
 
 Les événements suivants déclenchent une vérification ciblée : changement produit, nouveau prix, décision révisée, source contradictoire, accès modifié ou incident révélant une information incorrecte. Une revue périodique peut être proposée si elle sert l'activité ; elle n'est pas déclarée automatique sans configuration réelle.
 

@@ -2,6 +2,8 @@
 name: orka
 description: Coordinate an AI business team for strategy, market research, marketing, sales, product, development, QA, operations, finance, HR and customer support. Use when the user assigns a project or cross-functional mission to the team, with shared deliverables and specialist collaboration; not for a simple question about a job. Execute only the requested scope.
 license: MIT
+metadata:
+  version: "0.1.1"
 ---
 
 # Orka
@@ -48,6 +50,8 @@ Lancer les tâches prêtes, d'abord celles qui débloquent les autres ou réduis
 ## Fin et reprise
 
 Maintenir l'état et les décisions au fil des étapes. Faire accepter les résultats sur leurs critères et preuves ; ne pas déclarer terminée une tâche avec un critère indispensable non vérifié. À la reprise, vérifier l'existence et la version des livrables, puis réexaminer les dépendances affectées par un changement.
+
+Pour une étude ou une décision entre équipes, ouvrir la restitution par une synthèse dirigeant visant une page : recommandation, preuves décisives, inconnues, prochaine expérience et décision attendue. Utiliser le [modèle de synthèse](references/modeles.md#synthesemd) ; dans une mission compacte, l'intégrer au livrable existant. Garder les conclusions actuelles avant l'historique, relier chaque règle à sa référence unique et employer des liens relatifs entre fichiers du dossier. Dimensionner le prochain travail sur les inconnues qui peuvent changer la décision, sans transformer une découverte en protocole confirmatoire prématuré.
 
 Rendre les livrables définis par le workflow, leurs vérifications, les limites et les prochaines actions. Pour une étude, inclure recommandation, preuves, incertitudes, première version proposée et prochain test mesurable. Après une mission substantielle, consigner les corrections et mesures disponibles pour améliorer la méthode sans inventer de gain de performance.
 

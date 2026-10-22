@@ -15,6 +15,7 @@ projets/<identifiant>/
   brief.md
   plan.md
   etat.md
+  synthese.md
   analyses/
     <tache>-<role>.md
   livrables/
@@ -79,8 +80,8 @@ Un critère indispensable non satisfait ou non vérifié laisse la tâche incomp
 ## analyses/<tache>-<role>.md
 
 - Rôle, tâche, date et périmètre.
+- Conclusion actuelle et principaux éléments qui la justifient, avant les développements.
 - Questions examinées et méthode.
-- Conclusions initiales.
 
 | Affirmation | Nature | Preuve ou calcul | Limites |
 |---|---|---|---|
@@ -90,7 +91,19 @@ Natures : fait externe sourcé ; information utilisateur ; estimation ; hypothè
 - Risques, inconnues et informations inaccessibles.
 - Questions ou objections à transmettre.
 - Recommandation et conditions qui la feraient changer.
-- Révision après échanges : corrections, justification et désaccords maintenus, en conservant la conclusion initiale.
+- Révision après échanges : corrections, justification et désaccords maintenus ; conserver la conclusion initiale dans un historique daté, distinct de la référence actuelle.
+
+## synthese.md
+
+Pour une étude ou une décision entre équipes, viser une page lisible seule, généralement 300 à 500 mots. Dans une mission compacte, placer cette synthèse en tête du livrable existant. Adapter la longueur si une condition décisive exige plus de place ; ne pas supprimer une réserve indispensable pour respecter un chiffre.
+
+- Projet, date/version, propriétaire, périmètre et statut réel des preuves.
+- **Recommandation maintenant** : poursuivre, modifier, tester davantage ou abandonner, avec le motif décisif.
+- **Ce qui étaye cette recommandation** : faits et vérifications essentiels, avec liens vers les preuves.
+- **Inconnues qui peuvent la changer** : quelques questions prioritaires, distinctes des risques déjà observés.
+- **Prochaine expérience proposée** : hypothèse, cible, mesure, limite et conséquence possible sur la décision. Moyens fournis ou inconnus ; aucune dépense ou action extérieure supposée autorisée.
+- **Décision attendue du dirigeant** : choix concret, ou mention qu'aucune décision n'est nécessaire à ce stade.
+- Liens vers le dossier détaillé et la référence des critères actuels. Garder variantes et historique hors de cette lecture principale.
 
 ## sources.md
 
