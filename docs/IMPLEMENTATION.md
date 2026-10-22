@@ -40,6 +40,12 @@ Les futures évolutions suivent [la procédure d'évaluation](../.agents/skills/
 
 ## Supervision locale livrée
 
+La version 0.4.0 utilise un schéma SQLite v2. Les réservations conservent les identifiants de tentatives et empreintes des dépendances déclarées ; les contrôles suivent leurs dépendances indirectes. Une entrée réacceptée ne rend pas valide un ancien résultat dépendant, même à contenu identique. Le champ `validite` indique ce constat sans réécrire l'historique d'acceptation lors d'une simple lecture.
+
+`reexaminer` ouvre explicitement un réexamen d'une tâche terminée avec motif, responsable nommé et absence de rédacteur sur le fichier ; `reprendre` prépare ensuite une nouvelle tentative dans les limites existantes. Les dépendants sont signalés, sans arrêt ou relance automatique. Les preuves anciennes sont conservées. Ces identifiants sont des données déclarées ; ils ne prouvent pas que le moteur a lu les entrées et ne verrouillent pas les fichiers extérieurs.
+
+Une base v1 exige la commande explicite `migrer`. Une sauvegarde SQLite cohérente, incluant les données validées du journal WAL, est créée avant l'ajout du champ ; les lignes historiques et réservations sont conservées. Les entrées anciennes restent inconnues. Les résultats dépendants concernés demandent un réexamen, tandis que les résultats sans dépendance restent vérifiables selon les autres contrôles. Aucun registre de mission réelle n'a été migré pendant cette maintenance.
+
 Le script [superviser.py](../.agents/skills/orka/scripts/superviser.py) fournit un registre SQLite local sans dépendance tierce. Ses transactions contrôlent capacité commune, tâches et fichiers réservés, compteurs de tentatives et événements. Les dépendances doivent être enregistrées avant leurs tâches aval. Chaque tâche conserve sa requête de référence ; une reprise ajoute le constat sans recharger silencieusement le modèle ou les instructions.
 
 Les étapes sont distinctes : réservation, lancement extérieur et rattachement, réception du résultat, confirmation de fin du rédacteur, puis acceptation. Une réservation inactive n'est jamais libérée automatiquement. L'acceptation exige les observations de tous les critères et le fichier correspondant à l'empreinte soumise ; les dépendances sont de nouveau examinées. Les identités, constats d'arrêt et paramètres appliqués sont fournis par le coordinateur, sans vérification auprès d'un moteur externe.
@@ -51,6 +57,14 @@ python3 -B .agents/skills/orka/scripts/test_superviser.py
 ```
 
 Cette implémentation couvre le registre local, pas le lancement automatique, un service continu ou le contrôle technique d'un outil extérieur. Les réservations n'empêchent pas un processus non enregistré d'écrire sur le disque. Le budget financier, l'annulation d'une tâche et la modification d'un mandat enregistré ne sont pas implémentés dans cette première interface.
+
+## Vérifications automatiques du dépôt
+
+Le point d'entrée [tools/verifier.py](../tools/verifier.py), après installation de [requirements-dev.txt](../requirements-dev.txt), contrôle le YAML du skill, sa version, les liens internes, toutes les suites via l'installation temporaire et le paquet ZIP construit dans un dossier temporaire. Un tag de release fourni par GitHub doit correspondre à la version du skill. PyYAML est réservé au développement ; les scripts de mission restent autonomes avec la bibliothèque standard.
+
+Le [workflow GitHub Actions](../.github/workflows/verification.yml) lance les mêmes contrôles sur les mises à jour de `main`, les pull requests, les tags `v*` et à la demande. Sa matrice couvre Linux, macOS et Windows avec Python 3.10 et 3.13 ; il n'a qu'un accès en lecture au contenu du dépôt et ne publie ni ne déploie. Configuration fondée sur la [documentation Python de GitHub Actions](https://docs.github.com/en/actions/tutorials/build-and-test-code/python). Une matrice configurée et un résultat distant observé doivent rester distingués lors d'une restitution.
+
+Les fichiers texte du préparateur et les sorties/erreurs des outils CLI sont explicitement UTF-8. Des sous-processus sous configuration ASCII vérifient les textes français, l'écriture de fichiers et les sorties JSON ; ils ne prouvent pas à eux seuls le fonctionnement sur tous les systèmes.
 
 ## Pilotage renforcé
 

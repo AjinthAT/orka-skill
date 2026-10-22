@@ -2,6 +2,7 @@
 
 from copy import deepcopy
 import json
+import os
 from pathlib import Path
 import re
 import subprocess
@@ -14,7 +15,7 @@ from preparer_agent import preparer, SKILL_ROOT
 
 class PreparationTests(unittest.TestCase):
     def setUp(self):
-        self.mandat = json.loads((SKILL_ROOT / "assets" / "mandat-exemple.json").read_text())
+        self.mandat = json.loads((SKILL_ROOT / "assets" / "mandat-exemple.json").read_text(encoding="utf-8"))
 
     def test_reglages_explicites_et_criteres_conserves(self):
         self.mandat.update(modele="gpt-6.1-sol", effort="high")
@@ -83,7 +84,7 @@ class PreparationTests(unittest.TestCase):
             resultat = subprocess.run(
                 [sys.executable, "-B", str(SKILL_ROOT / "scripts" / "preparer_agent.py"),
                  "--mandat", str(mandat), "--output", str(sortie)],
-                capture_output=True, text=True)
+                capture_output=True, text=True, encoding="utf-8")
             self.assertEqual(resultat.returncode, 2)
             self.assertFalse(sortie.exists())
 
@@ -110,20 +111,20 @@ class PreparationTests(unittest.TestCase):
             sortie = dossier / "requete.json"
             commande = [sys.executable, "-B", str(SKILL_ROOT / "scripts" / "preparer_agent.py"),
                         "--mandat", str(mandat), "--output", str(sortie)]
-            subprocess.run(commande, check=True, capture_output=True, text=True)
-            contenu = sortie.read_text()
-            refus = subprocess.run(commande, capture_output=True, text=True)
+            subprocess.run(commande, check=True, capture_output=True, text=True, encoding="utf-8")
+            contenu = sortie.read_text(encoding="utf-8")
+            refus = subprocess.run(commande, capture_output=True, text=True, encoding="utf-8")
             self.assertEqual(refus.returncode, 2)
-            self.assertEqual(sortie.read_text(), contenu)
+            self.assertEqual(sortie.read_text(encoding="utf-8"), contenu)
             self.mandat["sortie"] = str(dossier / "livrable.md")
             mandat.write_text(json.dumps(self.mandat))
             commande[-1] = self.mandat["sortie"]
-            refus = subprocess.run(commande, capture_output=True, text=True)
+            refus = subprocess.run(commande, capture_output=True, text=True, encoding="utf-8")
             self.assertEqual(refus.returncode, 2)
             self.assertFalse(Path(self.mandat["sortie"]).exists())
 
     def test_les_roles_recoivent_uniquement_leur_fiche(self):
-        catalogue = json.loads((SKILL_ROOT / "references" / "profils-modeles.json").read_text())
+        catalogue = json.loads((SKILL_ROOT / "references" / "profils-modeles.json").read_text(encoding="utf-8"))
         for role in catalogue["roles"]:
             with self.subTest(role=role):
                 mandat = dict(self.mandat, role=role, entrees=["simulation-v1.md"])
@@ -131,6 +132,29 @@ class PreparationTests(unittest.TestCase):
                 sections = re.findall(r"^## ([a-z][a-z-]+)",
                                       requete["parametres_demandes"]["message"], flags=re.M)
                 self.assertEqual(sections, [role])
+
+    def test_cli_utf8_independant_de_la_locale_pour_fichiers_et_sorties(self):
+        environnement = dict(os.environ, LC_ALL="C", LANG="C", PYTHONUTF8="0",
+                             PYTHONCOERCECLOCALE="0", PYTHONIOENCODING="ascii")
+        with tempfile.TemporaryDirectory() as tmp:
+            dossier = Path(tmp)
+            mandat = dossier / "mandat.json"
+            contenu = dict(self.mandat, objectif="Étudier l'été à Montréal")
+            mandat.write_text(json.dumps(contenu, ensure_ascii=False), encoding="utf-8")
+            commande = [sys.executable, "-B", str(SKILL_ROOT / "scripts/preparer_agent.py"), "--mandat", str(mandat)]
+            sortie = dossier / "requete.json"
+            fichier = subprocess.run(commande + ["--output", str(sortie)], env=environnement, capture_output=True)
+            self.assertEqual(fichier.returncode, 0, fichier.stderr)
+            attendu = json.loads(sortie.read_text(encoding="utf-8"))
+            self.assertIn(contenu["objectif"], attendu["parametres_demandes"]["message"])
+            console = subprocess.run(commande, env=environnement, capture_output=True)
+            self.assertEqual(console.returncode, 0, console.stderr)
+            self.assertEqual(json.loads(console.stdout.decode("utf-8")), attendu)
+            contenu["objectif"] = ""
+            mandat.write_text(json.dumps(contenu), encoding="utf-8")
+            erreur = subprocess.run(commande, env=environnement, capture_output=True)
+            self.assertEqual(erreur.returncode, 2)
+            erreur.stderr.decode("utf-8")
 
 
 if __name__ == "__main__":

@@ -5,7 +5,7 @@ Le script [superviser.py](../scripts/superviser.py) fournit un registre local de
 ## Ce qui est contrôlé
 
 - États et journal conservés dans la base après fermeture de la session.
-- Dépendances : une tâche amont doit être terminée avec un fichier toujours conforme à son empreinte.
+- Dépendances directes et indirectes : chaque référence doit rester valide, avec les mêmes tentatives amont et empreintes que lors de la réservation.
 - Capacité globale du registre, trois réservations actives par défaut, missions confondues.
 - Réservation unique d'un fichier canonique et d'une tâche ; un même identifiant d'agent ne peut pas être rattaché à deux tentatives actives.
 - Tentatives attribuées par le registre, avec un maximum par tâche, deux par défaut.
@@ -23,6 +23,20 @@ python3 .agents/skills/orka/scripts/superviser.py --base .orka/registre.sqlite i
 ```
 
 Le répertoire parent est créé si nécessaire. Une base existante n'est jamais remplacée. La racine des livrables est enregistrée sous forme absolue. Tous les coordinateurs qui partagent une capacité doivent utiliser la même base ; deux bases distinctes ne partagent pas leurs réservations.
+
+## Migrer un registre existant
+
+Depuis Orka 0.4.0, les nouvelles bases utilisent le schéma v2. L'ouverture ordinaire d'une base v1 est refusée avec une indication de migration ; elle ne la transforme pas implicitement. Arrêter les anciens coordinateurs qui utilisent le registre avant la migration. La migration ne stoppe aucun agent et ne libère aucune réservation.
+
+```sh
+python3 .agents/skills/orka/scripts/superviser.py --base .orka/registre.sqlite migrer
+```
+
+La commande réserve l'écriture SQLite, crée une sauvegarde cohérente par l'API SQLite `backup` dans le même dossier (`registre.sqlite.avant-v2-<identifiant>.sqlite`), puis ajoute le champ des entrées et un événement de migration dans une transaction. La sauvegarde inclut les données validées du journal WAL. Tâches, tentatives, requêtes, empreintes, observations, événements précédents et réservations actives sont conservés. Une migration déjà faite est sans effet ; une erreur annule les changements de schéma et conserve la sauvegarde si elle a été créée. Une base absente n'est pas créée.
+
+Les versions d'entrées historiques restent `null` : une tâche migrée ayant des dépendances n'est plus une référence valide tant qu'elle n'a pas été réexaminée et produite dans une nouvelle tentative. Les tâches sans dépendance peuvent conserver leur validité si leur fichier et les autres contrôles sont conformes. Pour une ancienne tentative active avec dépendances inconnues, vérifier et arrêter le rédacteur avant libération et reprise ; ne pas compléter rétroactivement ses entrées avec les versions actuelles.
+
+Conserver la sauvegarde avec les précautions adaptées aux données de mission. Elle préserve la base avant migration, pas les fichiers métier ni l'état des agents. Toute restauration demande de réconcilier les exécutions et les fichiers depuis cette date ; le logiciel v1 ne lit pas le nouveau schéma v2.
 
 Dans ce dépôt, le dossier `.orka/` est ignoré par Git, car les requêtes et leur contexte peuvent contenir des informations de mission. Après installation dans un autre projet, ajouter la règle correspondante à son fichier d'exclusion ou stocker la base hors du dépôt ; l'installateur ne modifie pas les règles Git du projet hôte. Ce choix ne chiffre pas la base et ne constitue pas une sauvegarde. Aucune base de mission réelle n'a été créée pendant le développement ; les tests utilisent des dossiers temporaires.
 
@@ -45,6 +59,8 @@ Une reprise conserve cette base et ajoute le motif enregistré et les observatio
 
 La réservation produit un `execution_id`, la phase `reservee` et la requête de lancement. Les critères y figurent avec les identifiants C-01, C-02, etc. La place et le fichier sont réservés mais aucun agent n'est encore lancé.
 
+Elle conserve aussi, pour chaque dépendance enregistrée, l'identifiant de la tentative amont et l'empreinte de son résultat. Ces données figurent dans `entrees_verifiees` de la requête et dans le prompt transmis. Il s'agit des versions déclarées à utiliser, pas d'une preuve que l'agent les a effectivement lues. Les sources externes et fichiers qui ne sont pas déclarés comme dépendances ne sont pas surveillés automatiquement.
+
 ## Raccorder une exécution réelle
 
 1. Vérifier les capacités, le mandat et les limites encore applicables, puis réserver la tâche.
@@ -61,7 +77,7 @@ Si le lancement échoue avec certitude avant création de l'agent, consigner ce 
 
 ## Interruption, reprise et alertes
 
-`etat` affiche tâches, dépendances à réexaminer, réservations et paramètres demandés ou déclarés. `journal` expose les événements. `alertes --delai 300` signale les réservations sans activité depuis au moins 300 secondes ; le délai est fourni par l'opérateur. Ce signal ne prouve pas qu'un agent est arrêté.
+`etat` affiche tâches, réservations, paramètres demandés ou déclarés, `entrees_utilisees` et `entrees_a_reexaminer`. Il distingue l'état documentaire enregistré (`etat`) de la validité actuelle (`validite`) : une tâche acceptée peut rester historiquement `terminee` mais avoir une validité `a_reexaminer`. `dependances_a_reexaminer` indique les références amont actuellement invalides ; les entrées figées peuvent aussi être périmées après une nouvelle validation amont. Cette lecture ne modifie ni états ni réservations. `journal` expose les événements. `alertes --delai 300` signale les réservations sans activité depuis au moins 300 secondes ; le délai est fourni par l'opérateur. Ce signal ne prouve pas qu'un agent est arrêté.
 
 Pour analyser qualité, reprises et moyens connus, constituer le relevé du [bilan local des agents](bilan-agents.md) à partir des tentatives réellement rattachées et des compteurs disponibles. Ce bilan est un outil séparé ; aucune collecte ni export automatique depuis SQLite n'est ajouté au registre.
 
@@ -70,6 +86,21 @@ Après réouverture de la base, les réservations restent actives. Vérifier les
 Si la réponse d'une réservation a été perdue, retrouver son identifiant dans `etat`, puis utiliser `requete --execution IDENTIFIANT` pour récupérer la requête enregistrée. Examiner sa phase, son activité et l'agent rattaché avant toute action ; cette lecture n'autorise pas à relancer une tentative déjà lancée. Ne pas créer une nouvelle réservation pour remplacer un résultat de lancement encore incertain.
 
 Le résultat soumis garde sa réservation jusqu'à la libération explicite. L'acceptation contrôle l'empreinte à cet instant et refuse un résultat ou une dépendance modifiés depuis la version vérifiée. La base conserve les empreintes et observations, pas une copie de sauvegarde des livrables.
+
+## Réexaminer un résultat terminé
+
+Un changement de source invalide ses résultats dépendants transitivement. Une nouvelle acceptation de la source ne rétablit pas les anciens résultats dépendants : leurs versions d'entrées restent celles de leur tentative. Cela s'applique même si deux tentatives amont ont produit les mêmes octets.
+
+```sh
+python3 .agents/skills/orka/scripts/superviser.py --base .orka/registre.sqlite reexaminer --mission mon-projet --tache T-001 --motif "Source ou conclusion à vérifier" --validateur coordinateur
+python3 .agents/skills/orka/scripts/superviser.py --base .orka/registre.sqlite reprendre --mission mon-projet --tache T-001 --motif "Traiter le réexamen"
+```
+
+`reexaminer` exige une tâche terminée, un motif, le responsable d'acceptation nommé et l'absence de réservation active sur son fichier. Il passe la tâche à `a_reexaminer`, conserve les acceptations et preuves anciennes, journalise le motif et retourne les identifiants des dépendants à examiner. Ceux-ci ne sont ni relancés ni libérés ni réécrits automatiquement ; leurs états actifs sont conservés, et leur acceptation reste soumise à la validité des entrées.
+
+`reprendre` prépare ensuite une nouvelle tentative selon les contrôles existants. La réservation fige les nouvelles versions seulement lorsque les dépendances sont valides. Les compteurs et maximums ne sont jamais remis à zéro ; un réexamen peut être enregistré même si aucune tentative supplémentaire n'est disponible. Une tâche de remplacement exige alors un nouvel identifiant et une analyse d'impact, pas le contournement silencieux de la limite.
+
+Les fichiers peuvent être modifiés par des programmes extérieurs pendant ou après ces contrôles : le registre ne les verrouille pas. Une version déjà invalide ne peut pas être acceptée par les contrôles du registre ; cela ne garantit pas une surveillance continue du système de fichiers.
 
 ## Limites de ce jalon
 

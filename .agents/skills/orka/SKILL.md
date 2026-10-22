@@ -3,7 +3,7 @@ name: orka
 description: Coordinate an AI business team for strategy, market research, marketing, sales, product, development, QA, operations, finance, AI agent resources and customer support. Use when the user assigns a project or cross-functional mission to the team, including vision, innovation or naming with domain checks; not for a simple question about a job. Execute only the requested scope.
 license: MIT
 metadata:
-  version: "0.3.1"
+  version: "0.4.0"
 ---
 
 # Orka
@@ -31,7 +31,7 @@ Le service RH vise par défaut les [ressources des agents IA](references/ressour
 
 Quand une inconnue bloque une décision, utiliser les [expériences et apprentissages](references/experiences-apprentissage.md) : relier hypothèse, test borné, résultat observé et décision, en distinguant faisabilité et adoption. Préserver la mémoire des pistes abandonnées et réexaminer les conclusions dépendant d'une preuve modifiée. Pour analyser des exécutions réellement lancées, le [bilan local des agents](references/bilan-agents.md) agrège un relevé fourni ; il ne collecte pas la consommation.
 
-Pour une mission nécessitant suivi persistant, reprise ou capacité partagée entre coordinateurs, utiliser le [registre de supervision locale](references/supervision-locale.md) avec une base explicitement choisie. Réserver les tâches avant lancement, rattacher les identifiants réels, puis soumettre et faire accepter les versions vérifiées. Le registre ne remplace ni les outils de lancement ni la vérification des autorisations et de la fin d'un rédacteur.
+Pour une mission nécessitant suivi persistant, reprise ou capacité partagée entre coordinateurs, utiliser le [registre de supervision locale](references/supervision-locale.md) avec une base explicitement choisie. Réserver les tâches avant lancement, rattacher les identifiants réels, puis soumettre et faire accepter les versions vérifiées. Les dépendances enregistrées sont vérifiées transitivement et leurs versions figées par tentative ; un résultat périmé exige un réexamen explicite. Migrer une ancienne base v1 selon le guide, sans inventer ses versions d'entrées historiques. Le registre ne remplace ni les outils de lancement ni la vérification des autorisations et de la fin d'un rédacteur.
 
 Pour qualifier une demande, gérer un changement, transmettre un résultat, traiter un incident ou clore une mission, consulter le passage utile des [processus communs](references/processus-transverses.md). Pour créer ou modifier une documentation de référence, appliquer [la gestion documentaire](references/gestion-documentaire.md). Ne pas charger ces procédures au complet pour une simple tâche qui n'en a pas besoin.
 

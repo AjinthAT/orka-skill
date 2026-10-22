@@ -24,7 +24,7 @@ class InstallationTests(unittest.TestCase):
             for _, relative in installer.skill_files():
                 self.assertTrue((destination / relative).is_file(), str(relative))
             for script in ("test_preparer_agent.py", "test_superviser.py", "test_bilan_agents.py"):
-                result = subprocess.run([sys.executable, "-B", str(destination / "scripts" / script)], cwd=folder, capture_output=True, text=True)
+                result = subprocess.run([sys.executable, "-B", str(destination / "scripts" / script)], cwd=folder, capture_output=True, text=True, encoding="utf-8")
                 self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
 
     def test_existing_destination_is_preserved(self):
@@ -74,7 +74,7 @@ class InstallationTests(unittest.TestCase):
                 installer.package(destination)
 
     def test_project_cannot_be_combined_with_custom_destination(self):
-        result = subprocess.run([sys.executable, str(ROOT / "install.py"), "--destination", "unused", "--project", "."], capture_output=True, text=True)
+        result = subprocess.run([sys.executable, str(ROOT / "install.py"), "--destination", "unused", "--project", "."], capture_output=True, text=True, encoding="utf-8")
         self.assertEqual(result.returncode, 2)
         self.assertIn("--project requires --agent", result.stderr)
 
@@ -82,7 +82,7 @@ class InstallationTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as folder:
             project = Path(folder)
             for agent, directory in (("codex", ".agents"), ("claude", ".claude")):
-                result = subprocess.run([sys.executable, str(ROOT / "install.py"), "--agent", agent, "--project", folder], capture_output=True, text=True)
+                result = subprocess.run([sys.executable, str(ROOT / "install.py"), "--agent", agent, "--project", folder], capture_output=True, text=True, encoding="utf-8")
                 self.assertEqual(result.returncode, 0, result.stderr)
                 self.assertTrue((project / directory / "skills/orka/SKILL.md").is_file())
                 for guide in ("GUIDE.md", "GUIDE.fr.md"):
@@ -96,7 +96,7 @@ class InstallationTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as folder:
             destination = Path(folder) / "custom" / "orka"
             result = subprocess.run([sys.executable, str(ROOT / "install.py"), "--destination", str(destination)],
-                                    capture_output=True, text=True)
+                                    capture_output=True, text=True, encoding="utf-8")
             self.assertEqual(result.returncode, 0, result.stderr)
             for guide in ("GUIDE.md", "GUIDE.fr.md"):
                 self.assertTrue((destination / guide).is_file())

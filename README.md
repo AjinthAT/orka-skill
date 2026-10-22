@@ -128,9 +128,11 @@ The [nine workflows](.agents/skills/orka/references/workflows-entreprise.md) cov
 | **Coordination instructions** | Guide scoping, delegation, collaboration, review and handoffs |
 | **Roles and workflows** | Bring in the right specialist perspectives for each mission |
 | **Shared document templates** | Open a study with a one-page decision summary; keep evidence, current rules and history easy to find |
-| **Optional local tools** | Prepare task requests and track dependencies, reservations, attempts and artifact acceptance |
+| **Optional local tools** | Prepare task requests; track input versions, direct and indirect dependencies, reservations, attempts and artifact acceptance |
 
 The local tools use Python and SQLite, with no third-party Python packages. They prepare and record work; model execution comes from the assistant. Installation itself does not start agents, provision services or require an API key. Model usage remains subject to your assistant's plan and costs.
+
+The register now supports explicit re-examination of completed work and a backed-up migration from schema v1. Historical input versions that were never recorded remain unknown; see [local supervision](.agents/skills/orka/references/supervision-locale.md) before opening an older register with this version.
 
 ## Sharpen the project before expanding it
 
@@ -303,12 +305,12 @@ Product mission documents live under `projets/<id>/`; cross-company missions use
 From the repository root:
 
 ```sh
-python3 -B .agents/skills/orka/scripts/test_preparer_agent.py
-python3 -B .agents/skills/orka/scripts/test_superviser.py
-python3 -B .agents/skills/orka/scripts/test_bilan_agents.py
-python3 -B -m unittest discover -s tests
+python3 -m pip install -r requirements-dev.txt
+python3 -B tools/verifier.py
 python3 install.py --archive dist/orka.zip
 ```
+
+The verifier checks skill metadata, local links, all test suites after relocation, archive contents and tag/version consistency when run from a tag. GitHub Actions runs the same command on Linux, macOS and Windows with Python 3.10 and 3.13. PyYAML is a development-only validation dependency; installed runtime helpers still use the standard library. Helper CLIs read and write UTF-8 explicitly, including redirected output and errors.
 
 To update an installation, review the changes, back up any local modifications, remove the old installed `orka` folder and run the installer again. To uninstall, remove only the installed `orka` folder; this leaves mission outputs intact. The installer intentionally has no automatic overwrite mode.
 

@@ -13,6 +13,12 @@ SKILL_ROOT = Path(__file__).resolve().parents[1]
 REFERENCES = SKILL_ROOT / "references"
 
 
+def configurer_sorties():
+    for flux in (sys.stdout, sys.stderr):
+        if hasattr(flux, "reconfigure"):
+            flux.reconfigure(encoding="utf-8")
+
+
 def charger_json(path):
     def sans_doublons(paires):
         resultat = {}
@@ -90,12 +96,12 @@ def preparer(mandat, capacites=None):
         raise ValueError("tentative doit etre un entier positif")
     equipe = next(key for key, roles in catalogue["equipes"].items() if role in roles)
     source_role = REFERENCES / "equipes" / (equipe + ".md")
-    fiche = source_role.read_text()
+    fiche = source_role.read_text(encoding="utf-8")
     section = re.search(r"^## " + re.escape(role) + r"(?:\s[^\n]*)?\n.*?(?=^## |\Z)",
                         fiche, flags=re.M | re.S)
     if not section:
         raise ValueError("Fiche du role introuvable")
-    commun = (REFERENCES / "prompts" / "consignes-communes.md").read_text().strip()
+    commun = (REFERENCES / "prompts" / "consignes-communes.md").read_text(encoding="utf-8").strip()
     nom = nom_lancement(contenu["mission_id"], contenu["tache_id"], role, tentative)
     prompt = (commun + "\n\n# Role attribue\n\nFiche source : " + str(source_role)
               + "\nLes liens relatifs de cette fiche sont relatifs a ce fichier.\n\n" + section.group().strip()
@@ -129,6 +135,7 @@ def preparer(mandat, capacites=None):
 
 
 def main():
+    configurer_sorties()
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--mandat", type=Path, required=True)
     parser.add_argument("--capacites", type=Path)
@@ -142,7 +149,7 @@ def main():
         if args.output:
             if args.output.resolve() == Path(requete["sortie_attendue"]).resolve():
                 raise ValueError("La requete ne doit pas remplacer le livrable attendu")
-            with args.output.open("x") as fichier:
+            with args.output.open("x", encoding="utf-8", newline="\n") as fichier:
                 fichier.write(sortie)
         else:
             sys.stdout.write(sortie)

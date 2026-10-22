@@ -130,9 +130,11 @@ Les [neuf workflows](.agents/skills/orka/references/workflows-entreprise.md) cou
 | **Instructions de coordination** | Cadrage, délégation, échanges, revue et transmission |
 | **Rôles et workflows** | Mobiliser les compétences adaptées à la mission |
 | **Modèles de documents partagés** | Ouvrir une étude par une synthèse d'une page ; retrouver preuves, règles actuelles et historique |
-| **Outils locaux facultatifs** | Préparer les mandats et suivre dépendances, réservations, tentatives et acceptation |
+| **Outils locaux facultatifs** | Préparer les mandats ; suivre versions des entrées, dépendances directes et indirectes, réservations, tentatives et acceptation |
 
 Les outils utilisent Python et SQLite, sans paquet Python tiers. Ils préparent et enregistrent le travail ; l'assistant fournit l'exécution des modèles. L'installation ne lance aucun agent, ne crée aucun service et ne nécessite aucune clé API. L'utilisation des modèles dépend de votre assistant, de votre abonnement et des coûts associés.
+
+Le registre permet maintenant le réexamen explicite d'une tâche terminée et une migration sauvegardée depuis le schéma v1. Les versions d'entrées historiques jamais enregistrées restent inconnues : consultez la [supervision locale](.agents/skills/orka/references/supervision-locale.md) avant d'ouvrir une ancienne base avec cette version.
 
 ## Renforcer le projet avant de l'élargir
 
@@ -276,12 +278,12 @@ Le [README anglais](README.md#documentation) présente l'index complet. Guides c
 Les dossiers de mission produit utilisent `projets/<id>/` ; les missions transversales utilisent `entreprise/missions/<id>/`. Le code applicatif reste dans son dépôt de développement. Conservez les données privées de mission hors de ce dépôt de distribution public. Les exemples du registre utilisent le dossier local ignoré `.orka/`.
 
 ```sh
-python3 -B .agents/skills/orka/scripts/test_preparer_agent.py
-python3 -B .agents/skills/orka/scripts/test_superviser.py
-python3 -B .agents/skills/orka/scripts/test_bilan_agents.py
-python3 -B -m unittest discover -s tests
+python3 -m pip install -r requirements-dev.txt
+python3 -B tools/verifier.py
 python3 install.py --archive dist/orka.zip
 ```
+
+Le vérificateur contrôle les métadonnées, liens locaux, suites de tests après déplacement, contenu du paquet et cohérence tag/version lorsqu'il tourne depuis un tag. GitHub Actions utilise la même commande sur Linux, macOS et Windows avec Python 3.10 et 3.13. PyYAML sert seulement aux vérifications du dépôt ; les outils installés restent sans dépendance tierce. Les CLI lisent et écrivent explicitement en UTF-8, y compris les sorties et erreurs redirigées.
 
 Pour mettre à jour : examinez les changements, sauvegardez vos adaptations, supprimez l'ancien dossier installé `orka`, puis relancez l'installation. Pour désinstaller, supprimez uniquement ce dossier ; les livrables de mission restent en place. Les contributions peuvent passer par les issues et pull requests, avec le problème observé et les vérifications pertinentes.
 

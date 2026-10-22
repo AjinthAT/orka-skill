@@ -9,7 +9,7 @@ from pathlib import Path
 import re
 import sys
 
-from preparer_agent import charger_json, texte
+from preparer_agent import charger_json, configurer_sorties, texte
 
 
 def objet(value, champs, obligatoires):
@@ -112,6 +112,7 @@ def bilan(document):
 
 
 def main():
+    configurer_sorties()
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("fichier", type=Path, help="Releve JSON normalise, version 1")
     args = parser.parse_args()

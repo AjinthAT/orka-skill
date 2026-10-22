@@ -2,6 +2,7 @@
 
 import copy
 import json
+import os
 from pathlib import Path
 import subprocess
 import sys
@@ -107,17 +108,27 @@ class BilanTests(unittest.TestCase):
             contenu = json.dumps(document(tentative()))
             entree.write_text(contenu, encoding="utf-8")
             resultat = subprocess.run([sys.executable, "-B", str(script), str(entree)],
-                                      cwd=folder, capture_output=True, text=True)
+                                      cwd=folder, capture_output=True, text=True, encoding="utf-8")
             self.assertEqual(resultat.returncode, 0, resultat.stderr)
             self.assertEqual(json.loads(resultat.stdout)["tentatives"], 1)
             self.assertEqual(entree.read_text(encoding="utf-8"), contenu)
             self.assertEqual(list(Path(folder).iterdir()), [entree])
             entree.write_text('{"version": 1, "version": 2}', encoding="utf-8")
             resultat = subprocess.run([sys.executable, "-B", str(script), str(entree)],
-                                      cwd=folder, capture_output=True, text=True)
+                                      cwd=folder, capture_output=True, text=True, encoding="utf-8")
             self.assertEqual(resultat.returncode, 2)
             self.assertEqual(resultat.stdout, "")
             self.assertIn("dupliquee", resultat.stderr)
+
+    def test_cli_preserves_unicode_with_ascii_stdout_setting(self):
+        with tempfile.TemporaryDirectory() as folder:
+            entree = Path(folder) / "mesures.json"
+            entree.write_text(json.dumps(dict(document(tentative()), mission="Été à Montréal")), encoding="utf-8")
+            environnement = dict(os.environ, LC_ALL="C", PYTHONUTF8="0", PYTHONCOERCECLOCALE="0", PYTHONIOENCODING="ascii")
+            resultat = subprocess.run([sys.executable, "-B", str(Path(__file__).with_name("bilan_agents.py")), str(entree)],
+                                      env=environnement, capture_output=True)
+            self.assertEqual(resultat.returncode, 0, resultat.stderr)
+            self.assertEqual(json.loads(resultat.stdout.decode("utf-8"))["mission"], "Été à Montréal")
 
 
 if __name__ == "__main__":

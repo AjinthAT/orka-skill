@@ -96,6 +96,11 @@ Utiliser un dossier d'essai distinct pour les simulations. Marquer toute donnée
 | Deux coordinateurs réservent simultanément dans le même registre. | Appliquer la capacité commune et la réservation unique du fichier, dans une transaction. |
 | Une réservation ne donne plus signe d'activité. | La signaler et la conserver jusqu'au constat de fin ; ne pas créer un deuxième rédacteur par expiration automatique. |
 | Le fichier d'une dépendance acceptée a changé. | Refuser de la réutiliser comme une version encore vérifiée avant réexamen. |
+| A alimente B qui alimente C ; A change après acceptation de B. | B devient une référence invalide pour C, même si le fichier de B reste identique. |
+| Une source est réacceptée dans une nouvelle tentative avec les mêmes octets. | Les résultats utilisant l'ancienne tentative restent à réexaminer ; contrôler l'identifiant de version et l'empreinte. |
+| Une tâche terminée doit être réexaminée. | Exiger motif, responsable nommé et absence de rédacteur actif ; conserver les anciennes preuves et respecter les limites avant toute nouvelle tentative. |
+| Une base v1 contient des exécutions et des résultats acceptés. | Refuser la conversion implicite ; migrer explicitement avec sauvegarde, conserver les réservations et laisser les versions d'entrées historiques inconnues. |
+| Le CLI tourne sous une locale ASCII avec des textes français. | Lire et écrire les fichiers JSON et consignes en UTF-8 ; produire des sorties et erreurs UTF-8 lisibles. |
 | La réponse de réservation a été perdue. | Retrouver la requête et sa phase dans le registre avant de relancer ; ne pas créer une deuxième tentative par défaut. |
 
 Pour un essai réel, contrôler surtout la traçabilité des conclusions, le traitement des objections, la cohérence des coûts et du périmètre, la fidélité de l'état de reprise et la distinction entre recommandation et décision humaine.
