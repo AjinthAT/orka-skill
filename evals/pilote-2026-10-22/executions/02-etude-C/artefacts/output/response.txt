@@ -1,0 +1,8 @@
+[Lire la synthèse de décision](</var/folders/9s/c85yfmyd0x5_yjpvmg9btftm0000gn/T/orka-eval-ezr607n6/cellules/02-etude-C/livrable.md>).
+
+Recommandation : clarifier l’utilité d’une alerte avant un essai caméra. L’ambition automatique est conservée ; aucun test n’a été exécuté.
+
+**Prochain prompt à copier**
+```text
+À partir de livrable.md, aide-moi à clarifier les trois questions décisives avant de préparer un essai, sans action externe.
+```

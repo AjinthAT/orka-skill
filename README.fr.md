@@ -132,7 +132,19 @@ Les [neuf workflows](.agents/skills/orka/references/workflows-entreprise.md) cou
 | **Modèles de documents partagés** | Ouvrir une étude par une synthèse d'une page ; retrouver preuves, règles actuelles et historique |
 | **Outils locaux facultatifs** | Préparer les mandats ; suivre versions des entrées, dépendances directes et indirectes, réservations, tentatives et acceptation |
 
-Les outils utilisent Python et SQLite, sans paquet Python tiers. Ils préparent et enregistrent le travail ; l'assistant fournit l'exécution des modèles. L'installation ne lance aucun agent, ne crée aucun service et ne nécessite aucune clé API. L'utilisation des modèles dépend de votre assistant, de votre abonnement et des coûts associés.
+**Python n'est pas nécessaire pour utiliser les instructions d'Orka ou installer le skill manuellement.** L'assistant lit les fichiers Markdown et fournit ses outils. Recherche, délégation et réalisation dépendent des capacités de cet assistant.
+
+Python sert à l'installateur fourni et aux outils locaux facultatifs. Ceux-ci utilisent la bibliothèque standard Python, dont SQLite pour le registre. Ils préparent et enregistrent le travail ; l'assistant fournit l'exécution des modèles. L'installation ne lance aucun agent, ne crée aucun service et ne nécessite aucune clé API. L'utilisation des modèles dépend de votre assistant, de votre abonnement et des coûts associés.
+
+| Votre besoin | Python nécessaire ? | Utilité |
+|---|---|---|
+| Installer par copie du dossier ou import du ZIP | Non | Commencer dans un assistant compatible |
+| Utiliser les instructions, rôles et workflows dans l'assistant | Aucune exigence d'Orka | Cadrage, études, contenus et coordination courante |
+| Exécuter `install.py` | Oui, Python 3.10+ | Copier le skill à un emplacement connu sans écraser une installation |
+| Utiliser préparateur, registre ou bilan des agents | Oui, Python 3.10+ | Mandats répétables, réservations partagées, tentatives persistantes et bilans de mesures fournies |
+| Vérifier le dépôt | Oui, avec les dépendances de développement | Maintenir Orka ou y contribuer ; inutile pour son usage courant |
+
+Commencez avec les instructions et les documents de mission. Ajoutez un outil local lorsqu'un de ses contrôles vous est utile ; une petite mission n'a pas besoin d'un registre SQLite. Votre propre application peut avoir ses exigences techniques distinctes.
 
 Le registre permet maintenant le réexamen explicite d'une tâche terminée et une migration sauvegardée depuis le schéma v1. Les versions d'entrées historiques jamais enregistrées restent inconnues : consultez la [supervision locale](.agents/skills/orka/references/supervision-locale.md) avant d'ouvrir une ancienne base avec cette version.
 
@@ -208,7 +220,15 @@ Ces méthodes d'installation ne garantissent pas une exécution identique. Modè
 
 ## Installation
 
-### Codex ou Claude Code
+### Sans Python : copier le dossier du skill
+
+1. Téléchargez [orka.zip](https://github.com/AjinthAT/orka-skill/releases/latest/download/orka.zip) et décompressez-le. Utilisez le ZIP du skill, pas l'archive du dépôt complet.
+2. Copiez tout le dossier `orka` extrait, avec ses références et guides, dans le dossier de skills de votre assistant. Emplacements utilisateur par défaut : `~/.agents/skills/orka/` pour Codex, `~/.claude/skills/orka/` pour Claude Code ou `~/.hermes/skills/orka/` pour le profil Hermes par défaut. Adaptez-les à votre configuration et sauvegardez une installation existante avant remplacement.
+3. Ouvrez une nouvelle session si nécessaire, sélectionnez Orka et donnez une mission. Pour Claude Web/ordinateur, importez le ZIP dans l'interface des skills personnalisés plutôt que de copier un dossier local.
+
+Ces étapes n'exécutent aucun script Python fourni. Les fichiers facultatifs peuvent rester présents sans être utilisés.
+
+### Installateur Python facultatif : Codex ou Claude Code
 
 Téléchargez et décompressez le [code source](https://github.com/AjinthAT/orka-skill/archive/refs/heads/main.zip), ou clonez le dépôt :
 
@@ -246,7 +266,7 @@ L'import ne donne pas accès à vos fichiers locaux et n'active pas de sous-agen
 
 ### Hermes Agent
 
-Depuis le dépôt cloné, installez Orka dans le profil Hermes par défaut :
+La copie manuelle décrite plus haut convient aussi au profil Hermes par défaut. Si vous préférez l'installateur Python facultatif, lancez depuis le dépôt cloné :
 
 ```sh
 python3 install.py --destination "$HOME/.hermes/skills/orka"
@@ -270,6 +290,10 @@ Un modèle seul ne suffit pas : l'application qui l'utilise doit prendre en char
 - Les modèles disponibles, leurs réglages, la recherche, la délégation et l'accès aux fichiers dépendent de chaque assistant. Le catalogue fourni et le préparateur JSON ciblent les paramètres Codex : ils ne configurent pas Claude.
 - Le préparateur de mandats et le registre SQLite sont facultatifs. Le registre appelle le préparateur et partage ses contraintes de catalogue. Sur un autre hôte sans catalogue compatible, utilisez les mandats et le suivi documentaire avec les réglages natifs.
 - Aucun de ces outils ne lance de modèle, n'arrête d'agent ou ne fonctionne en permanence. Les tests locaux vérifient les outils, l'installation et l'archive ; chaque plateforme n'a pas fait l'objet d'une évaluation complète avec des modèles réels.
+
+## Première évaluation
+
+Un [premier pilote synthétique](evals/pilote-2026-10-22/rapport.md) compare un assistant seul, Orka sans délégation et Orka avec deux spécialistes sur trois tâches, dans neuf contextes de conversation séparés. Tous les livrables satisfont les critères examinés ; **aucun avantage de qualité ou de coût n’est établi**. Un spécialiste a lu Orka hors de la copie figée, ce qui limite la comparabilité de cette cellule. Les [cas, sorties, critères et mesures disponibles](evals/README.md) sont conservés. Ce pilote évalue la version 0.4.0 dans Codex, avec un essai par cellule ; il ne valide pas tous les assistants ni tous les modèles.
 
 ## Documentation et développement
 

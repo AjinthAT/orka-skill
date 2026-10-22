@@ -3,7 +3,7 @@ name: orka
 description: Coordinate an AI business team for strategy, market research, marketing, sales, product, development, QA, operations, finance, AI agent resources and customer support. Use when the user assigns a project or cross-functional mission to the team, including vision, innovation or naming with domain checks; not for a simple question about a job. Execute only the requested scope.
 license: MIT
 metadata:
-  version: "0.4.0"
+  version: "0.4.1"
 ---
 
 # Orka

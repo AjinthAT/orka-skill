@@ -1,0 +1,1 @@
+{"titre": "Nori : un planning partagé pour votre salon", "texte": "Découvrez Nori, un prototype destiné aux petites équipes de salons de coiffure. Retrouvez un planning partagé et des rappels de rendez-vous pour accompagner l’organisation de votre salon."}

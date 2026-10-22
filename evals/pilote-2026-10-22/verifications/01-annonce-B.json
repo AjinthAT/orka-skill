@@ -1,0 +1,11 @@
+{
+  "cellule": "01-annonce-B",
+  "constats": {
+    "json_exact": true,
+    "titre_mots": 8,
+    "texte_mots": 27
+  },
+  "commandes": [],
+  "entrees_modifiees": [],
+  "reponse_octets": 264
+}

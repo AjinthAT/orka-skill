@@ -19,7 +19,15 @@ Prévoir des cas auxquels une réponse utile est possible et des cas nécessitan
 5. Examiner les résultats par critère avec les preuves. Une revue par un autre agent peut repérer des défauts ; son accord ne remplace pas les faits ni une vérification métier. Déclarer la méthode et ses limites.
 6. Décider de conserver la référence, corriger la candidate ou l'essayer sur un périmètre borné. Une amélioration sur quelques cas ne suffit pas à annoncer une supériorité générale.
 
-Ces exécutions nécessitent les outils et autorisations correspondants. La présence de cette procédure ne signifie pas qu'une campagne d'évaluation de modèles a déjà été réalisée.
+Ces exécutions nécessitent les outils et autorisations correspondants. Distinguer une procédure disponible des essais réellement consignés ci-dessous.
+
+## Premier pilote exécuté : Orka 0.4.0, 22 octobre 2026
+
+Le [rapport public et ses preuves](https://github.com/AjinthAT/orka-skill/blob/main/evals/pilote-2026-10-22/rapport.md) conserve trois cas synthétiques : annonce JSON, étude documentaire incomplète et reprise après changement de décision. Neuf coordinateurs en contextes neufs comparent assistant seul, Orka sans délégation et Orka avec deux spécialistes imposés par cas. Six spécialistes ont effectivement été lancés ; les sorties, critères prédéfinis, empreintes, observations et recontrôles sont conservés dans le dépôt, hors du paquet installé.
+
+Les neuf livrables satisfont les critères examinés, sans gain de qualité établi. Une revue du cas 03-C a consulté Orka hors de la copie figée : son résultat fonctionnel est conservé avec une réserve de comparabilité. Une correction interne de longueur du cas 02-C est déclarée, mais sa version intermédiaire n'a pas été conservée. Les tokens, coûts et réglages réellement appliqués ne sont pas exposés. Les durées incluent la latence d'observation. Un essai par cellule, une revue non aveugle, les consignes communes de l'hôte et l'absence de cloisonnement technique empêchent de conclure à une supériorité générale. Aucun réglage de profil n'est modifié sur cette base.
+
+La maintenance 0.4.1 clarifie les guides : instructions et installation manuelle sans Python ; scripts locaux et contrôles du dépôt facultatifs, avec leurs prérequis. Ce pilote ne constitue pas un essai sans Python ni une qualification de tous les assistants.
 
 ## Retour d'usage : restitution et lecture courante, version 0.1.1
 
@@ -70,7 +78,7 @@ Tenir une trace concise : changement, motif, cas utilisés, résultats, limites,
 |---|---|---|---|
 | Haute | Supervision persistante des tâches et agents | Conserver l'état, signaler l'inactivité et empêcher deux réservations actives sur une même sortie. | [Registre local implémenté](supervision-locale.md), testé sur données simulées ; lancement, arrêt et alertes continues restent à raccorder. |
 | Haute | Contrôle effectif des moyens et outils | Appliquer les limites globales et autorisations dans le moteur, au lieu de compter sur le seul texte des prompts. | Capacité et tentatives contrôlées dans un même registre ; coûts financiers et droits techniques des outils restent hors de ce contrôle. |
-| Haute | Évaluations sur des missions représentatives | Vérifier les prompts et profils sur des résultats observés avant de modifier les réglages par défaut. | Procédure et scénarios disponibles ; campagnes de modèles non exécutées. |
+| Haute | Évaluations sur des missions représentatives | Vérifier les prompts et profils sur des résultats observés avant de modifier les réglages par défaut. | Premier pilote synthétique exécuté sur 3 cas et 3 conditions ; un écart de protocole connu. Répétitions, cas plus difficiles et comparaison des profils restent à réaliser. |
 | Haute | Essais isolés des opérations extérieures | Préparer et vérifier publication, envoi ou déploiement dans un environnement adapté, avec des contrôles empêchant les effets réels pendant l'essai. | La préparation locale n'exécute rien ; aucun environnement de test d'opérations extérieures n'est configuré. |
 | Moyenne | Journal des opérations et reprises | Reconnaître les tentatives, les résultats reçus et les actions au résultat incertain sans les répéter aveuglément. | Événements et requêtes persistés dans le registre ; contrôle des actions extérieures à implémenter. |
 | Moyenne | Bibliothèque de connaissances validées | Retrouver faits et décisions de référence avec provenance, portée et versions, puis réexaminer ce qui a changé. | Conventions documentaires disponibles ; contenu métier à constituer pendant les missions. |

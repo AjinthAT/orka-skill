@@ -1,0 +1,9 @@
+D2 est appliquée : priorité au-delà de 7 minutes, état normal à 7 minutes, inconnu pour `None`. Les six tests locaux réussissent.
+
+Le [bilan de reprise](</var/folders/9s/c85yfmyd0x5_yjpvmg9btftm0000gn/T/orka-eval-ezr607n6/cellules/03-reprise-B/livrable.md>) détaille les modifications et vérifications. L'historique est préservé ; les documents métier restent inchangés et à réexaminer séparément.
+
+**Prochain prompt à copier**
+
+```text
+Dans ce prototype, réexamine séparément positionnement.md puis page.md selon D2 et actualise etat.md, sans modifier la règle produit ni publier.
+```

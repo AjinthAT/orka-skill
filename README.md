@@ -130,7 +130,19 @@ The [nine workflows](.agents/skills/orka/references/workflows-entreprise.md) cov
 | **Shared document templates** | Open a study with a one-page decision summary; keep evidence, current rules and history easy to find |
 | **Optional local tools** | Prepare task requests; track input versions, direct and indirect dependencies, reservations, attempts and artifact acceptance |
 
-The local tools use Python and SQLite, with no third-party Python packages. They prepare and record work; model execution comes from the assistant. Installation itself does not start agents, provision services or require an API key. Model usage remains subject to your assistant's plan and costs.
+**Python is not required to use Orka's instructions or install the skill manually.** The assistant reads the Markdown files and supplies its own tools. Research, delegation and project work depend on those host capabilities.
+
+Python is needed only for the supplied installer and optional local helpers. Those helpers use Python's standard library, including SQLite for the register. They prepare and record work; model execution comes from the assistant. Installation itself does not start agents, provision services or require an API key. Model usage remains subject to your assistant's plan and costs.
+
+| What you want to do | Python required? | When it helps |
+|---|---|---|
+| Install the skill by copying its folder or importing its ZIP | No | Start using Orka in a compatible assistant |
+| Use the instructions, roles and workflows through your assistant | No requirement from Orka | Clarification, studies, content and ordinary project coordination |
+| Run `install.py` | Yes, Python 3.10+ | Copy the skill to a known location without overwriting an existing installation |
+| Run the preparer, supervision register or agent report | Yes, Python 3.10+ | Repeatable requests, shared reservations, persistent attempts and reports from supplied measurements |
+| Run repository checks | Yes, plus development dependencies | Maintain or contribute to Orka; not needed by end users |
+
+Start with the instructions and ordinary mission documents. Add a local helper when you need its specific checks; a small mission does not need a SQLite register. Your own application may have separate runtime requirements.
 
 The register now supports explicit re-examination of completed work and a backed-up migration from schema v1. Historical input versions that were never recorded remain unknown; see [local supervision](.agents/skills/orka/references/supervision-locale.md) before opening an older register with this version.
 
@@ -206,7 +218,15 @@ These are installation formats, not a promise of identical execution. Model sele
 
 ## Installation
 
-### Codex or Claude Code
+### Without Python: copy the skill folder
+
+1. Download [orka.zip](https://github.com/AjinthAT/orka-skill/releases/latest/download/orka.zip) and extract it. Use the skill ZIP, not the repository source archive.
+2. Copy the complete extracted `orka` folder, including its references and guides, into your host's skills directory. Default user locations: `~/.agents/skills/orka/` for Codex, `~/.claude/skills/orka/` for Claude Code, or `~/.hermes/skills/orka/` for the default Hermes profile. Use the location configured by your host if it differs. Back up an existing installation before replacing it.
+3. Start a new session if needed, select Orka and give it a mission. For Claude web/desktop, import the ZIP through its custom Skills interface instead of copying a local folder.
+
+These steps do not execute the bundled Python scripts. You can keep those optional files without running them.
+
+### Optional Python installer: Codex or Claude Code
 
 Download the [source ZIP](https://github.com/AjinthAT/orka-skill/archive/refs/heads/main.zip) and extract it, or clone the repository:
 
@@ -244,7 +264,7 @@ The archive contains `orka/SKILL.md` and its supporting files. See [Claude's ins
 
 ### Hermes Agent
 
-From the cloned repository, install into the default Hermes profile:
+The manual copy route above works for the default Hermes profile too. If you prefer the optional Python installer, run this from the cloned repository:
 
 ```sh
 python3 install.py --destination "$HOME/.hermes/skills/orka"
@@ -267,6 +287,10 @@ A model alone is not an installation target: the application running it must sup
 - **Language:** the detailed instructions and references are currently in French. Deliverables follow the user's requested language; language quality depends on the chosen model.
 - **Model settings:** the included catalogue and JSON request preparer target Codex-style launch parameters. They do not configure Claude, Hermes or another host. Use native settings and document-based tracking unless a compatible catalogue is configured.
 - **Local supervision:** the optional register calls the preparer and shares its catalogue constraints. Neither tool calls a model, launches or stops agents, or runs continuously.
+
+## First evaluation
+
+A [first synthetic pilot](evals/pilote-2026-10-22/rapport.md) compared an assistant alone, Orka without delegation and Orka with two specialists across three tasks, using nine separate conversation contexts. All delivered outputs met the reviewed artifact criteria; **no quality or cost advantage is established**. One specialist read Orka outside the frozen copy, limiting that cell's comparability. [Cases, outputs, criteria and available measurements](evals/README.md) are preserved. This pilot evaluated version 0.4.0 in Codex, with one run per cell; it does not validate every host or model.
 
 ## Documentation
 

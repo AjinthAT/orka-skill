@@ -1,0 +1,36 @@
+{
+  "cellule": "03-reprise-B",
+  "constats": {
+    "livrable_mots": 241,
+    "fonction_conforme": true
+  },
+  "commandes": [
+    {
+      "arguments": [
+        "-m",
+        "unittest",
+        "-v",
+        "test_app"
+      ],
+      "code": 0,
+      "stdout": "",
+      "stderr": "test_ancien_seuil_reste_normal (test_app.PrioriteTests) ... ok\ntest_apres_seuil (test_app.PrioriteTests) ... ok\ntest_attente_inconnue (test_app.PrioriteTests) ... ok\ntest_avant_seuil (test_app.PrioriteTests) ... ok\ntest_juste_apres_seuil (test_app.PrioriteTests) ... ok\ntest_seuil_actuel_reste_normal (test_app.PrioriteTests) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 0.000s\n\nOK\n"
+    },
+    {
+      "arguments": [
+        "-c",
+        "import app,json; print(json.dumps({str(v):app.priorite(v) for v in (0,5,7,8,None)}))"
+      ],
+      "code": 0,
+      "stdout": "{\"0\": \"normale\", \"5\": \"normale\", \"7\": \"normale\", \"8\": \"prioritaire\", \"None\": \"inconnue\"}\n",
+      "stderr": ""
+    }
+  ],
+  "entrees_modifiees": [
+    "README.md",
+    "etat.md",
+    "app.py",
+    "test_app.py"
+  ],
+  "reponse_octets": 607
+}

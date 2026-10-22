@@ -1,0 +1,13 @@
+D2 est appliquée : priorité strictement au-delà de 7 minutes, normale à 7 minutes, inconnue pour `None`.
+
+`app.py`, `test_app.py` et `README.md` sont corrigés. Les six tests locaux réussissent ; la revue technique distincte ne relève aucune anomalie.
+
+`etat.md` identifie le positionnement et la page commerciale comme à réexaminer séparément. Leurs fichiers restent inchangés ; aucune nouvelle revue métier n’est affirmée. L’historique de `decisions.md` est préservé. Aucun déploiement ni recherche externe.
+
+[Bilan complet](</var/folders/9s/c85yfmyd0x5_yjpvmg9btftm0000gn/T/orka-eval-ezr607n6/cellules/03-reprise-C/livrable.md>).
+
+**Prochain prompt à copier**
+
+```text
+Dans ce dossier de prototype, réexamine séparément positionnement.md selon D2, puis page.md à partir du positionnement révisé ; actualise etat.md et conserve l’historique de decisions.md, sans publication ni déploiement.
+```

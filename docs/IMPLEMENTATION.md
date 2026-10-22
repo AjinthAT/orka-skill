@@ -2,6 +2,8 @@
 
 ## Version actuelle : skill, préparation, supervision et bilan local
 
+**Python n'est pas requis pour lire et utiliser les instructions du skill, ni pour l'installer par copie du dossier ou import du ZIP.** Les capacités effectives restent celles de l'assistant hôte. Python 3.10+ est nécessaire uniquement si l'on choisit l'installateur ou les outils locaux livrés. Commencer par le suivi documentaire pour une mission courte ; les outils deviennent utiles pour préparer des mandats répétables, conserver réservations et versions lors des reprises ou agréger des relevés d'usage fournis. Les vérifications du dépôt concernent sa maintenance et ajoutent PyYAML, sans l'imposer aux utilisateurs. Le langage nécessaire au projet développé est un choix distinct.
+
 Le point d'entrée est [SKILL.md](../.agents/skills/orka/SKILL.md). Il oriente vers les 8 équipes, leurs 28 rôles, les workflows et les modèles. Son emplacement local suit le format documenté par [OpenAI](https://learn.chatgpt.com/docs/build-skills).
 
 Le coordinateur est l'agent qui reçoit la demande dans l'assistant hôte, par exemple Codex ou Claude Code. Il lit le skill et exécute les étapes avec les outils réellement disponibles. Quand l'utilisateur autorise une mission avec sous-agents et que l'environnement le permet, le coordinateur lance les spécialistes et leur transmet les mandats. Les fiches Markdown ne sont pas des configurations natives de processus ou de serveurs.
@@ -103,6 +105,10 @@ La version 0.1.1 renforce la restitution après revue d'usage : synthèse dirige
 Choisir un vrai projet, un marché cible et les contraintes déjà connues. Lancer le skill avec le prompt du [guide de démarrage](../README.md). Examiner ensuite le dossier : les sources justifient-elles les conclusions ? Les objections ont-elles changé quelque chose ? Le prochain test permet-il de réduire une incertitude importante ?
 
 Faire évoluer les instructions à partir des problèmes observés. Les [scénarios de validation](../.agents/skills/orka/references/validation.md) couvrent les cas incomplets, les désaccords et les outils indisponibles.
+
+## Première évaluation exécutée
+
+Le [pilote du 22 octobre 2026](../evals/pilote-2026-10-22/rapport.md) compare réellement neuf exécutions en contextes neufs sur trois cas synthétiques, avec six spécialistes supplémentaires. Il porte sur Orka 0.4.0, avant les clarifications documentaires 0.4.1. Les livrables satisfont les critères examinés, sans gain de qualité démontré. Une lecture du skill hors copie figée affecte la comparabilité de 03-C ; le premier essai reste conservé avec ses preuves. Les tokens, coûts et réglages appliqués demeurent indisponibles. Les [données de l'évaluation](../evals/README.md) restent dans le dépôt et ne sont pas ajoutées à l'archive installable. Ce pilote ne valide ni un environnement sans Python ni tous les assistants.
 
 ## Évolution : une application qui pilote les agents
 

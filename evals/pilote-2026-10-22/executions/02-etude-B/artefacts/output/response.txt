@@ -1,0 +1,9 @@
+[Lire la synthèse de décision — livrable.md](/private/var/folders/9s/c85yfmyd0x5_yjpvmg9btftm0000gn/T/orka-eval-ezr607n6/cellules/02-etude-B/livrable.md)
+
+Recommandation : tester davantage. Les observations sont synthétiques et la faisabilité caméra reste à établir. Aucun test ni contact externe n’a été réalisé.
+
+**Prochain prompt à copier**
+
+```text
+Reprends livrable.md et aide-moi à clarifier ses trois questions décisives avant de préparer un éventuel test, sans contact externe ni dépense.
+```

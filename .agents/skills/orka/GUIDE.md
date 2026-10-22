@@ -4,6 +4,17 @@
 
 Orka coordinates an AI team around your project: clarifying an idea, researching a market, preparing marketing, coordinating development or reviewing results. You give it a mission; Orka selects useful perspectives, checks accessible evidence and delivers a result with its limits and a recommended next step. It does not launch every available role for every task.
 
+**You can start without Python.** The core skill is Markdown: your assistant reads the instructions and uses its own tools. Copying the complete `orka` folder or importing its ZIP into a compatible host is enough for manual installation. Available features still depend on your assistant; installing Orka does not automatically add browsing or subagents.
+
+| Use | Python |
+|---|---|
+| Read the skill, clarify, research, write and coordinate through host tools | Not required by Orka |
+| Install with the supplied `install.py` script | Python 3.10+, optional when installing manually |
+| Use the request preparer, SQLite register or local report | Python 3.10+, only when those checks are useful |
+| Maintain and test the Orka repository | Python and development dependencies, outside ordinary use |
+
+Start with mission documents. The register helps when coordinators share reservations, attempts must persist or versions need checking after an interruption; the preparer makes requests repeatable and the report summarizes supplied measurements. They are not needed for every mission and do not launch models. Your own project's requirements remain separate from the skill's.
+
 ## 1. Open Orka
 
 Select Orka through your assistant's skills mechanism. The entry points documented in the repository are `$orka` for Codex and `/orka` for Claude Code or Hermes; on another interface, ask the assistant to use Orka. Start a new session if the skill is not visible yet.

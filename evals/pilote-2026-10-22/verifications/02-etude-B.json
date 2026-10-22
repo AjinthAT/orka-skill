@@ -1,0 +1,14 @@
+{
+  "cellule": "02-etude-B",
+  "constats": {
+    "livrable_mots": 609,
+    "donnees_reference": {
+      "connues": 10,
+      "inconnues": 2,
+      "superieures_a_5": 4
+    }
+  },
+  "commandes": [],
+  "entrees_modifiees": [],
+  "reponse_octets": 522
+}

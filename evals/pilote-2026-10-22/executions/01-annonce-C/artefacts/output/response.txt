@@ -1,0 +1,1 @@
+{"titre": "Découvrez le prototype Nori", "texte": "Nori est un prototype pour les petites équipes de salons de coiffure, avec planning partagé et rappels de rendez-vous. Le paiement intégré et la prévision de fréquentation par IA sont envisagés, mais ne sont pas disponibles."}
