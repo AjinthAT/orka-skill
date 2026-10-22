@@ -1,16 +1,117 @@
-# Orka
+<p align="center">
+  <img src="docs/assets/orka-banner.svg" alt="Orka — One mission. A coordinated AI team. 28 roles, 8 teams, 9 workflows." width="100%">
+</p>
 
-**Give your AI assistant a coordinated business team.**
+<p align="center">
+  <strong>A business-team skill for your AI assistant.</strong><br>
+  Research an idea, plan a launch, coordinate delivery, or improve an existing business.
+</p>
 
-[Français](README.fr.md) · [Download Orka](https://github.com/AjinthAT/orka-skill/releases/latest/download/orka.zip) · [Skill instructions](.agents/skills/orka/SKILL.md)
+<p align="center">
+  <a href="README.fr.md">Français</a> ·
+  <a href="#what-is-orka">Overview</a> ·
+  <a href="#installation">Installation</a> ·
+  <a href="https://github.com/AjinthAT/orka-skill/releases/latest/download/orka.zip">Download</a> ·
+  <a href="#documentation">Documentation</a>
+</p>
 
-Orka is an Agent Skill for coordinating specialists across strategy, market research, marketing, sales, product, development, quality, operations, finance, HR and customer support. A coordinator assigns focused tasks, brings together useful objections, checks evidence and maintains shared deliverables.
+---
 
-**28 roles · 8 teams · 9 workflows · MIT license**
+## What is Orka?
 
-Orka provides instructions, templates and optional local Python tools. Your assistant supplies the models and execution tools. Installing Orka does not start agents, provision services or require an API key. Model use remains subject to your assistant's plan and costs.
+**Orka teaches your AI assistant how to coordinate a team of business specialists around a shared mission.**
 
-## Install
+You describe the project and the result you need. A coordinator selects the relevant roles, defines their tasks, organizes useful exchanges and objections, and brings their work together into checked deliverables.
+
+An **Agent Skill** is a folder of reusable instructions, references and tools that an assistant can load when needed. Orka runs inside your existing assistant: the host provides the models, file access, research tools and any subagents. The skill provides the working method.
+
+With authorized subagents, the coordinator can delegate to separate specialists. Otherwise, it applies their perspectives sequentially and makes that clear. A small task uses a small team.
+
+## What can you use it for?
+
+| Your mission | The work Orka helps organize | Example deliverables |
+|---|---|---|
+| **Explore an idea** | Market, competition, product, technical feasibility and business assumptions | Sourced decision brief, open questions, validation plan |
+| **Prepare a launch** | Positioning, channels, sales approach and content | Marketing plan, draft copy, prospecting materials |
+| **Build a product** | Scope, design, engineering, testing and review | Implementation in the designated repository, test results, review findings |
+| **Improve the business** | Customer feedback, priorities, finance, HR and operations | Prioritized actions, budget assumptions, onboarding or support documents |
+
+Start with the mission you actually need. A marketing request does not require a new market study; an approved development task can go straight to delivery.
+
+## How a mission works
+
+```mermaid
+flowchart LR
+    A[Your brief] --> B[Coordinator]
+    B --> C[Relevant specialists]
+    C --> D[Review and objections]
+    D --> E[Deliverables and next steps]
+```
+
+1. **Frame:** establish scope, inputs, constraints and acceptance criteria.
+2. **Assign:** select specialists, identify dependencies and give each task a distinct output.
+3. **Work and challenge:** execute ready tasks, share findings and examine objections that could change the result.
+4. **Verify and deliver:** check the evidence, consolidate reviewed outputs and record decisions, uncertainty and next steps.
+
+An idea study may end with a recommendation to test, change or stop the project. Agreement between agents is not proof of customer demand.
+
+## Meet the team
+
+**28 roles across 8 teams**, available as a catalogue rather than 28 agents that must all run at once.
+
+| Team | Specialties |
+|---|---|
+| **Direction & strategy** | Coordination, market research, competition, critical review |
+| **Marketing** | Strategy, copywriting, SEO, social media, acquisition |
+| **Sales** | Sales planning, prospecting, partnerships |
+| **Product & design** | Product priorities, project management, UX/UI |
+| **Engineering** | CTO, architecture, frontend, backend, security, QA, DevOps |
+| **Finance & administration** | Budgets, economics, administrative tracking |
+| **Human resources** | HR leadership, recruiting, onboarding, training |
+| **Customer relations** | Support, adoption, retention |
+
+The [nine workflows](.agents/skills/orka/references/workflows-entreprise.md) cover studies, marketing, sales, delivery, launch, customer relations, finance, HR and business steering. [Explore the roles →](.agents/skills/orka/references/roles.md)
+
+## What is included?
+
+| Component | Purpose |
+|---|---|
+| **Coordination instructions** | Guide scoping, delegation, collaboration, review and handoffs |
+| **Roles and workflows** | Bring in the right specialist perspectives for each mission |
+| **Shared document templates** | Keep evidence, decisions, changes and progress traceable |
+| **Optional local tools** | Prepare task requests and track dependencies, reservations, attempts and artifact acceptance |
+
+The local tools use Python and SQLite, with no third-party Python packages. They prepare and record work; model execution comes from the assistant. Installation itself does not start agents, provision services or require an API key. Model usage remains subject to your assistant's plan and costs.
+
+## Your first mission
+
+After installation, invoke **`$orka` in Codex** or **`/orka` in Claude Code**, then give it a concrete assignment:
+
+> Study an appointment-booking product for independent fitness coaches in France. Assess competitors, customer needs, technical feasibility and pricing assumptions. Use specialist subagents if available and permitted, examine their objections, and save a decision brief with sources, uncertainties and the next validation test. Respond in English.
+
+Other starting points:
+
+- **Marketing:** “Prepare positioning, a launch plan and draft content for this product.”
+- **Development:** “Coordinate implementation of this approved feature in this repository, with separate development and review outputs.”
+- **Customer support:** “Analyze this feedback and propose a prioritized improvement plan.”
+
+Provide the project, expected result, relevant files and known constraints. Orka should distinguish sourced facts, assumptions, recommendations and human decisions. External communications, spending, publication and deployment require authorization covering the action.
+
+## Choose your assistant
+
+Orka uses the open [Agent Skills format](https://agentskills.io/specification).
+
+| Host | Installation route | Invocation |
+|---|---|---|
+| **Codex** | Included installer | `$orka` |
+| **Claude Code** | Included installer | `/orka` |
+| **Claude web / desktop** | Upload the skill ZIP | Ask Claude to use Orka |
+| **Hermes Agent** | Copy to its skills directory with `--destination` | `/orka` |
+| **Other Agent Skills hosts** | Use the host's documented skills directory | Host-specific |
+
+These are installation formats, not a promise of identical execution. Model selection, delegation, browsing and file access depend on the host. Local installation and packaging are tested; complete model-driven missions have not been evaluated on every host.
+
+## Installation
 
 ### Codex or Claude Code
 
@@ -48,6 +149,16 @@ Download [orka.zip](https://github.com/AjinthAT/orka-skill/releases/latest/downl
 
 The archive contains `orka/SKILL.md` and its supporting files. See [Claude's installation guide](https://support.claude.com/en/articles/12512180-use-skills-in-claude) for the current interface. Cloud sessions provide their own tools and storage; installing a skill does not grant access to your local projects or enable parallel agents.
 
+### Hermes Agent
+
+From the cloned repository, install into the default Hermes profile:
+
+```sh
+python3 install.py --destination "$HOME/.hermes/skills/orka"
+```
+
+Start a new Hermes session, then use `/orka`. If you use a different profile or `HERMES_HOME`, point `--destination` to that profile's `skills/orka` directory. This follows the [documented Hermes skills layout](https://hermes-agent.nousresearch.com/docs/user-guide/features/skills); a complete Orka mission in Hermes has not yet been tested.
+
 ### Other assistants
 
 Orka uses the open [Agent Skills format](https://agentskills.io/specification). For another host that supports it, copy the entire `.agents/skills/orka/` directory to that host's documented skills directory, or install to an explicit destination:
@@ -58,50 +169,16 @@ python3 install.py --destination /path/to/host/skills/orka
 
 A model alone is not an installation target: the application running it must support skills or provide access to these instructions and their references. Apps without skill support can be given the files manually, but automatic discovery is unavailable. Compatibility with every AI application is not guaranteed.
 
-## Start a mission
+## Compatibility notes
 
-After invoking Orka in your assistant, describe the result you want:
-
-> Study an appointment-booking product for independent fitness coaches in France. Assess competitors, customer needs and pricing assumptions. Use specialist subagents if available and permitted, challenge the proposal, and save a decision brief with sources, uncertainties and the next validation test. Respond in English.
-
-Or start with a specific department:
-
-- “Prepare a launch marketing plan for my product, including positioning, channels and draft content.”
-- “Coordinate implementation of this approved feature, with separate development and review deliverables.”
-- “Review customer feedback and propose a prioritized improvement plan.”
-
-Give the coordinator the project, expected output, relevant files and known constraints. A focused mission activates only the roles it needs. External communications, spending, publication and deployment require authorization covering the action.
-
-## How it works
-
-1. **Frame the mission:** identify scope, inputs, constraints and acceptance criteria.
-2. **Assign the work:** select specialists, dependencies and separate outputs.
-3. **Execute and challenge:** perform ready tasks, exchange relevant findings and resolve useful objections.
-4. **Verify and deliver:** check evidence, accept the reviewed versions and record decisions and remaining uncertainty.
-
-When authorized subagents are available, the coordinator can delegate. Otherwise it applies the specialist perspectives sequentially and states that limitation. It must not present simulated exchanges as independent agent work.
-
-| Team | Responsibilities |
-|---|---|
-| Direction and strategy | Coordination, market research, competition, critical review |
-| Marketing | Strategy, copywriting, SEO, social media, acquisition |
-| Sales | Sales planning, prospecting, partnerships |
-| Product and design | Product priorities, project management, UX/UI |
-| Engineering | CTO, architecture, frontend, backend, security, QA, DevOps |
-| Finance and administration | Budgets, economics, administrative tracking |
-| Human resources | HR leadership, recruiting, onboarding, training |
-| Customer relations | Support, adoption, retention |
-
-The role catalogue does not require 28 agents to run simultaneously. The workflows cover market studies, marketing, sales, delivery, launch, customer relations, finance, HR and business steering.
-
-## Compatibility and current limits
-
-- **Portable instructions:** `SKILL.md`, roles, workflows and templates are shared across hosts. The detailed references are currently in French; Orka follows the user's requested output language.
-- **Host-specific execution:** model selection, reasoning controls, browsing, delegation and file access depend on the host. The included model catalogue and JSON request preparer target Codex-style launch parameters; they do not configure Claude. Other hosts use their native settings and document-based tracking unless a compatible catalogue is configured.
-- **Optional local tools:** a Python request preparer and SQLite supervision register support repeatable mandates, reservations, dependencies, attempts and artifact acceptance. The register uses the preparer and shares its catalogue constraints. Neither tool calls a model, launches or stops an agent, or runs continuously.
-- **Validation scope:** local tests cover the helpers, installation and packaging. Codex, Claude Code and Claude upload paths follow their documented formats; this release has not undergone an end-to-end model evaluation on each host.
+- **Language:** the detailed instructions and references are currently in French. Deliverables follow the user's requested language; language quality depends on the chosen model.
+- **Model settings:** the included catalogue and JSON request preparer target Codex-style launch parameters. They do not configure Claude, Hermes or another host. Use native settings and document-based tracking unless a compatible catalogue is configured.
+- **Local supervision:** the optional register calls the preparer and shares its catalogue constraints. Neither tool calls a model, launches or stops agents, or runs continuously.
 
 ## Documentation
+
+<details>
+<summary><strong>Browse the guides, workflows and templates</strong></summary>
 
 | Resource | Contents |
 |---|---|
@@ -119,7 +196,12 @@ The role catalogue does not require 28 agents to run simultaneously. The workflo
 
 Product mission documents live under `projets/<id>/`; cross-company missions use `entreprise/missions/<id>/`. Application code stays in the designated development repository. Keep private mission data out of this public distribution repository; the optional local register defaults in the examples to the ignored `.orka/` directory.
 
-## Development
+</details>
+
+## Development and contributions
+
+<details>
+<summary><strong>Tests, packaging, updates and contributing</strong></summary>
 
 From the repository root:
 
@@ -134,8 +216,10 @@ To update an installation, review the changes, back up any local modifications, 
 
 Contributions are welcome through issues and pull requests. Describe the observed problem, keep changes focused, and include the relevant checks. Distinguish a documented procedure from a capability actually executed and verified.
 
-## License and format references
+</details>
 
-[MIT](LICENSE). The release archive and installed copies include the license.
+## License
 
-Installation locations and skill discovery: [OpenAI's skills documentation](https://learn.chatgpt.com/docs/build-skills), [Claude Code's skills documentation](https://code.claude.com/docs/en/skills). Orka's team structure and workflows are this project's design, not features supplied by those platforms.
+[MIT](LICENSE) — included in installed copies and the release archive.
+
+Format and installation references: [OpenAI](https://learn.chatgpt.com/docs/build-skills) · [Claude Code](https://code.claude.com/docs/en/skills) · [Agent Skills](https://agentskills.io/specification). Orka's team structure and workflows are this project's design.

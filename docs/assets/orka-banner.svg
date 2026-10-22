@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="360" viewBox="0 0 1280 360" role="img" aria-labelledby="title description">
+  <title id="title">Orka — One mission. A coordinated AI team.</title>
+  <desc id="description">Orka connects a mission coordinator to a team of specialists. A navy banner with mint and blue connected nodes.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#101c32"/>
+      <stop offset="1" stop-color="#172e44"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#91f2cd"/>
+      <stop offset="1" stop-color="#6ebcf5"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="360" rx="24" fill="url(#background)"/>
+  <circle cx="1100" cy="90" r="200" fill="#21425b" opacity=".25"/>
+  <circle cx="890" cy="365" r="160" fill="#21425b" opacity=".25"/>
+  <g font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, sans-serif">
+    <rect x="64" y="48" width="152" height="30" rx="15" fill="#213b4c"/>
+    <text x="140" y="68" text-anchor="middle" fill="#a8eedb" font-size="12" font-weight="600" letter-spacing="2">AGENT SKILL</text>
+    <text x="60" y="176" fill="#ffffff" font-size="94" font-weight="700" letter-spacing="-5">Orka</text>
+    <text x="65" y="225" fill="#d5e4ed" font-size="25">One mission. A coordinated AI team.</text>
+    <text x="65" y="284" fill="#99b2c5" font-size="15">28 roles</text>
+    <circle cx="141" cy="279" r="2" fill="#80d5c9"/>
+    <text x="157" y="284" fill="#99b2c5" font-size="15">8 teams</text>
+    <circle cx="230" cy="279" r="2" fill="#80d5c9"/>
+    <text x="246" y="284" fill="#99b2c5" font-size="15">9 workflows</text>
+    <g stroke="#426178" stroke-width="2" fill="none">
+      <path d="M860 180 L1010 80 M860 180 L1125 180 M860 180 L1010 280"/>
+      <path d="M730 180 H820" stroke="#85d9d0"/>
+    </g>
+    <circle cx="860" cy="180" r="40" fill="url(#accent)"/>
+    <circle cx="860" cy="180" r="51" fill="none" stroke="#8ce7cf" opacity=".2"/>
+    <path d="M845 184 L855 194 L878 168" stroke="#142d3e" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <g fill="#203d53" stroke="#53778f" stroke-width="1.5">
+      <circle cx="1010" cy="80" r="24"/>
+      <circle cx="1125" cy="180" r="24"/>
+      <circle cx="1010" cy="280" r="24"/>
+    </g>
+    <g fill="#9ae9d2">
+      <circle cx="1010" cy="80" r="6"/>
+      <circle cx="1125" cy="180" r="6"/>
+      <circle cx="1010" cy="280" r="6"/>
+    </g>
+    <text x="860" y="258" text-anchor="middle" fill="#b9cfdd" font-size="13">COORDINATOR</text>
+  </g>
+</svg>

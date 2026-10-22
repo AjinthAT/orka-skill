@@ -1,14 +1,117 @@
-# Orka
+<p align="center">
+  <img src="docs/assets/orka-banner.svg" alt="Orka — Une mission, une équipe IA coordonnée. 28 rôles, 8 équipes, 9 workflows." width="100%">
+</p>
 
-**Une équipe d'entreprise coordonnée dans votre assistant IA.**
+<p align="center">
+  <strong>Une équipe d'entreprise coordonnée dans votre assistant IA.</strong><br>
+  Étudier une idée, préparer un lancement, coordonner un développement ou améliorer une activité.
+</p>
 
-[English](README.md) · [Télécharger Orka](https://github.com/AjinthAT/orka-skill/releases/latest/download/orka.zip) · [Instructions du skill](.agents/skills/orka/SKILL.md)
+<p align="center">
+  <a href="README.md">English</a> ·
+  <a href="#presentation">Présentation</a> ·
+  <a href="#installation">Installation</a> ·
+  <a href="https://github.com/AjinthAT/orka-skill/releases/latest/download/orka.zip">Télécharger</a> ·
+  <a href="#documentation-et-développement">Documentation</a>
+</p>
 
-Orka est un skill au format Agent Skills : un coordinateur mobilise les spécialistes utiles à votre mission, organise leurs échanges, vérifie les preuves et consolide les livrables. Il couvre stratégie, étude de marché, marketing, commercial, produit, développement, qualité, exploitation, finance, RH et relation client.
+---
 
-**28 rôles · 8 équipes · 9 workflows · Licence MIT**
+<a id="presentation"></a>
 
-Le dépôt fournit les instructions, modèles de documents et outils Python facultatifs. Votre assistant fournit les modèles et les outils d'exécution. L'installation ne lance aucun agent, ne crée aucun service et ne nécessite aucune clé API. L'utilisation des modèles dépend de votre assistant, de votre abonnement et des coûts associés.
+## Qu'est-ce qu'Orka ?
+
+**Orka apprend à votre assistant IA à coordonner une équipe de spécialistes autour d'une mission commune.**
+
+Vous décrivez votre projet et le résultat attendu. Un coordinateur choisit les rôles utiles, définit leurs tâches, organise les échanges et les objections, puis rassemble leurs travaux dans des livrables vérifiés.
+
+Un **Agent Skill** est un dossier d'instructions réutilisables, de références et d'outils qu'un assistant peut charger au besoin. Orka s'utilise dans votre assistant habituel : l'application fournit les modèles, l'accès aux fichiers, les outils de recherche et les éventuels sous-agents. Le skill apporte la méthode de travail.
+
+Si les sous-agents sont disponibles et autorisés, le coordinateur peut déléguer. Sinon, il applique successivement les points de vue et le signale. Une petite tâche mobilise une petite équipe.
+
+## À quoi sert Orka ?
+
+| Votre mission | Le travail organisé | Exemples de livrables |
+|---|---|---|
+| **Explorer une idée** | Marché, concurrence, produit, faisabilité et hypothèses économiques | Dossier de décision sourcé, inconnues, protocole de validation |
+| **Préparer un lancement** | Positionnement, canaux, approche commerciale et contenus | Plan marketing, brouillons, supports de prospection |
+| **Développer un produit** | Périmètre, conception, développement, tests et revue | Réalisation dans le dépôt désigné, résultats de tests, constats de revue |
+| **Améliorer l'activité** | Retours clients, priorités, finance, RH et exploitation | Actions priorisées, hypothèses budgétaires, documents RH ou support |
+
+Commencez par la mission dont vous avez besoin. Une demande marketing n'impose pas une nouvelle étude de marché ; un développement approuvé peut passer directement à la réalisation.
+
+## Comment se déroule une mission ?
+
+```mermaid
+flowchart LR
+    A[Votre brief] --> B[Coordinateur]
+    B --> C[Spécialistes utiles]
+    C --> D[Revue et objections]
+    D --> E[Livrables et prochaines étapes]
+```
+
+1. **Cadrer :** préciser le périmètre, les entrées, les contraintes et les critères d'acceptation.
+2. **Répartir :** choisir les spécialistes, identifier les dépendances et attribuer une sortie distincte par tâche.
+3. **Produire et confronter :** exécuter les travaux prêts, partager les constats et examiner les objections utiles.
+4. **Vérifier et livrer :** contrôler les preuves, consolider les résultats et conserver décisions, incertitudes et suites.
+
+Une étude peut recommander de tester, modifier ou arrêter le projet. L'accord des agents ne prouve pas l'existence d'une demande client.
+
+## Découvrez l'équipe
+
+**28 rôles répartis en 8 équipes**, disponibles selon la mission. Ce catalogue n'impose pas 28 agents simultanés.
+
+| Équipe | Spécialités |
+|---|---|
+| **Direction et stratégie** | Coordination, étude de marché, concurrence, évaluation critique |
+| **Marketing** | Stratégie, rédaction, SEO, réseaux sociaux, acquisition |
+| **Commercial** | Vente, prospection, partenariats |
+| **Produit et design** | Priorités, gestion de projet, UX/UI |
+| **Technique** | CTO, architecture, frontend, backend, sécurité, QA, DevOps |
+| **Finance et administration** | Budget, économie du projet, suivi administratif |
+| **Ressources humaines** | DRH, recrutement, intégration, formation |
+| **Relation client** | Support, adoption, fidélisation |
+
+Les [neuf workflows](.agents/skills/orka/references/workflows-entreprise.md) couvrent étude, marketing, commercial, réalisation, lancement, relation client, finance, RH et pilotage. [Consulter les rôles →](.agents/skills/orka/references/roles.md)
+
+## Que contient le projet ?
+
+| Élément | Utilité |
+|---|---|
+| **Instructions de coordination** | Cadrage, délégation, échanges, revue et transmission |
+| **Rôles et workflows** | Mobiliser les compétences adaptées à la mission |
+| **Modèles de documents partagés** | Conserver preuves, décisions, changements et avancement |
+| **Outils locaux facultatifs** | Préparer les mandats et suivre dépendances, réservations, tentatives et acceptation |
+
+Les outils utilisent Python et SQLite, sans paquet Python tiers. Ils préparent et enregistrent le travail ; l'assistant fournit l'exécution des modèles. L'installation ne lance aucun agent, ne crée aucun service et ne nécessite aucune clé API. L'utilisation des modèles dépend de votre assistant, de votre abonnement et des coûts associés.
+
+## Votre première mission
+
+Après installation, utilisez **`$orka` dans Codex** ou **`/orka` dans Claude Code**, puis donnez une mission concrète :
+
+> Étudie un outil de prise de rendez-vous pour les coachs sportifs indépendants en France. Examine les concurrents, les besoins, la faisabilité technique et les hypothèses de prix. Utilise des sous-agents spécialisés si les outils et les autorisations le permettent, examine leurs objections et produis un dossier de décision avec sources, incertitudes et prochain test de validation.
+
+Autres points de départ :
+
+- **Marketing :** « Prépare le positionnement, le plan de lancement et les brouillons de contenus pour ce produit. »
+- **Développement :** « Coordonne la réalisation de cette fonctionnalité approuvée dans ce dépôt, avec des sorties distinctes pour le développement et la revue. »
+- **Support :** « Analyse ces retours et propose un plan d'amélioration priorisé. »
+
+Précisez le projet, le résultat attendu, les fichiers utiles et les contraintes connues. Orka doit distinguer faits sourcés, hypothèses, recommandations et décisions humaines. Contacter des tiers, dépenser, publier ou déployer nécessite une autorisation couvrant l'action.
+
+## Choisir votre assistant
+
+Orka suit le [format ouvert Agent Skills](https://agentskills.io/specification).
+
+| Application | Installation | Invocation |
+|---|---|---|
+| **Codex** | Installateur fourni | `$orka` |
+| **Claude Code** | Installateur fourni | `/orka` |
+| **Claude Web / ordinateur** | Importer le ZIP du skill | Demander d'utiliser Orka |
+| **Hermes Agent** | Copier dans son dossier de skills avec `--destination` | `/orka` |
+| **Autres applications Agent Skills** | Utiliser leur dossier de skills documenté | Selon l'application |
+
+Ces méthodes d'installation ne garantissent pas une exécution identique. Modèles, délégation, recherche et fichiers dépendent de l'application. L'installation locale et l'archive sont testées ; une mission complète avec des modèles n'a pas été évaluée sur chaque plateforme.
 
 ## Installation
 
@@ -48,6 +151,16 @@ Téléchargez [orka.zip](https://github.com/AjinthAT/orka-skill/releases/latest/
 
 L'import ne donne pas accès à vos fichiers locaux et n'active pas de sous-agents parallèles. Les outils et le stockage restent ceux de l'application hôte.
 
+### Hermes Agent
+
+Depuis le dépôt cloné, installez Orka dans le profil Hermes par défaut :
+
+```sh
+python3 install.py --destination "$HOME/.hermes/skills/orka"
+```
+
+Ouvrez une nouvelle session, puis utilisez `/orka`. Pour un autre profil ou `HERMES_HOME`, indiquez son dossier `skills/orka` avec `--destination`. Ce chemin suit la [documentation Hermes](https://hermes-agent.nousresearch.com/docs/user-guide/features/skills) ; une mission Orka complète dans Hermes n'a pas encore été testée.
+
 ### Autres assistants
 
 Le dossier suit le [format ouvert Agent Skills](https://agentskills.io/specification). Copiez l'intégralité de `.agents/skills/orka/` dans le répertoire documenté par votre application, ou indiquez une destination exacte :
@@ -57,18 +170,6 @@ python3 install.py --destination /chemin/des/skills/orka
 ```
 
 Un modèle seul ne suffit pas : l'application qui l'utilise doit prendre en charge les skills ou pouvoir lire ces fichiers et leurs références. Sans prise en charge native, vous pouvez fournir les fichiers manuellement ; leur découverte automatique n'est pas disponible. La compatibilité avec toutes les applications IA n'est pas garantie.
-
-## Première mission
-
-Après avoir invoqué Orka dans votre assistant :
-
-> Étudie un outil de prise de rendez-vous pour les coachs sportifs indépendants en France. Examine les concurrents, les besoins et les hypothèses de prix. Utilise des sous-agents spécialisés si les outils et les autorisations le permettent, organise les objections et produis un dossier de décision avec sources, incertitudes et prochain test de validation.
-
-Vous pouvez aussi demander directement un plan marketing, la réalisation d'une fonctionnalité autorisée ou une synthèse des retours clients. Précisez le résultat attendu, le projet, les fichiers utiles et les contraintes connues.
-
-Le coordinateur cadre la mission, attribue les tâches, organise les travaux prêts puis vérifie les résultats sur leurs critères. Si les sous-agents ne sont pas disponibles, il applique successivement les points de vue et le signale. Une mission ciblée mobilise seulement les rôles utiles ; les 28 postes n'impliquent pas 28 agents simultanés.
-
-Contacter des tiers, dépenser, publier ou déployer nécessite une autorisation couvrant l'action.
 
 ## Compatibilité et limites actuelles
 
