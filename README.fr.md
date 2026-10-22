@@ -91,6 +91,8 @@ Le [guide de démarrage](.agents/skills/orka/GUIDE.fr.md), inclus dans chaque ZI
 
 Commencez avec les documents de mission. Le préparateur facultatif rend les mandats répétables ; le registre conserve les réservations, tentatives et versions d’entrées après interruption ; le bilan synthétise des mesures fournies. Utilisez-les quand leurs contrôles servent votre mission.
 
+Le [diagnostic d’installation facultatif](.agents/skills/orka/references/diagnostic-installation.md) examine un dossier explicite en lecture seule, avec comparaison optionnelle à une référence. La procédure manuelle sans Python reste disponible ; la présence des fichiers ne prouve pas l’activation par l’hôte.
+
 Ces outils ne lancent pas les modèles, ne collectent pas les tokens et n’imposent pas de plafond financier. L’usage des modèles dépend de l’offre de votre assistant. Les exigences techniques de votre propre projet restent distinctes.
 
 ## Compatibilité et limites
@@ -108,7 +110,7 @@ Les neuf livrables satisfont les critères examinés. **Aucun avantage de qualit
 
 ## Documentation et développement
 
-Le [lot ECC-01 préparé](docs/LOT-ECC-01.md) détaille les diagnostics, le contexte progressif et les évaluations répétées. C’est un plan de réalisation avec critères de validation ; les ajouts ne sont pas encore implémentés.
+Le [suivi ECC-01](docs/LOT-ECC-01.md) distingue L1, diagnostic livré en 0.5.0, du contexte progressif et des outils d’évaluations répétées encore prévus. Les critères d’acceptation et leurs preuves restent séparés des campagnes à venir.
 
 | Pour commencer | Pour approfondir |
 |---|---|

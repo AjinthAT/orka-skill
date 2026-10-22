@@ -68,6 +68,19 @@ A model alone is not an installation target: the application running it must sup
 
 ## Updates and removal
 
+### Check the installation first
+
+Without Python, open the configured `orka` folder and check `SKILL.md`, `GUIDE.md`, `GUIDE.fr.md`, `LICENSE` and the archive's supporting files. Open local guide links. If something is missing, compare with a complete extraction of a known release and preserve local adaptations before replacing anything. Check Orka's selection in a new host session separately; file presence does not prove loading or available tools.
+
+For an optional read-only report, use the diagnostic included since 0.5.0 from a reviewed copy:
+
+```sh
+python3 -B .agents/skills/orka/scripts/diagnostiquer.py --skill-dir /path/to/installed/orka
+python3 -B .agents/skills/orka/scripts/diagnostiquer.py --skill-dir /path/to/installed/orka --reference /path/to/known/orka --json
+```
+
+These examples run from the repository root; adapt the script path when using an installed copy. Python 3.10+ is required only for this optional tool. It makes no repairs, network calls or host launches. Code 0 means no detected anomaly in performed checks, 1 means a problem or difference, and 2 means invalid arguments. Without a complete valid reference, integrity remains unverified; matching a reference does not authenticate it. Host activation, models, tools and delegation remain unverified. See the [full procedure and supported formats](../.agents/skills/orka/references/diagnostic-installation.md), in French.
+
 Back up any local adaptations before replacing an existing `orka` folder. The supplied installer refuses to overwrite it. To uninstall, remove only the installed skill folder; keep your mission outputs. The guides are included in the skill ZIP, but opening them automatically depends on the host.
 
 Format and host references: [Agent Skills](https://agentskills.io/specification), [OpenAI](https://learn.chatgpt.com/docs/build-skills), [Claude Code](https://code.claude.com/docs/en/skills).

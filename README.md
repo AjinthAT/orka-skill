@@ -91,6 +91,8 @@ The [getting-started guide](.agents/skills/orka/GUIDE.md) includes more prompts 
 
 Start with mission documents. The optional preparer makes requests repeatable; the supervision register tracks reservations, attempts and input versions across interruptions; the agent report summarizes supplied measurements. Use them when those checks help your mission.
 
+The optional [installation diagnostic](.agents/skills/orka/references/diagnostic-installation.md) checks an explicit skill folder in read-only mode, with an optional reference comparison. A manual check without Python is documented too; file presence never proves host activation.
+
 These helpers do not launch models, collect token telemetry or enforce financial budgets. Model usage depends on your assistant's plan and costs. Your own project's runtime is a separate choice.
 
 ## Compatibility and limits
@@ -120,7 +122,7 @@ The nine delivered outputs met the reviewed artifact criteria. **No quality or c
 
 ## Development and contributions
 
-[Planned work: ECC-01](docs/LOT-ECC-01.md) — installation diagnostics, progressive context and repeated evaluations; specification in French, not yet implemented.
+[ECC-01 progress](docs/LOT-ECC-01.md) — L1 installation diagnostics implemented in 0.5.0; progressive context and repeated-evaluation tooling remain planned. Specification and acceptance checks are in French.
 
 Keep private mission data out of this public distribution repository. Product mission documents use `projets/<id>/`; cross-company missions use `entreprise/missions/<id>/`. Application code stays in its designated repository.
 

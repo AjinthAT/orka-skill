@@ -1,6 +1,6 @@
 # Implémentation de l'entreprise IA
 
-## Version actuelle : skill, préparation, supervision et bilan local
+## Version actuelle : skill, préparation, supervision, bilan et diagnostic local
 
 **Python n'est pas requis pour lire et utiliser les instructions du skill, ni pour l'installer par copie du dossier ou import du ZIP.** Les capacités effectives restent celles de l'assistant hôte. Python 3.10+ est nécessaire uniquement si l'on choisit l'installateur ou les outils locaux livrés. Commencer par le suivi documentaire pour une mission courte ; les outils deviennent utiles pour préparer des mandats répétables, conserver réservations et versions lors des reprises ou agréger des relevés d'usage fournis. Les vérifications du dépôt concernent sa maintenance et ajoutent PyYAML, sans l'imposer aux utilisateurs. Le langage nécessaire au projet développé est un choix distinct.
 
@@ -61,6 +61,8 @@ python3 -B .agents/skills/orka/scripts/test_superviser.py
 Cette implémentation couvre le registre local, pas le lancement automatique, un service continu ou le contrôle technique d'un outil extérieur. Les réservations n'empêchent pas un processus non enregistré d'écrire sur le disque. Le budget financier, l'annulation d'une tâche et la modification d'un mandat enregistré ne sont pas implémentés dans cette première interface.
 
 ## Vérifications automatiques du dépôt
+
+La version 0.5.0 ajoute le [diagnostic d’installation facultatif](../.agents/skills/orka/scripts/diagnostiquer.py), standard Python 3.10+, sans paquet tiers. Il inspecte le seul dossier indiqué, ses ressources et liens locaux ; une référence explicite permet de comparer inventaires et SHA-256. Les différences sont signalées sans réparation. L’activation et les capacités de l’hôte restent non vérifiées ; les liens externes, symboliques et points de réanalyse ne sont pas suivis. Le [guide dédié](../.agents/skills/orka/references/diagnostic-installation.md) décrit le sous-ensemble de métadonnées reconnu, les limites et le contrôle manuel sans Python. Les [régressions du diagnostic](../.agents/skills/orka/scripts/test_diagnostiquer.py) sont exécutées aussi après déplacement par les tests d’installation.
 
 Le point d'entrée [tools/verifier.py](../tools/verifier.py), après installation de [requirements-dev.txt](../requirements-dev.txt), contrôle le YAML du skill, sa version, les liens internes, toutes les suites via l'installation temporaire et le paquet ZIP construit dans un dossier temporaire. Un tag de release fourni par GitHub doit correspondre à la version du skill. PyYAML est réservé au développement ; les scripts de mission restent autonomes avec la bibliothèque standard.
 
@@ -141,7 +143,7 @@ La performance serait évaluée sur des missions comparables : taux d'acceptatio
 
 ## Ordre de développement proposé
 
-Le [lot ECC-01 préparé](LOT-ECC-01.md) détaille le diagnostic d’installation, le contexte progressif et les évaluations répétées : existant, ajouts proposés, critères de validation et limites d’exécution. Il s’agit d’un plan de réalisation, pas de fonctionnalités déjà livrées. Le cœur Markdown et l’installation manuelle restent utilisables sans Python ; les nouveaux outils envisagés sont facultatifs.
+Le [suivi ECC-01](LOT-ECC-01.md) détaille les critères et la livraison de L1 en 0.5.0. Le contexte progressif et les outils d’évaluations répétées restent à réaliser ; aucune campagne supplémentaire n’est lancée. Le cœur Markdown et l’installation manuelle restent utilisables sans Python.
 
 1. Exécuter une étude réelle avec le skill et examiner la qualité des livrables.
 2. Ajuster les rôles, les échanges et les critères de sortie selon les résultats.

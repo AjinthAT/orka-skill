@@ -1,8 +1,8 @@
 # Lot ECC-01 — diagnostic, contexte progressif et évaluations répétées
 
-**Planning only.** This French specification separates existing Orka capabilities from proposed work. The core remains Markdown, usable without Python. Optional helpers do not launch models or change personal assistant settings.
+**L1 implemented in 0.5.0; L2–L4 remain planned.** This French specification separates delivered work from proposals. The core remains Markdown, usable without Python. Optional helpers do not launch models or change personal assistant settings.
 
-Propriétaire : coordinateur de maintenance. Version : 1. Date : 22 octobre 2026. État : **lot préparé, ajouts non implémentés et campagne non lancée**. Référence Orka examinée : `252f058727eb7758383d74cd3b3431ce0c734830`, skill 0.4.1. Provenance : demande du dirigeant, fichiers du dépôt et références ECC épinglées en fin de document.
+Propriétaire : coordinateur de maintenance. Version : 2. Date : 22 octobre 2026. État : **L1 réalisée en 0.5.0 ; L2–L4 préparées, campagne non lancée**. Référence initiale du plan : `252f058727eb7758383d74cd3b3431ce0c734830`, skill 0.4.1. Provenance : demandes du dirigeant, fichiers du dépôt et références ECC épinglées en fin de document. La version 1 préparait tout le lot ; la version 2 consigne la réalisation ciblée de L1 et ses [preuves de validation](VALIDATION-L1.md).
 
 ## Résultat attendu
 
@@ -10,7 +10,7 @@ Permettre de vérifier une installation, de compléter le contexte d’un agent 
 
 | Chantier | Existant vérifié | Ajout proposé | Livrable attendu |
 |---|---|---|---|
-| Diagnostic | [Installateur](../install.py) refusant l’écrasement, tests après déplacement, [vérificateur du dépôt](../tools/verifier.py), installation manuelle documentée | Vérification ciblée d’un dossier installé, indépendante d’une installation de développement | Procédure manuelle et diagnostic local facultatif |
+| Diagnostic | [Installateur](../install.py) refusant l’écrasement, tests après déplacement, [vérificateur du dépôt](../tools/verifier.py), installation manuelle documentée | **L1 réalisée** : vérification ciblée d’un dossier installé, indépendante d’une installation de développement | [Procédure manuelle et diagnostic facultatif](../.agents/skills/orka/references/diagnostic-installation.md) |
 | Contexte progressif | [Mandats ciblés](../.agents/skills/orka/references/prompting-agents.md), références chargées au besoin, questions et transmissions prévues dans l’[orchestration](../.agents/skills/orka/references/orchestration-agents.md) | Format commun de demande de complément, sources et versions associées, nombre de passes borné | Instructions et modèle Markdown intégrés aux références existantes |
 | Évaluations répétées | [Procédure](../.agents/skills/orka/references/evaluation-agents.md), [premier pilote](../evals/pilote-2026-10-22/README.md), [essai de découverte](../evals/decouverte-2026-10-22/README.md), sorties et empreintes conservées | Préparation reproductible d’une campagne et bilan de plusieurs exécutions par cas | Protocole, manifeste et synthèse, avec outil de maintenance facultatif |
 
@@ -28,12 +28,12 @@ Il distingue version déclarée, conformité à la référence et activation par
 
 L’inspection est en lecture seule, sans réseau, réparation, scan du dossier personnel, lecture de conversations ou exécution du contenu inspecté. Les liens ou liens symboliques sortant du périmètre autorisé sont signalés et non suivis. Un chemin personnalisé n’est pas une anomalie simplement parce qu’il diffère du dossier par défaut.
 
-### Contrat proposé, indisponible dans la version actuelle
+### Contrat implémenté en 0.5.0
 
-Fichier envisagé : `.agents/skills/orka/scripts/diagnostiquer.py`. Python 3.10+, bibliothèque standard uniquement. Le format de métadonnées reconnu devra être explicite ; un format non reconnu sera signalé, sans ajout de dépendance YAML aux outils installés.
+Fichier : [diagnostiquer.py](../.agents/skills/orka/scripts/diagnostiquer.py). Python 3.10+, bibliothèque standard uniquement. Le [format de métadonnées reconnu](../.agents/skills/orka/references/diagnostic-installation.md) est explicite ; un format non reconnu est signalé, sans ajout de dépendance YAML aux outils installés.
 
 ```text
-Interface future : diagnostiquer.py --skill-dir <dossier> [--reference <dossier>] [--json]
+Interface 0.5.0 : diagnostiquer.py --skill-dir <dossier> [--reference <dossier>] [--json]
 Sortie : texte court ou JSON versionné, sur la sortie standard UTF-8.
 Chaque constat : identifiant, état (conforme/anomalie/non_verifie), preuve et action proposée.
 Code 0 : pas d’anomalie dans les contrôles effectués ; les inconnues restent visibles.
@@ -134,7 +134,7 @@ Les rôles désignent des responsabilités proposées, pas des agents déjà lan
 
 **Condition transversale : le cœur reste utilisable sans Python.** Le README, l’installation par copie/import ZIP, les rôles, le protocole de contexte et le suivi manuel des évaluations restent complets. Un parcours représentatif doit être essayé sans exécuter de Python ; si l’environnement réellement dépourvu de Python n’est pas disponible, cette différence reste signalée. Les nouveaux helpers sont facultatifs, Python 3.10+ et bibliothèque standard ; PyYAML demeure réservé aux vérifications de développement. Aucun Node.js, SDK, hook global, démon ou changement de configuration personnelle n’est introduit par ce lot.
 
-Le registre SQLite v2, les données et les profils actuels sont conservés. Pour une difficulté constatée, conserver le suivi documentaire ou le dernier outil valide ; ne pas restaurer une base en écrasant les événements récents. La numérotation d’une future release se décidera d’après les changements réellement livrés ; cette préparation ne change pas le skill distribué.
+Le registre SQLite v2, les données et les profils actuels sont conservés. Pour une difficulté constatée, conserver le suivi documentaire ou le dernier outil valide ; ne pas restaurer une base en écrasant les événements récents. La version 0.5.0 ajoute L1 ; les autres étapes ne changent pas le skill tant qu’elles ne sont pas réalisées. Les installations personnelles existantes sont conservées pendant cette maintenance, sans mise à jour automatique.
 
 ## Inspiration et attribution
 

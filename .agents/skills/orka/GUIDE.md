@@ -17,6 +17,8 @@ Start with mission documents. The register helps when coordinators share reserva
 
 ## 1. Open Orka
 
+You can check an installation **without Python**: open the configured `orka` folder, check `SKILL.md`, both guides, the license and the archive resources; follow local links, then separately check that Orka can be selected in a new host session. Keep any local adaptations before replacing files. The optional [diagnostic script](scripts/diagnostiquer.py) requires Python 3.10+, reads only the explicit skill/reference folders and never repairs them or launches the host. From a reviewed repository, run `python3 -B .agents/skills/orka/scripts/diagnostiquer.py --skill-dir /path/to/orka`; add `--reference /path/to/known/orka --json` for a comparison. Without a valid reference, integrity remains unverified; host activation and capabilities always remain unverified. See the [detailed procedure and format limits](references/diagnostic-installation.md), in French. No automatic check is required before each mission.
+
 Select Orka through your assistant's skills mechanism. The entry points documented in the repository are `$orka` for Codex and `/orka` for Claude Code or Hermes; on another interface, ask the assistant to use Orka. Start a new session if the skill is not visible yet.
 
 For a guided start, select the skill and copy this message:

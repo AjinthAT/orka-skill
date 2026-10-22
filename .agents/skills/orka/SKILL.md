@@ -3,7 +3,7 @@ name: orka
 description: Coordinate an AI business team for strategy, market research, marketing, sales, product, development, QA, operations, finance, AI agent resources and customer support. Use when the user assigns a project or cross-functional mission to the team, including vision, innovation or naming with domain checks; not for a simple question about a job. Execute only the requested scope.
 license: MIT
 metadata:
-  version: "0.4.1"
+  version: "0.5.0"
 ---
 
 # Orka
@@ -17,6 +17,8 @@ Ce dossier utilise le format Agent Skills. Adapter les outils, la délégation e
 ## Démarrage
 
 Si l'utilisateur demande comment commencer ou un guide, consulter [le guide français](GUIDE.fr.md) ou [anglais](GUIDE.md), présenter brièvement le fonctionnement et l'aider à choisir sa première mission. Si la demande est déjà concrète, la traiter directement ; ne pas imposer une introduction ni charger les guides à chaque mission. Les guides sont inclus dans le dossier installé et dans l'archive ; leur présence ne signifie pas qu'ils s'ouvrent automatiquement dans chaque assistant.
+
+Pour une question d'installation, utiliser la [procédure de diagnostic](references/diagnostic-installation.md) : contrôle manuel sans Python ou outil local facultatif en lecture seule. Ne pas l'imposer avant chaque mission ; un dossier conforme ne prouve pas le chargement du skill ou les capacités de l'hôte.
 
 1. Identifier la mission : étude, marketing, vente, réalisation, lancement, suivi client, finance, RH, pilotage ou reprise. Pour une modification de ce skill, modifier les fichiers sans lancer de mission d'entreprise.
 2. Repérer le dossier existant ; sinon choisir un identifiant descriptif sous `projets/` pour un produit, ou `entreprise/missions/` pour une mission transversale. Respecter toute destination explicite. Le code est modifié dans le dépôt désigné, pas automatiquement dans ces dossiers de suivi. Ne pas écraser une mission existante.

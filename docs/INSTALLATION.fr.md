@@ -68,6 +68,19 @@ Un modèle seul ne suffit pas : l'application qui l'utilise doit prendre en char
 
 ## Mise à jour et désinstallation
 
+### Vérifier l'installation avant remplacement
+
+Sans Python, ouvrez le dossier `orka` configuré et vérifiez `SKILL.md`, les deux guides, la licence et les ressources de l'archive. Essayez les liens locaux, puis vérifiez séparément la sélection du skill dans une nouvelle session de l'hôte. En cas de manque, comparez avec une extraction complète connue et préservez les adaptations avant remplacement.
+
+Le [diagnostic facultatif](../.agents/skills/orka/scripts/diagnostiquer.py), disponible depuis 0.5.0, exige Python 3.10+ et fonctionne en lecture seule. Depuis la racine d'un dépôt examiné :
+
+```sh
+python3 -B .agents/skills/orka/scripts/diagnostiquer.py --skill-dir /chemin/du/skill/orka
+python3 -B .agents/skills/orka/scripts/diagnostiquer.py --skill-dir /chemin/du/skill/orka --reference /chemin/reference/orka --json
+```
+
+Adaptez le chemin du script si vous utilisez sa copie installée. Il ne répare rien, n'ouvre pas le réseau et ne lance pas l'assistant. Codes : 0 sans anomalie détectée dans les contrôles effectués, 1 en cas d'anomalie ou de différence, 2 pour des arguments invalides. Sans référence complète valide, l'intégrité reste non vérifiée ; une concordance ne prouve pas l'authenticité de la référence. Activation, modèles, outils et délégation restent non vérifiés. La [procédure détaillée](../.agents/skills/orka/references/diagnostic-installation.md) précise les formats pris en charge et les limites.
+
 Sauvegardez vos adaptations avant de remplacer un dossier `orka` existant. L’installateur fourni refuse de l’écraser. Pour désinstaller, supprimez uniquement le dossier du skill installé ; conservez vos livrables de mission. Les guides sont inclus dans le ZIP, mais leur ouverture automatique dépend de l’assistant.
 
 Références de format et d’hôtes : [Agent Skills](https://agentskills.io/specification), [OpenAI](https://learn.chatgpt.com/docs/build-skills), [Claude Code](https://code.claude.com/docs/en/skills).

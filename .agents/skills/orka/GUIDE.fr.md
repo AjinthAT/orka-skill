@@ -17,6 +17,8 @@ Commencez avec les documents de mission. Le registre devient utile pour partager
 
 ## 1. Ouvrir Orka
 
+Si l'installation pose question, vous pouvez la vérifier **sans Python** : ouvrez le dossier `orka` configuré, vérifiez `SKILL.md`, les deux guides, la licence et les ressources de l'archive ; essayez leurs liens, puis vérifiez séparément la sélection d'Orka dans une nouvelle session. La [procédure complète](references/diagnostic-installation.md) décrit aussi le diagnostic Python facultatif en lecture seule et la comparaison avec une référence connue. Aucun contrôle automatique n'est nécessaire avant chaque mission.
+
 Dans votre assistant, sélectionnez Orka avec son mécanisme de skills. Les points d'entrée documentés dans le dépôt sont `$orka` pour Codex et `/orka` pour Claude Code ou Hermes ; sur une autre interface, demandez d'utiliser Orka. Si le skill n'est pas encore visible, ouvrez une nouvelle session.
 
 Pour être guidé, copiez ce message après avoir sélectionné le skill :
