@@ -1,0 +1,128 @@
+{
+  "mission": "D1",
+  "repository_commit_supplied": "8104bacd8872ac040a670ec6413c0c0f82585b16",
+  "documents_consulted_in_order": [
+    {
+      "path": "/var/folders/9s/c85yfmyd0x5_yjpvmg9btftm0000gn/T/orka-discovery-_y3z_tc8/mandat.txt",
+      "scope": "mandat hors copie publique",
+      "extent": "intégral"
+    },
+    {
+      "path": "README.md",
+      "scope": "copie publique",
+      "extent": "intégral"
+    },
+    {
+      "event": "premier-regard.md enregistré avant liens; jamais réécrit"
+    },
+    {
+      "path": "docs/INSTALLATION.md",
+      "scope": "copie publique",
+      "extent": "intégral",
+      "via": "README.md"
+    },
+    {
+      "path": ".agents/skills/orka/GUIDE.fr.md",
+      "scope": "copie publique",
+      "extent": "intégral",
+      "via": "README.md, Documentation / Français"
+    },
+    {
+      "path": "/var/folders/9s/c85yfmyd0x5_yjpvmg9btftm0000gn/T/orka-discovery-_y3z_tc8/installation-demo/orka/SKILL.md",
+      "scope": "ZIP public extrait",
+      "extent": "32 premières lignes"
+    }
+  ],
+  "urls_used": [
+    "https://github.com/AjinthAT/orka-skill/releases/latest/download/orka.zip",
+    "https://github.com/AjinthAT/orka-skill/releases/download/v0.4.1/orka.zip",
+    "https://release-assets.githubusercontent.com/github-production-release-asset/1429986077/07373467-ccb5-4131-96e3-e97a84087880?[temporary-download-parameters-redacted]"
+  ],
+  "actions_executed": [
+    "Lire le mandat",
+    "Lire README.md sans ouvrir les liens",
+    "Créer output/ et enregistrer premier-regard.md",
+    "Lire les deux guides liés",
+    "Télécharger le ZIP public avec suivi des redirections et conservation des en-têtes",
+    "Inspecter les noms de l’archive et vérifier absence de chemin absolu ou parent",
+    "Extraire dans installation-demo/",
+    "Vérifier la présence des quatre fichiers attendus et lire les 32 premières lignes du SKILL.md extrait",
+    "Préparer un premier message dans parcours.md sans le transmettre",
+    "Écrire parcours.md et trace.json"
+  ],
+  "demo_files_created": [
+    "/var/folders/9s/c85yfmyd0x5_yjpvmg9btftm0000gn/T/orka-discovery-_y3z_tc8/installation-demo/orka/GUIDE.fr.md",
+    "/var/folders/9s/c85yfmyd0x5_yjpvmg9btftm0000gn/T/orka-discovery-_y3z_tc8/installation-demo/orka/GUIDE.md",
+    "/var/folders/9s/c85yfmyd0x5_yjpvmg9btftm0000gn/T/orka-discovery-_y3z_tc8/installation-demo/orka/LICENSE",
+    "/var/folders/9s/c85yfmyd0x5_yjpvmg9btftm0000gn/T/orka-discovery-_y3z_tc8/installation-demo/orka/SKILL.md",
+    "/var/folders/9s/c85yfmyd0x5_yjpvmg9btftm0000gn/T/orka-discovery-_y3z_tc8/installation-demo/orka/assets/mandat-exemple.json",
+    "/var/folders/9s/c85yfmyd0x5_yjpvmg9btftm0000gn/T/orka-discovery-_y3z_tc8/installation-demo/orka/references/bilan-agents.md",
+    "/var/folders/9s/c85yfmyd0x5_yjpvmg9btftm0000gn/T/orka-discovery-_y3z_tc8/installation-demo/orka/references/collaboration.md",
+    "/var/folders/9s/c85yfmyd0x5_yjpvmg9btftm0000gn/T/orka-discovery-_y3z_tc8/installation-demo/orka/references/equipes/commercial.md",
+    "/var/folders/9s/c85yfmyd0x5_yjpvmg9btftm0000gn/T/orka-discovery-_y3z_tc8/installation-demo/orka/references/equipes/direction.md",
+    "/var/folders/9s/c85yfmyd0x5_yjpvmg9btftm0000gn/T/orka-discovery-_y3z_tc8/installation-demo/orka/references/equipes/finance.md",
+    "/var/folders/9s/c85yfmyd0x5_yjpvmg9btftm0000gn/T/orka-discovery-_y3z_tc8/installation-demo/orka/references/equipes/marketing.md",
+    "/var/folders/9s/c85yfmyd0x5_yjpvmg9btftm0000gn/T/orka-discovery-_y3z_tc8/installation-demo/orka/references/equipes/produit-design.md",
+    "/var/folders/9s/c85yfmyd0x5_yjpvmg9btftm0000gn/T/orka-discovery-_y3z_tc8/installation-demo/orka/references/equipes/relation-client.md",
+    "/var/folders/9s/c85yfmyd0x5_yjpvmg9btftm0000gn/T/orka-discovery-_y3z_tc8/installation-demo/orka/references/equipes/rh.md",
+    "/var/folders/9s/c85yfmyd0x5_yjpvmg9btftm0000gn/T/orka-discovery-_y3z_tc8/installation-demo/orka/references/equipes/technique.md",
+    "/var/folders/9s/c85yfmyd0x5_yjpvmg9btftm0000gn/T/orka-discovery-_y3z_tc8/installation-demo/orka/references/evaluation-agents.md",
+    "/var/folders/9s/c85yfmyd0x5_yjpvmg9btftm0000gn/T/orka-discovery-_y3z_tc8/installation-demo/orka/references/experiences-apprentissage.md",
+    "/var/folders/9s/c85yfmyd0x5_yjpvmg9btftm0000gn/T/orka-discovery-_y3z_tc8/installation-demo/orka/references/gestion-documentaire.md",
+    "/var/folders/9s/c85yfmyd0x5_yjpvmg9btftm0000gn/T/orka-discovery-_y3z_tc8/installation-demo/orka/references/modeles-effort.md",
+    "/var/folders/9s/c85yfmyd0x5_yjpvmg9btftm0000gn/T/orka-discovery-_y3z_tc8/installation-demo/orka/references/modeles.md",
+    "/var/folders/9s/c85yfmyd0x5_yjpvmg9btftm0000gn/T/orka-discovery-_y3z_tc8/installation-demo/orka/references/noms-domaines.md",
+    "/var/folders/9s/c85yfmyd0x5_yjpvmg9btftm0000gn/T/orka-discovery-_y3z_tc8/installation-demo/orka/references/orchestration-agents.md",
+    "/var/folders/9s/c85yfmyd0x5_yjpvmg9btftm0000gn/T/orka-discovery-_y3z_tc8/installation-demo/orka/references/pilotage-missions.md",
+    "/var/folders/9s/c85yfmyd0x5_yjpvmg9btftm0000gn/T/orka-discovery-_y3z_tc8/installation-demo/orka/references/processus-transverses.md",
+    "/var/folders/9s/c85yfmyd0x5_yjpvmg9btftm0000gn/T/orka-discovery-_y3z_tc8/installation-demo/orka/references/profils-modeles.json",
+    "/var/folders/9s/c85yfmyd0x5_yjpvmg9btftm0000gn/T/orka-discovery-_y3z_tc8/installation-demo/orka/references/prompting-agents.md",
+    "/var/folders/9s/c85yfmyd0x5_yjpvmg9btftm0000gn/T/orka-discovery-_y3z_tc8/installation-demo/orka/references/prompts/consignes-communes.md",
+    "/var/folders/9s/c85yfmyd0x5_yjpvmg9btftm0000gn/T/orka-discovery-_y3z_tc8/installation-demo/orka/references/ressources-agents.md",
+    "/var/folders/9s/c85yfmyd0x5_yjpvmg9btftm0000gn/T/orka-discovery-_y3z_tc8/installation-demo/orka/references/roles.md",
+    "/var/folders/9s/c85yfmyd0x5_yjpvmg9btftm0000gn/T/orka-discovery-_y3z_tc8/installation-demo/orka/references/supervision-locale.md",
+    "/var/folders/9s/c85yfmyd0x5_yjpvmg9btftm0000gn/T/orka-discovery-_y3z_tc8/installation-demo/orka/references/validation.md",
+    "/var/folders/9s/c85yfmyd0x5_yjpvmg9btftm0000gn/T/orka-discovery-_y3z_tc8/installation-demo/orka/references/vision-preuves-innovation.md",
+    "/var/folders/9s/c85yfmyd0x5_yjpvmg9btftm0000gn/T/orka-discovery-_y3z_tc8/installation-demo/orka/references/workflow-etude.md",
+    "/var/folders/9s/c85yfmyd0x5_yjpvmg9btftm0000gn/T/orka-discovery-_y3z_tc8/installation-demo/orka/references/workflows-entreprise.md",
+    "/var/folders/9s/c85yfmyd0x5_yjpvmg9btftm0000gn/T/orka-discovery-_y3z_tc8/installation-demo/orka/scripts/bilan_agents.py",
+    "/var/folders/9s/c85yfmyd0x5_yjpvmg9btftm0000gn/T/orka-discovery-_y3z_tc8/installation-demo/orka/scripts/fixtures/registre-v1.sql",
+    "/var/folders/9s/c85yfmyd0x5_yjpvmg9btftm0000gn/T/orka-discovery-_y3z_tc8/installation-demo/orka/scripts/preparer_agent.py",
+    "/var/folders/9s/c85yfmyd0x5_yjpvmg9btftm0000gn/T/orka-discovery-_y3z_tc8/installation-demo/orka/scripts/superviser.py",
+    "/var/folders/9s/c85yfmyd0x5_yjpvmg9btftm0000gn/T/orka-discovery-_y3z_tc8/installation-demo/orka/scripts/test_bilan_agents.py",
+    "/var/folders/9s/c85yfmyd0x5_yjpvmg9btftm0000gn/T/orka-discovery-_y3z_tc8/installation-demo/orka/scripts/test_preparer_agent.py",
+    "/var/folders/9s/c85yfmyd0x5_yjpvmg9btftm0000gn/T/orka-discovery-_y3z_tc8/installation-demo/orka/scripts/test_superviser.py"
+  ],
+  "evidence_files": [
+    "/var/folders/9s/c85yfmyd0x5_yjpvmg9btftm0000gn/T/orka-discovery-_y3z_tc8/output/premier-regard.md",
+    "/var/folders/9s/c85yfmyd0x5_yjpvmg9btftm0000gn/T/orka-discovery-_y3z_tc8/output/parcours.md",
+    "/var/folders/9s/c85yfmyd0x5_yjpvmg9btftm0000gn/T/orka-discovery-_y3z_tc8/output/trace.json",
+    "/var/folders/9s/c85yfmyd0x5_yjpvmg9btftm0000gn/T/orka-discovery-_y3z_tc8/output/archive-manifest.json",
+    "/var/folders/9s/c85yfmyd0x5_yjpvmg9btftm0000gn/T/orka-discovery-_y3z_tc8/output/zip-http-headers.txt"
+  ],
+  "downloaded_archive": "/var/folders/9s/c85yfmyd0x5_yjpvmg9btftm0000gn/T/orka-discovery-_y3z_tc8/orka.zip",
+  "measurements": {
+    "http_final": 200,
+    "download_bytes": 113185,
+    "archive_sha256": "dd00213bce58409518c4d1204cfd1872ef6334c03117c239bda301380cc31ede",
+    "archive_entries": 41,
+    "extracted_files": 41,
+    "declared_skill_version": "0.4.1",
+    "tokens": null,
+    "cost": null,
+    "activation_validated": false,
+    "mission_executed": false
+  },
+  "supplied_scripts_executed": [],
+  "personal_skill_directories_modified": [],
+  "out_of_public_copy_reads": [
+    "mandat.txt fourni pour ce test",
+    "installation-demo/orka/SKILL.md, 32 premières lignes, issu du lien ZIP autorisé"
+  ],
+  "limits": [
+    "Nouvelle session et activation non tentées",
+    "Aucune vérification indépendante du commit fourni",
+    "Pas de comparaison intégrale entre release latest et copie figée",
+    "Aucune recherche générale ni consultation d’autres copies ou résultats"
+  ]
+}

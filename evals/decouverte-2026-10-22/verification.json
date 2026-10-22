@@ -1,0 +1,29 @@
+{
+  "copie_publique_figee_inchangee": true,
+  "premier_regard_inchange": true,
+  "archive_sha256": "dd00213bce58409518c4d1204cfd1872ef6334c03117c239bda301380cc31ede",
+  "archive_octets": 113185,
+  "archive_fichiers": 41,
+  "racines_archive": [
+    "orka"
+  ],
+  "extraction_octets_identiques": true,
+  "fichiers_extraits": 41,
+  "fichiers_essentiels_presents": true,
+  "version_declaree": "0.4.1",
+  "paquet_identique_aux_sources_figees": true,
+  "versions_archive_et_copie_figee_comparees": true,
+  "documents_declares_consultes": [
+    "README.md",
+    "docs/INSTALLATION.md",
+    ".agents/skills/orka/GUIDE.fr.md",
+    "SKILL.md du ZIP, 32 lignes"
+  ],
+  "activation_hote_verifiee": false,
+  "mission_executee": false,
+  "statuts_http_trace": [
+    "HTTP/2 302 ",
+    "HTTP/2 302 ",
+    "HTTP/2 200 "
+  ]
+}

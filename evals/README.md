@@ -1,6 +1,13 @@
 # Evaluations
 
-This directory contains synthetic cases, captured agent outputs and explicit observations. It does not contain private project data or evidence of market demand.
+This directory contains evaluation protocols, captured agent outputs and explicit observations. Product cases are synthetic; no private project data or evidence of market demand is included.
+
+| Evaluation | Scope |
+|---|---|
+| [README discovery test](decouverte-2026-10-22/README.md) | One fresh-context agent, README-only first impression, then linked guides and ZIP extraction. No blocker observed on that route; host activation and mission execution not tested. |
+| [First comparative pilot](pilote-2026-10-22/README.md) | Three synthetic cases, three conditions per case; no quality or cost advantage established, one protocol reservation. |
+
+## First comparative pilot
 
 Start with the **[portable results index](pilote-2026-10-22/README.md)** for direct links to every captured deliverable, check, trace and original prompt. The [full report](pilote-2026-10-22/rapport.md) is in French. The original traces and hashes are preserved; the index supplies relative links for navigation on GitHub or in a downloaded repository.
 
