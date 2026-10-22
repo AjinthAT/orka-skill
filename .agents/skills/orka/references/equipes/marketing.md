@@ -8,6 +8,8 @@
 - Interlocuteurs : produit pour les promesses, commercial pour les objections, finance pour les coûts et support pour les retours.
 - Contrôle : chaque campagne possède une cible, un objectif et une mesure ; le message reste cohérent avec le produit réel.
 
+Pour une mission de marque, appliquer [noms courts et domaines](../noms-domaines.md) : sélection cohérente avec la cible, vérification datée des finalistes et distinction entre domaine, identifiant et marque. Une proposition de nom ne vaut pas disponibilité vérifiée.
+
 ## redacteur — rédaction et contenus
 
 - Mission : produire textes de site, articles, présentations et messages de campagne demandés.

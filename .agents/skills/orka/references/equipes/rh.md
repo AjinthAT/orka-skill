@@ -1,21 +1,23 @@
-# Ressources humaines
+# Ressources des agents IA
 
-## drh — direction des ressources humaines
+## drh — allocation des ressources IA
 
-- Mission : examiner organisation, charge, compétences et besoins humains.
-- Entrées : équipe réelle, objectifs, charge prévue et budget connu.
-- Livrables : responsabilités, écarts de compétences, besoins de recrutement et formation.
+- Mission : proposer les agents, modèles, efforts et contextes adaptés aux tâches, en tenant compte des moyens réellement disponibles.
+- Entrées : tâches et critères, capacités de l'hôte, profils, consommation mesurée ou indisponible, limites fournies et résultats d'évaluation.
+- Livrables : plan d'allocation par tâche, motifs modèle/effort, suivi des tokens accessibles, reprises et propositions d'ajustement qualité/coût.
 - Interlocuteurs : responsables de service, finance et coordinateur.
-- Contrôle : séparer capacités des agents et travail humain requis. Aucun salarié, salaire ou disponibilité inventé ; aucune embauche au nom du dirigeant sans mandat adapté.
+- Contrôle : séparer paramètres demandés et appliqués, budget souhaité et plafond techniquement contrôlé. Aucune consommation ni économie inventée ; respecter les modèles explicitement demandés et les autorisations de la session.
 
-## recrutement-formation
+Appliquer la [gestion des ressources IA](../ressources-agents.md) et les [profils modèle/effort](../modeles-effort.md). Le coordinateur garde les lancements et la capacité commune ; le DRH conseille sans devenir un deuxième orchestrateur. Sur une petite mission, le coordinateur porte aussi cette responsabilité.
 
-- Mission : préparer recrutement, intégration et montée en compétence des humains.
-- Entrées : besoin validé, compétences, documents internes et budget connu.
-- Livrables : fiche de poste, critères liés au travail, trame d'entretien et parcours d'intégration ou formation.
-- Interlocuteurs : DRH et responsable du poste.
-- Contrôle : distinguer candidature réelle, profil recherché et exemple. Aucun contact de candidat sans autorisation ; ne transmettre les données personnelles qu'aux agents nécessaires.
+## recrutement-formation — qualification des agents et prompts
 
-## Organisation des agents
+- Mission : qualifier les profils et améliorer mandats, contexte et consignes sur des cas utiles à la mission.
+- Entrées : rôle attendu, critères, cas représentatifs, sorties réelles et défauts observés.
+- Livrables : résultats de qualification, proposition de profil, correction ciblée du prompt ou parcours d'intégration dans l'équipe.
+- Interlocuteurs : DRH, coordinateur, responsables et relecteurs concernés.
+- Contrôle : suivre [l'évaluation](../evaluation-agents.md), distinguer cas simulés et résultats réels, conserver une référence et ne pas annoncer un entraînement du modèle ou une amélioration mesurée sans exécution adaptée. Une modification globale du skill exige un mandat de maintenance.
 
-Le DRH peut proposer la répartition entre humains et agents et identifier les compétences manquantes. Le coordinateur et le responsable technique gèrent lancement, accès et capacité d'exécution des agents ; ces opérations ne constituent pas des embauches.
+## Portée et compatibilité
+
+Les identifiants `drh` et `recrutement-formation` restent stables pour les mandats existants. Le service vise les agents par défaut ; recrutement ou organisation de salariés humains seulement sur demande explicite, avec critères, données et autorisations adaptés. La qualification améliore les procédures et profils ; elle ne modifie pas les poids des modèles.

@@ -4,6 +4,8 @@
 
 Le coordinateur reformule l'idée, le problème, les utilisateurs, l'acheteur, la zone visée et les contraintes. Il sépare décisions, informations fournies et hypothèses. Il relève seulement les questions qui changent l'analyse et poursuit ce qui peut l'être sans réponse.
 
+Pour préciser l'ambition ou une inconnue décisive, utiliser [vision, preuves et innovation](vision-preuves-innovation.md). Vérifier les faits accessibles avant de les supposer, réserver les questions humaines aux choix et informations manquants, et conserver l'écart entre vision souhaitée et premier test proposé. Explorer des pistes distinctes lorsque la différenciation fait partie de la mission.
+
 Préparer le brief, le plan et l'état à partir des [modèles](modeles.md), regroupés si le niveau de mission le permet. Identifier la prochaine décision utile et les inconnues qui peuvent la changer ; choisir les documents et analyses nécessaires à cette décision. Dans le plan, choisir les spécialistes et noter les limites d'exécution : concurrence autorisée, nombre de tours, limites de temps ou de coût lorsqu'elles sont disponibles. Une limite inconnue ne devient pas un budget inventé.
 
 Sortie : mission compréhensible et périmètre de recherche déclaré. Sans projet identifiable, rester au cadrage et demander l'idée.

@@ -1,9 +1,9 @@
 ---
 name: orka
-description: Coordinate an AI business team for strategy, market research, marketing, sales, product, development, QA, operations, finance, HR and customer support. Use when the user assigns a project or cross-functional mission to the team, with shared deliverables and specialist collaboration; not for a simple question about a job. Execute only the requested scope.
+description: Coordinate an AI business team for strategy, market research, marketing, sales, product, development, QA, operations, finance, AI agent resources and customer support. Use when the user assigns a project or cross-functional mission to the team, including vision, innovation or naming with domain checks; not for a simple question about a job. Execute only the requested scope.
 license: MIT
 metadata:
-  version: "0.1.1"
+  version: "0.2.0"
 ---
 
 # Orka
@@ -24,6 +24,8 @@ Ce dossier utilise le format Agent Skills. Adapter les outils, la délégation e
 6. Définir responsables, spécialistes, outils, dépendances, critères d'acceptation et limites connues. Une mission globale mobilise les fonctions concernées sans exiger tous les postes simultanément. Réutiliser les faits et livrables valides avant de commander de nouvelles recherches.
 
 Le rôle coordinateur gère les autres agents selon [l'orchestration](references/orchestration-agents.md). Avant délégation, choisir le [profil modèle/effort](references/modeles-effort.md) et composer le [mandat et le prompt](references/prompting-agents.md). Pour une préparation répétable, utiliser `scripts/preparer_agent.py` avec un mandat JSON ; le script prépare une requête mais ne lance pas l'agent.
+
+Le service RH vise par défaut les [ressources des agents IA](references/ressources-agents.md) : allocation des modèles/efforts, qualification et consommation observable, sans doublonner l'orchestrateur. Pour cadrer la vision, vérifier les affirmations décisives ou chercher des innovations, lire le passage utile de [vision, preuves et innovation](references/vision-preuves-innovation.md). Pour une demande de nom ou de domaine, appliquer [la recherche de noms et domaines](references/noms-domaines.md), avec statuts et sources datés. Ne pas activer ces parcours sur une mission qui ne les nécessite pas.
 
 Pour une mission nécessitant suivi persistant, reprise ou capacité partagée entre coordinateurs, utiliser le [registre de supervision locale](references/supervision-locale.md) avec une base explicitement choisie. Réserver les tâches avant lancement, rattacher les identifiants réels, puis soumettre et faire accepter les versions vérifiées. Le registre ne remplace ni les outils de lancement ni la vérification des autorisations et de la fin d'un rédacteur.
 

@@ -36,7 +36,7 @@ Si les sous-agents sont disponibles et autorisés, le coordinateur peut délégu
 | **Explorer une idée** | Marché, concurrence, produit, faisabilité et hypothèses économiques | Dossier de décision sourcé, inconnues, protocole de validation |
 | **Préparer un lancement** | Positionnement, canaux, approche commerciale et contenus | Plan marketing, brouillons, supports de prospection |
 | **Développer un produit** | Périmètre, conception, développement, tests et revue | Réalisation dans le dépôt désigné, résultats de tests, constats de revue |
-| **Améliorer l'activité** | Retours clients, priorités, finance, RH et exploitation | Actions priorisées, hypothèses budgétaires, documents RH ou support |
+| **Améliorer l'activité** | Retours clients, priorités, finance, ressources IA et exploitation | Actions priorisées, hypothèses budgétaires, allocations des agents ou documents support |
 
 Commencez par la mission dont vous avez besoin. Une demande marketing n'impose pas une nouvelle étude de marché ; un développement approuvé peut passer directement à la réalisation.
 
@@ -94,7 +94,7 @@ flowchart LR
     Coordinator <--> Product["Produit et design"]:::team
     Coordinator <--> Engineering["Technique"]:::team
     Coordinator <--> Finance["Finance et administration"]:::team
-    Coordinator <--> HR["Ressources humaines"]:::team
+    Coordinator <--> HR["Ressources des agents IA"]:::team
     Coordinator <--> Customers["Relation client"]:::team
 
     classDef lead fill:#dff6ed,stroke:#3a8b70,color:#163e32,stroke-width:2px;
@@ -116,12 +116,12 @@ flowchart LR
 | **Produit et design** | Priorités, gestion de projet, UX/UI |
 | **Technique** | CTO, architecture, frontend, backend, sécurité, QA, DevOps |
 | **Finance et administration** | Budget, économie du projet, suivi administratif |
-| **Ressources humaines** | DRH, recrutement, intégration, formation |
+| **Ressources des agents IA** | Modèles, effort de raisonnement, tokens et qualification des agents |
 | **Relation client** | Support, adoption, fidélisation |
 
 </details>
 
-Les [neuf workflows](.agents/skills/orka/references/workflows-entreprise.md) couvrent étude, marketing, commercial, réalisation, lancement, relation client, finance, RH et pilotage. [Consulter les rôles →](.agents/skills/orka/references/roles.md)
+Les [neuf workflows](.agents/skills/orka/references/workflows-entreprise.md) couvrent étude, marketing, commercial, réalisation, lancement, relation client, finance, ressources des agents IA et pilotage. [Consulter les rôles →](.agents/skills/orka/references/roles.md)
 
 ## Que contient le projet ?
 
@@ -133,6 +133,20 @@ Les [neuf workflows](.agents/skills/orka/references/workflows-entreprise.md) cou
 | **Outils locaux facultatifs** | Préparer les mandats et suivre dépendances, réservations, tentatives et acceptation |
 
 Les outils utilisent Python et SQLite, sans paquet Python tiers. Ils préparent et enregistrent le travail ; l'assistant fournit l'exécution des modèles. L'installation ne lance aucun agent, ne crée aucun service et ne nécessite aucune clé API. L'utilisation des modèles dépend de votre assistant, de votre abonnement et des coûts associés.
+
+## Renforcer le projet avant de l'élargir
+
+Orka propose des guides ciblés pour approfondir les points utiles à la mission :
+
+| Besoin | Méthode |
+|---|---|
+| **Clarifier la vision** | Poser les questions qui changent la décision ; préserver l'ambition et la distinguer du premier test |
+| **Vérifier plutôt que supposer** | Qualifier les affirmations décisives, chercher les preuves accessibles et montrer inconnues ou contradictions |
+| **Innover utilement** | Comparer des pistes distinctes sur la valeur, la différence, l'adoption, la faisabilité et un test minimal |
+| **Trouver un nom court et international** | Examiner sens, prononciation et confusion dans les langues visées ; vérifier les domaines finalistes avec des sources datées |
+| **Allouer efficacement les agents** | Adapter modèle, effort et contexte à la tâche ; relever l'usage réel accessible et qualifier les ajustements sur les résultats |
+
+Ces guides s'appliquent avec les outils de l'assistant. La disponibilité d'un domaine exige une vérification actuelle ; le comptage des tokens exige des mesures. Les outils locaux ne fournissent ni connexion à un registrar ni compteur de tokens.
 
 ## Ce que vous recevez après une étude
 
@@ -249,7 +263,7 @@ Un modèle seul ne suffit pas : l'application qui l'utilise doit prendre en char
 
 ## Documentation et développement
 
-Le [README anglais](README.md#documentation) présente l'index complet. Points d'entrée : [rôles](.agents/skills/orka/references/roles.md), [workflows](.agents/skills/orka/references/workflows-entreprise.md), [orchestration](.agents/skills/orka/references/orchestration-agents.md), [supervision locale](.agents/skills/orka/references/supervision-locale.md), [modèles](.agents/skills/orka/references/modeles-effort.md) et [implémentation](docs/IMPLEMENTATION.md).
+Le [README anglais](README.md#documentation) présente l'index complet. Nouveaux guides : [ressources IA](.agents/skills/orka/references/ressources-agents.md), [vision et innovation](.agents/skills/orka/references/vision-preuves-innovation.md), [noms et domaines](.agents/skills/orka/references/noms-domaines.md). Points d'entrée : [rôles](.agents/skills/orka/references/roles.md), [workflows](.agents/skills/orka/references/workflows-entreprise.md), [orchestration](.agents/skills/orka/references/orchestration-agents.md), [supervision locale](.agents/skills/orka/references/supervision-locale.md), [modèles](.agents/skills/orka/references/modeles-effort.md) et [implémentation](docs/IMPLEMENTATION.md).
 
 Les dossiers de mission produit utilisent `projets/<id>/` ; les missions transversales utilisent `entreprise/missions/<id>/`. Le code applicatif reste dans son dépôt de développement. Conservez les données privées de mission hors de ce dépôt de distribution public. Les exemples du registre utilisent le dossier local ignoré `.orka/`.
 

@@ -2,6 +2,8 @@
 
 Le rôle `coordinateur` existant assure aussi la gestion des agents. Il ne faut pas créer un second directeur chargé de refaire son travail. Par défaut, l'agent principal porte ce rôle ; les spécialistes exécutent des mandats bornés. Un responsable métier peut organiser ses livrables sans devenir un processus supplémentaire.
 
+La fonction RH IA conseille allocation, qualification et suivi des ressources selon [ressources-agents.md](ressources-agents.md). Le coordinateur conserve lancement, accès, capacité commune et propriétaires des fichiers. Le suivi des tokens dépend de mesures réellement exposées ; ni le préparateur ni le registre n'en ajoutent automatiquement.
+
 ## Boucle de gestion
 
 1. Lire la demande, l'état et les décisions utiles. Identifier le résultat, les dépendances, le périmètre autorisé et les moyens réellement disponibles.

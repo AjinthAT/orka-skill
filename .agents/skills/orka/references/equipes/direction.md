@@ -10,6 +10,8 @@
 
 Le coordinateur assure aussi la gestion des agents : profils modèle/effort, construction des mandats, réservation des places, lancement, suivi, réutilisation, correction et arrêt. La procédure complète est dans [l'orchestration](../orchestration-agents.md). Ce rôle reste celui de l'agent principal par défaut ; il ne nécessite pas un second directeur en parallèle.
 
+La fonction RH IA propose l'allocation et la qualification selon les [ressources agents](../ressources-agents.md) ; le coordinateur applique les choix autorisés. Pour préciser l'ambition, vérifier les hypothèses ou explorer une différence utile, suivre [vision, preuves et innovation](../vision-preuves-innovation.md), sans remplacer la vision du dirigeant par le seul premier test.
+
 ## analyste-marche
 
 - Mission : étudier segments, problèmes, usages, acheteurs et signes de demande.

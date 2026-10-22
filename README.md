@@ -34,7 +34,7 @@ With authorized subagents, the coordinator can delegate to separate specialists.
 | **Explore an idea** | Market, competition, product, technical feasibility and business assumptions | Sourced decision brief, open questions, validation plan |
 | **Prepare a launch** | Positioning, channels, sales approach and content | Marketing plan, draft copy, prospecting materials |
 | **Build a product** | Scope, design, engineering, testing and review | Implementation in the designated repository, test results, review findings |
-| **Improve the business** | Customer feedback, priorities, finance, HR and operations | Prioritized actions, budget assumptions, onboarding or support documents |
+| **Improve the business** | Customer feedback, priorities, finance, agent resources and operations | Prioritized actions, budget assumptions, agent allocation or support documents |
 
 Start with the mission you actually need. A marketing request does not require a new market study; an approved development task can go straight to delivery.
 
@@ -92,7 +92,7 @@ flowchart LR
     Coordinator <--> Product["Product and design"]:::team
     Coordinator <--> Engineering["Engineering"]:::team
     Coordinator <--> Finance["Finance and administration"]:::team
-    Coordinator <--> HR["Human resources"]:::team
+    Coordinator <--> HR["AI agent resources"]:::team
     Coordinator <--> Customers["Customer relations"]:::team
 
     classDef lead fill:#dff6ed,stroke:#3a8b70,color:#163e32,stroke-width:2px;
@@ -114,12 +114,12 @@ flowchart LR
 | **Product & design** | Product priorities, project management, UX/UI |
 | **Engineering** | CTO, architecture, frontend, backend, security, QA, DevOps |
 | **Finance & administration** | Budgets, economics, administrative tracking |
-| **Human resources** | HR leadership, recruiting, onboarding, training |
+| **AI agent resources** | Models, reasoning effort, token usage and agent qualification |
 | **Customer relations** | Support, adoption, retention |
 
 </details>
 
-The [nine workflows](.agents/skills/orka/references/workflows-entreprise.md) cover studies, marketing, sales, delivery, launch, customer relations, finance, HR and business steering. [Explore the roles →](.agents/skills/orka/references/roles.md)
+The [nine workflows](.agents/skills/orka/references/workflows-entreprise.md) cover studies, marketing, sales, delivery, launch, customer relations, finance, AI agent resources and business steering. [Explore the roles →](.agents/skills/orka/references/roles.md)
 
 ## What is included?
 
@@ -131,6 +131,20 @@ The [nine workflows](.agents/skills/orka/references/workflows-entreprise.md) cov
 | **Optional local tools** | Prepare task requests and track dependencies, reservations, attempts and artifact acceptance |
 
 The local tools use Python and SQLite, with no third-party Python packages. They prepare and record work; model execution comes from the assistant. Installation itself does not start agents, provision services or require an API key. Model usage remains subject to your assistant's plan and costs.
+
+## Sharpen the project before expanding it
+
+Orka includes optional guides for the parts of a project that need more than another feature list:
+
+| Need | Working method |
+|---|---|
+| **A clearer vision** | Ask the questions that change the decision; preserve the original ambition and distinguish it from the first experiment |
+| **Evidence instead of assumptions** | Track decisive claims, verify accessible facts, and keep unknowns or contradictions visible |
+| **Useful innovation** | Compare distinct approaches on value, differentiation, adoption, feasibility and a minimal test |
+| **A short international name** | Evaluate meaning, pronunciation and confusion in the target languages; check shortlisted domains with dated sources |
+| **An efficient AI team** | Match model, effort and context to each task; record real usage when available and qualify changes against results |
+
+These are procedures applied with the host's available tools. Domain availability needs a live check; token accounting needs actual telemetry. The local helpers do not provide a registrar integration or a token meter.
 
 ## What a study delivers
 
@@ -257,6 +271,9 @@ A model alone is not an installation target: the application running it must sup
 | [Market-study workflow](.agents/skills/orka/references/workflow-etude.md) | Research stages and decision criteria |
 | [Agent orchestration](.agents/skills/orka/references/orchestration-agents.md) | Delegation, context and capacity |
 | [Local supervision](.agents/skills/orka/references/supervision-locale.md) | Optional persistent register and its limits |
+| [AI agent resources](.agents/skills/orka/references/ressources-agents.md) | Task allocation, model/effort choices, usage and qualification |
+| [Vision and innovation](.agents/skills/orka/references/vision-preuves-innovation.md) | Decision-changing questions, evidence and experiments |
+| [Names and domains](.agents/skills/orka/references/noms-domaines.md) | Shortlists, dated availability checks and naming risks |
 | [Model profiles](.agents/skills/orka/references/modeles-effort.md) | Codex reference settings and adaptation boundaries |
 | [Mandates and prompts](.agents/skills/orka/references/prompting-agents.md) | Task contracts and the optional preparer |
 | [Document templates](.agents/skills/orka/references/modeles.md) | Shared evidence, decisions and handoffs |

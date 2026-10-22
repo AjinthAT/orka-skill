@@ -14,7 +14,7 @@ Les 28 rôles décrivent des responsabilités distinctes. Ce ne sont pas 28 proc
 | Produit, design et projets | `responsable-produit`, `chef-projet`, `designer` | [Produit et design](equipes/produit-design.md) |
 | Technologie, qualité et exploitation | `cto`, `architecte`, `frontend`, `backend`, `securite`, `qa`, `devops` | [Technique](equipes/technique.md) |
 | Finance et administration | `daf`, `administration` | [Finance](equipes/finance.md) |
-| Ressources humaines | `drh`, `recrutement-formation` | [RH](equipes/rh.md) |
+| Ressources des agents IA | `drh`, `recrutement-formation` | [RH IA](equipes/rh.md) |
 | Relation client | `support`, `customer-success` | [Relation client](equipes/relation-client.md) |
 
 ## Contrat commun
@@ -31,7 +31,7 @@ Les spécialistes peuvent se parler directement pour résoudre une question si l
 - Marketing + commercial + relation client : partager positionnement, objections et retours observés.
 - Produit + design + technique + QA : définir, construire et vérifier une version utilisable.
 - Marketing + produit + commercial + support + DevOps : préparer un lancement cohérent.
-- Finance + responsables d’équipe + RH : comparer charge, compétences et capacité.
+- RH IA + coordinateur + responsables + finance : allouer profils modèle/effort, contexte et capacité, qualifier les résultats et suivre la consommation accessible.
 
 ## Arbitrages
 

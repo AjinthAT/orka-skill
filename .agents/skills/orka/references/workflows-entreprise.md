@@ -27,6 +27,8 @@ Les [processus communs](processus-transverses.md) relient ces parcours : qualifi
 - Transmission : commercial reçoit les messages et contacts réellement acquis ; produit reçoit questions et objections observées.
 - Fin : supports demandés livrés et revus. Publication et dépenses seulement si autorisées ; une campagne préparée n'est pas une campagne lancée.
 
+Pour une demande de nom ou de marque, intégrer le parcours [noms et domaines](noms-domaines.md) : propositions courtes adaptées aux langues visées, shortlist vérifiée avec sources/horodatages, coûts connus ou inconnus, conflits potentiels et choix à remonter. La recherche reste distincte de l'achat et de la qualification juridique.
+
 ## Vente et partenariats
 
 - Responsable : directeur commercial.
@@ -77,15 +79,15 @@ Les [processus communs](processus-transverses.md) relient ces parcours : qualifi
 - Transmission : coordinateur et responsables reçoivent les contraintes économiques ; RH reçoit la capacité budgétaire connue.
 - Fin : totaux contrôlés, hypothèses séparées du réalisé, pièces manquantes visibles. Un budget proposé ne déclenche pas un paiement.
 
-## RH et compétences
+## Ressources des agents IA
 
 - Responsable : DRH.
-- Équipe : recrutement-formation, responsables concernés et finance.
-- Entrées : organisation réelle, missions, charge, compétences et budget.
-- Parcours : examiner les écarts ; comparer réorganisation, formation et recrutement ; préparer fiches et intégration ; faire vérifier la capacité économique.
-- Sortie : organisation proposée, responsabilités, compétences manquantes et actions. Toute communication aux candidats nécessite un mandat la couvrant.
-- Transmission : coordinateur et responsables ajustent les plans selon les capacités documentées.
-- Fin : écarts et actions explicites, sans présenter une recommandation comme une embauche réalisée.
+- Équipe : qualification des agents (`recrutement-formation`), coordinateur, responsables concernés et finance.
+- Entrées : tâches et critères, capacités réelles, modèles/efforts disponibles, contexte utile, mesures d'usage et limites connues.
+- Parcours : appliquer [l'allocation des ressources IA](ressources-agents.md) ; proposer les profils ; qualifier sur des cas adaptés ; suivre consommation et reprises accessibles ; ajuster selon qualité et coût total. Le coordinateur conserve les lancements.
+- Sortie : plan d'allocation et bilan de qualité/consommation, avec paramètres demandés et appliqués distingués. Données absentes marquées indisponibles.
+- Transmission : coordinateur applique les choix autorisés ; DAF examine les coûts à partir des mesures et tarifs vérifiés.
+- Fin : choix justifiés et limites de contrôle explicites, sans économie ni compteur inventé. Les RH humaines ne sont mobilisées que sur demande explicite.
 
 ## Pilotage de l'entreprise
 

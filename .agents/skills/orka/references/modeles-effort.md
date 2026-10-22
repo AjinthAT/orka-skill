@@ -17,6 +17,8 @@ Les profils sont des choix de départ du projet, à évaluer sur les tâches ré
 
 Les réglages de référence et les rôles par défaut sont dans [profils-modeles.json](profils-modeles.json). Un même rôle peut demander un autre profil pour une tâche différente. Le titre du poste ne suffit pas à déterminer l'effort.
 
+Le DRH IA propose l'allocation selon les tâches, la qualité attendue et les limites fournies ; le coordinateur l'applique avec les outils disponibles. Le [suivi des ressources](ressources-agents.md) distingue plan, réglages appliqués, tokens réellement mesurés et coût. Les profils ne sont pas des plafonds de tokens et ne constituent pas un mécanisme de facturation ou de limitation.
+
 ## Décider avant le lancement
 
 1. Respecter un modèle ou effort explicitement demandé par le dirigeant, s'il est disponible et compatible. Ne pas le remplacer par un modèle plus récent de sa propre initiative.

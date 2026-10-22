@@ -27,6 +27,10 @@ Une revue utilisateur d'un dossier multi-agents a révélé une lecture principa
 
 La correction des instructions a été appliquée éditorialement au dossier local autorisé, dont l'état précédent a été préservé. Contrôles : contenu de la synthèse et limites, présence des propositions initiales et réponses conservées, résolution des liens après copie, règles chiffrées conservées. Aucun contenu privé de mission n'est inclus dans ce dépôt. Ce contrôle sur un cas connu n'est ni un nouvel essai d'agents ni une comparaison indépendante des modèles. Les scénarios distincts de [validation](validation.md) restent à exécuter pour mesurer la généralisation ; aucun gain chiffré n'est revendiqué.
 
+## Évolution 0.2.0 : ressources IA, vision et identité
+
+Référence avant changement : commit `35f2a61`. Correction de portée demandée par le dirigeant : RH orientée agents IA plutôt que personnel humain par défaut ; allocation par tâche et suivi d'usage observable, sans second orchestrateur. Ajout de guides conditionnels pour vision/preuves/innovation et noms/domaines ; identifiants des rôles conservés. Vérifications prévues : préparation de tous les rôles et de profils explicites, refus des réglages incompatibles, liens, paquet installable et cohérence des limites annoncées. Les cas de validation ajoutés décrivent les comportements à éprouver ; ils ne sont pas une campagne de modèles exécutée. Aucun gain de tokens ou de qualité n'est établi par la rédaction.
+
 ## Mesures et preuves
 
 | Question | Mesure possible et précaution |

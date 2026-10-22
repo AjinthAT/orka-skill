@@ -60,6 +60,12 @@ Ces règles guident l'exécution dans la session. Les fichiers Markdown ne les i
 
 Les [processus communs](../.agents/skills/orka/references/processus-transverses.md) couvrent les événements entre les workflows : demande nouvelle, changement de périmètre, transmission, incident et clôture. La [gestion documentaire](../.agents/skills/orka/references/gestion-documentaire.md) précise les versions et les sources de référence. Ces procédures utilisent le suivi existant et n'imposent de nouvelles fiches que lorsque le cas le nécessite.
 
+## Vision, ressources IA et identité — version 0.2.0
+
+La fonction RH gère par défaut les ressources des agents : allocation, modèles/effort par tâche, qualification et usage observable. Le coordinateur conserve les lancements ; les identifiants des rôles restent stables. Le catalogue v2 propose le profil analyse pour la qualification, ajustable selon le travail réel. Les guides [ressources IA](../.agents/skills/orka/references/ressources-agents.md), [vision/preuves/innovation](../.agents/skills/orka/references/vision-preuves-innovation.md) et [noms/domaines](../.agents/skills/orka/references/noms-domaines.md) sont chargés selon le besoin. Les questions décisives, preuves manquantes et expériences proposées restent dans les documents existants.
+
+Il s'agit de procédures et de profils, pas de nouveaux services : aucun collecteur de tokens, arrêt automatique sur budget, vérificateur de domaines ou apprentissage de modèle n'a été implémenté. Une vraie mesure d'usage ou vérification de disponibilité exige l'outil de l'hôte adapté ; sinon son résultat reste indisponible. Aucun domaine de projet n'a été vérifié au cours de cette maintenance.
+
 ## Premier essai utile
 
 La version 0.1.1 renforce la restitution après revue d'usage : synthèse dirigeant visant une page pour les études et décisions entre équipes, conclusion actuelle avant l'historique, référence unique des critères et liens relatifs entre pièces d'un dossier partageable. Les missions compactes gardent un livrable regroupé ; les étapes de découverte et de confirmation sont distinguées selon les inconnues réelles. Ces règles sont documentaires, sans nouveau moteur ni contrôle automatique de longueur. La [trace d'évaluation](../.agents/skills/orka/references/evaluation-agents.md) précise ce qui a été examiné et ce qui reste à éprouver sur d'autres missions.
@@ -106,4 +112,4 @@ La performance serait évaluée sur des missions comparables : taux d'acceptatio
 5. Ajouter une interface de suivi si elle est utile.
 6. Exécuter et éprouver les autres workflows documentés, selon les outils disponibles et les projets autorisés.
 
-Le marketing, les RH et le support disposent de missions et workflows dédiés au même titre que la technique. Le moteur les active sur une mission ou un événement explicitement configuré ; les fichiers ne les font pas tourner continuellement.
+Le marketing, les ressources des agents IA et le support disposent de missions et workflows dédiés au même titre que la technique. Le moteur les active sur une mission ou un événement explicitement configuré ; les fichiers ne les font pas tourner continuellement.
