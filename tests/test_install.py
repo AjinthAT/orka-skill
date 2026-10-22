@@ -86,7 +86,7 @@ class InstallationTests(unittest.TestCase):
                 self.assertEqual(result.returncode, 0, result.stderr)
                 self.assertTrue((project / directory / "skills/orka/SKILL.md").is_file())
                 for guide in ("GUIDE.md", "GUIDE.fr.md"):
-                    guide_path = project / directory / "skills/orka" / guide
+                    guide_path = (project / directory / "skills/orka" / guide).resolve()
                     self.assertTrue(guide_path.is_file())
                     self.assertIn(str(guide_path), result.stdout)
                 self.assertIn("$orka" if agent == "codex" else "/orka", result.stdout)

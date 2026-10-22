@@ -1,6 +1,7 @@
 """Tests sur registres temporaires et agents simules ; aucun lancement de modele."""
 
 from concurrent.futures import ThreadPoolExecutor
+from contextlib import closing
 from copy import deepcopy
 import json
 import os
@@ -365,7 +366,7 @@ class SupervisionTests(unittest.TestCase):
         resultat = Superviseur.migrer(base)
         sauvegarde = Path(resultat["sauvegarde"])
         self.assertTrue(sauvegarde.is_file())
-        with sqlite3.connect(str(sauvegarde)) as avant, sqlite3.connect(str(base)) as apres:
+        with closing(sqlite3.connect(str(sauvegarde))) as avant, closing(sqlite3.connect(str(base))) as apres:
             self.assertEqual(avant.execute("SELECT version FROM configuration").fetchone()[0], 1)
             self.assertEqual(apres.execute("SELECT version FROM configuration").fetchone()[0], 2)
             for table in ("taches", "dependances", "tentatives", "evenements"):
@@ -402,17 +403,18 @@ class SupervisionTests(unittest.TestCase):
             wal.execute("INSERT INTO evenements(date,type,details) VALUES (1,'avant_migration','{}')")
             wal.commit()
             resultat = Superviseur.migrer(base)
-            with sqlite3.connect(resultat["sauvegarde"]) as copie:
+            with closing(sqlite3.connect(resultat["sauvegarde"])) as copie:
                 self.assertEqual(copie.execute("SELECT COUNT(*) FROM evenements WHERE type='avant_migration'").fetchone()[0], 1)
         finally:
             wal.close()
         base.unlink()
         base = self.ancienne_base()
-        with sqlite3.connect(str(base)) as connexion:
+        with closing(sqlite3.connect(str(base))) as connexion:
             connexion.execute("CREATE TRIGGER panne BEFORE UPDATE ON configuration BEGIN SELECT RAISE(ABORT,'panne simulee'); END")
+            connexion.commit()
         with self.assertRaises(sqlite3.Error):
             Superviseur.migrer(base)
-        with sqlite3.connect(str(base)) as connexion:
+        with closing(sqlite3.connect(str(base))) as connexion:
             self.assertEqual(connexion.execute("SELECT version FROM configuration").fetchone()[0], 1)
             self.assertNotIn("entrees", [r[1] for r in connexion.execute("PRAGMA table_info(tentatives)")])
 
