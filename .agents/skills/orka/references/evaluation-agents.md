@@ -39,6 +39,8 @@ Contrôles exécutés : 8 tests du nouveau bilan sur données simulées (inconnu
 
 ## Mesures et preuves
 
+Maintenance 0.3.1, référence `e46ea51` : ajout demandé de guides installables bilingues et d'un prochain prompt adapté en fin de réponse. La distribution et les chemins affichés sont vérifiés par les tests d'installation ; les scénarios documentent les exceptions de format, les blocages et l'absence de suite immédiate. Aucun essai de modèle ne prouve à ce stade l'application systématique du prompt final par tous les assistants.
+
 Le [bilan local](bilan-agents.md) aide à calculer les indicateurs disponibles à partir des tentatives et mesures fournies. Les données absentes, la couverture et la méthode d'acceptation restent visibles ; le script ne qualifie pas automatiquement un profil. Pour relier une comparaison à une hypothèse et à une décision, réutiliser le suivi des [expériences](experiences-apprentissage.md).
 
 | Question | Mesure possible et précaution |

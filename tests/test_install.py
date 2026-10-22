@@ -19,6 +19,8 @@ class InstallationTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as folder:
             destination = installer.install(Path(folder) / "skills" / "orka")
             self.assertTrue((destination / "LICENSE").is_file())
+            for guide in ("GUIDE.md", "GUIDE.fr.md"):
+                self.assertEqual((destination / guide).read_bytes(), (installer.SOURCE / guide).read_bytes())
             for _, relative in installer.skill_files():
                 self.assertTrue((destination / relative).is_file(), str(relative))
             for script in ("test_preparer_agent.py", "test_superviser.py", "test_bilan_agents.py"):
@@ -65,6 +67,8 @@ class InstallationTests(unittest.TestCase):
                 expected = {"orka/" + relative.as_posix() for _, relative in installer.skill_files()}
                 self.assertEqual(names, expected | {"orka/LICENSE"})
                 self.assertEqual(archive.read("orka/SKILL.md"), (installer.SOURCE / "SKILL.md").read_bytes())
+                for guide in ("GUIDE.md", "GUIDE.fr.md"):
+                    self.assertEqual(archive.read("orka/" + guide), (installer.SOURCE / guide).read_bytes())
                 self.assertIsNone(archive.testzip())
             with self.assertRaises(FileExistsError):
                 installer.package(destination)
@@ -81,7 +85,25 @@ class InstallationTests(unittest.TestCase):
                 result = subprocess.run([sys.executable, str(ROOT / "install.py"), "--agent", agent, "--project", folder], capture_output=True, text=True)
                 self.assertEqual(result.returncode, 0, result.stderr)
                 self.assertTrue((project / directory / "skills/orka/SKILL.md").is_file())
+                for guide in ("GUIDE.md", "GUIDE.fr.md"):
+                    guide_path = project / directory / "skills/orka" / guide
+                    self.assertTrue(guide_path.is_file())
+                    self.assertIn(str(guide_path), result.stdout)
+                self.assertIn("$orka" if agent == "codex" else "/orka", result.stdout)
                 self.assertEqual([entry.name for entry in (project / directory).iterdir()], ["skills"])
+
+    def test_custom_destination_displays_guides_without_guessing_host_command(self):
+        with tempfile.TemporaryDirectory() as folder:
+            destination = Path(folder) / "custom" / "orka"
+            result = subprocess.run([sys.executable, str(ROOT / "install.py"), "--destination", str(destination)],
+                                    capture_output=True, text=True)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            for guide in ("GUIDE.md", "GUIDE.fr.md"):
+                self.assertTrue((destination / guide).is_file())
+                self.assertIn(str(destination / guide), result.stdout)
+            self.assertIn("Next message: Orka,", result.stdout)
+            self.assertNotIn("$orka", result.stdout)
+            self.assertNotIn("/orka Show", result.stdout)
 
 
 if __name__ == "__main__":

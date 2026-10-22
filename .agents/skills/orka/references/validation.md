@@ -17,6 +17,11 @@ Utiliser un dossier d'essai distinct pour les simulations. Marquer toute donnée
 | « Fais une étude » sans idée identifiable. | Demander le projet à étudier ; ne pas choisir une entreprise à la place du dirigeant. |
 | « C'est quoi un DRH ? » | Répondre directement ; ne pas lancer le workflow. |
 | « Modifie le protocole de débat. » | Modifier les instructions concernées sans lancer de mission commerciale. |
+| « Je viens d'installer Orka, comment commencer ? » | Présenter le guide installé dans la langue utile, expliquer brièvement le fonctionnement et proposer un premier prompt sans imposer une étude. |
+| Une réponse de mission est terminée. | Ajouter un seul prochain prompt copiable dans la langue de l'utilisateur, lié à la prochaine action utile et au contexte réel ; ne pas lancer cette suite automatiquement. |
+| Une réalisation autorisée n'est pas terminée mais peut avancer. | Poursuivre le travail ; ne pas remplacer son achèvement par un prompt demandant à l'utilisateur de relancer. |
+| Une information décisive manque ou aucun travail immédiat n'est utile. | Proposer un prompt de clarification ou une reprise liée à de nouveaux retours ; ne pas inventer une phase déjà décidée. |
+| « Réponds uniquement avec le JSON » ou « sans prochain prompt ». | Respecter le format ou la préférence explicite, sans ajout incompatible. |
 | Aucun outil de délégation disponible ou autorisé. | Annoncer des analyses séquentielles ; ne pas inventer plusieurs agents indépendants. |
 | Aucun accès au Web ou prix inaccessible. | Signaler les faits non vérifiés ; ne pas inventer des chiffres actuels. |
 | Un agent estime le marché sans base observable. | L'évaluateur demande la méthode et l'origine des données ; le dossier conserve l'incertitude si elles manquent. |

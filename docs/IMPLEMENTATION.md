@@ -80,6 +80,10 @@ python3 -B .agents/skills/orka/scripts/test_bilan_agents.py
 
 ## Premier essai utile
 
+La version 0.3.1 inclut les guides [français](../.agents/skills/orka/GUIDE.fr.md) et [anglais](../.agents/skills/orka/GUIDE.md) dans le dossier du skill, donc dans l'archive et les installations. L'installateur affiche leurs chemins et un premier message adapté à l'option d'assistant choisie ; il ne lance pas l'assistant ni les guides. Les importations par une autre interface conservent les fichiers sans garantie d'ouverture automatique.
+
+Les instructions demandent aussi un prochain prompt copiable à la fin des réponses Orka, adapté à l'état réel et à la langue de l'utilisateur, sauf format ou préférence contraire. Ce comportement est guidé par le skill, pas imposé par une interface. Il ne reporte pas un travail déjà autorisé et ne déclenche aucune phase automatiquement.
+
 La version 0.1.1 renforce la restitution après revue d'usage : synthèse dirigeant visant une page pour les études et décisions entre équipes, conclusion actuelle avant l'historique, référence unique des critères et liens relatifs entre pièces d'un dossier partageable. Les missions compactes gardent un livrable regroupé ; les étapes de découverte et de confirmation sont distinguées selon les inconnues réelles. Ces règles sont documentaires, sans nouveau moteur ni contrôle automatique de longueur. La [trace d'évaluation](../.agents/skills/orka/references/evaluation-agents.md) précise ce qui a été examiné et ce qui reste à éprouver sur d'autres missions.
 
 Choisir un vrai projet, un marché cible et les contraintes déjà connues. Lancer le skill avec le prompt du [guide de démarrage](../README.md). Examiner ensuite le dossier : les sources justifient-elles les conclusions ? Les objections ont-elles changé quelque chose ? Le prochain test permet-il de réduire une incertitude importante ?

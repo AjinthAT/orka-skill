@@ -67,7 +67,12 @@ def main():
             print(f"Archive: {package(args.archive)}")
         else:
             destination = destination_for(args.agent, args.project) if args.agent else args.destination
-            print(f"Installed: {install(destination)}")
+            installed = install(destination)
+            print(f"Installed: {installed}")
+            print(f"Getting-started guide (English): {installed / 'GUIDE.md'}")
+            print(f"Guide de démarrage (français): {installed / 'GUIDE.fr.md'}")
+            invocation = "$orka" if args.agent == "codex" else "/orka" if args.agent == "claude" else "Orka,"
+            print(f"Next message: {invocation} Show me the getting-started guide and help me choose my first mission.")
     except (OSError, ValueError) as error:
         print(f"Error: {error}", file=sys.stderr)
         return 1

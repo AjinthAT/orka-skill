@@ -174,6 +174,8 @@ flowchart TB
 
 ## Votre première mission
 
+Chaque installation et archive contient le [guide de démarrage français](.agents/skills/orka/GUIDE.fr.md) et sa [version anglaise](.agents/skills/orka/GUIDE.md), avec des prompts pour cadrer une idée, étudier, préparer le marketing, développer et reprendre un dossier. Vous pouvez demander à Orka de présenter ce guide à tout moment.
+
 Après installation, utilisez **`$orka` dans Codex** ou **`/orka` dans Claude Code**, puis donnez une mission concrète :
 
 > Étudie un outil de prise de rendez-vous pour les coachs sportifs indépendants en France. Examine les concurrents, les besoins, la faisabilité technique et les hypothèses de prix. Utilise des sous-agents spécialisés si les outils et les autorisations le permettent, examine leurs objections et produis un dossier de décision avec sources, incertitudes et prochain test de validation.
@@ -185,6 +187,8 @@ Autres points de départ :
 - **Support :** « Analyse ces retours et propose un plan d'amélioration priorisé. »
 
 Précisez le projet, le résultat attendu, les fichiers utiles et les contraintes connues. Orka doit distinguer faits sourcés, hypothèses, recommandations et décisions humaines. Contacter des tiers, dépenser, publier ou déployer nécessite une autorisation couvrant l'action.
+
+Chaque réponse Orka se termine par **« Prochain prompt à copier »** : une seule suite concrète adaptée à l'état du projet. Copiez-la, modifiez-la ou demandez une réponse sans suggestion. Orka termine d'abord le travail autorisé ; la proposition ne lance pas automatiquement l'étape suivante.
 
 ## Choisir votre assistant
 
@@ -230,7 +234,7 @@ Sous Windows, utilisez `py -3` si `python3` n'est pas disponible. Aucun paquet P
 
 Pour limiter l'installation à un projet existant, ajoutez `--project /chemin/du/projet`. Sans cette option, l'installation concerne votre utilisateur.
 
-L'installateur copie le dossier complet et la licence, sans appel réseau ni modification de vos paramètres. Il refuse d'écraser un dossier existant. Ouvrez une nouvelle session si nécessaire, puis utilisez `$orka` dans Codex ou `/orka` dans Claude Code.
+L'installateur copie le dossier complet, la licence et les deux guides de démarrage, puis affiche leurs chemins et un premier message suggéré. Il fonctionne sans appel réseau ni modification de vos paramètres et refuse d'écraser un dossier existant. Ouvrez une nouvelle session si nécessaire, puis utilisez `$orka` dans Codex ou `/orka` dans Claude Code. Les imports ZIP contiennent aussi les guides ; leur ouverture automatique dépend de l'application.
 
 ### Claude sur le Web ou sur ordinateur
 

@@ -172,6 +172,8 @@ flowchart TB
 
 ## Your first mission
 
+Every installation and release ZIP includes a [getting-started guide](.agents/skills/orka/GUIDE.md) and its [French version](.agents/skills/orka/GUIDE.fr.md), with prompts for clarification, research, marketing, development and resuming work. Ask Orka to show the guide whenever you need it.
+
 After installation, invoke **`$orka` in Codex** or **`/orka` in Claude Code**, then give it a concrete assignment:
 
 > Study an appointment-booking product for independent fitness coaches in France. Assess competitors, customer needs, technical feasibility and pricing assumptions. Use specialist subagents if available and permitted, examine their objections, and save a decision brief with sources, uncertainties and the next validation test. Respond in English.
@@ -183,6 +185,8 @@ Other starting points:
 - **Customer support:** “Analyze this feedback and propose a prioritized improvement plan.”
 
 Provide the project, expected result, relevant files and known constraints. Orka should distinguish sourced facts, assumptions, recommendations and human decisions. External communications, spending, publication and deployment require authorization covering the action.
+
+At the end of each Orka response, **“Next prompt to copy”** recommends one concrete follow-up based on the actual project state. Copy it, adapt it or request no suggestion. Orka completes the authorized work first; the suggested prompt does not execute the next phase.
 
 ## Choose your assistant
 
@@ -228,7 +232,7 @@ On Windows, use `py -3` instead of `python3` if needed. No third-party Python pa
 
 For a project installation, add `--project /path/to/existing-project` to the selected command. Without that flag, installation is for your user, even when you run it inside a project.
 
-The installer copies the whole skill folder and license. It makes no network calls, changes no assistant settings and refuses to overwrite an existing destination. Start a new session if the skill is not visible. In Codex, invoke `$orka`; in Claude Code, invoke `/orka`.
+The installer copies the whole skill folder, license and both getting-started guides, then displays the installed guide paths and a suggested first message. It makes no network calls, changes no assistant settings and refuses to overwrite an existing destination. Start a new session if the skill is not visible. In Codex, invoke `$orka`; in Claude Code, invoke `/orka`. ZIP imports include the guides as files; automatic opening depends on the host.
 
 ### Claude on the web or desktop
 
@@ -270,6 +274,7 @@ A model alone is not an installation target: the application running it must sup
 | Resource | Contents |
 |---|---|
 | [Skill entry point](.agents/skills/orka/SKILL.md) | Core coordination instructions and reference routing |
+| [Getting-started guide](.agents/skills/orka/GUIDE.md) · [Français](.agents/skills/orka/GUIDE.fr.md) | First mission, copyable prompts and practical usage; included in every installation |
 | [Teams and roles](.agents/skills/orka/references/roles.md) | The 28 specialist roles |
 | [Business workflows](.agents/skills/orka/references/workflows-entreprise.md) | Department workflows and handoffs |
 | [Market-study workflow](.agents/skills/orka/references/workflow-etude.md) | Research stages and decision criteria |

@@ -3,7 +3,7 @@ name: orka
 description: Coordinate an AI business team for strategy, market research, marketing, sales, product, development, QA, operations, finance, AI agent resources and customer support. Use when the user assigns a project or cross-functional mission to the team, including vision, innovation or naming with domain checks; not for a simple question about a job. Execute only the requested scope.
 license: MIT
 metadata:
-  version: "0.3.0"
+  version: "0.3.1"
 ---
 
 # Orka
@@ -15,6 +15,8 @@ Organiser le travail d'une entreprise composée d'agents spécialisés, de l'ét
 Ce dossier utilise le format Agent Skills. Adapter les outils, la délégation et les choix de modèles aux capacités réellement exposées par l'assistant hôte. Les instructions et références sont principalement en français ; produire les livrables dans la langue demandée. Le catalogue et le préparateur JSON livrés ciblent les paramètres Codex documentés : ils sont facultatifs et ne constituent pas un lanceur Claude ou universel. Sur un autre hôte, composer le mandat avec les mêmes critères et les réglages natifs disponibles, sans transmettre des noms de modèles Codex incompatibles. Si aucun catalogue compatible n'est configuré, ne pas utiliser le préparateur ni le registre qui l'appelle ; conserver le suivi documentaire. Ne pas modifier les paramètres personnels de l'utilisateur pour installer le skill.
 
 ## Démarrage
+
+Si l'utilisateur demande comment commencer ou un guide, consulter [le guide français](GUIDE.fr.md) ou [anglais](GUIDE.md), présenter brièvement le fonctionnement et l'aider à choisir sa première mission. Si la demande est déjà concrète, la traiter directement ; ne pas imposer une introduction ni charger les guides à chaque mission. Les guides sont inclus dans le dossier installé et dans l'archive ; leur présence ne signifie pas qu'ils s'ouvrent automatiquement dans chaque assistant.
 
 1. Identifier la mission : étude, marketing, vente, réalisation, lancement, suivi client, finance, RH, pilotage ou reprise. Pour une modification de ce skill, modifier les fichiers sans lancer de mission d'entreprise.
 2. Repérer le dossier existant ; sinon choisir un identifiant descriptif sous `projets/` pour un produit, ou `entreprise/missions/` pour une mission transversale. Respecter toute destination explicite. Le code est modifié dans le dépôt désigné, pas automatiquement dans ces dossiers de suivi. Ne pas écraser une mission existante.
@@ -58,6 +60,10 @@ Maintenir l'état et les décisions au fil des étapes. Faire accepter les résu
 Pour une étude ou une décision entre équipes, ouvrir la restitution par une synthèse dirigeant visant une page : recommandation, preuves décisives, inconnues, prochaine expérience et décision attendue. Utiliser le [modèle de synthèse](references/modeles.md#synthesemd) ; dans une mission compacte, l'intégrer au livrable existant. Garder les conclusions actuelles avant l'historique, relier chaque règle à sa référence unique et employer des liens relatifs entre fichiers du dossier. Dimensionner le prochain travail sur les inconnues qui peuvent changer la décision, sans transformer une découverte en protocole confirmatoire prématuré.
 
 Rendre les livrables définis par le workflow, leurs vérifications, les limites et les prochaines actions. Pour une étude, inclure recommandation, preuves, incertitudes, première version proposée et prochain test mesurable. Après une mission substantielle, consigner les corrections et mesures disponibles pour améliorer la méthode sans inventer de gain de performance.
+
+À la fin de chaque réponse finale Orka, ajouter un unique **« Prochain prompt à copier »**, traduit dans la langue de l'utilisateur, suivi d'un bloc texte Markdown copiable. Formuler une demande courte et directement réutilisable : prochaine action utile, projet ou dossier connu, résultat attendu et contrainte décisive si nécessaire. Reprendre le contexte réel sans inventer de faits ni laisser de champs à remplir lorsqu'ils sont connus. Si une réponse humaine manque, proposer de clarifier ce point avant le travail dépendant. Si aucune suite immédiate n'est utile, proposer une reprise conditionnée à de nouveaux retours. Respecter toute demande de réponse sans suggestion ou de format exclusif incompatible avec cet ajout.
+
+Terminer d'abord le travail déjà autorisé et réalisable ; le prompt ne sert pas à reporter la fin de la mission à un tour suivant. La proposition reste une suggestion, ne s'exécute pas automatiquement et ne présente pas une phase future comme déjà décidée. Respecter les autorisations existantes sans ajouter de confirmation inutile ni y inclure une action externe non demandée.
 
 Ne pas étendre une mission à la phase suivante sans instruction la couvrant. Une demande de développement autorise la réalisation définie ; une demande de stratégie marketing autorise sa préparation. Contacter des tiers, engager des dépenses, publier ou déployer nécessite une autorisation couvrant l'action. Respecter les autorisations déjà données ; ne pas les redemander inutilement.
 
