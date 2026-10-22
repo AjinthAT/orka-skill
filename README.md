@@ -93,6 +93,8 @@ When a decisive input is missing, Orka requests a targeted context supplement, k
 
 Start with mission documents. The optional preparer makes requests repeatable; the supervision register tracks reservations, attempts and input versions across interruptions; the agent report summarizes supplied measurements. Use them when those checks help your mission.
 
+Repeated-evaluation preparation and reporting are available as an optional [repository maintenance tool](docs/EVALUATIONS.md), outside the skill ZIP. It freezes inputs and reads supplied observations; it never launches models. The document-based procedure remains usable without Python.
+
 The optional [installation diagnostic](.agents/skills/orka/references/diagnostic-installation.md) checks an explicit skill folder in read-only mode, with an optional reference comparison. A manual check without Python is documented too; file presence never proves host activation.
 
 These helpers do not launch models, collect token telemetry or enforce financial budgets. Model usage depends on your assistant's plan and costs. Your own project's runtime is a separate choice.
@@ -128,7 +130,7 @@ These helpers do not launch models, collect token telemetry or enforce financial
 
 ## Development and contributions
 
-[ECC-01 progress](docs/LOT-ECC-01.md) — L1 installation diagnostics delivered in 0.5.0; L2 document-based progressive context added in 0.6.0. Repeated-evaluation tooling and comparative qualification remain planned. Specification and acceptance checks are in French.
+[ECC-01 progress](docs/LOT-ECC-01.md) — L1 installation diagnostics delivered in 0.5.0; L2 document-based progressive context added in 0.6.0; L3 preparation/reporting tooling delivered in 0.7.0 and tested on fabricated observations. Comparative qualification (L4) remains planned. Specification and acceptance checks are in French.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for repository layout, verification commands, ZIP builds and preservation of evaluation records. Describe the observed problem and relevant checks in issues or pull requests. Keep private mission data in its designated workspace, outside public contributions.
 

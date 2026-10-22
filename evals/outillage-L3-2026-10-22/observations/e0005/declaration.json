@@ -1,0 +1,17 @@
+{
+  "format": 1,
+  "execution": "e0005",
+  "empreinte_execution": "c7b5b7ff643487377e95649bb3a7d5b0ca0be45cde0d8855ae3b913bb462b4a3",
+  "nature": "simulation",
+  "etat": "terminee",
+  "provenance": {
+    "source": "Observation construite pour un test logiciel",
+    "hote": "fixture-locale",
+    "id_natif": null
+  },
+  "sorties": [
+    "livrable.json"
+  ],
+  "ecarts": [],
+  "revues": {}
+}

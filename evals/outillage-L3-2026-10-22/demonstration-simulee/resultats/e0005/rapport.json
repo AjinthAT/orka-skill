@@ -1,0 +1,31 @@
+{
+  "format": 1,
+  "donnees": {
+    "format": 1,
+    "execution": "e0005",
+    "empreinte_execution": "c7b5b7ff643487377e95649bb3a7d5b0ca0be45cde0d8855ae3b913bb462b4a3",
+    "nature": "simulation",
+    "etat": "terminee",
+    "provenance": {
+      "source": "Observation construite pour un test logiciel",
+      "hote": "fixture-locale",
+      "id_natif": null
+    },
+    "sorties": [
+      "livrable.json"
+    ],
+    "ecarts": [],
+    "revues": {}
+  },
+  "pieces": {
+    "livrable.json": {
+      "copie": "pieces/f0001",
+      "sha256": "65a26c21c80cba12c83b948e93ee6befd06077b2be1156634c572c36cc53feb3"
+    }
+  },
+  "declaration": {
+    "copie": "declaration.json",
+    "sha256": "8f82d447fcb1014d07899670c1571ce1c81e7deaf688c65d31b1c073a8908b5d"
+  },
+  "empreinte": "8ab8a2df0f0c5c51921d5b4631e2809788b9f835c2bbe1c6431618dbc3e202be"
+}

@@ -93,6 +93,8 @@ Si une entrée décisive manque, Orka demande un complément ciblé, garde sa so
 
 Commencez avec les documents de mission. Le préparateur facultatif rend les mandats répétables ; le registre conserve les réservations, tentatives et versions d’entrées après interruption ; le bilan synthétise des mesures fournies. Utilisez-les quand leurs contrôles servent votre mission.
 
+La préparation et le bilan d’évaluations répétées disposent d’un [outil facultatif de maintenance du dépôt](docs/EVALUATIONS.md), hors ZIP du skill. Il fige les entrées et lit des observations fournies, sans lancer de modèle. La procédure documentaire reste utilisable sans Python.
+
 Le [diagnostic d’installation facultatif](.agents/skills/orka/references/diagnostic-installation.md) examine un dossier explicite en lecture seule, avec comparaison optionnelle à une référence. La procédure manuelle sans Python reste disponible ; la présence des fichiers ne prouve pas l’activation par l’hôte.
 
 Ces outils ne lancent pas les modèles, ne collectent pas les tokens et n’imposent pas de plafond financier. L’usage des modèles dépend de l’offre de votre assistant. Les exigences techniques de votre propre projet restent distinctes.
@@ -116,7 +118,7 @@ Ces outils ne lancent pas les modèles, ne collectent pas les tokens et n’impo
 
 ## Documentation et développement
 
-Le [suivi ECC-01](docs/LOT-ECC-01.md) distingue L1, diagnostic livré en 0.5.0, et L2, contexte progressif documentaire ajouté en 0.6.0, des outils d’évaluations répétées et de la qualification comparative encore prévus. Les critères d’acceptation et leurs preuves restent séparés des campagnes à venir.
+Le [suivi ECC-01](docs/LOT-ECC-01.md) distingue L1, diagnostic livré en 0.5.0, L2, contexte progressif documentaire ajouté en 0.6.0, et L3, outillage de préparation et de bilan livré en 0.7.0 sur données simulées. La qualification comparative L4 reste prévue. Les critères d’acceptation et leurs preuves restent séparés des campagnes à venir.
 
 | Pour commencer | Pour approfondir |
 |---|---|

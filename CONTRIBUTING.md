@@ -31,9 +31,11 @@ The verifier checks metadata, maintained local links, all helper suites after in
 
 For changes to agent behavior, follow the [evaluation procedure](.agents/skills/orka/references/evaluation-agents.md). Software checks do not establish better model behavior, lower costs or complete host compatibility.
 
+For repeated-evaluation preparation and reporting, see [EVALUATIONS.md](docs/EVALUATIONS.md). The optional `tools/evaluer.py` uses only the standard library, freezes supplied inputs and imports observations without launching models. Its [regression suite](tests/test_evaluer.py) is included in the repository verifier; fabricated observations remain separate from real model executions.
+
 ## Preserve evaluation records
 
-Keep captured inputs, prompts, outputs and their manifests unchanged. Add new runs in a separate directory, with explicit criteria, source versions and available measurements. Preserve failed attempts and protocol deviations. Do not reformat historical JSON or replace absolute paths inside raw captures merely to tidy them; portable indexes provide navigation without altering the originals.
+Keep captured inputs, prompts, outputs and their manifests unchanged. Add new runs in a separate directory, with explicit criteria, source versions and available measurements. Preserve failed attempts and protocol deviations. The `evals/** -text` attribute preserves captured bytes even on CRLF-configured checkouts. Do not renormalize this directory. Do not reformat historical JSON or replace absolute paths inside raw captures merely to tidy them; portable indexes provide navigation without altering the originals.
 
 Some historical recheck tools write verification files. Use a temporary copy when rechecking captured outputs. Replaying files is not a new model execution. Publish only data authorized for public distribution, with any redactions and new hashes identified.
 

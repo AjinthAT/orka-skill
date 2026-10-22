@@ -1,0 +1,30 @@
+{
+  "format": 1,
+  "execution": "e0002",
+  "empreinte_execution": "5bc889cdfbb4edeb9ee4959e798b9ecf8f173b5fe70ef0b0784b878c4ec4b970",
+  "nature": "simulation",
+  "etat": "terminee",
+  "provenance": {
+    "source": "Observation construite pour un test logiciel",
+    "hote": "fixture-locale",
+    "id_natif": null
+  },
+  "sorties": [
+    "livrable.json"
+  ],
+  "ecarts": [],
+  "revues": {
+    "sens": {
+      "etat": "satisfait",
+      "auteur": "evaluateur-simule",
+      "source": "Fixture de revue, pas un avis reel",
+      "preuve": "Decision fictive pour tester la conservation"
+    }
+  },
+  "cout": {
+    "nature": "constate",
+    "montant": "0.10",
+    "devise": "USD",
+    "source": "Valeur fabriquee pour tester la separation des devises et natures"
+  }
+}

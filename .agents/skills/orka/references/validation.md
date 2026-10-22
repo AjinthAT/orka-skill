@@ -10,6 +10,8 @@ Le [bilan local](bilan-agents.md) est vérifié par [test_bilan_agents.py](../sc
 
 Le [protocole de contexte progressif](prompting-agents.md#compléter-le-contexte-par-passes-bornées) a fait l'objet d'une réception ciblée C1–C5 en 0.6.0 : [cas, sorties et limites](https://github.com/AjinthAT/orka-skill/blob/main/evals/contexte-L2-2026-10-22/README.md). Trois contextes neufs et un essai par cas ne constituent pas la qualification comparative répétée ni un audit indépendant des accès. Les conventions de compteur et de lecture ne sont pas des contrôles techniques.
 
+La préparation et le bilan des répétitions sont implémentés en 0.7.0 par un outil facultatif du dépôt, hors ZIP du skill. Les [régressions et preuves E1–E6](https://github.com/AjinthAT/orka-skill/blob/main/docs/VALIDATION-L3.md) utilisent des observations fabriquées, sans appel modèle. La [procédure manuelle](evaluation-agents.md#préparer-et-relire-des-répétitions) reste complète sans Python. Ces contrôles logiciels ne constituent ni la campagne L4 ni une décision de qualification E7.
+
 Utiliser un dossier d'essai distinct pour les simulations. Marquer toute donnée simulée et ne pas la réutiliser comme preuve de marché.
 
 | Demande ou situation | Comportement attendu |

@@ -1,0 +1,46 @@
+{
+  "format": 1,
+  "execution": "e0001",
+  "empreinte_execution": "72fa7b3b6ed2ceeffe1ac53258486657c4027796ea9dbc63637502388b690247",
+  "nature": "simulation",
+  "etat": "terminee",
+  "provenance": {
+    "source": "Observation construite pour un test logiciel",
+    "hote": "fixture-locale",
+    "id_natif": null
+  },
+  "sorties": [
+    "livrable.json"
+  ],
+  "ecarts": [],
+  "revues": {
+    "sens": {
+      "etat": "satisfait",
+      "auteur": "evaluateur-simule",
+      "source": "Fixture de revue, pas un avis reel",
+      "preuve": "Decision fictive pour tester la conservation"
+    }
+  },
+  "tokens": {
+    "id": "mesure-simulee-1",
+    "source": "Valeurs fictives, pas une consommation observee",
+    "perimetre": "execution_exclusive",
+    "entree": 120,
+    "sortie": 30
+  },
+  "cout": {
+    "nature": "estime",
+    "montant": "0.25",
+    "devise": "EUR",
+    "source": "Montant fictif sans tarif reel"
+  },
+  "traces": {
+    "couverture": "partielle",
+    "source": "Declaration fictive de couverture"
+  },
+  "duree_observee": {
+    "secondes": 9.5,
+    "nature": "murale",
+    "source": "Duree illustrative, pas une mesure de modele"
+  }
+}

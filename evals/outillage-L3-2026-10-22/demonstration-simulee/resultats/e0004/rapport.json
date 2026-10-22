@@ -1,0 +1,40 @@
+{
+  "format": 1,
+  "donnees": {
+    "format": 1,
+    "execution": "e0004",
+    "empreinte_execution": "b4c753a869786191b5fc5ca17e5f85b3947d1f5264f83714106153fb836176d6",
+    "nature": "simulation",
+    "etat": "hors_protocole",
+    "provenance": {
+      "source": "Observation construite pour un test logiciel",
+      "hote": "fixture-locale",
+      "id_natif": null
+    },
+    "sorties": [
+      "livrable.json"
+    ],
+    "ecarts": [
+      "Ecart fictif conserve"
+    ],
+    "revues": {
+      "sens": {
+        "etat": "satisfait",
+        "auteur": "evaluateur-simule",
+        "source": "Fixture de revue, pas un avis reel",
+        "preuve": "Decision fictive pour tester la conservation"
+      }
+    }
+  },
+  "pieces": {
+    "livrable.json": {
+      "copie": "pieces/f0001",
+      "sha256": "65a26c21c80cba12c83b948e93ee6befd06077b2be1156634c572c36cc53feb3"
+    }
+  },
+  "declaration": {
+    "copie": "declaration.json",
+    "sha256": "812fdc74fa2f7a9309f278e0fe42ebf6e055b44ad542a04d3615338be481d860"
+  },
+  "empreinte": "866f49a909c002437cfc3e3f0217ee882cb8f388beca64fe8405aad7bf9f1bec"
+}

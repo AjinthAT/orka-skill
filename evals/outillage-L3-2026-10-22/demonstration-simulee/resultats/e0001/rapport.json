@@ -1,0 +1,60 @@
+{
+  "format": 1,
+  "donnees": {
+    "format": 1,
+    "execution": "e0001",
+    "empreinte_execution": "72fa7b3b6ed2ceeffe1ac53258486657c4027796ea9dbc63637502388b690247",
+    "nature": "simulation",
+    "etat": "terminee",
+    "provenance": {
+      "source": "Observation construite pour un test logiciel",
+      "hote": "fixture-locale",
+      "id_natif": null
+    },
+    "sorties": [
+      "livrable.json"
+    ],
+    "ecarts": [],
+    "revues": {
+      "sens": {
+        "etat": "satisfait",
+        "auteur": "evaluateur-simule",
+        "source": "Fixture de revue, pas un avis reel",
+        "preuve": "Decision fictive pour tester la conservation"
+      }
+    },
+    "tokens": {
+      "id": "mesure-simulee-1",
+      "source": "Valeurs fictives, pas une consommation observee",
+      "perimetre": "execution_exclusive",
+      "entree": 120,
+      "sortie": 30
+    },
+    "cout": {
+      "nature": "estime",
+      "montant": "0.25",
+      "devise": "EUR",
+      "source": "Montant fictif sans tarif reel"
+    },
+    "traces": {
+      "couverture": "partielle",
+      "source": "Declaration fictive de couverture"
+    },
+    "duree_observee": {
+      "secondes": 9.5,
+      "nature": "murale",
+      "source": "Duree illustrative, pas une mesure de modele"
+    }
+  },
+  "pieces": {
+    "livrable.json": {
+      "copie": "pieces/f0001",
+      "sha256": "65a26c21c80cba12c83b948e93ee6befd06077b2be1156634c572c36cc53feb3"
+    }
+  },
+  "declaration": {
+    "copie": "declaration.json",
+    "sha256": "7caf67cb59b5af62716e5c044e6b8dba356023e1b3caefcfeb1853f2320d72fd"
+  },
+  "empreinte": "90ec3c40f99c1340ec256238fe98988e67502dbe06b08abcf7c19a463ed28bfe"
+}

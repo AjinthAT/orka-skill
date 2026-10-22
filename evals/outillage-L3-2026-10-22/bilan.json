@@ -1,0 +1,690 @@
+{
+  "format": 1,
+  "campagne": "demonstration-simulee",
+  "nature": "simulation",
+  "hypothese": "Conserver les six issues prevues et leurs denominateurs dans un bilan partiel",
+  "hote_prevu": "fixture-locale",
+  "empreinte_campagne": "96d670e285be6d9a88d585194cc33aa972293b2341ed31254a9a750a9e2c0565",
+  "etat": "partiel",
+  "resume": {
+    "prevues": 6,
+    "preparees": 1,
+    "terminees": 3,
+    "interrompues": 1,
+    "hors_protocole": 1,
+    "enregistrees": 5,
+    "evaluables": 2,
+    "inconclusives": 1,
+    "succes": 1,
+    "echecs": 1,
+    "succes_sur_evaluables": {
+      "numerateur": 1,
+      "denominateur": 2,
+      "taux": 0.5
+    },
+    "succes_sur_prevues": {
+      "numerateur": 1,
+      "denominateur": 6,
+      "taux": 0.16666666666666666
+    },
+    "executees_reelles_declarees": 0,
+    "observations_simulees": 5
+  },
+  "series": [
+    {
+      "cas": "budget",
+      "version": "fictive-a",
+      "resume": {
+        "prevues": 3,
+        "preparees": 0,
+        "terminees": 2,
+        "interrompues": 0,
+        "hors_protocole": 1,
+        "enregistrees": 3,
+        "evaluables": 1,
+        "inconclusives": 1,
+        "succes": 1,
+        "echecs": 0,
+        "succes_sur_evaluables": {
+          "numerateur": 1,
+          "denominateur": 1,
+          "taux": 1.0
+        },
+        "succes_sur_prevues": {
+          "numerateur": 1,
+          "denominateur": 3,
+          "taux": 0.3333333333333333
+        }
+      },
+      "criteres": [
+        {
+          "id": "total",
+          "type": "json_egal",
+          "obligatoire": true,
+          "comptes": {
+            "satisfait": 2,
+            "non_satisfait": 0,
+            "non_verifie": 0,
+            "non_evalue": 1
+          },
+          "prevues": 3
+        },
+        {
+          "id": "marge",
+          "type": "json_nombre",
+          "obligatoire": true,
+          "comptes": {
+            "satisfait": 2,
+            "non_satisfait": 0,
+            "non_verifie": 0,
+            "non_evalue": 1
+          },
+          "prevues": 3
+        },
+        {
+          "id": "sens",
+          "type": "revue",
+          "obligatoire": true,
+          "comptes": {
+            "satisfait": 1,
+            "non_satisfait": 0,
+            "non_verifie": 1,
+            "non_evalue": 1
+          },
+          "prevues": 3
+        }
+      ]
+    },
+    {
+      "cas": "budget",
+      "version": "fictive-b",
+      "resume": {
+        "prevues": 3,
+        "preparees": 1,
+        "terminees": 1,
+        "interrompues": 1,
+        "hors_protocole": 0,
+        "enregistrees": 2,
+        "evaluables": 1,
+        "inconclusives": 0,
+        "succes": 0,
+        "echecs": 1,
+        "succes_sur_evaluables": {
+          "numerateur": 0,
+          "denominateur": 1,
+          "taux": 0.0
+        },
+        "succes_sur_prevues": {
+          "numerateur": 0,
+          "denominateur": 3,
+          "taux": 0.0
+        }
+      },
+      "criteres": [
+        {
+          "id": "total",
+          "type": "json_egal",
+          "obligatoire": true,
+          "comptes": {
+            "satisfait": 0,
+            "non_satisfait": 1,
+            "non_verifie": 0,
+            "non_evalue": 2
+          },
+          "prevues": 3
+        },
+        {
+          "id": "marge",
+          "type": "json_nombre",
+          "obligatoire": true,
+          "comptes": {
+            "satisfait": 1,
+            "non_satisfait": 0,
+            "non_verifie": 0,
+            "non_evalue": 2
+          },
+          "prevues": 3
+        },
+        {
+          "id": "sens",
+          "type": "revue",
+          "obligatoire": true,
+          "comptes": {
+            "satisfait": 1,
+            "non_satisfait": 0,
+            "non_verifie": 0,
+            "non_evalue": 2
+          },
+          "prevues": 3
+        }
+      ]
+    }
+  ],
+  "executions": [
+    {
+      "id": "e0001",
+      "cas": "budget",
+      "version": "fictive-a",
+      "repetition": 1,
+      "empreinte_execution": "72fa7b3b6ed2ceeffe1ac53258486657c4027796ea9dbc63637502388b690247",
+      "reglages_demandes": null,
+      "etat": "terminee",
+      "issue": "succes",
+      "criteres": [
+        {
+          "critere": "total",
+          "definition": {
+            "id": "total",
+            "description": "Total exact 20 fois 6",
+            "obligatoire": true,
+            "type": "json_egal",
+            "fichier": "livrable.json",
+            "chemin": [
+              "total"
+            ],
+            "attendu": 120
+          },
+          "methode": "json_egal",
+          "etat": "satisfait",
+          "preuve": {
+            "fichier": "livrable.json",
+            "sha256": "65a26c21c80cba12c83b948e93ee6befd06077b2be1156634c572c36cc53feb3",
+            "chemin": [
+              "total"
+            ],
+            "valeur": 120
+          }
+        },
+        {
+          "critere": "marge",
+          "definition": {
+            "id": "marge",
+            "description": "Marge dans la plage attendue",
+            "obligatoire": true,
+            "type": "json_nombre",
+            "fichier": "livrable.json",
+            "chemin": [
+              "marge"
+            ],
+            "minimum": 30,
+            "maximum": 30
+          },
+          "methode": "json_nombre",
+          "etat": "satisfait",
+          "preuve": {
+            "fichier": "livrable.json",
+            "sha256": "65a26c21c80cba12c83b948e93ee6befd06077b2be1156634c572c36cc53feb3",
+            "chemin": [
+              "marge"
+            ],
+            "valeur": 30
+          }
+        },
+        {
+          "critere": "sens",
+          "definition": {
+            "id": "sens",
+            "description": "Revue metier attribuee",
+            "obligatoire": true,
+            "type": "revue"
+          },
+          "methode": "revue_attribuee",
+          "etat": "satisfait",
+          "preuve": {
+            "etat": "satisfait",
+            "auteur": "evaluateur-simule",
+            "source": "Fixture de revue, pas un avis reel",
+            "preuve": "Decision fictive pour tester la conservation"
+          }
+        }
+      ],
+      "mesures": {
+        "tokens": {
+          "id": "mesure-simulee-1",
+          "source": "Valeurs fictives, pas une consommation observee",
+          "perimetre": "execution_exclusive",
+          "entree": 120,
+          "sortie": 30
+        },
+        "cout": {
+          "nature": "estime",
+          "montant": "0.25",
+          "devise": "EUR",
+          "source": "Montant fictif sans tarif reel"
+        },
+        "traces": {
+          "couverture": "partielle",
+          "source": "Declaration fictive de couverture"
+        },
+        "reglages_appliques": null,
+        "duree_observee": {
+          "secondes": 9.5,
+          "nature": "murale",
+          "source": "Duree illustrative, pas une mesure de modele"
+        }
+      },
+      "etat_declare": "terminee",
+      "ecarts": [],
+      "provenance": {
+        "source": "Observation construite pour un test logiciel",
+        "hote": "fixture-locale",
+        "id_natif": null
+      }
+    },
+    {
+      "id": "e0002",
+      "cas": "budget",
+      "version": "fictive-b",
+      "repetition": 1,
+      "empreinte_execution": "5bc889cdfbb4edeb9ee4959e798b9ecf8f173b5fe70ef0b0784b878c4ec4b970",
+      "reglages_demandes": null,
+      "etat": "terminee",
+      "issue": "echec",
+      "criteres": [
+        {
+          "critere": "total",
+          "definition": {
+            "id": "total",
+            "description": "Total exact 20 fois 6",
+            "obligatoire": true,
+            "type": "json_egal",
+            "fichier": "livrable.json",
+            "chemin": [
+              "total"
+            ],
+            "attendu": 120
+          },
+          "methode": "json_egal",
+          "etat": "non_satisfait",
+          "preuve": {
+            "fichier": "livrable.json",
+            "sha256": "db97d774351ed5f5a666febf8f9b49a738bc312f14462463824ccd5059786cc5",
+            "chemin": [
+              "total"
+            ],
+            "valeur": 121
+          }
+        },
+        {
+          "critere": "marge",
+          "definition": {
+            "id": "marge",
+            "description": "Marge dans la plage attendue",
+            "obligatoire": true,
+            "type": "json_nombre",
+            "fichier": "livrable.json",
+            "chemin": [
+              "marge"
+            ],
+            "minimum": 30,
+            "maximum": 30
+          },
+          "methode": "json_nombre",
+          "etat": "satisfait",
+          "preuve": {
+            "fichier": "livrable.json",
+            "sha256": "db97d774351ed5f5a666febf8f9b49a738bc312f14462463824ccd5059786cc5",
+            "chemin": [
+              "marge"
+            ],
+            "valeur": 30
+          }
+        },
+        {
+          "critere": "sens",
+          "definition": {
+            "id": "sens",
+            "description": "Revue metier attribuee",
+            "obligatoire": true,
+            "type": "revue"
+          },
+          "methode": "revue_attribuee",
+          "etat": "satisfait",
+          "preuve": {
+            "etat": "satisfait",
+            "auteur": "evaluateur-simule",
+            "source": "Fixture de revue, pas un avis reel",
+            "preuve": "Decision fictive pour tester la conservation"
+          }
+        }
+      ],
+      "mesures": {
+        "tokens": null,
+        "cout": {
+          "nature": "constate",
+          "montant": "0.10",
+          "devise": "USD",
+          "source": "Valeur fabriquee pour tester la separation des devises et natures"
+        },
+        "traces": null,
+        "reglages_appliques": null,
+        "duree_observee": null
+      },
+      "etat_declare": "terminee",
+      "ecarts": [],
+      "provenance": {
+        "source": "Observation construite pour un test logiciel",
+        "hote": "fixture-locale",
+        "id_natif": null
+      }
+    },
+    {
+      "id": "e0003",
+      "cas": "budget",
+      "version": "fictive-b",
+      "repetition": 2,
+      "empreinte_execution": "d6489f58b8363e4e076886d21b208c053f854832c423e2e1d10e7f5d15a705ab",
+      "reglages_demandes": null,
+      "etat": "interrompue",
+      "issue": "non_evaluee",
+      "criteres": [
+        {
+          "critere": "total",
+          "definition": {
+            "id": "total",
+            "description": "Total exact 20 fois 6",
+            "obligatoire": true,
+            "type": "json_egal",
+            "fichier": "livrable.json",
+            "chemin": [
+              "total"
+            ],
+            "attendu": 120
+          },
+          "methode": "json_egal",
+          "etat": "satisfait",
+          "preuve": {
+            "fichier": "livrable.json",
+            "sha256": "65a26c21c80cba12c83b948e93ee6befd06077b2be1156634c572c36cc53feb3",
+            "chemin": [
+              "total"
+            ],
+            "valeur": 120
+          }
+        },
+        {
+          "critere": "marge",
+          "definition": {
+            "id": "marge",
+            "description": "Marge dans la plage attendue",
+            "obligatoire": true,
+            "type": "json_nombre",
+            "fichier": "livrable.json",
+            "chemin": [
+              "marge"
+            ],
+            "minimum": 30,
+            "maximum": 30
+          },
+          "methode": "json_nombre",
+          "etat": "satisfait",
+          "preuve": {
+            "fichier": "livrable.json",
+            "sha256": "65a26c21c80cba12c83b948e93ee6befd06077b2be1156634c572c36cc53feb3",
+            "chemin": [
+              "marge"
+            ],
+            "valeur": 30
+          }
+        },
+        {
+          "critere": "sens",
+          "definition": {
+            "id": "sens",
+            "description": "Revue metier attribuee",
+            "obligatoire": true,
+            "type": "revue"
+          },
+          "methode": "revue_attribuee",
+          "etat": "satisfait",
+          "preuve": {
+            "etat": "satisfait",
+            "auteur": "evaluateur-simule",
+            "source": "Fixture de revue, pas un avis reel",
+            "preuve": "Decision fictive pour tester la conservation"
+          }
+        }
+      ],
+      "mesures": {
+        "tokens": null,
+        "cout": null,
+        "traces": null,
+        "reglages_appliques": null,
+        "duree_observee": null
+      },
+      "etat_declare": "interrompue",
+      "ecarts": [],
+      "provenance": {
+        "source": "Observation construite pour un test logiciel",
+        "hote": "fixture-locale",
+        "id_natif": null
+      }
+    },
+    {
+      "id": "e0004",
+      "cas": "budget",
+      "version": "fictive-a",
+      "repetition": 2,
+      "empreinte_execution": "b4c753a869786191b5fc5ca17e5f85b3947d1f5264f83714106153fb836176d6",
+      "reglages_demandes": null,
+      "etat": "hors_protocole",
+      "issue": "non_evaluee",
+      "criteres": [
+        {
+          "critere": "total",
+          "definition": {
+            "id": "total",
+            "description": "Total exact 20 fois 6",
+            "obligatoire": true,
+            "type": "json_egal",
+            "fichier": "livrable.json",
+            "chemin": [
+              "total"
+            ],
+            "attendu": 120
+          },
+          "methode": "json_egal",
+          "etat": "satisfait",
+          "preuve": {
+            "fichier": "livrable.json",
+            "sha256": "65a26c21c80cba12c83b948e93ee6befd06077b2be1156634c572c36cc53feb3",
+            "chemin": [
+              "total"
+            ],
+            "valeur": 120
+          }
+        },
+        {
+          "critere": "marge",
+          "definition": {
+            "id": "marge",
+            "description": "Marge dans la plage attendue",
+            "obligatoire": true,
+            "type": "json_nombre",
+            "fichier": "livrable.json",
+            "chemin": [
+              "marge"
+            ],
+            "minimum": 30,
+            "maximum": 30
+          },
+          "methode": "json_nombre",
+          "etat": "satisfait",
+          "preuve": {
+            "fichier": "livrable.json",
+            "sha256": "65a26c21c80cba12c83b948e93ee6befd06077b2be1156634c572c36cc53feb3",
+            "chemin": [
+              "marge"
+            ],
+            "valeur": 30
+          }
+        },
+        {
+          "critere": "sens",
+          "definition": {
+            "id": "sens",
+            "description": "Revue metier attribuee",
+            "obligatoire": true,
+            "type": "revue"
+          },
+          "methode": "revue_attribuee",
+          "etat": "satisfait",
+          "preuve": {
+            "etat": "satisfait",
+            "auteur": "evaluateur-simule",
+            "source": "Fixture de revue, pas un avis reel",
+            "preuve": "Decision fictive pour tester la conservation"
+          }
+        }
+      ],
+      "mesures": {
+        "tokens": null,
+        "cout": null,
+        "traces": null,
+        "reglages_appliques": null,
+        "duree_observee": null
+      },
+      "etat_declare": "hors_protocole",
+      "ecarts": [
+        "Ecart fictif conserve"
+      ],
+      "provenance": {
+        "source": "Observation construite pour un test logiciel",
+        "hote": "fixture-locale",
+        "id_natif": null
+      }
+    },
+    {
+      "id": "e0005",
+      "cas": "budget",
+      "version": "fictive-a",
+      "repetition": 3,
+      "empreinte_execution": "c7b5b7ff643487377e95649bb3a7d5b0ca0be45cde0d8855ae3b913bb462b4a3",
+      "reglages_demandes": null,
+      "etat": "terminee",
+      "issue": "inconclusive",
+      "criteres": [
+        {
+          "critere": "total",
+          "definition": {
+            "id": "total",
+            "description": "Total exact 20 fois 6",
+            "obligatoire": true,
+            "type": "json_egal",
+            "fichier": "livrable.json",
+            "chemin": [
+              "total"
+            ],
+            "attendu": 120
+          },
+          "methode": "json_egal",
+          "etat": "satisfait",
+          "preuve": {
+            "fichier": "livrable.json",
+            "sha256": "65a26c21c80cba12c83b948e93ee6befd06077b2be1156634c572c36cc53feb3",
+            "chemin": [
+              "total"
+            ],
+            "valeur": 120
+          }
+        },
+        {
+          "critere": "marge",
+          "definition": {
+            "id": "marge",
+            "description": "Marge dans la plage attendue",
+            "obligatoire": true,
+            "type": "json_nombre",
+            "fichier": "livrable.json",
+            "chemin": [
+              "marge"
+            ],
+            "minimum": 30,
+            "maximum": 30
+          },
+          "methode": "json_nombre",
+          "etat": "satisfait",
+          "preuve": {
+            "fichier": "livrable.json",
+            "sha256": "65a26c21c80cba12c83b948e93ee6befd06077b2be1156634c572c36cc53feb3",
+            "chemin": [
+              "marge"
+            ],
+            "valeur": 30
+          }
+        },
+        {
+          "critere": "sens",
+          "definition": {
+            "id": "sens",
+            "description": "Revue metier attribuee",
+            "obligatoire": true,
+            "type": "revue"
+          },
+          "methode": "revue_attribuee",
+          "etat": "non_verifie",
+          "preuve": "Aucune revue fournie ; aucun verdict automatique"
+        }
+      ],
+      "mesures": {
+        "tokens": null,
+        "cout": null,
+        "traces": null,
+        "reglages_appliques": null,
+        "duree_observee": null
+      },
+      "etat_declare": "terminee",
+      "ecarts": [],
+      "provenance": {
+        "source": "Observation construite pour un test logiciel",
+        "hote": "fixture-locale",
+        "id_natif": null
+      }
+    },
+    {
+      "id": "e0006",
+      "cas": "budget",
+      "version": "fictive-b",
+      "repetition": 3,
+      "empreinte_execution": "804eb45911ab8f87bb1fbe3bbfcb1b0eb6d78c406856000e583debc2156a186b",
+      "reglages_demandes": null,
+      "etat": "preparee",
+      "issue": "non_evaluee",
+      "criteres": [],
+      "mesures": null
+    }
+  ],
+  "couverture_mesures": {
+    "denominateur": 5,
+    "tokens_renseignes": 1,
+    "couts_renseignes": 2,
+    "reglages_renseignes": 0,
+    "traces_renseignees": 1,
+    "durees_murales_renseignees": 1
+  },
+  "tokens_connus": {
+    "entree": 120,
+    "sortie": 30
+  },
+  "couts_connus": [
+    {
+      "nature": "constate",
+      "devise": "USD",
+      "sous_total_connu": "0.10",
+      "renseignees": 1
+    },
+    {
+      "nature": "estime",
+      "devise": "EUR",
+      "sous_total_connu": "0.25",
+      "renseignees": 1
+    }
+  ],
+  "limites": [
+    "Resultats et provenance declares par l'operateur, sans verification native ni lancement de modele.",
+    "Un taux sur les evaluables exclut les interruptions, inconnues et ecarts : lire tous les denominateurs.",
+    "Sous-totaux d'usage connus, sans conversion de devise, tarification ou gain economique deduit.",
+    "Durees murales fournies, pas des temps de calcul modele ; couverture de traces declaree.",
+    "Les controles lisent des donnees ; aucun script ou prototype fourni n'est execute."
+  ]
+}

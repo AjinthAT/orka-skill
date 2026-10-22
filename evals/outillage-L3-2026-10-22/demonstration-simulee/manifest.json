@@ -1,0 +1,133 @@
+{
+  "format": 1,
+  "plan": {
+    "format": 1,
+    "id": "demonstration-simulee",
+    "origine": "Validation logicielle L3 : observations fabriquees, aucun agent execute",
+    "hypothese": "Conserver les six issues prevues et leurs denominateurs dans un bilan partiel",
+    "nature": "simulation",
+    "hote": "fixture-locale",
+    "repetitions": 3,
+    "max_executions": 6,
+    "limites": [
+      "Aucun modele, agent, Web ou code inspecte execute"
+    ],
+    "versions": [
+      {
+        "id": "fictive-a",
+        "provenance": "Fausse version v1",
+        "instructions": [
+          "ref.md"
+        ],
+        "reglages_demandes": null
+      },
+      {
+        "id": "fictive-b",
+        "provenance": "Fausse version v2",
+        "instructions": [
+          "candidate.md"
+        ],
+        "reglages_demandes": null
+      }
+    ],
+    "cas": [
+      {
+        "id": "budget",
+        "origine": "Cas fictif",
+        "usage": "developpement",
+        "entrees": [
+          "entree.json"
+        ],
+        "prompt": "prompt.txt",
+        "criteres": [
+          {
+            "id": "total",
+            "description": "Total exact 20 fois 6",
+            "obligatoire": true,
+            "type": "json_egal",
+            "fichier": "livrable.json",
+            "chemin": [
+              "total"
+            ],
+            "attendu": 120
+          },
+          {
+            "id": "marge",
+            "description": "Marge dans la plage attendue",
+            "obligatoire": true,
+            "type": "json_nombre",
+            "fichier": "livrable.json",
+            "chemin": [
+              "marge"
+            ],
+            "minimum": 30,
+            "maximum": 30
+          },
+          {
+            "id": "sens",
+            "description": "Revue metier attribuee",
+            "obligatoire": true,
+            "type": "revue"
+          }
+        ]
+      }
+    ]
+  },
+  "pieces": {
+    "candidate.md": {
+      "copie": "pieces/f0001",
+      "sha256": "3ce7f9b6735855b717501dd7db96ec575a3c22d29f9dc56b03918654dc26bf12"
+    },
+    "entree.json": {
+      "copie": "pieces/f0002",
+      "sha256": "0cfb20afe669fa92ce720313bb99d3e81e8b251e9a7f0d6d872e1d98096c9c00"
+    },
+    "prompt.txt": {
+      "copie": "pieces/f0003",
+      "sha256": "c13a033d973a47de9456b10c95f6725ff9434a8d85bfcf9a1562c0b1024b120e"
+    },
+    "ref.md": {
+      "copie": "pieces/f0004",
+      "sha256": "e876d405da8e3cf6024e991bfc806a0335a589c1da1aa4448da2549dfcf6b3f4"
+    }
+  },
+  "executions": [
+    {
+      "id": "e0001",
+      "cas": "budget",
+      "version": "fictive-a",
+      "repetition": 1
+    },
+    {
+      "id": "e0002",
+      "cas": "budget",
+      "version": "fictive-b",
+      "repetition": 1
+    },
+    {
+      "id": "e0003",
+      "cas": "budget",
+      "version": "fictive-b",
+      "repetition": 2
+    },
+    {
+      "id": "e0004",
+      "cas": "budget",
+      "version": "fictive-a",
+      "repetition": 2
+    },
+    {
+      "id": "e0005",
+      "cas": "budget",
+      "version": "fictive-a",
+      "repetition": 3
+    },
+    {
+      "id": "e0006",
+      "cas": "budget",
+      "version": "fictive-b",
+      "repetition": 3
+    }
+  ],
+  "empreinte": "96d670e285be6d9a88d585194cc33aa972293b2341ed31254a9a750a9e2c0565"
+}

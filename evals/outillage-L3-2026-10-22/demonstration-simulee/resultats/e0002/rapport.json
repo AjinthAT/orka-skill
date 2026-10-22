@@ -1,0 +1,44 @@
+{
+  "format": 1,
+  "donnees": {
+    "format": 1,
+    "execution": "e0002",
+    "empreinte_execution": "5bc889cdfbb4edeb9ee4959e798b9ecf8f173b5fe70ef0b0784b878c4ec4b970",
+    "nature": "simulation",
+    "etat": "terminee",
+    "provenance": {
+      "source": "Observation construite pour un test logiciel",
+      "hote": "fixture-locale",
+      "id_natif": null
+    },
+    "sorties": [
+      "livrable.json"
+    ],
+    "ecarts": [],
+    "revues": {
+      "sens": {
+        "etat": "satisfait",
+        "auteur": "evaluateur-simule",
+        "source": "Fixture de revue, pas un avis reel",
+        "preuve": "Decision fictive pour tester la conservation"
+      }
+    },
+    "cout": {
+      "nature": "constate",
+      "montant": "0.10",
+      "devise": "USD",
+      "source": "Valeur fabriquee pour tester la separation des devises et natures"
+    }
+  },
+  "pieces": {
+    "livrable.json": {
+      "copie": "pieces/f0001",
+      "sha256": "db97d774351ed5f5a666febf8f9b49a738bc312f14462463824ccd5059786cc5"
+    }
+  },
+  "declaration": {
+    "copie": "declaration.json",
+    "sha256": "b6fccfa13050af145bbcff80a9f702e0e9280cf62068498703bf7bcc5ac7bff1"
+  },
+  "empreinte": "dc405af8af1229c0c5fb27b1c2fca30831b734d80d95ac04d50694412f3db099"
+}

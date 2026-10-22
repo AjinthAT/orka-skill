@@ -81,6 +81,8 @@ You can ask for a small team, a concise response, explicit objections or a parti
 
 Tokens and costs are known only when measurements are available. The [local agent report](references/bilan-agents.md) summarizes supplied records; it does not collect telemetry. If subagents are unavailable or unauthorized, Orka applies the useful perspectives sequentially and says so.
 
+For repeated comparisons, the [evaluation procedure](references/evaluation-agents.md#préparer-et-relire-des-répétitions), in French, keeps every repetition and its criteria, including failures and unknowns. It works through ordinary documents without Python. An optional preparation/reporting tool is available in the source repository for maintenance; it is not in the installed ZIP and never launches models. Preparing a campaign does not authorize its execution.
+
 ## 5. Keep control of the project
 
 A study does not establish willingness to buy or authorize a launch. Your request can authorize implementation; sending messages, spending, publishing or deploying requires instructions covering that action. Existing authorization remains valid within its scope.

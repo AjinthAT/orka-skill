@@ -1,0 +1,2 @@
+# Captured evaluation bytes must retain their recorded hashes on every host.
+evals/** -text

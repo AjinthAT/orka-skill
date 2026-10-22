@@ -1,0 +1,73 @@
+{
+  "format": 1,
+  "id": "demonstration-simulee",
+  "origine": "Validation logicielle L3 : observations fabriquees, aucun agent execute",
+  "hypothese": "Conserver les six issues prevues et leurs denominateurs dans un bilan partiel",
+  "nature": "simulation",
+  "hote": "fixture-locale",
+  "repetitions": 3,
+  "max_executions": 6,
+  "limites": [
+    "Aucun modele, agent, Web ou code inspecte execute"
+  ],
+  "versions": [
+    {
+      "id": "fictive-a",
+      "provenance": "Fausse version v1",
+      "instructions": [
+        "ref.md"
+      ],
+      "reglages_demandes": null
+    },
+    {
+      "id": "fictive-b",
+      "provenance": "Fausse version v2",
+      "instructions": [
+        "candidate.md"
+      ],
+      "reglages_demandes": null
+    }
+  ],
+  "cas": [
+    {
+      "id": "budget",
+      "origine": "Cas fictif",
+      "usage": "developpement",
+      "entrees": [
+        "entree.json"
+      ],
+      "prompt": "prompt.txt",
+      "criteres": [
+        {
+          "id": "total",
+          "description": "Total exact 20 fois 6",
+          "obligatoire": true,
+          "type": "json_egal",
+          "fichier": "livrable.json",
+          "chemin": [
+            "total"
+          ],
+          "attendu": 120
+        },
+        {
+          "id": "marge",
+          "description": "Marge dans la plage attendue",
+          "obligatoire": true,
+          "type": "json_nombre",
+          "fichier": "livrable.json",
+          "chemin": [
+            "marge"
+          ],
+          "minimum": 30,
+          "maximum": 30
+        },
+        {
+          "id": "sens",
+          "description": "Revue metier attribuee",
+          "obligatoire": true,
+          "type": "revue"
+        }
+      ]
+    }
+  ]
+}

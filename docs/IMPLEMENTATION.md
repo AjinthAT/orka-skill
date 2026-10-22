@@ -1,6 +1,6 @@
 # Implémentation d’Orka
 
-Propriétaire : coordinateur de maintenance. Version documentaire : 2, 22 octobre 2026. Périmètre : aperçu de la distribution 0.6.0. Les procédures détaillées restent dans les références liées ; l’historique des changements reste dans Git et les rapports de validation.
+Propriétaire : coordinateur de maintenance. Version documentaire : 3, 22 octobre 2026. Périmètre : aperçu de la distribution 0.7.0. Les procédures détaillées restent dans les références liées ; l’historique des changements reste dans Git et les rapports de validation.
 
 ## Ce qui fonctionne aujourd’hui
 
@@ -59,13 +59,15 @@ Le [diagnostic](../.agents/skills/orka/references/diagnostic-installation.md) do
 
 Le [guide de contribution](../CONTRIBUTING.md) centralise les commandes de vérification et de construction. Le [vérificateur](../tools/verifier.py) contrôle métadonnées, liens maintenus, suites après installation déplacée et contenu du ZIP. PyYAML reste une dépendance de maintenance seulement. Les sorties des outils sont en UTF-8 et les régressions incluent des sous-processus sous configuration ASCII.
 
+L’outil de maintenance [evaluer.py](../tools/evaluer.py), hors ZIP installé, fige les campagnes et importe des observations sans lancer de modèle. Le [guide de formats](EVALUATIONS.md) distingue contrôles JSON et revues attribuées ; la [réception L3](VALIDATION-L3.md) utilise uniquement des données simulées.
+
 La [matrice CI](../.github/workflows/verification.yml) couvre Linux/macOS/Windows avec Python 3.10 et 3.13. Le tag doit correspondre à la version déclarée. Une configuration de CI ne prouve pas qu’une exécution donnée a réussi : consulter ses résultats.
 
 Les [évaluations conservées](../evals/README.md) distinguent pilote comparatif 0.4.0, découverte depuis le README et réception ciblée L2. Les [preuves L1](VALIDATION-L1.md) et [L2](VALIDATION-L2.md) décrivent leur portée. Ni les tests logiciels ni les essais ciblés n’établissent un gain général de qualité ou de coût ; les réglages appliqués et mesures absents restent inconnus. Les originaux sont conservés hors du paquet installé.
 
 ## Ce qui reste à construire
 
-Le [lot ECC-01](LOT-ECC-01.md) distingue L1 livré en 0.5.0 et L2 en 0.6.0 de L3, outillage d’évaluations répétées, et L4, qualification comparative encore à réaliser. La procédure d’[évaluation des agents](../.agents/skills/orka/references/evaluation-agents.md) porte les autres renforcements à éprouver.
+Le [lot ECC-01](LOT-ECC-01.md) distingue L1 livré en 0.5.0, L2 en 0.6.0 et L3, outillage d’évaluations répétées livré en 0.7.0 sur données simulées. L4, qualification comparative, reste à réaliser. La procédure d’[évaluation des agents](../.agents/skills/orka/references/evaluation-agents.md) porte les autres renforcements à éprouver.
 
 Une application autonome demanderait encore un client de lancement relié au registre, un ordonnanceur, une messagerie persistante, des contrôles effectifs d’accès et de moyens, la réconciliation après interruption et éventuellement une interface de suivi. Le stockage et la restauration nécessiteraient leur propre dispositif vérifié. Aucun service permanent, collecte automatique, programmation continue ou arrêt financier n’est fourni par les fichiers du skill.
 

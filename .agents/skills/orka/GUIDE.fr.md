@@ -81,6 +81,8 @@ Vous pouvez préciser : « petite équipe », « restitution courte », « exami
 
 Les tokens et coûts ne sont connus que si des mesures sont disponibles. Le [bilan local des agents](references/bilan-agents.md) exploite un relevé fourni ; il ne collecte pas ces mesures. Sans sous-agents disponibles ou autorisés, Orka applique successivement les points de vue utiles et le signale.
 
+Pour comparer plusieurs répétitions, la [procédure d’évaluation](references/evaluation-agents.md#préparer-et-relire-des-répétitions) conserve chaque résultat et ses critères, y compris échecs et inconnues. Elle fonctionne dans les documents ordinaires, sans Python. Un outil facultatif de préparation et de bilan existe dans le dépôt source pour sa maintenance ; il n’est pas dans le ZIP installé et ne lance aucun modèle. Préparer une campagne n’autorise pas son exécution.
+
 ## 5. Garder la maîtrise du projet
 
 Une étude ne vaut ni preuve d'achat ni autorisation de lancement. Vous pouvez autoriser la réalisation dans votre demande ; envoi de messages, dépenses, publication ou déploiement nécessitent une instruction couvrant l'action. Les autorisations déjà données restent valables dans leur périmètre.

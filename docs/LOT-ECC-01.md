@@ -1,8 +1,8 @@
 # Lot ECC-01 — diagnostic, contexte progressif et évaluations répétées
 
-**L1 delivered in 0.5.0; L2 implemented in 0.6.0; L3–L4 remain planned.** This French specification separates delivered work from proposals. The core remains Markdown, usable without Python. Optional helpers do not launch models or change personal assistant settings.
+**L1 delivered in 0.5.0; L2 in 0.6.0; L3 implemented in 0.7.0; L4 remains planned.** This French specification separates delivered work from proposals. The core remains Markdown, usable without Python. Optional helpers do not launch models or change personal assistant settings.
 
-Propriétaire : coordinateur de maintenance. Version : 3. Date : 22 octobre 2026. État : **L1 réalisée en 0.5.0 ; L2 implémentée en 0.6.0 ; L3–L4 préparées, campagne comparative non lancée**. Référence initiale du plan : `252f058727eb7758383d74cd3b3431ce0c734830`, skill 0.4.1. Provenance : demandes du dirigeant, fichiers du dépôt et références ECC épinglées en fin de document. La version 1 préparait tout le lot ; la version 2 consignait L1 et ses [preuves de validation](VALIDATION-L1.md). La version 3 ajoute L2 et sa [réception ciblée](VALIDATION-L2.md), sans exécuter la qualification comparative L4.
+Propriétaire : coordinateur de maintenance. Version : 4. Date : 22 octobre 2026. État : **L1 réalisée en 0.5.0 ; L2 en 0.6.0 ; L3 implémentée en 0.7.0 sur données simulées ; L4 préparée, campagne comparative non lancée**. Référence initiale du plan : `252f058727eb7758383d74cd3b3431ce0c734830`, skill 0.4.1. Provenance : demandes du dirigeant, fichiers du dépôt et références ECC épinglées en fin de document. La version 1 préparait tout le lot ; la version 2 consignait L1 et ses [preuves de validation](VALIDATION-L1.md). La version 3 ajoutait L2 et sa [réception ciblée](VALIDATION-L2.md). La version 4 consigne [L3 et ses preuves logicielles](VALIDATION-L3.md), sans exécuter la qualification comparative L4.
 
 ## Résultat attendu
 
@@ -12,7 +12,7 @@ Permettre de vérifier une installation, de compléter le contexte d’un agent 
 |---|---|---|---|
 | Diagnostic | [Installateur](../install.py) refusant l’écrasement, tests après déplacement, [vérificateur du dépôt](../tools/verifier.py), installation manuelle documentée | **L1 réalisée** : vérification ciblée d’un dossier installé, indépendante d’une installation de développement | [Procédure manuelle et diagnostic facultatif](../.agents/skills/orka/references/diagnostic-installation.md) |
 | Contexte progressif | [Mandats ciblés](../.agents/skills/orka/references/prompting-agents.md), références chargées au besoin, questions et transmissions prévues dans l’[orchestration](../.agents/skills/orka/references/orchestration-agents.md) | **L2 implémentée** : demandes et réponses traçables, compteur commun conservé à la reprise, passes bornées | [Protocole](../.agents/skills/orka/references/prompting-agents.md#compléter-le-contexte-par-passes-bornées) et [suivi compact](../.agents/skills/orka/references/modeles.md#suivi-des-compléments-de-contexte) |
-| Évaluations répétées | [Procédure](../.agents/skills/orka/references/evaluation-agents.md), [premier pilote](../evals/pilote-2026-10-22/README.md), [essai de découverte](../evals/decouverte-2026-10-22/README.md), sorties et empreintes conservées | Préparation reproductible d’une campagne et bilan de plusieurs exécutions par cas | Protocole, manifeste et synthèse, avec outil de maintenance facultatif |
+| Évaluations répétées | [Procédure](../.agents/skills/orka/references/evaluation-agents.md), [premier pilote](../evals/pilote-2026-10-22/README.md), [essai de découverte](../evals/decouverte-2026-10-22/README.md), sorties et empreintes conservées | **L3 implémentée** : campagne figée, observations importées et dénominateurs conservés | [Procédure et outil de maintenance facultatif](EVALUATIONS.md), validés sur observations simulées |
 
 Le pilote comparatif comporte un essai par cellule et un écart de périmètre connu. Le test de découverte s’arrête avant activation dans une nouvelle session. Ces résultats justifient de mieux vérifier et répéter ; ils n’établissent ni gain de qualité ni économie de tokens.
 
@@ -79,9 +79,9 @@ Le suivi est documentaire, en traitement direct ou avec les échanges natifs aut
 
 ## 3. Évaluations répétées
 
-### Outillage et conservation proposés
+### Outillage et conservation implémentés en 0.7.0
 
-Un outil facultatif de maintenance, envisagé sous `tools/evaluer.py`, prépare le manifeste, contrôle la complétude des résultats et produit un bilan. Son interface et son schéma seront figés à l’implémentation. **Il ne lance aucun modèle.** L’opérateur ou le coordinateur utilise les outils natifs déjà autorisés ; une campagne déclarée ne vaut pas une campagne exécutée.
+L’outil facultatif de maintenance [tools/evaluer.py](../tools/evaluer.py) prépare un manifeste, importe des observations et produit un bilan JSON. Le [guide](EVALUATIONS.md) fixe l’interface `preparer`, `enregistrer`, `bilan` et les formats version 1. **Il ne lance aucun modèle, agent, réseau ou code inspecté.** Il est propre au dépôt, hors du ZIP installé ; le [parcours manuel](../.agents/skills/orka/references/evaluation-agents.md#préparer-et-relire-des-répétitions) reste utilisable sans Python. L’opérateur utilise séparément les outils natifs autorisés ; une campagne déclarée ne vaut pas une campagne exécutée.
 
 Les nouvelles exécutions vont par défaut dans `.orka/evaluations/<id>/`, déjà ignoré par Git. Les jeux publics existants restent en lecture seule. Chaque exécution reçoit un identifiant distinct, des entrées et critères figés, son prompt exact, les références des versions, l’hôte, les paramètres demandés et appliqués s’ils sont exposés, les identifiants réels et les sorties. Une reprise ne remplace jamais une première remise. L’outil refuse d’écraser un résultat ou de faire passer un lancement préparé pour exécuté.
 
@@ -132,7 +132,7 @@ Les rôles désignent des responsabilités proposées, pas des agents déjà lan
 
 **Condition transversale : le cœur reste utilisable sans Python.** Le README, l’installation par copie/import ZIP, les rôles, le protocole de contexte et le suivi manuel des évaluations restent complets. Un parcours représentatif doit être essayé sans exécuter de Python ; si l’environnement réellement dépourvu de Python n’est pas disponible, cette différence reste signalée. Les nouveaux helpers sont facultatifs, Python 3.10+ et bibliothèque standard ; PyYAML demeure réservé aux vérifications de développement. Aucun Node.js, SDK, hook global, démon ou changement de configuration personnelle n’est introduit par ce lot.
 
-Le registre SQLite v2, les données et les profils actuels sont conservés. Pour une difficulté constatée, conserver le suivi documentaire ou le dernier outil valide ; ne pas restaurer une base en écrasant les événements récents. La version 0.5.0 ajoute L1 et la version 0.6.0 ajoute L2 ; L3–L4 ne changent pas le skill tant qu’elles ne sont pas réalisées. Les installations personnelles existantes sont conservées pendant cette maintenance, sans mise à jour automatique.
+Le registre SQLite v2, les données et les profils actuels sont conservés. Pour une difficulté constatée, conserver le suivi documentaire ou le dernier outil valide ; ne pas restaurer une base en écrasant les événements récents. La version 0.5.0 ajoute L1, la version 0.6.0 L2 et la version 0.7.0 L3. L4 reste à réaliser ; aucun appel modèle n’est lancé par la réception logicielle de L3. Les installations personnelles existantes sont conservées pendant cette maintenance, sans mise à jour automatique.
 
 ## Inspiration et attribution
 

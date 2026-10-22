@@ -21,6 +21,22 @@ Prévoir des cas auxquels une réponse utile est possible et des cas nécessitan
 
 Ces exécutions nécessitent les outils et autorisations correspondants. Distinguer une procédure disponible des essais réellement consignés ci-dessous.
 
+## Préparer et relire des répétitions
+
+Ce parcours peut rester entièrement documentaire, sans Python. Avant toute exécution, fixer dans le suivi existant : hypothèse, origine des cas, versions des instructions et entrées, critères indispensables et méthode de vérification, prompts exacts, hôte, réglages demandés, nombre de répétitions et limites globales. Identifier les cas de développement et ceux réservés. Une nouvelle version après lecture d'un cas réservé exige un nouveau cas pour revendiquer une confirmation indépendante.
+
+Créer la matrice cas × version × répétition avec un identifiant distinct par ligne. Chaque ligne commence **préparée, non lancée** ; fixer son ordre et garder les critères hors du contexte de production. La préparation n'autorise pas une campagne. Le coordinateur et les éventuels spécialistes comptent dans les moyens globaux ; un nombre de lignes n'est pas un nombre total d'agents.
+
+Pour chaque ligne effectivement traitée, conserver prompt, pièces fournies, sorties brutes et provenance : source de la trace, hôte, identifiant natif si exposé, paramètres appliqués et mesures accessibles. Distinguer résultats réels et observations fabriquées pour un test logiciel. L'absence de mesure reste inconnue, jamais déduite de la longueur des documents. Une durée murale inclut les attentes ; elle ne devient pas un temps de calcul modèle. La couverture des lectures et traces reste déclarée sans observation native pertinente.
+
+Consigner l'état **terminé**, **interrompu** ou **hors protocole**, avec motif des écarts. Évaluer les critères séparément : contrôles déterministes sur le comportement ou les données attendues ; appréciations métier sous forme de revues attribuées avec preuves et limites. Une revue manquante reste non vérifiée. Le vote des agents ou la présence d'une phrase ne suffit pas à valider le fond.
+
+Conserver chaque répétition, y compris les échecs. Le bilan indique prévus, encore préparés, résultats reçus, terminés, interrompus, hors protocole, évaluables et inconclusifs, puis succès et échecs avec leurs dénominateurs. Une issue est un succès si tous les critères indispensables sont satisfaits ; un critère indispensable non satisfait donne un échec ; sans échec mais avec un indispensable non vérifié, elle reste inconclusive. Les sorties interrompues ou hors protocole peuvent être examinées, mais n'entrent pas dans le taux comparable. Montrer aussi les succès sur le nombre prévu, pour rendre les absences visibles. Ne pas choisir seulement la meilleure répétition.
+
+Une nouvelle remise ne remplace pas l'original. Pour reprendre un essai, conserver son lien, sa version et son motif ; présenter séparément le résultat initial et la reprise, sans les assimiler à deux répétitions indépendantes ni cacher le premier échec. Un recontrôle de prototype utilise une copie ; un rejeu de fichiers n'est pas une nouvelle réponse de modèle.
+
+Le dépôt fournit l'outil facultatif `tools/evaluer.py` pour figer une campagne, importer des résultats fournis et produire un bilan JSON. Il ne lance aucun modèle, agent, réseau ou code inspecté. C'est un outil de maintenance du dépôt, **absent du ZIP du skill**, Python 3.10+ et bibliothèque standard uniquement. Son [guide et ses formats](https://github.com/AjinthAT/orka-skill/blob/main/docs/EVALUATIONS.md) décrivent les contrôles, refus et limites. Les nouveaux essais vont par défaut sous `.orka/evaluations/` ; ne pas réécrire les captures publiques existantes. L'outil ne remplace ni le contrôle des autorisations, ni l'authenticité des sources, ni la décision de qualification.
+
 ## Premier pilote exécuté : Orka 0.4.0, 22 octobre 2026
 
 Le [rapport public et ses preuves](https://github.com/AjinthAT/orka-skill/blob/main/evals/pilote-2026-10-22/rapport.md) conserve trois cas synthétiques : annonce JSON, étude documentaire incomplète et reprise après changement de décision. Neuf coordinateurs en contextes neufs comparent assistant seul, Orka sans délégation et Orka avec deux spécialistes imposés par cas. Six spécialistes ont effectivement été lancés ; les sorties, critères prédéfinis, empreintes, observations et recontrôles sont conservés dans le dépôt, hors du paquet installé.

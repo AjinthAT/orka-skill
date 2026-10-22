@@ -3,7 +3,7 @@ name: orka
 description: Coordinate an AI business team for strategy, market research, marketing, sales, product, development, QA, operations, finance, AI agent resources and customer support. Use when the user assigns a project or cross-functional mission to the team, including vision, innovation or naming with domain checks; not for a simple question about a job. Execute only the requested scope.
 license: MIT
 metadata:
-  version: "0.6.0"
+  version: "0.7.0"
 ---
 
 # Orka
@@ -71,4 +71,4 @@ Terminer d'abord le travail déjà autorisé et réalisable ; le prompt ne sert 
 
 Ne pas étendre une mission à la phase suivante sans instruction la couvrant. Une demande de développement autorise la réalisation définie ; une demande de stratégie marketing autorise sa préparation. Contacter des tiers, engager des dépenses, publier ou déployer nécessite une autorisation couvrant l'action. Respecter les autorisations déjà données ; ne pas les redemander inutilement.
 
-Pour vérifier le skill, utiliser [les scénarios de validation](references/validation.md). Pour modifier prompts, profils ou méthodes, suivre [l'évaluation des agents](references/evaluation-agents.md) dans une mission de maintenance autorisée : comparaison avec une référence, cas représentatifs, critères et trace de décision. Les ressources du skill ne fournissent pas de planification ni d'exécution permanente.
+Pour vérifier le skill, utiliser [les scénarios de validation](references/validation.md). Pour modifier prompts, profils ou méthodes, suivre [l'évaluation des agents](references/evaluation-agents.md) dans une mission de maintenance autorisée : comparaison avec une référence, cas représentatifs, critères et trace de décision. La [préparation et le bilan des répétitions](references/evaluation-agents.md#préparer-et-relire-des-répétitions) fonctionnent manuellement ; l'outil de maintenance facultatif du dépôt ne lance aucun modèle. Les ressources du skill ne fournissent pas de planification ni d'exécution permanente.
