@@ -62,6 +62,8 @@ Cette implémentation couvre le registre local, pas le lancement automatique, un
 
 ## Vérifications automatiques du dépôt
 
+La version 0.6.0 ajoute le [contexte progressif documentaire](../.agents/skills/orka/references/prompting-agents.md#compléter-le-contexte-par-passes-bornées) : compléments ciblés, limite par tâche conservée entre tentatives, provenance et versions, séparation des traces de lecture et réexamen des conclusions affectées. Le [modèle compact](../.agents/skills/orka/references/modeles.md#suivi-des-compléments-de-contexte) s'intègre au suivi existant. Aucun nouveau champ JSON, schéma SQLite, moteur de recherche ou compteur automatique n'est ajouté ; le préparateur utilise ses champs actuels et le cœur reste sans Python. La [réception L2](VALIDATION-L2.md) distingue essais ciblés et qualification comparative future.
+
 La version 0.5.0 ajoute le [diagnostic d’installation facultatif](../.agents/skills/orka/scripts/diagnostiquer.py), standard Python 3.10+, sans paquet tiers. Il inspecte le seul dossier indiqué, ses ressources et liens locaux ; une référence explicite permet de comparer inventaires et SHA-256. Les différences sont signalées sans réparation. L’activation et les capacités de l’hôte restent non vérifiées ; les liens externes, symboliques et points de réanalyse ne sont pas suivis. Le [guide dédié](../.agents/skills/orka/references/diagnostic-installation.md) décrit le sous-ensemble de métadonnées reconnu, les limites et le contrôle manuel sans Python. Les [régressions du diagnostic](../.agents/skills/orka/scripts/test_diagnostiquer.py) sont exécutées aussi après déplacement par les tests d’installation.
 
 Le point d'entrée [tools/verifier.py](../tools/verifier.py), après installation de [requirements-dev.txt](../requirements-dev.txt), contrôle le YAML du skill, sa version, les liens internes, toutes les suites via l'installation temporaire et le paquet ZIP construit dans un dossier temporaire. Un tag de release fourni par GitHub doit correspondre à la version du skill. PyYAML est réservé au développement ; les scripts de mission restent autonomes avec la bibliothèque standard.
@@ -143,7 +145,7 @@ La performance serait évaluée sur des missions comparables : taux d'acceptatio
 
 ## Ordre de développement proposé
 
-Le [suivi ECC-01](LOT-ECC-01.md) détaille les critères et la livraison de L1 en 0.5.0. Le contexte progressif et les outils d’évaluations répétées restent à réaliser ; aucune campagne supplémentaire n’est lancée. Le cœur Markdown et l’installation manuelle restent utilisables sans Python.
+Le [suivi ECC-01](LOT-ECC-01.md) détaille L1 en 0.5.0 et L2 en 0.6.0. Les outils d’évaluations répétées et la qualification comparative restent à réaliser ; les essais ciblés de réception L2 ne les remplacent pas. Le cœur Markdown et l’installation manuelle restent utilisables sans Python.
 
 1. Exécuter une étude réelle avec le skill et examiner la qualité des livrables.
 2. Ajuster les rôles, les échanges et les critères de sortie selon les résultats.

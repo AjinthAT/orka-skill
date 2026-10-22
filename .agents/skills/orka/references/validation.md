@@ -8,6 +8,8 @@ Le registre persistant est vérifié par [test_superviser.py](../scripts/test_su
 
 Le [bilan local](bilan-agents.md) est vérifié par [test_bilan_agents.py](../scripts/test_bilan_agents.py) : inconnues, sous-totaux, dénominateurs, reprises, devises et refus des recouvrements déclarés. Les mesures sont simulées ; aucune collecte réelle n'est éprouvée.
 
+Le [protocole de contexte progressif](prompting-agents.md#compléter-le-contexte-par-passes-bornées) a fait l'objet d'une réception ciblée C1–C5 en 0.6.0 : [cas, sorties et limites](https://github.com/AjinthAT/orka-skill/blob/main/evals/contexte-L2-2026-10-22/README.md). Trois contextes neufs et un essai par cas ne constituent pas la qualification comparative répétée ni un audit indépendant des accès. Les conventions de compteur et de lecture ne sont pas des contrôles techniques.
+
 Utiliser un dossier d'essai distinct pour les simulations. Marquer toute donnée simulée et ne pas la réutiliser comme preuve de marché.
 
 | Demande ou situation | Comportement attendu |

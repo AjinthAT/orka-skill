@@ -67,6 +67,8 @@ Orka, reprends le dossier actuel. Relis l'état, la synthèse et les décisions,
 
 ## 3. Lire le résultat et utiliser le prochain prompt
 
+Si une entrée décisive manque, Orka demande la source ou l'extrait utile, puis garde sa provenance, sa version et son effet sur le résultat. La limite par défaut est de trois demandes de contexte par tâche, conservées à la reprise, sauf autre limite explicite dans le mandat. Sans accès ou preuve suffisante, le résultat reste partiel et ses inconnues sont visibles. Des entrées complètes n'appellent pas de question supplémentaire. Le [protocole de contexte progressif](references/prompting-agents.md#compléter-le-contexte-par-passes-bornées) et son [exemple de suivi compact](references/modeles.md#suivi-des-compléments-de-contexte) fonctionnent dans les documents ordinaires, sans Python.
+
 Commencez par la synthèse : résultat, preuves, inconnues et décision attendue. Les détails doivent rester accessibles dans les fichiers liés. Pour une petite mission, un seul livrable peut suffire.
 
 Orka termine ses réponses de mission par **« Prochain prompt à copier »**, avec une proposition adaptée à l'état réel du projet, dans votre langue. Copiez-la si cette suite vous convient, ou modifiez-la. La proposition n'exécute pas la suite et ne remplace pas votre décision. Le travail déjà demandé doit être terminé avant de vous proposer sa continuation ; en cas de blocage, le prompt aide à lever celui-ci.

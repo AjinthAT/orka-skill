@@ -4,6 +4,7 @@ This directory contains evaluation protocols, captured agent outputs and explici
 
 | Evaluation | Scope |
 |---|---|
+| [L2 progressive-context acceptance](contexte-L2-2026-10-22/README.md) | Three synthetic tasks in fresh contexts, one run each; targeted requests, preserved counter, version changes and hostile source handling. Candidate-only checks, no comparative advantage or independent access audit established. |
 | [README discovery test](decouverte-2026-10-22/README.md) | One fresh-context agent, README-only first impression, then linked guides and ZIP extraction. No blocker observed on that route; host activation and mission execution not tested. |
 | [First comparative pilot](pilote-2026-10-22/README.md) | Three synthetic cases, three conditions per case; no quality or cost advantage established, one protocol reservation. |
 

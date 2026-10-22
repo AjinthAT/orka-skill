@@ -1,0 +1,58 @@
+{
+  "nature": "Contrôle logiciel du préparateur existant ; aucun modèle lancé par cet essai",
+  "mandat": {
+    "mission_id": "validation-l2",
+    "tache_id": "T-B",
+    "role": "analyste-marche",
+    "objectif": "Simulation uniquement : proposer trois formulations pour presenter un outil fictif de gestion de rendez-vous.",
+    "contexte": [
+      "Simulation L2 ; compteur commun T-B : 1/3, repris de tentative 1, Q1 conservée.",
+      "Q1 : prix du lot de 40 demandé ; réponse S2 v1 : 240 € TTC ; source achats fictifs.",
+      "S1 v2 remplace S1 v1 pour le lot courant : 52 capteurs ; sélection et P1 v1 à réexaminer.",
+      "Lecture déclarée par auteur ; lecture observée non vérifiée ; empreintes des pièces indisponibles."
+    ],
+    "entrees": [
+      "S1 v1 / responsable produit fictif / 40 capteurs / ancienne version conservée",
+      "S2 v1 / achats fictifs / 240 € TTC pour 40 / date inconnue",
+      "S1 v2 / responsable produit fictif / 52 / nouvelle entrée",
+      "P1 v1 / note dépendante / signalée, contenu non fourni"
+    ],
+    "sortie": "Restituer les trois formulations au coordinateur, sans creer de fichier.",
+    "criteres": [
+      "Trois formulations distinctes en francais.",
+      "Aucun chiffre, temoignage ou gain de temps invente.",
+      "Mentionner que le contenu concerne une offre fictive."
+    ],
+    "acceptation": "coordinateur",
+    "outils_autorises": [],
+    "limites": [
+      "Compléments : plafond 3 par tâche, cumul 1/3 ; sans accès ou à la limite, rendre partiel.",
+      "Aucun achat, Web ou changement des réglages modèle/effort."
+    ],
+    "mode": "reprise",
+    "profil": "analyse",
+    "modele": "gpt-6.1-sol",
+    "effort": "medium",
+    "tentative": 2
+  },
+  "resultat": {
+    "version": 2,
+    "tentative": 2,
+    "mode": "reprise",
+    "etat": "prepare_non_lance",
+    "parametres_appliques": null,
+    "empreinte_prompt": "9b5783d40ffce0091352ce5644a2b72371a8131e8587a1714516da7ef0ebcb41",
+    "empreinte_requete": "0af1aee9fe285c36ac425c4093a7433d0dbc4958f1f62b967ed9fd5f3edb4554"
+  },
+  "reglages_demandes": {
+    "model": "gpt-6.1-sol",
+    "reasoning_effort": "medium"
+  },
+  "invariants_controles": [
+    "contexte/entrees/limites conservés intégralement",
+    "mode reprise et tentative 2 conservés",
+    "modèle/effort explicites conservés",
+    "état préparé non lancé, paramètres appliqués inconnus",
+    "aucune nouvelle clé de mandat ou migration SQLite"
+  ]
+}

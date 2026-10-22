@@ -33,6 +33,8 @@ If you have already provided a concrete assignment, Orka starts that work direct
 
 Share what you know: the project or problem, the result you want, the working folder and material constraints. Add audience, country, deadline or budget when known and relevant. An early idea is enough to start clarification; Orka should distinguish your choices, verified facts and hypotheses.
 
+If a decisive input is missing, Orka requests the specific source or excerpt needed and records its provenance, version and effect on the result. The default limit is three context requests per task, carried across retries, unless the assignment explicitly sets another limit. When access or evidence is missing, it returns useful partial work and explains what remains unknown. Complete inputs need no extra question. This [progressive context protocol](references/prompting-agents.md#compléter-le-contexte-par-passes-bornées) and its [compact tracking example](references/modeles.md#suivi-des-compléments-de-contexte) use ordinary documents, without Python; full instructions are in French.
+
 Pick the prompt that fits your need. Examples referring to an idea or folder assume you have already described it or made it accessible.
 
 **Clarify an idea:**

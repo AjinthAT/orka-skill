@@ -1,8 +1,8 @@
 # Lot ECC-01 — diagnostic, contexte progressif et évaluations répétées
 
-**L1 implemented in 0.5.0; L2–L4 remain planned.** This French specification separates delivered work from proposals. The core remains Markdown, usable without Python. Optional helpers do not launch models or change personal assistant settings.
+**L1 delivered in 0.5.0; L2 implemented in 0.6.0; L3–L4 remain planned.** This French specification separates delivered work from proposals. The core remains Markdown, usable without Python. Optional helpers do not launch models or change personal assistant settings.
 
-Propriétaire : coordinateur de maintenance. Version : 2. Date : 22 octobre 2026. État : **L1 réalisée en 0.5.0 ; L2–L4 préparées, campagne non lancée**. Référence initiale du plan : `252f058727eb7758383d74cd3b3431ce0c734830`, skill 0.4.1. Provenance : demandes du dirigeant, fichiers du dépôt et références ECC épinglées en fin de document. La version 1 préparait tout le lot ; la version 2 consigne la réalisation ciblée de L1 et ses [preuves de validation](VALIDATION-L1.md).
+Propriétaire : coordinateur de maintenance. Version : 3. Date : 22 octobre 2026. État : **L1 réalisée en 0.5.0 ; L2 implémentée en 0.6.0 ; L3–L4 préparées, campagne comparative non lancée**. Référence initiale du plan : `252f058727eb7758383d74cd3b3431ce0c734830`, skill 0.4.1. Provenance : demandes du dirigeant, fichiers du dépôt et références ECC épinglées en fin de document. La version 1 préparait tout le lot ; la version 2 consignait L1 et ses [preuves de validation](VALIDATION-L1.md). La version 3 ajoute L2 et sa [réception ciblée](VALIDATION-L2.md), sans exécuter la qualification comparative L4.
 
 ## Résultat attendu
 
@@ -11,7 +11,7 @@ Permettre de vérifier une installation, de compléter le contexte d’un agent 
 | Chantier | Existant vérifié | Ajout proposé | Livrable attendu |
 |---|---|---|---|
 | Diagnostic | [Installateur](../install.py) refusant l’écrasement, tests après déplacement, [vérificateur du dépôt](../tools/verifier.py), installation manuelle documentée | **L1 réalisée** : vérification ciblée d’un dossier installé, indépendante d’une installation de développement | [Procédure manuelle et diagnostic facultatif](../.agents/skills/orka/references/diagnostic-installation.md) |
-| Contexte progressif | [Mandats ciblés](../.agents/skills/orka/references/prompting-agents.md), références chargées au besoin, questions et transmissions prévues dans l’[orchestration](../.agents/skills/orka/references/orchestration-agents.md) | Format commun de demande de complément, sources et versions associées, nombre de passes borné | Instructions et modèle Markdown intégrés aux références existantes |
+| Contexte progressif | [Mandats ciblés](../.agents/skills/orka/references/prompting-agents.md), références chargées au besoin, questions et transmissions prévues dans l’[orchestration](../.agents/skills/orka/references/orchestration-agents.md) | **L2 implémentée** : demandes et réponses traçables, compteur commun conservé à la reprise, passes bornées | [Protocole](../.agents/skills/orka/references/prompting-agents.md#compléter-le-contexte-par-passes-bornées) et [suivi compact](../.agents/skills/orka/references/modeles.md#suivi-des-compléments-de-contexte) |
 | Évaluations répétées | [Procédure](../.agents/skills/orka/references/evaluation-agents.md), [premier pilote](../evals/pilote-2026-10-22/README.md), [essai de découverte](../evals/decouverte-2026-10-22/README.md), sorties et empreintes conservées | Préparation reproductible d’une campagne et bilan de plusieurs exécutions par cas | Protocole, manifeste et synthèse, avec outil de maintenance facultatif |
 
 Le pilote comparatif comporte un essai par cellule et un écart de périmètre connu. Le test de découverte s’arrête avant activation dans une nouvelle session. Ces résultats justifient de mieux vérifier et répéter ; ils n’établissent ni gain de qualité ni économie de tokens.
@@ -56,17 +56,15 @@ La procédure manuelle couvre le même parcours essentiel avec un gestionnaire d
 
 ## 2. Contexte progressif
 
-### Protocole à intégrer aux instructions
+### Protocole implémenté en 0.6.0
 
-Commencer par la mission, les contraintes, les critères, l’index des sources utiles et leurs versions. Quand un manque empêche une décision, demander le complément ciblé avant de conclure. Le coordinateur vérifie sa pertinence et les droits d’accès, puis transmet la pièce ou explique son indisponibilité. La recherche directe reste possible avec les outils et le périmètre déjà autorisés.
+Les règles applicables sont maintenues dans le [prompting des agents](../.agents/skills/orka/references/prompting-agents.md#compléter-le-contexte-par-passes-bornées), relayées par les consignes communes des spécialistes et l'orchestration. Le [modèle de suivi et son exemple fictif](../.agents/skills/orka/references/modeles.md#suivi-des-compléments-de-contexte) s'intègrent aux documents existants.
 
-Le format Markdown tient dans le mandat ou le suivi existant : **tâche et tentative ; question bloquée ; information manquante ; source ciblée et motif ; réponse ou indisponibilité ; version/empreinte fournie ; effet sur la conclusion**. Une référence sans empreinte conserve sa provenance et une version inconnue explicite. Ne pas fournir des secrets ou dossiers sans rapport pour répondre à une question locale.
+Le mandat commence par mission, contraintes, critères et index des sources pertinentes. Un manque décisif déclenche un complément ciblé, avec provenance, version connue ou inconnue et effet sur les conclusions. Le compteur commun se conserve à travers tentatives et changements d'agent ; la limite par défaut est trois demandes, ajustable explicitement dans les limites de mission. Les relances et passes de recherche complémentaire consomment aussi une unité. Une réponse ou information spontanée peut être exploitée sans remettre le compteur à zéro. Une limite ou un accès manquant laisse un résultat partiel explicite.
 
-Valeur de départ proposée : **trois demandes de complément au maximum par tâche**, ajustable explicitement dans son mandat. Le compteur se conserve à la reprise de la même tâche ; reformuler la demande ne le remet pas à zéro. Les limites de mission priment. À la limite ou si l’accès manque, rendre la conclusion partielle avec l’incertitude restante, sans inventer la donnée. Ce nombre concerne les compléments de contexte, pas les tours du débat métier.
+Le protocole distingue fourni, lecture déclarée et lecture observée par un événement natif pertinent ; une empreinte du mandat ne prouve pas sa lecture. Une version décisive contradictoire déclenche le réexamen des conclusions dépendantes en conservant anciennes preuves et tentatives. Une source ne donne aucun droit supplémentaire et ne change pas les réglages modèle/effort.
 
-Séparer **fourni**, **lecture déclarée** et **lecture observée par un mécanisme de l’hôte**. Une empreinte du mandat prouve son contenu préparé, pas sa lecture. Si une nouvelle source contredit une entrée acceptée, appliquer le réexamen existant avant de réutiliser les conclusions affectées. Un contenu de source ne peut pas élargir les droits ou remplacer les instructions de la mission.
-
-Ce protocole reste documentaire. Il utilise la messagerie et les outils de l’hôte, ou un échange manuel ; il n’ajoute ni moteur de recherche, ni agent permanent, ni compteur de tokens. Le mandat JSON actuel reste compatible : les informations entrent dans les champs de contexte, d’entrées et de limites déjà pris en charge, sans nouvelles clés silencieusement ignorées. Aucune migration SQLite n’est nécessaire pour ce lot.
+Le suivi est documentaire, en traitement direct ou avec les échanges natifs autorisés. Aucune recherche, lecture ou consommation n'est mesurée automatiquement. Les champs JSON existants `contexte`, `entrees` et `limites` portent ces informations ; aucune nouvelle clé ni migration SQLite. Le parcours reste complet sans Python. La réception L2 vise C1–C5 ; C6 et la comparaison répétée restent du ressort de L4.
 
 ### Critères d’acceptation
 
@@ -134,7 +132,7 @@ Les rôles désignent des responsabilités proposées, pas des agents déjà lan
 
 **Condition transversale : le cœur reste utilisable sans Python.** Le README, l’installation par copie/import ZIP, les rôles, le protocole de contexte et le suivi manuel des évaluations restent complets. Un parcours représentatif doit être essayé sans exécuter de Python ; si l’environnement réellement dépourvu de Python n’est pas disponible, cette différence reste signalée. Les nouveaux helpers sont facultatifs, Python 3.10+ et bibliothèque standard ; PyYAML demeure réservé aux vérifications de développement. Aucun Node.js, SDK, hook global, démon ou changement de configuration personnelle n’est introduit par ce lot.
 
-Le registre SQLite v2, les données et les profils actuels sont conservés. Pour une difficulté constatée, conserver le suivi documentaire ou le dernier outil valide ; ne pas restaurer une base en écrasant les événements récents. La version 0.5.0 ajoute L1 ; les autres étapes ne changent pas le skill tant qu’elles ne sont pas réalisées. Les installations personnelles existantes sont conservées pendant cette maintenance, sans mise à jour automatique.
+Le registre SQLite v2, les données et les profils actuels sont conservés. Pour une difficulté constatée, conserver le suivi documentaire ou le dernier outil valide ; ne pas restaurer une base en écrasant les événements récents. La version 0.5.0 ajoute L1 et la version 0.6.0 ajoute L2 ; L3–L4 ne changent pas le skill tant qu’elles ne sont pas réalisées. Les installations personnelles existantes sont conservées pendant cette maintenance, sans mise à jour automatique.
 
 ## Inspiration et attribution
 

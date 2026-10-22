@@ -1,0 +1,27 @@
+{
+  "algorithme": "SHA-256",
+  "fichiers": {
+    "README.md": "ca41b4d5b056e6902da39e7cbbaf1aeaf38afe502b6420c5a15d2e6302ff71b6",
+    "compatibilite-preparateur.json": "06ae55e24d489da595681da682421d817a53dcc55d79a1e6073ef62c5e0da769",
+    "correction-editoriale.json": "bf632a6e5a97657956ca825a54585bb14c79a36dc8c91957ab2c92b2d5fb31ca",
+    "criteres.json": "fc4099dd5f75ba809341b3a559f27acb62a596d319aa283a192085f70f65c490",
+    "entrees/01-complet.md": "9e6da2676ceaded108ef1bb8807abe84e820f2ded2864dc527fcadb92185c289",
+    "entrees/02-changement-S1.md": "b93c4b9a97a11ee23bc7f2f8d6998072c83dba03331914d11bab69b9be7b9866",
+    "entrees/02-initial.md": "d87268870e38a04b9d3323d29e4cdcbc83557973b14ca2fba08bf915582a03ab",
+    "entrees/02-reponse-S2.md": "12a423bc80b6c6f7a3478e8341373cf4494b9244f57fea72041239e5e73a4e63",
+    "entrees/03-reprise.md": "a6c6868801b65cf880c56a897002ed4968687b7e55028866b9b46a930b7f3167",
+    "gel-instructions.json": "53799510ab3a17b4e78b0be94321d622a23c83a9750dc99849484c0744b18879",
+    "manifest.json": "2f1a5287e5db85e4f971af35ba0d67c4bdcd52b8845c0e2ff8a85e63a1ddc4f4",
+    "prompts/01-initial.txt": "40a632ed3f6bea824a2df97904e499332d20d923e7c16719fbceb68ae7129784",
+    "prompts/02-initial.txt": "471c60ac3cb3df848d7e7401eb6057267083949f4c18a98b00de06e3b56b6c8e",
+    "prompts/02-reponse.txt": "b9e02787cb44bf7108fa805c95dc9614ee2fb7fb06642b707639f493293d7757",
+    "prompts/02-reprise.txt": "b09044fa0e0c1e5921db287a19ae8355689ab6c89775e6dc0a5e074506594860",
+    "prompts/03-initial.txt": "0181a8f05eea7396540e5280c2fdf08a2dec4c861e7c6a56f0e67aa68258b0be",
+    "revue.md": "3a8c1d7eae1c8e6b665418f3fcaacf14a045da88856ee93f1f171e7dd28a85db",
+    "sorties/01-resultat.md": "ed734480e1a1e2d90d49cc8b4dd0c88d28734a6b203115ad956e587cf84f6676",
+    "sorties/02-tour-1.md": "727bab3700bcd94a796ea620195187d064d7a22c495f3526cbf4a2402f33cd97",
+    "sorties/02-tour-2.md": "e3283b4d57ffdded0b4c0ff291778b12b346e33ce0d4cd61508ca30403de1dcb",
+    "sorties/02-tour-3.md": "b263f3ffbc4e016c7808029e12c300b1d53719fbe73dc2346bdf0c7d5acec645",
+    "sorties/03-resultat.md": "1f3f0f50e38897de1f55af04789e6e6fadac46465034d866919e0e53894810fe"
+  }
+}

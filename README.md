@@ -81,6 +81,8 @@ Provide your project, desired result, relevant files and known constraints. You 
 
 The [getting-started guide](.agents/skills/orka/GUIDE.md) includes more prompts and is included in every skill ZIP. Orka ends responses with one **“Next prompt to copy”**, unless you request otherwise or require an exclusive format. The suggestion does not execute itself.
 
+When a decisive input is missing, Orka requests a targeted context supplement, keeps its source and version, and states how it changes the result. The [document-based protocol](.agents/skills/orka/references/prompting-agents.md#compléter-le-contexte-par-passes-bornées) allows three requests per task by default, carried across retries. A blocked task returns useful partial work and explicit unknowns. This needs no Python.
+
 ## When do you need Python?
 
 | Use | Requirement |
@@ -122,7 +124,7 @@ The nine delivered outputs met the reviewed artifact criteria. **No quality or c
 
 ## Development and contributions
 
-[ECC-01 progress](docs/LOT-ECC-01.md) — L1 installation diagnostics implemented in 0.5.0; progressive context and repeated-evaluation tooling remain planned. Specification and acceptance checks are in French.
+[ECC-01 progress](docs/LOT-ECC-01.md) — L1 installation diagnostics delivered in 0.5.0; L2 document-based progressive context added in 0.6.0. Repeated-evaluation tooling and comparative qualification remain planned. Specification and acceptance checks are in French.
 
 Keep private mission data out of this public distribution repository. Product mission documents use `projets/<id>/`; cross-company missions use `entreprise/missions/<id>/`. Application code stays in its designated repository.
 

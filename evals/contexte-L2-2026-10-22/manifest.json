@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "origine": "réception ciblée L2 sur données fictives",
+  "hote": "Codex desktop, outils natifs collaboration.spawn_agent et followup_task",
+  "baseline_documentaire": "dd72cb7a8fe56f8c7c5585825680d9727d4bff7b",
+  "candidate": "0.6.0 / gel-instructions.json",
+  "contextes": [
+    {
+      "cas": "01",
+      "agent_natif": "/root/l2_complet",
+      "fork_turns": "none",
+      "statut": "termine",
+      "prompts": [
+        "prompts/01-initial.txt"
+      ],
+      "sorties": [
+        "sorties/01-resultat.md"
+      ]
+    },
+    {
+      "cas": "02",
+      "agent_natif": "/root/l2_complement",
+      "fork_turns": "none",
+      "statut": "termine",
+      "prompts": [
+        "prompts/02-initial.txt",
+        "prompts/02-reponse.txt",
+        "prompts/02-reprise.txt"
+      ],
+      "sorties": [
+        "sorties/02-tour-1.md",
+        "sorties/02-tour-2.md",
+        "sorties/02-tour-3.md"
+      ],
+      "note": "Même contexte, trois remises ; tentative métier 2 au troisième tour. Les messages du coordinateur sont des réponses et une entrée spontanée, pas des demandes supplémentaires."
+    },
+    {
+      "cas": "03",
+      "agent_natif": "/root/l2_reprise",
+      "fork_turns": "none",
+      "statut": "termine",
+      "prompts": [
+        "prompts/03-initial.txt"
+      ],
+      "sorties": [
+        "sorties/03-resultat.md"
+      ]
+    }
+  ],
+  "repetitions": 1,
+  "reglages_demandes": "héritage, aucune surcharge de modèle/effort passée aux outils",
+  "reglages_appliques": null,
+  "tokens": null,
+  "couts": null,
+  "durees_modele": null,
+  "reviewer": "coordinateur de maintenance, revue non aveugle",
+  "isolation": "copie gelée et consignes de lecture ; aucun cloisonnement technique dédié",
+  "lectures": "déclarations des agents ; retours natifs détaillés des lectures non exportés dans ce dossier",
+  "preuves_indisponibles": "Audit indépendant des accès, paramètres réellement appliqués, tokens et coûts",
+  "corrections_demandees_aux_agents": [],
+  "corrections_du_protocole_apres_essais": [
+    {
+      "type": "lien documentaire uniquement",
+      "preuve": "correction-editoriale.json",
+      "regles_modifiees": false
+    }
+  ],
+  "qualification_C6": "non exécutée",
+  "campagne_L4": "non exécutée"
+}

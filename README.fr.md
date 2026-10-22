@@ -81,6 +81,8 @@ Précisez le projet, le résultat attendu, les fichiers utiles et les contrainte
 
 Le [guide de démarrage](.agents/skills/orka/GUIDE.fr.md), inclus dans chaque ZIP du skill, propose d’autres prompts. Orka termine ses réponses par un **« Prochain prompt à copier »**, sauf préférence contraire ou format exclusif demandé. Cette suggestion ne s’exécute pas automatiquement.
 
+Si une entrée décisive manque, Orka demande un complément ciblé, garde sa source et sa version, puis indique son effet sur le résultat. Le [protocole documentaire](.agents/skills/orka/references/prompting-agents.md#compléter-le-contexte-par-passes-bornées) prévoit trois demandes par tâche par défaut, conservées à la reprise. Un blocage conduit à un résultat partiel utile avec ses inconnues. Python n'est pas nécessaire.
+
 ## Quand faut-il Python ?
 
 | Usage | Prérequis |
@@ -110,7 +112,7 @@ Les neuf livrables satisfont les critères examinés. **Aucun avantage de qualit
 
 ## Documentation et développement
 
-Le [suivi ECC-01](docs/LOT-ECC-01.md) distingue L1, diagnostic livré en 0.5.0, du contexte progressif et des outils d’évaluations répétées encore prévus. Les critères d’acceptation et leurs preuves restent séparés des campagnes à venir.
+Le [suivi ECC-01](docs/LOT-ECC-01.md) distingue L1, diagnostic livré en 0.5.0, et L2, contexte progressif documentaire ajouté en 0.6.0, des outils d’évaluations répétées et de la qualification comparative encore prévus. Les critères d’acceptation et leurs preuves restent séparés des campagnes à venir.
 
 | Pour commencer | Pour approfondir |
 |---|---|

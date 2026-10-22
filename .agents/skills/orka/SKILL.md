@@ -3,7 +3,7 @@ name: orka
 description: Coordinate an AI business team for strategy, market research, marketing, sales, product, development, QA, operations, finance, AI agent resources and customer support. Use when the user assigns a project or cross-functional mission to the team, including vision, innovation or naming with domain checks; not for a simple question about a job. Execute only the requested scope.
 license: MIT
 metadata:
-  version: "0.5.0"
+  version: "0.6.0"
 ---
 
 # Orka
@@ -28,6 +28,8 @@ Pour une question d'installation, utiliser la [procédure de diagnostic](referen
 6. Définir responsables, spécialistes, outils, dépendances, critères d'acceptation et limites connues. Une mission globale mobilise les fonctions concernées sans exiger tous les postes simultanément. Réutiliser les faits et livrables valides avant de commander de nouvelles recherches.
 
 Le rôle coordinateur gère les autres agents selon [l'orchestration](references/orchestration-agents.md). Avant délégation, choisir le [profil modèle/effort](references/modeles-effort.md) et composer le [mandat et le prompt](references/prompting-agents.md). Pour une préparation répétable, utiliser `scripts/preparer_agent.py` avec un mandat JSON ; le script prépare une requête mais ne lance pas l'agent.
+
+Si une pièce décisive manque, appliquer le [contexte progressif](references/prompting-agents.md#compléter-le-contexte-par-passes-bornées), directement ou avec un spécialiste : demandes ciblées et bornées, compteur conservé à la reprise, provenance/version et effet sur les conclusions. Ne pas imposer de complément à une tâche déjà complète. Le suivi reste documentaire, sans Python.
 
 Le service RH vise par défaut les [ressources des agents IA](references/ressources-agents.md) : allocation des modèles/efforts, qualification et consommation observable, sans doublonner l'orchestrateur. Pour cadrer la vision, vérifier les affirmations décisives ou chercher des innovations, lire le passage utile de [vision, preuves et innovation](references/vision-preuves-innovation.md). Pour une demande de nom ou de domaine, appliquer [la recherche de noms et domaines](references/noms-domaines.md), avec statuts et sources datés. Ne pas activer ces parcours sur une mission qui ne les nécessite pas.
 

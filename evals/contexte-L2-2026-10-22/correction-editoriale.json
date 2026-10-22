@@ -1,0 +1,10 @@
+{
+  "nature": "Correction éditoriale après les essais, détectée par le vérificateur des liens, sans modification des règles ou résultats",
+  "fichier": "references/prompting-agents.md",
+  "ancienne_cible": "modeles.md#suivi-des-complements-de-contexte",
+  "nouvelle_cible": "modeles.md#suivi-des-compléments-de-contexte",
+  "sha256_gel": "1da8452b6d6edd7bc79596b390dd42fb5e38e892b7d07c1168e681693279fc1f",
+  "sha256_distribution": "b22dbb9135038eefb9e633eaae54e0e42ac32b7a28eb9b8bfc0a4221458b4bd4",
+  "nouvelle_execution_modele": false,
+  "limite": "La réception observée porte sur la copie gelée ; la correction de lien est vérifiée structurellement."
+}

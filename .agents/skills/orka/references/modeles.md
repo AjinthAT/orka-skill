@@ -59,6 +59,26 @@ Les critères sont adaptés au workflow. Une production de contenus demande une 
 
 Le contrat peut être une section du plan ou le mandat transmis à l'agent. Ne pas le recopier dans plusieurs fichiers.
 
+## Suivi des compléments de contexte
+
+À intégrer au mandat ou au suivi existant seulement si un manque décisif apparaît. Appliquer le [protocole de prompting](prompting-agents.md#compléter-le-contexte-par-passes-bornées), référence unique des règles de comptage. Un tableau n'est pas obligatoire : une note avec les mêmes informations suffit.
+
+```text
+Tâche / tentative / responsable :
+Compteur utilisé / plafond commun à la tâche ; historique repris depuis :
+ID demande / question bloquée / donnée manquante :
+Source ou extrait ciblé / motif / périmètre d'accès :
+Réponse ou indisponibilité / provenance / version-date / empreinte si disponible :
+Fourni : pièce et destinataire ; lecture déclarée : auteur ou inconnue ;
+lecture observée : événement natif et portée, ou non vérifiée.
+Effet : conclusion corrigée, réserve maintenue, résultats à réexaminer :
+Suite / condition de reprise :
+```
+
+**Exemple fictif compact, sans Python.** Tâche T-12, tentative 1 : choisir un lot de démonstration d'au plus 12 appareils. La fiche S1, version v1 fournie par le responsable produit, donne 10 appareils ; cette quantité passe le critère, sous réserve du tarif encore manquant. Q1 demande le tarif de ce lot pour vérifier le plafond fictif de 600 €. Compteur 1/3. Réponse S2, courriel du responsable des achats, version/date inconnues, empreinte indisponible : total 560 €. Les deux critères sont alors satisfaits pour S1 v1 + S2 ; lecture déclarée par l'auteur, lecture observée non vérifiée.
+
+À la reprise en tentative 2, le responsable produit fournit S1 v2 : le lot comporte désormais 14 appareils. Le compteur reste 1/3, puisqu'aucune nouvelle demande n'a été émise. Le choix courant devient non conforme au seuil de 12 ; le prix de S2 n'est plus confirmé pour cette quantité. Conserver S1 v1, S2 et le résultat de tentative 1 dans l'historique ; marquer sélection et estimation à réexaminer, ainsi que toute commande préparée qui en dépend. Aucune commande n'est envoyée. Une éventuelle Q2 demanderait le tarif du nouveau lot et porterait le compteur à 2/3, sans changer les réglages modèle/effort. Le résultat actuel et l'historique restent distincts.
+
 ## livrables/<equipe>/<tache>-<document>.md
 
 - Mission, auteur, destinataire et date ou version.
