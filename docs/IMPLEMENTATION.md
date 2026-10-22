@@ -67,7 +67,7 @@ Les [évaluations conservées](../evals/README.md) distinguent pilote comparatif
 
 ## Ce qui reste à construire
 
-Le [lot ECC-01](LOT-ECC-01.md) distingue L1 livré en 0.5.0, L2 en 0.6.0 et L3, outillage d’évaluations répétées livré en 0.7.0 sur données simulées. L4, qualification comparative, reste à réaliser. La procédure d’[évaluation des agents](../.agents/skills/orka/references/evaluation-agents.md) porte les autres renforcements à éprouver.
+Le [lot ECC-01](LOT-ECC-01.md) distingue L1 livré en 0.5.0, L2 en 0.6.0 et L3, outillage d’évaluations répétées livré en 0.7.0 sur données simulées. La [préparation L4](../evals/preparation-L4-2026-10-22/README.md) fige trois nouveaux cas, deux versions et 18 lignes non lancées ; le réservé et les grilles exactes restent locaux. L4, qualification comparative, reste à réaliser. La procédure d’[évaluation des agents](../.agents/skills/orka/references/evaluation-agents.md) porte les autres renforcements à éprouver.
 
 Une application autonome demanderait encore un client de lancement relié au registre, un ordonnanceur, une messagerie persistante, des contrôles effectifs d’accès et de moyens, la réconciliation après interruption et éventuellement une interface de suivi. Le stockage et la restauration nécessiteraient leur propre dispositif vérifié. Aucun service permanent, collecte automatique, programmation continue ou arrêt financier n’est fourni par les fichiers du skill.
 

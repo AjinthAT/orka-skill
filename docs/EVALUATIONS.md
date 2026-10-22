@@ -110,6 +110,12 @@ The report preserves every planned row and all criterion observations. It groups
 
 An overall `etat: complet` means all planned rows have a definite completed result, including failures. It does not mean qualification passed. The tool does not promote a candidate or establish a quality/cost advantage. L4 remains a separately authorized comparison and review.
 
+## Frozen L4 preparation
+
+The [L4 protocol and public commitments](../evals/preparation-L4-2026-10-22/README.md) document three new synthetic cases, two pinned instruction versions and 18 slots, all still prepared. Exact fixtures, operator replies and criteria stay in the ignored local workspace, including the reserved case; a public clone cannot reconstruct them from hashes. No model run or qualification result is included.
+
+The frozen operator schedule puts all development slots before reserved slots while preserving version alternation within each pair. Matrix IDs are unchanged; the schedule is explicit, fixed before observations and recorded separately. Do not supply the complete manifest or operator files to an evaluated agent. Inspect inherited host instructions and skills before a future launch; merely declaring a fresh context does not enforce isolation.
+
 ## Preservation and limits
 
 The [software regressions](../tests/test_evaluer.py) use temporary folders and fabricated data. Existing evaluation directories, personal installations, settings and SQLite registers are not migrated or rewritten. Frozen campaigns can be moved with their copies intact. A prototype output is copied and hashed, never imported as code or executed; rechecking a prototype separately must use another temporary copy and its own authorization.

@@ -4,6 +4,7 @@ This directory contains evaluation protocols, captured agent outputs and explici
 
 | Evaluation | Scope |
 |---|---|
+| [L4 frozen preparation](preparation-L4-2026-10-22/README.md) | Three new cases, two fixed instruction versions and 18 unlaunched slots. Public protocol and hashes; reserved content and exact criteria retained locally. No model run or comparative result. |
 | [L3 software example](outillage-L3-2026-10-22/README.md) | Six prepared slots and five fabricated observations exercising preparation, imports, partial reporting and denominators. No model or agent launched; not the L4 comparison. |
 | [L2 progressive-context acceptance](contexte-L2-2026-10-22/README.md) | Three synthetic tasks in fresh contexts, one run each; targeted requests, preserved counter, version changes and hostile source handling. Candidate-only checks, no comparative advantage or independent access audit established. |
 | [README discovery test](decouverte-2026-10-22/README.md) | One fresh-context agent, README-only first impression, then linked guides and ZIP extraction. No blocker observed on that route; host activation and mission execution not tested. |

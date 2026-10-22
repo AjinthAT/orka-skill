@@ -1,0 +1,67 @@
+{
+  "format": 1,
+  "campagne": "ecc-01-l4-2026-10-22",
+  "date_protocole": "2026-10-22",
+  "nature": "verification_de_preparation_sans_modele",
+  "empreinte_campagne": "4a95455067551fd9179f16916d0dbed74decef005569caa005b9e239656b2f7b",
+  "etat": "preparee_non_lancee",
+  "controles": {
+    "plan_et_pieces_conformes_au_manifeste": true,
+    "versions_conformes_aux_octets_git": true,
+    "matrice_18_unique_3_repetitions_par_cellule": true,
+    "ordre_12_developpement_puis_6_reserves": true,
+    "alternance_versions_par_paire": true,
+    "criteres_tous_indispensables_figes": true,
+    "arithmetique_des_grilles_recalculee_sans_modele": true,
+    "empreintes_publiques_concordantes": true,
+    "dossiers_operateur_ignores_par_git": true,
+    "aucun_prompt_reserve_ni_reponse_operateur_copie_au_public": true,
+    "aucune_observation_importee_et_aucun_dossier_resultats": true,
+    "fichiers_preexistants_identiques": 288,
+    "encodage_utf8_des_pieces_verifie": true
+  },
+  "resume": {
+    "prevues": 18,
+    "preparees": 18,
+    "terminees": 0,
+    "interrompues": 0,
+    "hors_protocole": 0,
+    "enregistrees": 0,
+    "evaluables": 0,
+    "inconclusives": 0,
+    "succes": 0,
+    "echecs": 0,
+    "succes_sur_evaluables": {
+      "numerateur": 0,
+      "denominateur": 0,
+      "taux": null
+    },
+    "succes_sur_prevues": {
+      "numerateur": 0,
+      "denominateur": 18,
+      "taux": 0.0
+    },
+    "executees_reelles_declarees": 0,
+    "observations_simulees": 0
+  },
+  "mesures": {
+    "tokens": null,
+    "couts": null,
+    "reglages_appliques": null
+  },
+  "limites": [
+    "Contrôles locaux sur fichiers et arithmétique ; aucun test comportemental de modèle.",
+    "Réservé séparé documentairement, sans contrôle technique des accès ; auteur non aveugle.",
+    "Aucune qualification E7 ou C6 ; aucune preuve de gain de qualité ou de coût.",
+    "Les données locales ignorées par Git ne sont pas sauvegardées par la publication du protocole."
+  ],
+  "verification_depot": {
+    "interpreteur": "Python 3.13",
+    "commande": "python -B tools/verifier.py",
+    "etat": "conforme",
+    "tests_racine": 33,
+    "liens_locaux": 440,
+    "helpers_apres_installation_et_paquet_portable": "conformes",
+    "portee": "Vérification logicielle et documentaire seulement ; aucun appel modèle."
+  }
+}

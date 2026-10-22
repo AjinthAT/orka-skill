@@ -1,0 +1,711 @@
+{
+  "format": 1,
+  "id": "ecc-01-l4-2026-10-22",
+  "date_protocole": "2026-10-22",
+  "etat": "preparee_non_lancee",
+  "empreinte_campagne": "4a95455067551fd9179f16916d0dbed74decef005569caa005b9e239656b2f7b",
+  "manifest_sha256_octets": "50a496ba1c1fcb2a2d0211a00efc675945581e5493fd632c1fdb57a4525ea32e",
+  "plan_sha256_octets": "d4b2d5a660f70e312396f2a75edc20b8f6726da0c0fcb5d42d52cf0f846cbbee",
+  "procedure_operateur_sha256": "9450b8917c92648325bfe84d9c9dba5788601f2146a5dd2f6781e610c2538544",
+  "outillage": {
+    "commit": "9b7727f6c5c9edd20f11a5a9d8faa3d777831145",
+    "fichier": "tools/evaluer.py",
+    "sha256": "a884f013e25aa0047c19ce79c0ef793fd847ed092ab0c6133df823ccfc3d888a"
+  },
+  "versions": [
+    {
+      "id": "reference",
+      "version": "0.4.1",
+      "commit": "252f058727eb7758383d74cd3b3431ce0c734830",
+      "fichiers": [
+        {
+          "chemin": "versions/reference/orka/GUIDE.fr.md",
+          "source_git": ".agents/skills/orka/GUIDE.fr.md",
+          "sha256": "b05988ae30dd7ecddbbd84acd20fbdba583b9a6ee9eb251601d6bda152acee3a"
+        },
+        {
+          "chemin": "versions/reference/orka/GUIDE.md",
+          "source_git": ".agents/skills/orka/GUIDE.md",
+          "sha256": "7089b4002e1752c71dc49caa507cdf9f3b4f0baa8cc39274c5d86db148c1915a"
+        },
+        {
+          "chemin": "versions/reference/orka/SKILL.md",
+          "source_git": ".agents/skills/orka/SKILL.md",
+          "sha256": "bab465ffb779488fee29c37e5c96c878a8e69d7c7fdc9192eb10149b754f30e2"
+        },
+        {
+          "chemin": "versions/reference/orka/assets/mandat-exemple.json",
+          "source_git": ".agents/skills/orka/assets/mandat-exemple.json",
+          "sha256": "7ac4686accf25bcac4584fb8adc0b10410d6229f1e96555fb39d79989c67734d"
+        },
+        {
+          "chemin": "versions/reference/orka/references/bilan-agents.md",
+          "source_git": ".agents/skills/orka/references/bilan-agents.md",
+          "sha256": "ddae5a7691c8442f5a99e0c6ba9537b12d67ff1efbcd536e635c7074c89ccaaa"
+        },
+        {
+          "chemin": "versions/reference/orka/references/collaboration.md",
+          "source_git": ".agents/skills/orka/references/collaboration.md",
+          "sha256": "f75f15d167a1e4544b8acb8a35ae9caebd6061b9adfaeef9968e4d14f2e44629"
+        },
+        {
+          "chemin": "versions/reference/orka/references/equipes/commercial.md",
+          "source_git": ".agents/skills/orka/references/equipes/commercial.md",
+          "sha256": "71a847ed6b9dab7805e4c3739d81665c9feba71d3c95f2e6076e78da93dc90a0"
+        },
+        {
+          "chemin": "versions/reference/orka/references/equipes/direction.md",
+          "source_git": ".agents/skills/orka/references/equipes/direction.md",
+          "sha256": "7f7cdf37afae54ccca03e364b3da34ade2b14c0a9bf5d0a5e169bf61e34134cf"
+        },
+        {
+          "chemin": "versions/reference/orka/references/equipes/finance.md",
+          "source_git": ".agents/skills/orka/references/equipes/finance.md",
+          "sha256": "8fc11a97bde56a4fde002269e899f7cc0ccf2e1b03769fe23090f3e1efba4c25"
+        },
+        {
+          "chemin": "versions/reference/orka/references/equipes/marketing.md",
+          "source_git": ".agents/skills/orka/references/equipes/marketing.md",
+          "sha256": "e3951b24ce4681ce204d68987cc4af2d8bc0f0e46b623d9177a5b7c7cbbc6481"
+        },
+        {
+          "chemin": "versions/reference/orka/references/equipes/produit-design.md",
+          "source_git": ".agents/skills/orka/references/equipes/produit-design.md",
+          "sha256": "fe02d3678cc01ad489eff15feacfac4d072bdde1b65db0a666f2d338a9337afe"
+        },
+        {
+          "chemin": "versions/reference/orka/references/equipes/relation-client.md",
+          "source_git": ".agents/skills/orka/references/equipes/relation-client.md",
+          "sha256": "d7c64f0be13de03c13c0caa3c547bf3f3f23031a176830e09ec3a9af65450ccb"
+        },
+        {
+          "chemin": "versions/reference/orka/references/equipes/rh.md",
+          "source_git": ".agents/skills/orka/references/equipes/rh.md",
+          "sha256": "ad7f03435f5fc39e37291191924fad78509fa1255bddff8955b19814567e4f6f"
+        },
+        {
+          "chemin": "versions/reference/orka/references/equipes/technique.md",
+          "source_git": ".agents/skills/orka/references/equipes/technique.md",
+          "sha256": "66a2aada9fe5a0dbb3de70d301aef018eda3829f08ecfd399cff1312ce028953"
+        },
+        {
+          "chemin": "versions/reference/orka/references/evaluation-agents.md",
+          "source_git": ".agents/skills/orka/references/evaluation-agents.md",
+          "sha256": "29315564ac0ce6731b7bbc354c43733d1b8641932a6351a7c59cdb15de112ee6"
+        },
+        {
+          "chemin": "versions/reference/orka/references/experiences-apprentissage.md",
+          "source_git": ".agents/skills/orka/references/experiences-apprentissage.md",
+          "sha256": "5ea83daad9c5d9609b7c26bffb9902660d699b69009f50ad3a6431fa58f00781"
+        },
+        {
+          "chemin": "versions/reference/orka/references/gestion-documentaire.md",
+          "source_git": ".agents/skills/orka/references/gestion-documentaire.md",
+          "sha256": "648af7ca1ece766e7c41fd32e5a54ddc55ebf415e8cc7af6887b4d523365f96a"
+        },
+        {
+          "chemin": "versions/reference/orka/references/modeles-effort.md",
+          "source_git": ".agents/skills/orka/references/modeles-effort.md",
+          "sha256": "f7897003084bc70ca7196bc66edbc9d559a3ad526e0361ddb1f6688e5ff6983e"
+        },
+        {
+          "chemin": "versions/reference/orka/references/modeles.md",
+          "source_git": ".agents/skills/orka/references/modeles.md",
+          "sha256": "563adc392c5c30959f768abc4bc1d44806ac8d87498e591ba493c1a6a7c100d9"
+        },
+        {
+          "chemin": "versions/reference/orka/references/noms-domaines.md",
+          "source_git": ".agents/skills/orka/references/noms-domaines.md",
+          "sha256": "761a293789972c10f86de00afb245b44ec1f6b69f6244b3394bfd22c1d91d769"
+        },
+        {
+          "chemin": "versions/reference/orka/references/orchestration-agents.md",
+          "source_git": ".agents/skills/orka/references/orchestration-agents.md",
+          "sha256": "7eedd7b35acf1ab15d82abc1e81c1896bc74f03799d274b7a5cc9067dafce44b"
+        },
+        {
+          "chemin": "versions/reference/orka/references/pilotage-missions.md",
+          "source_git": ".agents/skills/orka/references/pilotage-missions.md",
+          "sha256": "50e2cb428b4beb38fe922ec85fccbe4473a95debd12bdcf9de327c646cdba803"
+        },
+        {
+          "chemin": "versions/reference/orka/references/processus-transverses.md",
+          "source_git": ".agents/skills/orka/references/processus-transverses.md",
+          "sha256": "e2c7fe5d257a26a7d7c53adbd713c6b2e55a6014adfd038c9c57d1b01392d37d"
+        },
+        {
+          "chemin": "versions/reference/orka/references/profils-modeles.json",
+          "source_git": ".agents/skills/orka/references/profils-modeles.json",
+          "sha256": "44f17a94a5e3b536175eab14ffe0e74cb4ddb1e62601ab2876d67b90471b0aa4"
+        },
+        {
+          "chemin": "versions/reference/orka/references/prompting-agents.md",
+          "source_git": ".agents/skills/orka/references/prompting-agents.md",
+          "sha256": "9214fde767cacd6a670357e150953a7f39b3a54d1d20d60492275c28647d926c"
+        },
+        {
+          "chemin": "versions/reference/orka/references/prompts/consignes-communes.md",
+          "source_git": ".agents/skills/orka/references/prompts/consignes-communes.md",
+          "sha256": "e23e3c35359c61f213ac0e1e1bb3875642198ecc73a226783a7ffba1205887bc"
+        },
+        {
+          "chemin": "versions/reference/orka/references/ressources-agents.md",
+          "source_git": ".agents/skills/orka/references/ressources-agents.md",
+          "sha256": "833c33f5056830c820ab1b2f7473effe6cfafff3bd7a921520545f84f8870952"
+        },
+        {
+          "chemin": "versions/reference/orka/references/roles.md",
+          "source_git": ".agents/skills/orka/references/roles.md",
+          "sha256": "26420e29f3754fad9c45cbabee5f2e2014a92ebc23a7527664ecccd7a9eafdfa"
+        },
+        {
+          "chemin": "versions/reference/orka/references/supervision-locale.md",
+          "source_git": ".agents/skills/orka/references/supervision-locale.md",
+          "sha256": "bb2ed1b377a111af4968ed50c26c2ac068f809e188cc8946def4463021affc89"
+        },
+        {
+          "chemin": "versions/reference/orka/references/validation.md",
+          "source_git": ".agents/skills/orka/references/validation.md",
+          "sha256": "f724228530f36d87e5ec1ede56576e1fc91002b87ca281ba91d219feefccd371"
+        },
+        {
+          "chemin": "versions/reference/orka/references/vision-preuves-innovation.md",
+          "source_git": ".agents/skills/orka/references/vision-preuves-innovation.md",
+          "sha256": "13ceaeed4a04021173fdb849e523a6a7457b5787236e3ad1d21dd1bd0e708f28"
+        },
+        {
+          "chemin": "versions/reference/orka/references/workflow-etude.md",
+          "source_git": ".agents/skills/orka/references/workflow-etude.md",
+          "sha256": "40b4304ffa5b34e3e1477019fdb48b526ea67dbf0f25cc169a4ac22fd75a53eb"
+        },
+        {
+          "chemin": "versions/reference/orka/references/workflows-entreprise.md",
+          "source_git": ".agents/skills/orka/references/workflows-entreprise.md",
+          "sha256": "4628193c0ecb2dae3061c0c507ca8a299227b7e5cbd7662346e2f81071a6c442"
+        },
+        {
+          "chemin": "versions/reference/orka/scripts/bilan_agents.py",
+          "source_git": ".agents/skills/orka/scripts/bilan_agents.py",
+          "sha256": "aee71eddafe54c94e90151259f9b68e05aacea8a787f9d0c326b99633e869c3d"
+        },
+        {
+          "chemin": "versions/reference/orka/scripts/fixtures/registre-v1.sql",
+          "source_git": ".agents/skills/orka/scripts/fixtures/registre-v1.sql",
+          "sha256": "089bdd473cc70da60b1f7f509e6c13128df8af57091b77fc0f2c62b044a57e06"
+        },
+        {
+          "chemin": "versions/reference/orka/scripts/preparer_agent.py",
+          "source_git": ".agents/skills/orka/scripts/preparer_agent.py",
+          "sha256": "4603449fb3b0747b8e2266cf50c01fea75b4e6a5a337c0cfd6be978ca585000c"
+        },
+        {
+          "chemin": "versions/reference/orka/scripts/superviser.py",
+          "source_git": ".agents/skills/orka/scripts/superviser.py",
+          "sha256": "2581b765d37b00a37defab9302c138543282ad7fdaee0d18f445f57f0249e8ef"
+        },
+        {
+          "chemin": "versions/reference/orka/scripts/test_bilan_agents.py",
+          "source_git": ".agents/skills/orka/scripts/test_bilan_agents.py",
+          "sha256": "1fd5cc51146b981f66274324c4194388fcf368c879ca43af97d7e81c6fa237f6"
+        },
+        {
+          "chemin": "versions/reference/orka/scripts/test_preparer_agent.py",
+          "source_git": ".agents/skills/orka/scripts/test_preparer_agent.py",
+          "sha256": "97b7aad63fed8633ed285f967d31ca65f456a6054668d5b775d5d6c0e93e7092"
+        },
+        {
+          "chemin": "versions/reference/orka/scripts/test_superviser.py",
+          "source_git": ".agents/skills/orka/scripts/test_superviser.py",
+          "sha256": "668b097a606421eaa67ffadab4a9d9dbd7ffa6655f83021a7641b79472eebbb3"
+        },
+        {
+          "chemin": "versions/reference/orka/LICENSE",
+          "source_git": "LICENSE",
+          "sha256": "9ba0c0531b84ed695733ec121a740bd839cb034e2ec752b659b33370c01fc927"
+        }
+      ]
+    },
+    {
+      "id": "candidate",
+      "version": "0.7.0",
+      "commit": "9b7727f6c5c9edd20f11a5a9d8faa3d777831145",
+      "fichiers": [
+        {
+          "chemin": "versions/candidate/orka/GUIDE.fr.md",
+          "source_git": ".agents/skills/orka/GUIDE.fr.md",
+          "sha256": "a4eb5166bd9d106774b3673b24a19a6bedb70880132b80a085d6b7fe006d2248"
+        },
+        {
+          "chemin": "versions/candidate/orka/GUIDE.md",
+          "source_git": ".agents/skills/orka/GUIDE.md",
+          "sha256": "fd44d6ec4dc1fdf733e1a47ddab710e1265917f1c94ba7f68195fe840039eb6d"
+        },
+        {
+          "chemin": "versions/candidate/orka/SKILL.md",
+          "source_git": ".agents/skills/orka/SKILL.md",
+          "sha256": "648c7d237929f3b1666614f429b33d199bcd0175dcdb8f28323cf58b356c54a3"
+        },
+        {
+          "chemin": "versions/candidate/orka/assets/mandat-exemple.json",
+          "source_git": ".agents/skills/orka/assets/mandat-exemple.json",
+          "sha256": "7ac4686accf25bcac4584fb8adc0b10410d6229f1e96555fb39d79989c67734d"
+        },
+        {
+          "chemin": "versions/candidate/orka/references/bilan-agents.md",
+          "source_git": ".agents/skills/orka/references/bilan-agents.md",
+          "sha256": "ddae5a7691c8442f5a99e0c6ba9537b12d67ff1efbcd536e635c7074c89ccaaa"
+        },
+        {
+          "chemin": "versions/candidate/orka/references/collaboration.md",
+          "source_git": ".agents/skills/orka/references/collaboration.md",
+          "sha256": "f75f15d167a1e4544b8acb8a35ae9caebd6061b9adfaeef9968e4d14f2e44629"
+        },
+        {
+          "chemin": "versions/candidate/orka/references/diagnostic-installation.md",
+          "source_git": ".agents/skills/orka/references/diagnostic-installation.md",
+          "sha256": "0f6c74e14e046a9548486cab73b3655d2e1df4f6c4f112252915d720bf95a883"
+        },
+        {
+          "chemin": "versions/candidate/orka/references/equipes/commercial.md",
+          "source_git": ".agents/skills/orka/references/equipes/commercial.md",
+          "sha256": "71a847ed6b9dab7805e4c3739d81665c9feba71d3c95f2e6076e78da93dc90a0"
+        },
+        {
+          "chemin": "versions/candidate/orka/references/equipes/direction.md",
+          "source_git": ".agents/skills/orka/references/equipes/direction.md",
+          "sha256": "7f7cdf37afae54ccca03e364b3da34ade2b14c0a9bf5d0a5e169bf61e34134cf"
+        },
+        {
+          "chemin": "versions/candidate/orka/references/equipes/finance.md",
+          "source_git": ".agents/skills/orka/references/equipes/finance.md",
+          "sha256": "8fc11a97bde56a4fde002269e899f7cc0ccf2e1b03769fe23090f3e1efba4c25"
+        },
+        {
+          "chemin": "versions/candidate/orka/references/equipes/marketing.md",
+          "source_git": ".agents/skills/orka/references/equipes/marketing.md",
+          "sha256": "e3951b24ce4681ce204d68987cc4af2d8bc0f0e46b623d9177a5b7c7cbbc6481"
+        },
+        {
+          "chemin": "versions/candidate/orka/references/equipes/produit-design.md",
+          "source_git": ".agents/skills/orka/references/equipes/produit-design.md",
+          "sha256": "fe02d3678cc01ad489eff15feacfac4d072bdde1b65db0a666f2d338a9337afe"
+        },
+        {
+          "chemin": "versions/candidate/orka/references/equipes/relation-client.md",
+          "source_git": ".agents/skills/orka/references/equipes/relation-client.md",
+          "sha256": "d7c64f0be13de03c13c0caa3c547bf3f3f23031a176830e09ec3a9af65450ccb"
+        },
+        {
+          "chemin": "versions/candidate/orka/references/equipes/rh.md",
+          "source_git": ".agents/skills/orka/references/equipes/rh.md",
+          "sha256": "ad7f03435f5fc39e37291191924fad78509fa1255bddff8955b19814567e4f6f"
+        },
+        {
+          "chemin": "versions/candidate/orka/references/equipes/technique.md",
+          "source_git": ".agents/skills/orka/references/equipes/technique.md",
+          "sha256": "66a2aada9fe5a0dbb3de70d301aef018eda3829f08ecfd399cff1312ce028953"
+        },
+        {
+          "chemin": "versions/candidate/orka/references/evaluation-agents.md",
+          "source_git": ".agents/skills/orka/references/evaluation-agents.md",
+          "sha256": "547d8d39fdff48a148c1acbfe15ca2aa1cb89ac9a3cd0daba9f83a35fa5fb9ff"
+        },
+        {
+          "chemin": "versions/candidate/orka/references/experiences-apprentissage.md",
+          "source_git": ".agents/skills/orka/references/experiences-apprentissage.md",
+          "sha256": "5ea83daad9c5d9609b7c26bffb9902660d699b69009f50ad3a6431fa58f00781"
+        },
+        {
+          "chemin": "versions/candidate/orka/references/gestion-documentaire.md",
+          "source_git": ".agents/skills/orka/references/gestion-documentaire.md",
+          "sha256": "648af7ca1ece766e7c41fd32e5a54ddc55ebf415e8cc7af6887b4d523365f96a"
+        },
+        {
+          "chemin": "versions/candidate/orka/references/modeles-effort.md",
+          "source_git": ".agents/skills/orka/references/modeles-effort.md",
+          "sha256": "f7897003084bc70ca7196bc66edbc9d559a3ad526e0361ddb1f6688e5ff6983e"
+        },
+        {
+          "chemin": "versions/candidate/orka/references/modeles.md",
+          "source_git": ".agents/skills/orka/references/modeles.md",
+          "sha256": "2124d2720b10fd15c925458fa621d69424f3afb3a56c9c8c502051f9ff113f70"
+        },
+        {
+          "chemin": "versions/candidate/orka/references/noms-domaines.md",
+          "source_git": ".agents/skills/orka/references/noms-domaines.md",
+          "sha256": "761a293789972c10f86de00afb245b44ec1f6b69f6244b3394bfd22c1d91d769"
+        },
+        {
+          "chemin": "versions/candidate/orka/references/orchestration-agents.md",
+          "source_git": ".agents/skills/orka/references/orchestration-agents.md",
+          "sha256": "45819f79584ca426c713a834ad165c618a5172ea33ba98561200bde2a4616d8f"
+        },
+        {
+          "chemin": "versions/candidate/orka/references/pilotage-missions.md",
+          "source_git": ".agents/skills/orka/references/pilotage-missions.md",
+          "sha256": "50e2cb428b4beb38fe922ec85fccbe4473a95debd12bdcf9de327c646cdba803"
+        },
+        {
+          "chemin": "versions/candidate/orka/references/processus-transverses.md",
+          "source_git": ".agents/skills/orka/references/processus-transverses.md",
+          "sha256": "e2c7fe5d257a26a7d7c53adbd713c6b2e55a6014adfd038c9c57d1b01392d37d"
+        },
+        {
+          "chemin": "versions/candidate/orka/references/profils-modeles.json",
+          "source_git": ".agents/skills/orka/references/profils-modeles.json",
+          "sha256": "44f17a94a5e3b536175eab14ffe0e74cb4ddb1e62601ab2876d67b90471b0aa4"
+        },
+        {
+          "chemin": "versions/candidate/orka/references/prompting-agents.md",
+          "source_git": ".agents/skills/orka/references/prompting-agents.md",
+          "sha256": "b22dbb9135038eefb9e633eaae54e0e42ac32b7a28eb9b8bfc0a4221458b4bd4"
+        },
+        {
+          "chemin": "versions/candidate/orka/references/prompts/consignes-communes.md",
+          "source_git": ".agents/skills/orka/references/prompts/consignes-communes.md",
+          "sha256": "c4e24e22a98385659fe35bfd89d86d549487c28dcb3700e1964f21d532dc80cc"
+        },
+        {
+          "chemin": "versions/candidate/orka/references/ressources-agents.md",
+          "source_git": ".agents/skills/orka/references/ressources-agents.md",
+          "sha256": "833c33f5056830c820ab1b2f7473effe6cfafff3bd7a921520545f84f8870952"
+        },
+        {
+          "chemin": "versions/candidate/orka/references/roles.md",
+          "source_git": ".agents/skills/orka/references/roles.md",
+          "sha256": "26420e29f3754fad9c45cbabee5f2e2014a92ebc23a7527664ecccd7a9eafdfa"
+        },
+        {
+          "chemin": "versions/candidate/orka/references/supervision-locale.md",
+          "source_git": ".agents/skills/orka/references/supervision-locale.md",
+          "sha256": "bb2ed1b377a111af4968ed50c26c2ac068f809e188cc8946def4463021affc89"
+        },
+        {
+          "chemin": "versions/candidate/orka/references/validation.md",
+          "source_git": ".agents/skills/orka/references/validation.md",
+          "sha256": "b1a2ba047133378d8f9cf5c3357da450f1a69cec2a4f648ef21fa4fe4a00b5c5"
+        },
+        {
+          "chemin": "versions/candidate/orka/references/vision-preuves-innovation.md",
+          "source_git": ".agents/skills/orka/references/vision-preuves-innovation.md",
+          "sha256": "13ceaeed4a04021173fdb849e523a6a7457b5787236e3ad1d21dd1bd0e708f28"
+        },
+        {
+          "chemin": "versions/candidate/orka/references/workflow-etude.md",
+          "source_git": ".agents/skills/orka/references/workflow-etude.md",
+          "sha256": "40b4304ffa5b34e3e1477019fdb48b526ea67dbf0f25cc169a4ac22fd75a53eb"
+        },
+        {
+          "chemin": "versions/candidate/orka/references/workflows-entreprise.md",
+          "source_git": ".agents/skills/orka/references/workflows-entreprise.md",
+          "sha256": "4628193c0ecb2dae3061c0c507ca8a299227b7e5cbd7662346e2f81071a6c442"
+        },
+        {
+          "chemin": "versions/candidate/orka/scripts/bilan_agents.py",
+          "source_git": ".agents/skills/orka/scripts/bilan_agents.py",
+          "sha256": "aee71eddafe54c94e90151259f9b68e05aacea8a787f9d0c326b99633e869c3d"
+        },
+        {
+          "chemin": "versions/candidate/orka/scripts/diagnostiquer.py",
+          "source_git": ".agents/skills/orka/scripts/diagnostiquer.py",
+          "sha256": "fb28a1defd3e9b3d8fcc7042797a2a83142d930474147693f8356db83af82944"
+        },
+        {
+          "chemin": "versions/candidate/orka/scripts/fixtures/registre-v1.sql",
+          "source_git": ".agents/skills/orka/scripts/fixtures/registre-v1.sql",
+          "sha256": "089bdd473cc70da60b1f7f509e6c13128df8af57091b77fc0f2c62b044a57e06"
+        },
+        {
+          "chemin": "versions/candidate/orka/scripts/preparer_agent.py",
+          "source_git": ".agents/skills/orka/scripts/preparer_agent.py",
+          "sha256": "4603449fb3b0747b8e2266cf50c01fea75b4e6a5a337c0cfd6be978ca585000c"
+        },
+        {
+          "chemin": "versions/candidate/orka/scripts/superviser.py",
+          "source_git": ".agents/skills/orka/scripts/superviser.py",
+          "sha256": "2581b765d37b00a37defab9302c138543282ad7fdaee0d18f445f57f0249e8ef"
+        },
+        {
+          "chemin": "versions/candidate/orka/scripts/test_bilan_agents.py",
+          "source_git": ".agents/skills/orka/scripts/test_bilan_agents.py",
+          "sha256": "1fd5cc51146b981f66274324c4194388fcf368c879ca43af97d7e81c6fa237f6"
+        },
+        {
+          "chemin": "versions/candidate/orka/scripts/test_diagnostiquer.py",
+          "source_git": ".agents/skills/orka/scripts/test_diagnostiquer.py",
+          "sha256": "c8e48b6dffb360ea558f9c5adeb4788f2667c8f71370eb4275752337e28a66bc"
+        },
+        {
+          "chemin": "versions/candidate/orka/scripts/test_preparer_agent.py",
+          "source_git": ".agents/skills/orka/scripts/test_preparer_agent.py",
+          "sha256": "97b7aad63fed8633ed285f967d31ca65f456a6054668d5b775d5d6c0e93e7092"
+        },
+        {
+          "chemin": "versions/candidate/orka/scripts/test_superviser.py",
+          "source_git": ".agents/skills/orka/scripts/test_superviser.py",
+          "sha256": "668b097a606421eaa67ffadab4a9d9dbd7ffa6655f83021a7641b79472eebbb3"
+        },
+        {
+          "chemin": "versions/candidate/orka/LICENSE",
+          "source_git": "LICENSE",
+          "sha256": "9ba0c0531b84ed695733ec121a740bd839cb034e2ec752b659b33370c01fc927"
+        }
+      ]
+    }
+  ],
+  "cas": [
+    {
+      "id": "tournee-complete",
+      "usage": "developpement",
+      "criteres_nombre": 6,
+      "criteres_sha256_json_canonique": "e8f62c92f50805ca1f4154e3b32700944b9bf2498e68dc72feebb97fae9fcb1c",
+      "prompt_sha256": "b53d3dea37c17e7e1ca50dd91c82a2d42480771ad65ace65b76360ed18d7d188",
+      "pieces": [
+        {
+          "chemin": "cas/01/dossier.md",
+          "sha256": "bd90ab2e5922ad5ae47747d21953556639ed8465a76c8322c098c2266f43e0de"
+        },
+        {
+          "chemin": "operateur/procedure.md",
+          "sha256": "9450b8917c92648325bfe84d9c9dba5788601f2146a5dd2f6781e610c2538544"
+        },
+        {
+          "chemin": "operateur/ordre.json",
+          "sha256": "c65dd40a52df02ef4fe4fe5644be78705741f53de9b621e783a7644e8945f7fd"
+        }
+      ]
+    },
+    {
+      "id": "devis-a-obtenir",
+      "usage": "developpement",
+      "criteres_nombre": 7,
+      "criteres_sha256_json_canonique": "b45df3d410d68d597a8807443bbc80e26f573cfdd895962a4cd53ed5d5aee357",
+      "prompt_sha256": "ada6166af26261f3fc084a1b76251f1ba241f0d42286be1935293279655800a4",
+      "pieces": [
+        {
+          "chemin": "cas/02/index.md",
+          "sha256": "c2d09940670ba1752a69ee5ea43eda2d4130eb2495e6a6b3a35dc340ef57582c"
+        },
+        {
+          "chemin": "cas/02/reponse-devis.txt",
+          "sha256": "28e7a3ffa8706dcc12b4715527a9a9bfe832ccad5afbbbc50b8321efda1324fb"
+        },
+        {
+          "chemin": "cas/02/reponse-indisponible.txt",
+          "sha256": "327b8910a9b5de06497563f892c8ad6306c19703150d733c6ff6cc760eb6d952"
+        },
+        {
+          "chemin": "cas/02/reponse-plafond.txt",
+          "sha256": "57e320dc0680839036104d31d1c4563af704822cb904b2affe52e5f2aa98b8ec"
+        },
+        {
+          "chemin": "operateur/procedure.md",
+          "sha256": "9450b8917c92648325bfe84d9c9dba5788601f2146a5dd2f6781e610c2538544"
+        },
+        {
+          "chemin": "operateur/ordre.json",
+          "sha256": "c65dd40a52df02ef4fe4fe5644be78705741f53de9b621e783a7644e8945f7fd"
+        }
+      ]
+    },
+    {
+      "id": "revision-reservee",
+      "usage": "reserve",
+      "criteres_nombre": 15,
+      "criteres_sha256_json_canonique": "4ee306a167fec67ea0582f722f4cf9124ef9c97d2509592e33ae4966d61a6fc3",
+      "prompt_sha256": "4943b274886d3f7ace2d0214f5d5bd6ea69f8e28a7a27eb11cdab32ba66f8810",
+      "pieces": [
+        {
+          "chemin": "cas/03/dossier.md",
+          "sha256": "dee9ce8d6302e87bb059be5d6407da66863b940179d5effee256a97118fabd03"
+        },
+        {
+          "chemin": "cas/03/changement.txt",
+          "sha256": "3371700c07cd422bc740c001215a86dd8fe39130ca870eeb81a8ff4c8058dab4"
+        },
+        {
+          "chemin": "cas/03/reponse-indisponible.txt",
+          "sha256": "54d25d8550fde3f10fddbf3edafda2b83ae777421bfbc4ae953b3cff1859d625"
+        },
+        {
+          "chemin": "operateur/procedure.md",
+          "sha256": "9450b8917c92648325bfe84d9c9dba5788601f2146a5dd2f6781e610c2538544"
+        },
+        {
+          "chemin": "operateur/ordre.json",
+          "sha256": "c65dd40a52df02ef4fe4fe5644be78705741f53de9b621e783a7644e8945f7fd"
+        }
+      ]
+    }
+  ],
+  "ordre_operateur": [
+    "e0001",
+    "e0002",
+    "e0003",
+    "e0004",
+    "e0007",
+    "e0008",
+    "e0009",
+    "e0010",
+    "e0013",
+    "e0014",
+    "e0015",
+    "e0016",
+    "e0005",
+    "e0006",
+    "e0011",
+    "e0012",
+    "e0017",
+    "e0018"
+  ],
+  "matrice": [
+    {
+      "id": "e0001",
+      "cas": "tournee-complete",
+      "version": "reference",
+      "repetition": 1
+    },
+    {
+      "id": "e0002",
+      "cas": "tournee-complete",
+      "version": "candidate",
+      "repetition": 1
+    },
+    {
+      "id": "e0003",
+      "cas": "devis-a-obtenir",
+      "version": "candidate",
+      "repetition": 1
+    },
+    {
+      "id": "e0004",
+      "cas": "devis-a-obtenir",
+      "version": "reference",
+      "repetition": 1
+    },
+    {
+      "id": "e0005",
+      "cas": "revision-reservee",
+      "version": "reference",
+      "repetition": 1
+    },
+    {
+      "id": "e0006",
+      "cas": "revision-reservee",
+      "version": "candidate",
+      "repetition": 1
+    },
+    {
+      "id": "e0007",
+      "cas": "tournee-complete",
+      "version": "candidate",
+      "repetition": 2
+    },
+    {
+      "id": "e0008",
+      "cas": "tournee-complete",
+      "version": "reference",
+      "repetition": 2
+    },
+    {
+      "id": "e0009",
+      "cas": "devis-a-obtenir",
+      "version": "reference",
+      "repetition": 2
+    },
+    {
+      "id": "e0010",
+      "cas": "devis-a-obtenir",
+      "version": "candidate",
+      "repetition": 2
+    },
+    {
+      "id": "e0011",
+      "cas": "revision-reservee",
+      "version": "candidate",
+      "repetition": 2
+    },
+    {
+      "id": "e0012",
+      "cas": "revision-reservee",
+      "version": "reference",
+      "repetition": 2
+    },
+    {
+      "id": "e0013",
+      "cas": "tournee-complete",
+      "version": "reference",
+      "repetition": 3
+    },
+    {
+      "id": "e0014",
+      "cas": "tournee-complete",
+      "version": "candidate",
+      "repetition": 3
+    },
+    {
+      "id": "e0015",
+      "cas": "devis-a-obtenir",
+      "version": "candidate",
+      "repetition": 3
+    },
+    {
+      "id": "e0016",
+      "cas": "devis-a-obtenir",
+      "version": "reference",
+      "repetition": 3
+    },
+    {
+      "id": "e0017",
+      "cas": "revision-reservee",
+      "version": "reference",
+      "repetition": 3
+    },
+    {
+      "id": "e0018",
+      "cas": "revision-reservee",
+      "version": "candidate",
+      "repetition": 3
+    }
+  ],
+  "resume_initial": {
+    "prevues": 18,
+    "preparees": 18,
+    "terminees": 0,
+    "interrompues": 0,
+    "hors_protocole": 0,
+    "enregistrees": 0,
+    "evaluables": 0,
+    "inconclusives": 0,
+    "succes": 0,
+    "echecs": 0,
+    "succes_sur_evaluables": {
+      "numerateur": 0,
+      "denominateur": 0,
+      "taux": null
+    },
+    "succes_sur_prevues": {
+      "numerateur": 0,
+      "denominateur": 18,
+      "taux": 0.0
+    },
+    "executees_reelles_declarees": 0,
+    "observations_simulees": 0
+  },
+  "limites": [
+    "Préparation seule autorisée le 22 octobre 2026 : zéro modèle, agent, spécialiste ou revue modèle lancé ; une future exécution exige un mandat distinct.",
+    "18 contextes évalués maximum : 3 cas × 2 versions × 3 répétitions. Mode direct, aucun spécialiste ni qualification déléguée C6 dans cette campagne.",
+    "Ordre opérateur figé : douze essais de développement avant six réservés, alternance des versions à l’intérieur des paires ; aucun remplacement de version ni ajustement de la candidate pendant la campagne.",
+    "Essais séquentiels, au plus un contexte évalué actif, plus le coordinateur de campagne (deux contextes au total pendant exécution future) ; aucun autre agent de revue.",
+    "Conversation et répertoire neufs par essai. Même hôte Codex desktop, outils et réglages hérités demandés pour les deux versions (null : modèle/effort inconnus à la préparation). Consigner les consignes communes et capacités natives avant le premier essai ; si changement de configuration connu, conserver l’écart et arrêter pour nouveau protocole.",
+    "Aucun Web, réseau, message externe, achat, déploiement, exécution de code/prototype ou modification de paramètres personnels. Lectures bornées aux pièces fournies et au skill sélectionné, écritures dans le seul dossier de sortie de l’essai.",
+    "Compléments : trois demandes par tâche, relances/reformulations comprises ; compteur initial 0 pour cas 01–02 et 2 pour cas 03. Réponses opérateur exactes et déclencheurs figés, aucune aide corrective ; les réponses spontanées ne réinitialisent pas le compteur.",
+    "Surveillance : limite opérateur de 20 minutes murales par contexte évalué, au plus 360 minutes murales cumulées pour les essais ; une pause ou attente compte. Au dépassement demander l’arrêt natif, conserver interrompu et attendre confirmation de fin avant un autre rédacteur ; pas de garantie d’arrêt logiciel ni de plafond monétaire.",
+    "Aucune relance automatique ou substitution après échec ; résultat initial conservé. Interruption de campagne, exposition du réservé ou régression indispensable : conserver les états, arrêter et réexaminer ; nouvelle candidate = nouvelle campagne et nouveau réservé si exposition.",
+    "Coûts, tokens, modèles/efforts appliqués et couverture de traces inconnus sans source native ; pas de tarifs inventés, de mesure déduite ou de promesse d’économie. Aucun budget financier autorisé par cette préparation ; ne pas lancer ultérieurement si l’autorisation ou les limites de moyens manquent.",
+    "Critères, réponses opérateur, manifeste global et cas réservé exclus du contexte de production. Séparation documentaire, sans sandbox ni secret garanti ; l’auteur/opérateur connaît les attendus. La préparation n’atteste aucune lecture native ni indépendance de la revue.",
+    "Geler sorties initiales et révisées avant bilan ; contrôles JSON et revues attribuées séparés. Toute régression indispensable non résolue bloque promotion (E7) ; trois répétitions exploratoires, aucune supériorité générale ou qualification C6 déduite."
+  ],
+  "canonisation_criteres": "UTF-8 de json.dumps(criteres, ensure_ascii=False, sort_keys=True, separators=(virgule,deux-points)), sans retour final",
+  "confidentialite": "Contenus et critères exacts conservés localement sous .orka/, non publiés. Les empreintes attestent une correspondance de contenu, pas une authenticité ni un contrôle d’accès."
+}
