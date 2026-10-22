@@ -108,6 +108,8 @@ Les neuf livrables satisfont les critères examinés. **Aucun avantage de qualit
 
 ## Documentation et développement
 
+Le [lot ECC-01 préparé](docs/LOT-ECC-01.md) détaille les diagnostics, le contexte progressif et les évaluations répétées. C’est un plan de réalisation avec critères de validation ; les ajouts ne sont pas encore implémentés.
+
 | Pour commencer | Pour approfondir |
 |---|---|
 | [Guide de démarrage](.agents/skills/orka/GUIDE.fr.md) · [English](.agents/skills/orka/GUIDE.md) | Premières missions, prompts et reprise |

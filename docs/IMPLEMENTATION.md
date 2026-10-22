@@ -141,6 +141,8 @@ La performance serait évaluée sur des missions comparables : taux d'acceptatio
 
 ## Ordre de développement proposé
 
+Le [lot ECC-01 préparé](LOT-ECC-01.md) détaille le diagnostic d’installation, le contexte progressif et les évaluations répétées : existant, ajouts proposés, critères de validation et limites d’exécution. Il s’agit d’un plan de réalisation, pas de fonctionnalités déjà livrées. Le cœur Markdown et l’installation manuelle restent utilisables sans Python ; les nouveaux outils envisagés sont facultatifs.
+
 1. Exécuter une étude réelle avec le skill et examiner la qualité des livrables.
 2. Ajuster les rôles, les échanges et les critères de sortie selon les résultats.
 3. Raccorder le registre livré à un client de lancement et au suivi réel des agents.

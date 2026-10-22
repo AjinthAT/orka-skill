@@ -120,6 +120,8 @@ The nine delivered outputs met the reviewed artifact criteria. **No quality or c
 
 ## Development and contributions
 
+[Planned work: ECC-01](docs/LOT-ECC-01.md) — installation diagnostics, progressive context and repeated evaluations; specification in French, not yet implemented.
+
 Keep private mission data out of this public distribution repository. Product mission documents use `projets/<id>/`; cross-company missions use `entreprise/missions/<id>/`. Application code stays in its designated repository.
 
 To check the repository from its root:
