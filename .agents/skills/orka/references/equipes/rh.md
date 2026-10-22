@@ -10,6 +10,8 @@
 
 Appliquer la [gestion des ressources IA](../ressources-agents.md) et les [profils modèle/effort](../modeles-effort.md). Le coordinateur garde les lancements et la capacité commune ; le DRH conseille sans devenir un deuxième orchestrateur. Sur une petite mission, le coordinateur porte aussi cette responsabilité.
 
+Si des tentatives et mesures sont disponibles, utiliser le [bilan local](../bilan-agents.md). Examiner résultats, reprises et couverture de mesure ensemble ; ne pas recommander un modèle uniquement sur son coût apparent ou une comparaison de tâches différentes.
+
 ## recrutement-formation — qualification des agents et prompts
 
 - Mission : qualifier les profils et améliorer mandats, contexte et consignes sur des cas utiles à la mission.

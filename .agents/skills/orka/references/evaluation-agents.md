@@ -31,7 +31,15 @@ La correction des instructions a été appliquée éditorialement au dossier loc
 
 Référence avant changement : commit `35f2a61`. Correction de portée demandée par le dirigeant : RH orientée agents IA plutôt que personnel humain par défaut ; allocation par tâche et suivi d'usage observable, sans second orchestrateur. Ajout de guides conditionnels pour vision/preuves/innovation et noms/domaines ; identifiants des rôles conservés. Vérifications prévues : préparation de tous les rôles et de profils explicites, refus des réglages incompatibles, liens, paquet installable et cohérence des limites annoncées. Les cas de validation ajoutés décrivent les comportements à éprouver ; ils ne sont pas une campagne de modèles exécutée. Aucun gain de tokens ou de qualité n'est établi par la rédaction.
 
+## Évolution 0.3.0 : expériences et bilan local
+
+Référence avant changement : commit `bfe1c68`. Ajouts demandés : lier hypothèses, essais et décisions ; éprouver faisabilité et adoption ; analyser les résultats et moyens des agents. Le guide des expériences reste documentaire. Le bilan JSON est un logiciel local sur relevés fournis, sans collecteur ni décision automatique sur les profils.
+
+Contrôles exécutés : 8 tests du nouveau bilan sur données simulées (inconnues, dénominateurs, reprises, sous-totaux, devises, doublons et lecture sans écriture), avec les 29 tests des outils existants après installation dans un dossier temporaire ; 7 tests de distribution, validation du format du skill et résolution des liens locaux. Ces contrôles vérifient le logiciel et la structure. Aucun essai d'agents métier, entretien, prototype terrain ou gain de qualité/coût n'est établi par cette maintenance.
+
 ## Mesures et preuves
+
+Le [bilan local](bilan-agents.md) aide à calculer les indicateurs disponibles à partir des tentatives et mesures fournies. Les données absentes, la couverture et la méthode d'acceptation restent visibles ; le script ne qualifie pas automatiquement un profil. Pour relier une comparaison à une hypothèse et à une décision, réutiliser le suivi des [expériences](experiences-apprentissage.md).
 
 | Question | Mesure possible et précaution |
 |---|---|
@@ -62,6 +70,6 @@ Tenir une trace concise : changement, motif, cas utilisés, résultats, limites,
 | Haute | Essais isolés des opérations extérieures | Préparer et vérifier publication, envoi ou déploiement dans un environnement adapté, avec des contrôles empêchant les effets réels pendant l'essai. | La préparation locale n'exécute rien ; aucun environnement de test d'opérations extérieures n'est configuré. |
 | Moyenne | Journal des opérations et reprises | Reconnaître les tentatives, les résultats reçus et les actions au résultat incertain sans les répéter aveuglément. | Événements et requêtes persistés dans le registre ; contrôle des actions extérieures à implémenter. |
 | Moyenne | Bibliothèque de connaissances validées | Retrouver faits et décisions de référence avec provenance, portée et versions, puis réexaminer ce qui a changé. | Conventions documentaires disponibles ; contenu métier à constituer pendant les missions. |
-| Moyenne | Tableau de pilotage alimenté par les exécutions | Voir travaux, blocages, vérifications et consommation réelle, sans données inventées. | Modèle documentaire disponible ; collecte et interface à construire. |
+| Moyenne | Tableau de pilotage alimenté par les exécutions | Voir travaux, blocages, vérifications et consommation réelle, sans données inventées. | Bilan local implémenté sur relevés fournis ; collecte automatique et interface à construire. |
 
 Prioriser les développements selon les défauts et besoins réellement observés. Aucun de ces ajouts ne justifie de multiplier les agents ou les données collectées sans utilité pour la mission.

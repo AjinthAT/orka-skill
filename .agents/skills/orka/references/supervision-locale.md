@@ -63,6 +63,8 @@ Si le lancement échoue avec certitude avant création de l'agent, consigner ce 
 
 `etat` affiche tâches, dépendances à réexaminer, réservations et paramètres demandés ou déclarés. `journal` expose les événements. `alertes --delai 300` signale les réservations sans activité depuis au moins 300 secondes ; le délai est fourni par l'opérateur. Ce signal ne prouve pas qu'un agent est arrêté.
 
+Pour analyser qualité, reprises et moyens connus, constituer le relevé du [bilan local des agents](bilan-agents.md) à partir des tentatives réellement rattachées et des compteurs disponibles. Ce bilan est un outil séparé ; aucune collecte ni export automatique depuis SQLite n'est ajouté au registre.
+
 Après réouverture de la base, les réservations restent actives. Vérifier les agents concernés avant de les libérer. Une libération sans résultat laisse la tâche bloquée. Une tâche bloquée ou à corriger peut passer par `reprendre --mission ... --tache ... --motif "constat"` après libération. Le compteur de tentatives n'est pas remis à zéro.
 
 Si la réponse d'une réservation a été perdue, retrouver son identifiant dans `etat`, puis utiliser `requete --execution IDENTIFIANT` pour récupérer la requête enregistrée. Examiner sa phase, son activité et l'agent rattaché avant toute action ; cette lecture n'autorise pas à relancer une tentative déjà lancée. Ne pas créer une nouvelle réservation pour remplacer un résultat de lancement encore incertain.

@@ -41,6 +41,8 @@ Comparer les variantes sur des critères identiques : acceptation initiale, erre
 
 Un plafond fourni par le dirigeant est suivi avec les moyens disponibles. À l'approche d'une limite observable, prioriser, réduire les travaux facultatifs ou rendre l'état partiel selon le mandat ; ne pas inventer un arrêt automatique. Sans compteur ou mécanisme d'application, signaler la limite de contrôle. Le registre SQLite actuel ne mesure ni ne plafonne les tokens.
 
+Pour un relevé réutilisable, le [bilan local des agents](bilan-agents.md) calcule les acceptations initiales, reprises, tokens connus et coûts séparés par nature et devise. Le coordinateur fournit les tentatives et mesures avec leur provenance ; aucune extraction automatique du registre ou de l'hôte n'est fournie. Utiliser le détail et les dénominateurs plutôt qu'un classement global des agents sur des tâches incomparables.
+
 ## Sources et portée
 
 [OpenAI — Subagents](https://learn.chatgpt.com/docs/agent-configuration/subagents) décrit les réglages par agent et le coût de délégation ; [Agents API — Observability and usage](https://developers.openai.com/api/docs/guides/agents-api/observability) décrit ses propres compteurs. Sources consultées le 22 octobre 2026. Leur présence ne garantit pas que la session expose ces réglages ou cette télémétrie. Cette référence définit une procédure ; elle n'ajoute aucun collecteur, plafond technique ou tarif au logiciel local.

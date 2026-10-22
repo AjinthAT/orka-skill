@@ -1,6 +1,6 @@
 # Implémentation de l'entreprise IA
 
-## Version actuelle : skill, préparation et supervision locale
+## Version actuelle : skill, préparation, supervision et bilan local
 
 Le point d'entrée est [SKILL.md](../.agents/skills/orka/SKILL.md). Il oriente vers les 8 équipes, leurs 28 rôles, les workflows et les modèles. Son emplacement local suit le format documenté par [OpenAI](https://learn.chatgpt.com/docs/build-skills).
 
@@ -66,6 +66,18 @@ La fonction RH gère par défaut les ressources des agents : allocation, modèle
 
 Il s'agit de procédures et de profils, pas de nouveaux services : aucun collecteur de tokens, arrêt automatique sur budget, vérificateur de domaines ou apprentissage de modèle n'a été implémenté. Une vraie mesure d'usage ou vérification de disponibilité exige l'outil de l'hôte adapté ; sinon son résultat reste indisponible. Aucun domaine de projet n'a été vérifié au cours de cette maintenance.
 
+## Version 0.3.0 : expériences et bilan des agents
+
+Le guide [expériences et apprentissages](../.agents/skills/orka/references/experiences-apprentissage.md) relie hypothèses, tests bornés, résultats et décisions. Il distingue découverte, faisabilité et adoption, conserve les résultats inconclusifs et motifs d'abandon, puis réexamine les conclusions affectées par une preuve modifiée. Ces liens et décisions restent documentaires ; aucun moteur d'expérimentation, graphe automatique, entretien ou prototype métier n'a été exécuté pendant cette maintenance.
+
+Le script [bilan_agents.py](../.agents/skills/orka/scripts/bilan_agents.py) est implémenté : il lit un relevé JSON fourni et produit tâches, tentatives, reprises, dénominateur d'acceptation initiale, sous-totaux de tokens connus et coûts séparés par nature/devise. Il conserve le détail des agents et la provenance fournie. Les valeurs absentes restent inconnues ; les mesures déclarées cumulatives, les doublons d'identifiants et les historiques incomplets d'une tâche incluse sont refusés. Il ne peut détecter une omission de tâche, un recouvrement dissimulé sous deux identifiants différents ou une fausse preuve textuelle.
+
+Le [guide du bilan](../.agents/skills/orka/references/bilan-agents.md) précise la normalisation, la couverture et les limites. Ce script est indépendant du catalogue Codex et ne modifie ni données ni paramètres. Aucun collecteur, export automatique SQLite, calcul tarifaire, plafond financier ou classement automatique des modèles n'est ajouté. Les tests utilisent des mesures simulées et vérifient le fonctionnement après installation dans un autre dossier.
+
+```sh
+python3 -B .agents/skills/orka/scripts/test_bilan_agents.py
+```
+
 ## Premier essai utile
 
 La version 0.1.1 renforce la restitution après revue d'usage : synthèse dirigeant visant une page pour les études et décisions entre équipes, conclusion actuelle avant l'historique, référence unique des critères et liens relatifs entre pièces d'un dossier partageable. Les missions compactes gardent un livrable regroupé ; les étapes de découverte et de confirmation sont distinguées selon les inconnues réelles. Ces règles sont documentaires, sans nouveau moteur ni contrôle automatique de longueur. La [trace d'évaluation](../.agents/skills/orka/references/evaluation-agents.md) précise ce qui a été examiné et ce qui reste à éprouver sur d'autres missions.
@@ -87,7 +99,7 @@ Pour fonctionner sans session interactive ouverte, il faudra raccorder le regist
 | Messagerie | Acheminer questions, objections et réponses. | Outils de session ; pas de messagerie autonome ajoutée. |
 | Stockage | Conserver contexte, requêtes, événements et résultats. | Documents et registre disponibles ; pas de sauvegarde automatique. |
 | Contrôle des outils | Appliquer les droits et moyens autorisés. | À raccorder au moteur ; le registre ne fournit pas un environnement isolé. |
-| Suivi | Montrer états, blocages et mesures. | Commandes locales d'état, journal et alertes ; interface et collecte de coûts à construire. |
+| Suivi | Montrer états, blocages et mesures. | État, journal, alertes et bilan local des relevés fournis ; interface et collecte de coûts à construire. |
 
 Le MVP du moteur suivrait les états tâche « à faire », « en cours », « à vérifier », « terminée », « bloquée » et « annulée ». Une correction reviendrait à « à faire » avec son motif ; un échec d'outil serait enregistré comme événement. Chaque tâche aurait un responsable, des dépendances avec versions, une sortie distincte, des critères, un responsable d'acceptation et une limite de tentatives. Le statut d'une tâche resterait distinct de la décision commerciale sur le projet.
 

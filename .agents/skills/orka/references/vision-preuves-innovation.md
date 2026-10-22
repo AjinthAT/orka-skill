@@ -32,6 +32,8 @@ Prioriser selon l'impact d'une erreur et le coût de vérification. Lire la sour
 
 Avant une réalisation coûteuse, vérifier notamment l'existence du problème, les capacités des outils envisagés, l'accès aux données et la possibilité d'adoption. Une demande de protocole ne prouve pas que le test a été exécuté. La [procédure d'étude](workflow-etude.md) distingue découverte et confirmation ; les autorisations de la session restent applicables.
 
+Pour passer d'une affirmation incertaine à un test et à une décision traçable, utiliser [expériences et apprentissages](experiences-apprentissage.md). Cette référence précise prototypes courts, adoption, résultats inconclusifs et mémoire des pistes abandonnées ; une section du dossier suffit si le suivi est simple.
+
 ## Explorer des pistes d'innovation utiles
 
 Quand l'innovation ou la différenciation fait partie de la mission, examiner quelques pistes réellement distinctes : une approche frugale, une différence adaptée à la cible, une piste plus ambitieuse si elle est pertinente. Ne pas imposer une technologie ou multiplier les idées pour remplir des cases.

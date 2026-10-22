@@ -21,7 +21,7 @@ class InstallationTests(unittest.TestCase):
             self.assertTrue((destination / "LICENSE").is_file())
             for _, relative in installer.skill_files():
                 self.assertTrue((destination / relative).is_file(), str(relative))
-            for script in ("test_preparer_agent.py", "test_superviser.py"):
+            for script in ("test_preparer_agent.py", "test_superviser.py", "test_bilan_agents.py"):
                 result = subprocess.run([sys.executable, "-B", str(destination / "scripts" / script)], cwd=folder, capture_output=True, text=True)
                 self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
 

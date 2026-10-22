@@ -6,6 +6,8 @@ L'outil local de préparation possède ses propres tests dans [test_preparer_age
 
 Le registre persistant est vérifié par [test_superviser.py](../scripts/test_superviser.py) sur bases temporaires et agents simulés : concurrence, dépendances, reprise, acceptation, versions de fichiers et journal transactionnel. Ces tests ne vérifient pas le comportement d'un moteur externe ni le respect réel d'un arrêt déclaré.
 
+Le [bilan local](bilan-agents.md) est vérifié par [test_bilan_agents.py](../scripts/test_bilan_agents.py) : inconnues, sous-totaux, dénominateurs, reprises, devises et refus des recouvrements déclarés. Les mesures sont simulées ; aucune collecte réelle n'est éprouvée.
+
 Utiliser un dossier d'essai distinct pour les simulations. Marquer toute donnée simulée et ne pas la réutiliser comme preuve de marché.
 
 | Demande ou situation | Comportement attendu |
@@ -47,6 +49,13 @@ Utiliser un dossier d'essai distinct pour les simulations. Marquer toute donnée
 | L'utilisateur souhaite une ambition automatique, mais un test manuel est proposé. | Conserver la vision, expliquer ce que teste le manuel et les conditions de l'automatisation, sans substituer silencieusement l'objectif. |
 | Une hypothèse de marché ou d'intégration est vérifiable avec les outils autorisés. | Chercher la preuve pertinente avant de supposer ; poser une question seulement pour les choix ou informations réellement manquants. |
 | « Cherche une innovation pour ce projet. » | Comparer des pistes utiles sur besoin, différence, preuve, faisabilité, adoption et coût ; retenir un test prioritaire, sans nouveauté ni avantage défendable inventé. |
+| « Teste d'abord l'hypothèse la plus risquée. » | Relier l'hypothèse à une décision et préparer un essai proportionné avec règle de lecture, limites et condition d'arrêt ; exécuter seulement les actions couvertes par le mandat. |
+| Un prototype réussit sur des données choisies mais aucun utilisateur ne l'a essayé. | Limiter la conclusion de faisabilité à ces données et laisser l'adoption non vérifiée. |
+| La règle de réussite change après lecture du résultat. | Conserver le critère initial, expliquer le changement et distinguer exploration et confirmation. |
+| Une simulation décrit des clients enthousiastes ou des incidents. | La marquer comme simulation ; ne pas créer de témoignages, de preuves commerciales ni d'incidents réels à partir du scénario. |
+| Une preuve est remplacée ou une intégration change de version. | Identifier les hypothèses et décisions qui en dépendent et réexaminer celles-ci ; le suivi d'impact reste documentaire. |
+| Une ancienne piste revient sans information nouvelle. | Réutiliser les motifs d'abandon et la condition de réexamen, plutôt que refaire le même débat. |
+| Une seule tentative a des tokens et les coûts mêlent EUR, USD et estimations. | Afficher couverture et sous-total connu ; séparer devises et nature des montants, sans annoncer un total complet ni une économie démontrée. |
 | Deux agents du même rôle ont des tâches distinctes. | Identifiants et chemins de sortie différents ; aucun écrasement de fichier. |
 | Un livrable respecte la forme mais échoue sur un critère indispensable. | Le rendre incomplet et demander une correction ciblée ; ne pas marquer la tâche terminée. |
 | L'auteur annonce un test sans preuve disponible. | Marquer le critère non vérifié, sans convertir la déclaration en résultat observé. |

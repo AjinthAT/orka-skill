@@ -40,6 +40,8 @@ Pour les inconnues critiques, définir une expérience proportionnée : entretie
 
 Si fréquence du problème, capacité d'action ou intérêt de l'acheteur sont encore inconnus, privilégier d'abord une découverte bornée et son bilan. Séparer cette prochaine expérience des essais techniques ou confirmatoires ultérieurs. Leurs calculs et seuils détaillés restent en annexe conditionnelle lorsqu'ils sont utiles ; ne pas les présenter comme un programme déjà décidé ni supprimer une analyse nécessaire à une décision à fort impact. Justifier les seuils proposés et conserver les exigences de sécurité ou de droits indépendamment de la taille du test.
 
+Relier cette expérience à l'hypothèse et à la décision concernées selon [expériences et apprentissages](experiences-apprentissage.md). Distinguer besoin, faisabilité et adoption ; préparer la lecture du résultat avant l'essai et conserver la possibilité d'une conclusion inconclusive. Un test proposé reste non exécuté jusqu'à l'observation de preuves.
+
 Sans accès à de vrais clients ni résultats transmis, livrer le protocole et marquer le test « non réalisé ». Ne pas envoyer d'invitations, publier de page ou lancer de campagne à partir de la seule demande d'étude.
 
 Sortie : prochain apprentissage recherché et critère de décision mesurable, ou justification de l'absence de test nécessaire.

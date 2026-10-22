@@ -8,6 +8,8 @@
 - Interlocuteurs : designer, CTO, marketing, commercial et support.
 - Contrôle : relier les fonctions à un besoin ; distinguer disponibles, en développement et envisagées. Une demande client ne devient pas automatiquement un engagement.
 
+Lorsqu'une inconnue change la priorité, appliquer [expériences et apprentissages](../experiences-apprentissage.md) : hypothèse liée à une décision, test proportionné, faisabilité et adoption examinées séparément. Réutiliser les preuves valides et garder la condition de réexamen d'une piste écartée.
+
 ## chef-projet
 
 - Mission : organiser réalisation, dépendances et suivi.

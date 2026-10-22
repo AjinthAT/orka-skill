@@ -141,10 +141,14 @@ Orka includes optional guides for the parts of a project that need more than ano
 | **A clearer vision** | Ask the questions that change the decision; preserve the original ambition and distinguish it from the first experiment |
 | **Evidence instead of assumptions** | Track decisive claims, verify accessible facts, and keep unknowns or contradictions visible |
 | **Useful innovation** | Compare distinct approaches on value, differentiation, adoption, feasibility and a minimal test |
+| **Learning through experiments** | Link each critical hypothesis to a bounded test, observed evidence and a decision; keep inconclusive results and abandoned approaches visible |
+| **Feasibility and adoption** | Test the smallest technical uncertainty, then examine the effort and value for people using the product |
 | **A short international name** | Evaluate meaning, pronunciation and confusion in the target languages; check shortlisted domains with dated sources |
 | **An efficient AI team** | Match model, effort and context to each task; record real usage when available and qualify changes against results |
 
-These are procedures applied with the host's available tools. Domain availability needs a live check; token accounting needs actual telemetry. The local helpers do not provide a registrar integration or a token meter.
+These are procedures applied with the host's available tools. Domain availability needs a live check; token accounting needs actual telemetry. The optional [agent report](.agents/skills/orka/references/bilan-agents.md) summarizes supplied attempts, reviews, known tokens and costs, with explicit coverage. It does not collect telemetry or enforce a budget. The local helpers do not provide a registrar integration or a token meter.
+
+The [experiment guide](.agents/skills/orka/references/experiences-apprentissage.md) separates a proposed test from an executed one, and technical feasibility from real adoption. It also preserves the reasons for abandoning an approach and identifies conclusions to revisit when evidence changes.
 
 ## What a study delivers
 
@@ -273,6 +277,8 @@ A model alone is not an installation target: the application running it must sup
 | [Local supervision](.agents/skills/orka/references/supervision-locale.md) | Optional persistent register and its limits |
 | [AI agent resources](.agents/skills/orka/references/ressources-agents.md) | Task allocation, model/effort choices, usage and qualification |
 | [Vision and innovation](.agents/skills/orka/references/vision-preuves-innovation.md) | Decision-changing questions, evidence and experiments |
+| [Experiments and learning](.agents/skills/orka/references/experiences-apprentissage.md) | Hypotheses, short prototypes, adoption tests and decisions |
+| [Agent reports](.agents/skills/orka/references/bilan-agents.md) | Local summaries of supplied reviews, retries, known tokens and costs |
 | [Names and domains](.agents/skills/orka/references/noms-domaines.md) | Shortlists, dated availability checks and naming risks |
 | [Model profiles](.agents/skills/orka/references/modeles-effort.md) | Codex reference settings and adaptation boundaries |
 | [Mandates and prompts](.agents/skills/orka/references/prompting-agents.md) | Task contracts and the optional preparer |
@@ -294,6 +300,7 @@ From the repository root:
 ```sh
 python3 -B .agents/skills/orka/scripts/test_preparer_agent.py
 python3 -B .agents/skills/orka/scripts/test_superviser.py
+python3 -B .agents/skills/orka/scripts/test_bilan_agents.py
 python3 -B -m unittest discover -s tests
 python3 install.py --archive dist/orka.zip
 ```

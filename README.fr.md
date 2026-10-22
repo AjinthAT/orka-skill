@@ -143,10 +143,14 @@ Orka propose des guides ciblés pour approfondir les points utiles à la mission
 | **Clarifier la vision** | Poser les questions qui changent la décision ; préserver l'ambition et la distinguer du premier test |
 | **Vérifier plutôt que supposer** | Qualifier les affirmations décisives, chercher les preuves accessibles et montrer inconnues ou contradictions |
 | **Innover utilement** | Comparer des pistes distinctes sur la valeur, la différence, l'adoption, la faisabilité et un test minimal |
+| **Apprendre par l'expérience** | Relier chaque hypothèse critique à un test borné, des preuves observées et une décision ; garder les résultats inconclusifs et pistes abandonnées |
+| **Éprouver faisabilité et adoption** | Isoler le verrou technique, puis examiner l'effort et la valeur pour les personnes qui utilisent le produit |
 | **Trouver un nom court et international** | Examiner sens, prononciation et confusion dans les langues visées ; vérifier les domaines finalistes avec des sources datées |
 | **Allouer efficacement les agents** | Adapter modèle, effort et contexte à la tâche ; relever l'usage réel accessible et qualifier les ajustements sur les résultats |
 
-Ces guides s'appliquent avec les outils de l'assistant. La disponibilité d'un domaine exige une vérification actuelle ; le comptage des tokens exige des mesures. Les outils locaux ne fournissent ni connexion à un registrar ni compteur de tokens.
+Ces guides s'appliquent avec les outils de l'assistant. La disponibilité d'un domaine exige une vérification actuelle ; le comptage des tokens exige des mesures. Le [bilan local des agents](.agents/skills/orka/references/bilan-agents.md) résume les tentatives, revues, tokens connus et coûts fournis, avec leur couverture. Il ne collecte pas de mesures et n'applique pas de plafond financier. Les outils locaux ne fournissent ni connexion à un registrar ni compteur de tokens.
+
+Le [guide des expériences](.agents/skills/orka/references/experiences-apprentissage.md) distingue test proposé et test exécuté, faisabilité technique et adoption réelle. Il conserve aussi les motifs d'abandon d'une piste et les conclusions à réexaminer lorsqu'une preuve change.
 
 ## Ce que vous recevez après une étude
 
@@ -263,13 +267,14 @@ Un modèle seul ne suffit pas : l'application qui l'utilise doit prendre en char
 
 ## Documentation et développement
 
-Le [README anglais](README.md#documentation) présente l'index complet. Nouveaux guides : [ressources IA](.agents/skills/orka/references/ressources-agents.md), [vision et innovation](.agents/skills/orka/references/vision-preuves-innovation.md), [noms et domaines](.agents/skills/orka/references/noms-domaines.md). Points d'entrée : [rôles](.agents/skills/orka/references/roles.md), [workflows](.agents/skills/orka/references/workflows-entreprise.md), [orchestration](.agents/skills/orka/references/orchestration-agents.md), [supervision locale](.agents/skills/orka/references/supervision-locale.md), [modèles](.agents/skills/orka/references/modeles-effort.md) et [implémentation](docs/IMPLEMENTATION.md).
+Le [README anglais](README.md#documentation) présente l'index complet. Guides ciblés : [ressources IA](.agents/skills/orka/references/ressources-agents.md), [vision et innovation](.agents/skills/orka/references/vision-preuves-innovation.md), [expériences et apprentissages](.agents/skills/orka/references/experiences-apprentissage.md), [bilan des agents](.agents/skills/orka/references/bilan-agents.md), [noms et domaines](.agents/skills/orka/references/noms-domaines.md). Points d'entrée : [rôles](.agents/skills/orka/references/roles.md), [workflows](.agents/skills/orka/references/workflows-entreprise.md), [orchestration](.agents/skills/orka/references/orchestration-agents.md), [supervision locale](.agents/skills/orka/references/supervision-locale.md), [modèles](.agents/skills/orka/references/modeles-effort.md) et [implémentation](docs/IMPLEMENTATION.md).
 
 Les dossiers de mission produit utilisent `projets/<id>/` ; les missions transversales utilisent `entreprise/missions/<id>/`. Le code applicatif reste dans son dépôt de développement. Conservez les données privées de mission hors de ce dépôt de distribution public. Les exemples du registre utilisent le dossier local ignoré `.orka/`.
 
 ```sh
 python3 -B .agents/skills/orka/scripts/test_preparer_agent.py
 python3 -B .agents/skills/orka/scripts/test_superviser.py
+python3 -B .agents/skills/orka/scripts/test_bilan_agents.py
 python3 -B -m unittest discover -s tests
 python3 install.py --archive dist/orka.zip
 ```
