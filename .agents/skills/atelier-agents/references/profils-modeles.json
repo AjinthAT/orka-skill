@@ -1,0 +1,61 @@
+{
+  "version": 1,
+  "verification_documentaire": "2026-10-22",
+  "sources": [
+    "https://learn.chatgpt.com/docs/agent-configuration/subagents",
+    "https://developers.openai.com/api/docs/guides/model-selection"
+  ],
+  "modeles": {
+    "gpt-6-luna": ["low", "medium", "high", "xhigh", "max"],
+    "gpt-6.1-sol": ["low", "medium", "high", "xhigh", "max", "ultra"],
+    "gpt-6-astra": ["low", "medium", "high", "xhigh", "max", "ultra"]
+  },
+  "profils": {
+    "coordination": {"modele": "gpt-6.1-sol", "effort": "high"},
+    "execution": {"modele": "gpt-6-luna", "effort": "medium"},
+    "analyse": {"modele": "gpt-6.1-sol", "effort": "medium"},
+    "realisation": {"modele": "gpt-6.1-sol", "effort": "high"},
+    "revue": {"modele": "gpt-6.1-sol", "effort": "high"},
+    "expertise": {"modele": "gpt-6-astra", "effort": "high"}
+  },
+  "equipes": {
+    "direction": ["coordinateur", "analyste-marche", "analyste-concurrence", "critique"],
+    "marketing": ["directeur-marketing", "redacteur", "seo", "reseaux-sociaux", "acquisition"],
+    "commercial": ["directeur-commercial", "prospection", "partenariats"],
+    "produit-design": ["responsable-produit", "chef-projet", "designer"],
+    "technique": ["cto", "architecte", "frontend", "backend", "securite", "qa", "devops"],
+    "finance": ["daf", "administration"],
+    "rh": ["drh", "recrutement-formation"],
+    "relation-client": ["support", "customer-success"]
+  },
+  "roles": {
+    "coordinateur": "coordination",
+    "analyste-marche": "analyse",
+    "analyste-concurrence": "analyse",
+    "critique": "revue",
+    "directeur-marketing": "analyse",
+    "redacteur": "execution",
+    "seo": "analyse",
+    "reseaux-sociaux": "execution",
+    "acquisition": "analyse",
+    "directeur-commercial": "analyse",
+    "prospection": "execution",
+    "partenariats": "analyse",
+    "responsable-produit": "analyse",
+    "chef-projet": "coordination",
+    "designer": "analyse",
+    "cto": "realisation",
+    "architecte": "realisation",
+    "frontend": "realisation",
+    "backend": "realisation",
+    "securite": "revue",
+    "qa": "revue",
+    "devops": "realisation",
+    "daf": "analyse",
+    "administration": "execution",
+    "drh": "analyse",
+    "recrutement-formation": "execution",
+    "support": "execution",
+    "customer-success": "analyse"
+  }
+}

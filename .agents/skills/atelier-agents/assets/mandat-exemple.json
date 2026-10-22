@@ -1,0 +1,22 @@
+{
+  "mission_id": "demonstration",
+  "tache_id": "T-001",
+  "role": "redacteur",
+  "objectif": "Simulation uniquement : proposer trois formulations pour presenter un outil fictif de gestion de rendez-vous.",
+  "contexte": [
+    "Exemple fictif, aucun client ni produit reel.",
+    "Fait de simulation : l'outil regroupe les rendez-vous dans un calendrier.",
+    "Aucune preuve de gain de temps n'est fournie."
+  ],
+  "entrees": [],
+  "sortie": "Restituer les trois formulations au coordinateur, sans creer de fichier.",
+  "criteres": [
+    "Trois formulations distinctes en francais.",
+    "Aucun chiffre, temoignage ou gain de temps invente.",
+    "Mentionner que le contenu concerne une offre fictive."
+  ],
+  "acceptation": "coordinateur",
+  "outils_autorises": [],
+  "limites": ["Preparation de texte uniquement ; aucune publication ni prise de contact."],
+  "mode": "production"
+}
