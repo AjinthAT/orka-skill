@@ -1,314 +1,132 @@
 <p align="center">
-  <img src="docs/assets/orka-banner.svg" alt="Orka — Une mission, une équipe IA coordonnée. 28 rôles, 8 équipes, 9 workflows." width="100%">
+  <img src="docs/assets/orka-banner.svg" alt="Orka — Une mission. Une équipe IA coordonnée." width="100%">
 </p>
 
 <p align="center">
-  <strong>Une équipe d'entreprise coordonnée dans votre assistant IA.</strong><br>
-  Étudier une idée, préparer un lancement, coordonner un développement ou améliorer une activité.
+  <strong>Transformez votre brief en travail coordonné par une équipe IA.</strong><br>
+  Étudiez une idée, préparez un lancement, développez un produit ou améliorez votre activité.
 </p>
 
 <p align="center">
   <a href="README.md">English</a> ·
-  <a href="#presentation">Présentation</a> ·
-  <a href="#installation">Installation</a> ·
-  <a href="https://github.com/AjinthAT/orka-skill/releases/latest/download/orka.zip">Télécharger</a> ·
-  <a href="#documentation-et-développement">Documentation</a>
+  <a href="#installation">Installer</a> ·
+  <a href="#votre-première-mission">Commencer</a> ·
+  <a href="evals/pilote-2026-10-22/README.md">Résultats d’évaluation</a> ·
+  <a href="#documentation-et-développement">Guides</a>
 </p>
 
----
+## Qu’est-ce qu’Orka ?
 
-<a id="presentation"></a>
+**Orka est un Agent Skill qui apprend à votre assistant à coordonner des spécialistes autour d’une mission.** Vous décrivez le résultat attendu. Un coordinateur sélectionne les rôles utiles, organise leur travail et les revues, puis restitue les conclusions, les preuves et les questions ouvertes.
 
-## Qu'est-ce qu'Orka ?
+Le skill est un dossier d’instructions, de références et d’outils facultatifs. Votre assistant fournit les modèles, l’accès aux fichiers, la recherche et les éventuels sous-agents. Si leur utilisation est autorisée, Orka délègue à des spécialistes distincts ; sinon, il applique leurs points de vue successivement et le précise.
 
-**Orka apprend à votre assistant IA à coordonner une équipe de spécialistes autour d'une mission commune.**
+**28 rôles · 8 équipes · 9 workflows.** Seuls les rôles utiles à la mission sont mobilisés.
 
-Vous décrivez votre projet et le résultat attendu. Un coordinateur choisit les rôles utiles, définit leurs tâches, organise les échanges et les objections, puis rassemble leurs travaux dans des livrables vérifiés.
+## À quoi sert-il ?
 
-Un **Agent Skill** est un dossier d'instructions réutilisables, de références et d'outils qu'un assistant peut charger au besoin. Orka s'utilise dans votre assistant habituel : l'application fournit les modèles, l'accès aux fichiers, les outils de recherche et les éventuels sous-agents. Le skill apporte la méthode de travail.
-
-Si les sous-agents sont disponibles et autorisés, le coordinateur peut déléguer. Sinon, il applique successivement les points de vue et le signale. Une petite tâche mobilise une petite équipe.
-
-## À quoi sert Orka ?
-
-| Votre mission | Le travail organisé | Exemples de livrables |
-|---|---|---|
-| **Explorer une idée** | Marché, concurrence, produit, faisabilité et hypothèses économiques | Dossier de décision sourcé, inconnues, protocole de validation |
-| **Préparer un lancement** | Positionnement, canaux, approche commerciale et contenus | Plan marketing, brouillons, supports de prospection |
-| **Développer un produit** | Périmètre, conception, développement, tests et revue | Réalisation dans le dépôt désigné, résultats de tests, constats de revue |
-| **Améliorer l'activité** | Retours clients, priorités, finance, ressources IA et exploitation | Actions priorisées, hypothèses budgétaires, allocations des agents ou documents support |
-
-Commencez par la mission dont vous avez besoin. Une demande marketing n'impose pas une nouvelle étude de marché ; un développement approuvé peut passer directement à la réalisation.
+| Mission | Résultat à demander |
+|---|---|
+| Explorer une idée | Une synthèse sourcée, les incertitudes et le prochain test de validation |
+| Préparer un lancement | Le positionnement, un plan marketing et des contenus préparés |
+| Développer un produit | Une réalisation dans votre dépôt, ses tests et les remarques de revue |
+| Améliorer l’activité | Des actions prioritaires à partir des retours clients, des opérations ou de l’usage des agents |
 
 ## Comment se déroule une mission ?
 
 ```mermaid
-flowchart TB
-    Brief["Votre brief<br/>Objectif, contexte et contraintes"]:::lead
-    Coordinator["Coordinateur<br/>Périmètre, tâches et critères d'acceptation"]:::lead
-    Brief --> Coordinator
-
-    subgraph Work["Travail des spécialistes sélectionnés"]
-        direction LR
-        Market["Marché et<br/>concurrence"]:::team
-        Product["Produit et<br/>design"]:::team
-        Engineering["Technique et<br/>faisabilité"]:::team
-    end
-
-    Coordinator --> Market
-    Coordinator --> Product
-    Coordinator --> Engineering
-    Market --> Review
-    Product --> Review
-    Engineering --> Review
-    Review["Revue critique<br/>Preuves, objections et manques"]:::review
-    Review -. Corrections ciblées dans les limites de mission .-> Coordinator
-    Review --> Delivery["Livrables vérifiés<br/>Recommandation, preuves et questions ouvertes"]:::output
-    Delivery --> Decision["Votre prochaine décision"]:::lead
-
-    classDef lead fill:#dff6ed,stroke:#3a8b70,color:#163e32,stroke-width:2px;
-    classDef team fill:#eaf2fb,stroke:#7b9bbd,color:#203c59;
-    classDef review fill:#fff3dc,stroke:#c49a4a,color:#644b1d;
-    classDef output fill:#eef0f6,stroke:#939bb2,color:#343d55;
-```
-
-*Exemple d'étude : le coordinateur choisit seulement les rôles utiles. Le travail peut avancer en parallèle si les outils, dépendances et autorisations le permettent. Les critères non résolus restent explicites dans une remise partielle.*
-
-1. **Cadrer :** préciser le périmètre, les entrées, les contraintes et les critères d'acceptation.
-2. **Répartir :** choisir les spécialistes, identifier les dépendances et attribuer une sortie distincte par tâche.
-3. **Produire et confronter :** exécuter les travaux prêts, partager les constats et examiner les objections utiles.
-4. **Vérifier et livrer :** contrôler les preuves, consolider les résultats et conserver décisions, incertitudes et suites.
-
-Une étude peut recommander de tester, modifier ou arrêter le projet. L'accord des agents ne prouve pas l'existence d'une demande client.
-
-## Découvrez l'équipe
-
-**28 rôles répartis en 8 équipes**, disponibles selon la mission. Ce catalogue n'impose pas 28 agents simultanés.
-
-```mermaid
 flowchart LR
-    Coordinator(["Coordinateur de mission"]):::lead
-    Coordinator <--> Strategy["Direction et stratégie"]:::team
-    Coordinator <--> Marketing["Marketing"]:::team
-    Coordinator <--> Sales["Commercial"]:::team
-    Coordinator <--> Product["Produit et design"]:::team
-    Coordinator <--> Engineering["Technique"]:::team
-    Coordinator <--> Finance["Finance et administration"]:::team
-    Coordinator <--> HR["Ressources des agents IA"]:::team
-    Coordinator <--> Customers["Relation client"]:::team
-
-    classDef lead fill:#dff6ed,stroke:#3a8b70,color:#163e32,stroke-width:2px;
-    classDef team fill:#eaf2fb,stroke:#7b9bbd,color:#203c59;
-    classDef review fill:#fff3dc,stroke:#c49a4a,color:#644b1d;
-    classDef output fill:#eef0f6,stroke:#939bb2,color:#343d55;
+    Brief["Votre brief"] --> Coordinateur["Coordinateur<br/>Périmètre, tâches et critères"]
+    Coordinateur --> Travail["Spécialistes utiles<br/>ou points de vue successifs"]
+    Travail --> Revue["Vérifications et objections utiles"]
+    Revue -. Corrections .-> Travail
+    Revue --> Resultat["Livrables, preuves<br/>et prochaine décision"]
+    style Coordinateur fill:#dff6ed,stroke:#3a8b70,color:#163e32
+    style Revue fill:#fff3dc,stroke:#c49a4a,color:#644b1d
 ```
 
-*Le coordinateur cadre les tâches, recueille les résultats et relaie les questions utiles entre services. Les flèches représentent des relations de travail, pas huit équipes actives en permanence.*
-
-<details>
-<summary><strong>Voir les spécialités de chaque équipe</strong></summary>
-
-| Équipe | Spécialités |
-|---|---|
-| **Direction et stratégie** | Coordination, étude de marché, concurrence, évaluation critique |
-| **Marketing** | Stratégie, rédaction, SEO, réseaux sociaux, acquisition |
-| **Commercial** | Vente, prospection, partenariats |
-| **Produit et design** | Priorités, gestion de projet, UX/UI |
-| **Technique** | CTO, architecture, frontend, backend, sécurité, QA, DevOps |
-| **Finance et administration** | Budget, économie du projet, suivi administratif |
-| **Ressources des agents IA** | Modèles, effort de raisonnement, tokens et qualification des agents |
-| **Relation client** | Support, adoption, fidélisation |
-
-</details>
-
-Les [neuf workflows](.agents/skills/orka/references/workflows-entreprise.md) couvrent étude, marketing, commercial, réalisation, lancement, relation client, finance, ressources des agents IA et pilotage. [Consulter les rôles →](.agents/skills/orka/references/roles.md)
-
-## Que contient le projet ?
-
-| Élément | Utilité |
-|---|---|
-| **Instructions de coordination** | Cadrage, délégation, échanges, revue et transmission |
-| **Rôles et workflows** | Mobiliser les compétences adaptées à la mission |
-| **Modèles de documents partagés** | Ouvrir une étude par une synthèse d'une page ; retrouver preuves, règles actuelles et historique |
-| **Outils locaux facultatifs** | Préparer les mandats ; suivre versions des entrées, dépendances directes et indirectes, réservations, tentatives et acceptation |
-
-**Python n'est pas nécessaire pour utiliser les instructions d'Orka ou installer le skill manuellement.** L'assistant lit les fichiers Markdown et fournit ses outils. Recherche, délégation et réalisation dépendent des capacités de cet assistant.
-
-Python sert à l'installateur fourni et aux outils locaux facultatifs. Ceux-ci utilisent la bibliothèque standard Python, dont SQLite pour le registre. Ils préparent et enregistrent le travail ; l'assistant fournit l'exécution des modèles. L'installation ne lance aucun agent, ne crée aucun service et ne nécessite aucune clé API. L'utilisation des modèles dépend de votre assistant, de votre abonnement et des coûts associés.
-
-| Votre besoin | Python nécessaire ? | Utilité |
-|---|---|---|
-| Installer par copie du dossier ou import du ZIP | Non | Commencer dans un assistant compatible |
-| Utiliser les instructions, rôles et workflows dans l'assistant | Aucune exigence d'Orka | Cadrage, études, contenus et coordination courante |
-| Exécuter `install.py` | Oui, Python 3.10+ | Copier le skill à un emplacement connu sans écraser une installation |
-| Utiliser préparateur, registre ou bilan des agents | Oui, Python 3.10+ | Mandats répétables, réservations partagées, tentatives persistantes et bilans de mesures fournies |
-| Vérifier le dépôt | Oui, avec les dépendances de développement | Maintenir Orka ou y contribuer ; inutile pour son usage courant |
-
-Commencez avec les instructions et les documents de mission. Ajoutez un outil local lorsqu'un de ses contrôles vous est utile ; une petite mission n'a pas besoin d'un registre SQLite. Votre propre application peut avoir ses exigences techniques distinctes.
-
-Le registre permet maintenant le réexamen explicite d'une tâche terminée et une migration sauvegardée depuis le schéma v1. Les versions d'entrées historiques jamais enregistrées restent inconnues : consultez la [supervision locale](.agents/skills/orka/references/supervision-locale.md) avant d'ouvrir une ancienne base avec cette version.
-
-## Renforcer le projet avant de l'élargir
-
-Orka propose des guides ciblés pour approfondir les points utiles à la mission :
-
-| Besoin | Méthode |
-|---|---|
-| **Clarifier la vision** | Poser les questions qui changent la décision ; préserver l'ambition et la distinguer du premier test |
-| **Vérifier plutôt que supposer** | Qualifier les affirmations décisives, chercher les preuves accessibles et montrer inconnues ou contradictions |
-| **Innover utilement** | Comparer des pistes distinctes sur la valeur, la différence, l'adoption, la faisabilité et un test minimal |
-| **Apprendre par l'expérience** | Relier chaque hypothèse critique à un test borné, des preuves observées et une décision ; garder les résultats inconclusifs et pistes abandonnées |
-| **Éprouver faisabilité et adoption** | Isoler le verrou technique, puis examiner l'effort et la valeur pour les personnes qui utilisent le produit |
-| **Trouver un nom court et international** | Examiner sens, prononciation et confusion dans les langues visées ; vérifier les domaines finalistes avec des sources datées |
-| **Allouer efficacement les agents** | Adapter modèle, effort et contexte à la tâche ; relever l'usage réel accessible et qualifier les ajustements sur les résultats |
-
-Ces guides s'appliquent avec les outils de l'assistant. La disponibilité d'un domaine exige une vérification actuelle ; le comptage des tokens exige des mesures. Le [bilan local des agents](.agents/skills/orka/references/bilan-agents.md) résume les tentatives, revues, tokens connus et coûts fournis, avec leur couverture. Il ne collecte pas de mesures et n'applique pas de plafond financier. Les outils locaux ne fournissent ni connexion à un registrar ni compteur de tokens.
-
-Le [guide des expériences](.agents/skills/orka/references/experiences-apprentissage.md) distingue test proposé et test exécuté, faisabilité technique et adoption réelle. Il conserve aussi les motifs d'abandon d'une piste et les conclusions à réexaminer lorsqu'une preuve change.
-
-## Ce que vous recevez après une étude
-
-Commencez par la synthèse de décision, puis ouvrez les liens vers les détails utiles.
-
-```mermaid
-flowchart TB
-    Summary["synthese.md<br/>Synthèse dirigeant d'une page"]:::lead
-    Summary --> Dossier["dossier.md<br/>Recommandation détaillée et raisonnement"]:::output
-    Dossier --> Evidence["analyses/ et sources.md<br/>Preuves, calculs et limites"]:::team
-    Dossier --> Rules["Documents de référence<br/>Règles et critères d'acceptation actuels"]:::team
-    Dossier -. Retracer les choix antérieurs .-> History["Historique daté<br/>Propositions remplacées et motifs de révision"]:::output
-
-    classDef lead fill:#dff6ed,stroke:#3a8b70,color:#163e32,stroke-width:2px;
-    classDef team fill:#eaf2fb,stroke:#7b9bbd,color:#203c59;
-    classDef review fill:#fff3dc,stroke:#c49a4a,color:#644b1d;
-    classDef output fill:#eef0f6,stroke:#939bb2,color:#343d55;
-```
-
-*Structure d'étude illustrative. Les documents sont créés seulement s'ils sont utiles ; une mission compacte peut réunir synthèse, résultat et vérifications dans un seul fichier. Les recommandations restent distinctes de votre autorisation d'agir.*
-
-## Votre première mission
-
-Chaque installation et archive contient le [guide de démarrage français](.agents/skills/orka/GUIDE.fr.md) et sa [version anglaise](.agents/skills/orka/GUIDE.md), avec des prompts pour cadrer une idée, étudier, préparer le marketing, développer et reprendre un dossier. Vous pouvez demander à Orka de présenter ce guide à tout moment.
-
-Après installation, utilisez **`$orka` dans Codex** ou **`/orka` dans Claude Code**, puis donnez une mission concrète :
-
-> Étudie un outil de prise de rendez-vous pour les coachs sportifs indépendants en France. Examine les concurrents, les besoins, la faisabilité technique et les hypothèses de prix. Utilise des sous-agents spécialisés si les outils et les autorisations le permettent, examine leurs objections et produis un dossier de décision avec sources, incertitudes et prochain test de validation.
-
-Autres points de départ :
-
-- **Marketing :** « Prépare le positionnement, le plan de lancement et les brouillons de contenus pour ce produit. »
-- **Développement :** « Coordonne la réalisation de cette fonctionnalité approuvée dans ce dépôt, avec des sorties distinctes pour le développement et la revue. »
-- **Support :** « Analyse ces retours et propose un plan d'amélioration priorisé. »
-
-Précisez le projet, le résultat attendu, les fichiers utiles et les contraintes connues. Orka doit distinguer faits sourcés, hypothèses, recommandations et décisions humaines. Contacter des tiers, dépenser, publier ou déployer nécessite une autorisation couvrant l'action.
-
-Chaque réponse Orka se termine par **« Prochain prompt à copier »** : une seule suite concrète adaptée à l'état du projet. Copiez-la, modifiez-la ou demandez une réponse sans suggestion. Orka termine d'abord le travail autorisé ; la proposition ne lance pas automatiquement l'étape suivante.
-
-## Choisir votre assistant
-
-Orka suit le [format ouvert Agent Skills](https://agentskills.io/specification).
-
-| Application | Installation | Invocation |
-|---|---|---|
-| **Codex** | Installateur fourni | `$orka` |
-| **Claude Code** | Installateur fourni | `/orka` |
-| **Claude Web / ordinateur** | Importer le ZIP du skill | Demander d'utiliser Orka |
-| **Hermes Agent** | Copier dans son dossier de skills avec `--destination` | `/orka` |
-| **Autres applications Agent Skills** | Utiliser leur dossier de skills documenté | Selon l'application |
-
-Ces méthodes d'installation ne garantissent pas une exécution identique. Modèles, délégation, recherche et fichiers dépendent de l'application. L'installation locale et l'archive sont testées ; une mission complète avec des modèles n'a pas été évaluée sur chaque plateforme.
+Une petite tâche garde un traitement compact. L’accord des agents ne prouve pas la demande du marché ; les critères non vérifiés restent visibles.
 
 ## Installation
 
-### Sans Python : copier le dossier du skill
+**Vous pouvez installer et utiliser Orka sans Python.**
 
-1. Téléchargez [orka.zip](https://github.com/AjinthAT/orka-skill/releases/latest/download/orka.zip) et décompressez-le. Utilisez le ZIP du skill, pas l'archive du dépôt complet.
-2. Copiez tout le dossier `orka` extrait, avec ses références et guides, dans le dossier de skills de votre assistant. Emplacements utilisateur par défaut : `~/.agents/skills/orka/` pour Codex, `~/.claude/skills/orka/` pour Claude Code ou `~/.hermes/skills/orka/` pour le profil Hermes par défaut. Adaptez-les à votre configuration et sauvegardez une installation existante avant remplacement.
-3. Ouvrez une nouvelle session si nécessaire, sélectionnez Orka et donnez une mission. Pour Claude Web/ordinateur, importez le ZIP dans l'interface des skills personnalisés plutôt que de copier un dossier local.
+1. Téléchargez [orka.zip](https://github.com/AjinthAT/orka-skill/releases/latest/download/orka.zip) et décompressez-le. Utilisez le ZIP du skill, pas l’archive du dépôt complet.
+2. Copiez tout le dossier `orka`, avec ses références et guides, dans le dossier de skills de votre assistant :
 
-Ces étapes n'exécutent aucun script Python fourni. Les fichiers facultatifs peuvent rester présents sans être utilisés.
+   | Assistant | Dossier utilisateur par défaut | Invocation |
+   |---|---|---|
+   | Codex | `~/.agents/skills/orka/` | `$orka` |
+   | Claude Code | `~/.claude/skills/orka/` | `/orka` |
+   | Hermes, profil par défaut | `~/.hermes/skills/orka/` | `/orka` |
 
-### Installateur Python facultatif : Codex ou Claude Code
+3. Ouvrez une nouvelle session si nécessaire, sélectionnez Orka et donnez-lui une mission.
 
-Téléchargez et décompressez le [code source](https://github.com/AjinthAT/orka-skill/archive/refs/heads/main.zip), ou clonez le dépôt :
+Adaptez le chemin à votre configuration et sauvegardez une installation existante avant remplacement. Pour **Claude Web/ordinateur**, importez le ZIP dans l’interface des skills personnalisés ; sa disponibilité dépend de votre compte et de votre organisation.
 
-```sh
-git clone https://github.com/AjinthAT/orka-skill.git
-cd orka-skill
+[Guide d’installation détaillé →](docs/INSTALLATION.fr.md) — installateur Python facultatif, installation par projet, autres assistants, mise à jour et désinstallation.
+
+## Votre première mission
+
+Utilisez **`$orka` dans Codex** ou **`/orka` dans Claude Code ou Hermes**, puis donnez un brief concret. Par exemple :
+
+```text
+Étudie un outil de réservation pour les coachs sportifs indépendants en France.
+Examine les concurrents, les besoins, la faisabilité technique et les hypothèses
+économiques. Utilise des sous-agents si disponibles et autorisés. Conserve une
+synthèse avec sources, incertitudes et prochain test de validation.
 ```
 
-Avec Python 3.10 ou plus récent, choisissez la commande correspondant à votre assistant :
+Précisez le projet, le résultat attendu, les fichiers utiles et les contraintes connues. Vous pouvez passer directement au marketing, au développement ou au support si c’est votre besoin.
 
-```sh
-# Codex : installation pour votre utilisateur
-python3 install.py --agent codex
+Le [guide de démarrage](.agents/skills/orka/GUIDE.fr.md), inclus dans chaque ZIP du skill, propose d’autres prompts. Orka termine ses réponses par un **« Prochain prompt à copier »**, sauf préférence contraire ou format exclusif demandé. Cette suggestion ne s’exécute pas automatiquement.
 
-# Claude Code : installation pour votre utilisateur
-python3 install.py --agent claude
-```
+## Quand faut-il Python ?
 
-Sous Windows, utilisez `py -3` si `python3` n'est pas disponible. Aucun paquet Python tiers n'est nécessaire.
+| Usage | Prérequis |
+|---|---|
+| Installation manuelle et usage courant du skill | Aucune exigence Python d’Orka |
+| Installateur fourni ou outils locaux | Python 3.10+, bibliothèque standard uniquement |
+| Vérifications du dépôt | Python et dépendances de développement |
 
-| Assistant | Pour votre utilisateur | Pour un projet |
-|---|---|---|
-| Codex | `~/.agents/skills/orka/` | `<projet>/.agents/skills/orka/` |
-| Claude Code | `~/.claude/skills/orka/` | `<projet>/.claude/skills/orka/` |
+Commencez avec les documents de mission. Le préparateur facultatif rend les mandats répétables ; le registre conserve les réservations, tentatives et versions d’entrées après interruption ; le bilan synthétise des mesures fournies. Utilisez-les quand leurs contrôles servent votre mission.
 
-Pour limiter l'installation à un projet existant, ajoutez `--project /chemin/du/projet`. Sans cette option, l'installation concerne votre utilisateur.
+Ces outils ne lancent pas les modèles, ne collectent pas les tokens et n’imposent pas de plafond financier. L’usage des modèles dépend de l’offre de votre assistant. Les exigences techniques de votre propre projet restent distinctes.
 
-L'installateur copie le dossier complet, la licence et les deux guides de démarrage, puis affiche leurs chemins et un premier message suggéré. Il fonctionne sans appel réseau ni modification de vos paramètres et refuse d'écraser un dossier existant. Ouvrez une nouvelle session si nécessaire, puis utilisez `$orka` dans Codex ou `/orka` dans Claude Code. Les imports ZIP contiennent aussi les guides ; leur ouverture automatique dépend de l'application.
+## Compatibilité et limites
 
-### Claude sur le Web ou sur ordinateur
+- Orka suit le [format Agent Skills](https://agentskills.io/specification). Modèles, outils et délégation dépendent de l’assistant ; tous les hôtes n’ont pas été évalués sur une mission complète.
+- Les instructions détaillées sont actuellement en français. Les guides existent en anglais et français ; les livrables suivent la langue demandée.
+- Le catalogue de modèles et le préparateur fournis ciblent les paramètres Codex. Sur un autre hôte, utilisez les réglages natifs et le suivi documentaire, sauf catalogue compatible configuré.
+- Orka travaille pendant les sessions autorisées. L’installation ne crée pas de service permanent. Communications externes, dépenses, publication et déploiement nécessitent une autorisation couvrant l’action.
 
-Téléchargez [orka.zip](https://github.com/AjinthAT/orka-skill/releases/latest/download/orka.zip), puis importez cette archive dans l'interface des skills personnalisés de Claude et activez-la. Utilisez l'archive du skill, et non celle du dépôt complet. La disponibilité dépend de votre compte et des paramètres de votre organisation : consultez le [guide officiel Claude](https://support.claude.com/en/articles/12512180-use-skills-in-claude).
+## Résultats d’évaluation
 
-L'import ne donne pas accès à vos fichiers locaux et n'active pas de sous-agents parallèles. Les outils et le stockage restent ceux de l'application hôte.
+[Consulter le premier pilote →](evals/pilote-2026-10-22/README.md) — trois cas synthétiques comparant chacun un assistant seul, Orka sans délégation et Orka avec deux spécialistes.
 
-### Hermes Agent
-
-La copie manuelle décrite plus haut convient aussi au profil Hermes par défaut. Si vous préférez l'installateur Python facultatif, lancez depuis le dépôt cloné :
-
-```sh
-python3 install.py --destination "$HOME/.hermes/skills/orka"
-```
-
-Ouvrez une nouvelle session, puis utilisez `/orka`. Pour un autre profil ou `HERMES_HOME`, indiquez son dossier `skills/orka` avec `--destination`. Ce chemin suit la [documentation Hermes](https://hermes-agent.nousresearch.com/docs/user-guide/features/skills) ; une mission Orka complète dans Hermes n'a pas encore été testée.
-
-### Autres assistants
-
-Le dossier suit le [format ouvert Agent Skills](https://agentskills.io/specification). Copiez l'intégralité de `.agents/skills/orka/` dans le répertoire documenté par votre application, ou indiquez une destination exacte :
-
-```sh
-python3 install.py --destination /chemin/des/skills/orka
-```
-
-Un modèle seul ne suffit pas : l'application qui l'utilise doit prendre en charge les skills ou pouvoir lire ces fichiers et leurs références. Sans prise en charge native, vous pouvez fournir les fichiers manuellement ; leur découverte automatique n'est pas disponible. La compatibilité avec toutes les applications IA n'est pas garantie.
-
-## Compatibilité et limites actuelles
-
-- Les instructions, rôles, workflows et modèles de documents sont partageables entre applications. Les références détaillées sont en français ; les livrables suivent la langue demandée.
-- Les modèles disponibles, leurs réglages, la recherche, la délégation et l'accès aux fichiers dépendent de chaque assistant. Le catalogue fourni et le préparateur JSON ciblent les paramètres Codex : ils ne configurent pas Claude.
-- Le préparateur de mandats et le registre SQLite sont facultatifs. Le registre appelle le préparateur et partage ses contraintes de catalogue. Sur un autre hôte sans catalogue compatible, utilisez les mandats et le suivi documentaire avec les réglages natifs.
-- Aucun de ces outils ne lance de modèle, n'arrête d'agent ou ne fonctionne en permanence. Les tests locaux vérifient les outils, l'installation et l'archive ; chaque plateforme n'a pas fait l'objet d'une évaluation complète avec des modèles réels.
-
-## Première évaluation
-
-Un [premier pilote synthétique](evals/pilote-2026-10-22/rapport.md) compare un assistant seul, Orka sans délégation et Orka avec deux spécialistes sur trois tâches, dans neuf contextes de conversation séparés. Tous les livrables satisfont les critères examinés ; **aucun avantage de qualité ou de coût n’est établi**. Un spécialiste a lu Orka hors de la copie figée, ce qui limite la comparabilité de cette cellule. Les [cas, sorties, critères et mesures disponibles](evals/README.md) sont conservés. Ce pilote évalue la version 0.4.0 dans Codex, avec un essai par cellule ; il ne valide pas tous les assistants ni tous les modèles.
+Les neuf livrables satisfont les critères examinés. **Aucun avantage de qualité ou de coût n’est établi.** Un spécialiste a lu Orka hors de la copie figée, ce qui limite la comparabilité de cette cellule. L’index donne accès aux livrables, vérifications, traces et prompts originaux. Ce pilote évalue Orka 0.4.0 dans Codex, avec un essai par cellule ; tokens et coûts sont indisponibles.
 
 ## Documentation et développement
 
-Le [README anglais](README.md#documentation) présente l'index complet. Guides ciblés : [ressources IA](.agents/skills/orka/references/ressources-agents.md), [vision et innovation](.agents/skills/orka/references/vision-preuves-innovation.md), [expériences et apprentissages](.agents/skills/orka/references/experiences-apprentissage.md), [bilan des agents](.agents/skills/orka/references/bilan-agents.md), [noms et domaines](.agents/skills/orka/references/noms-domaines.md). Points d'entrée : [rôles](.agents/skills/orka/references/roles.md), [workflows](.agents/skills/orka/references/workflows-entreprise.md), [orchestration](.agents/skills/orka/references/orchestration-agents.md), [supervision locale](.agents/skills/orka/references/supervision-locale.md), [modèles](.agents/skills/orka/references/modeles-effort.md) et [implémentation](docs/IMPLEMENTATION.md).
+| Pour commencer | Pour approfondir |
+|---|---|
+| [Guide de démarrage](.agents/skills/orka/GUIDE.fr.md) · [English](.agents/skills/orka/GUIDE.md) | Premières missions, prompts et reprise |
+| [Installation](docs/INSTALLATION.fr.md) | Copie manuelle, installateur facultatif et détails par assistant |
+| [Équipes et rôles](.agents/skills/orka/references/roles.md) | Stratégie, marketing, vente, produit, technique, finance, ressources IA et relation client |
+| [Workflows](.agents/skills/orka/references/workflows-entreprise.md) | Étude, réalisation, lancement et transmissions entre services |
+| [Entrée du skill](.agents/skills/orka/SKILL.md) | Coordination et références : vision, innovation, expériences, noms et ressources des agents |
+| [Implémentation](docs/IMPLEMENTATION.md) | Supervision locale, capacités disponibles et évolutions |
+| [Évaluations](evals/README.md) | Cas, résultats conservés et limites de méthode |
 
-Les dossiers de mission produit utilisent `projets/<id>/` ; les missions transversales utilisent `entreprise/missions/<id>/`. Le code applicatif reste dans son dépôt de développement. Conservez les données privées de mission hors de ce dépôt de distribution public. Les exemples du registre utilisent le dossier local ignoré `.orka/`.
+Conservez les données privées de mission hors de ce dépôt public. Les missions produit utilisent `projets/<id>/` ; les missions transversales, `entreprise/missions/<id>/`. Le code applicatif reste dans son dépôt désigné.
+
+Pour vérifier le dépôt depuis sa racine :
 
 ```sh
 python3 -m pip install -r requirements-dev.txt
 python3 -B tools/verifier.py
-python3 install.py --archive dist/orka.zip
 ```
 
-Le vérificateur contrôle les métadonnées, liens locaux, suites de tests après déplacement, contenu du paquet et cohérence tag/version lorsqu'il tourne depuis un tag. GitHub Actions utilise la même commande sur Linux, macOS et Windows avec Python 3.10 et 3.13. PyYAML sert seulement aux vérifications du dépôt ; les outils installés restent sans dépendance tierce. Les CLI lisent et écrivent explicitement en UTF-8, y compris les sorties et erreurs redirigées.
+Le vérificateur contrôle métadonnées, liens locaux, tests après déplacement et contenu du ZIP. GitHub Actions l’exécute sur Linux, macOS et Windows avec Python 3.10 et 3.13. Pour contribuer par issue ou pull request, décrivez le problème observé et les vérifications utiles.
 
-Pour mettre à jour : examinez les changements, sauvegardez vos adaptations, supprimez l'ancien dossier installé `orka`, puis relancez l'installation. Pour désinstaller, supprimez uniquement ce dossier ; les livrables de mission restent en place. Les contributions peuvent passer par les issues et pull requests, avec le problème observé et les vérifications pertinentes.
-
-Licence [MIT](LICENSE), incluse dans les installations et l'archive. Références de format et d'installation : [OpenAI](https://learn.chatgpt.com/docs/build-skills), [Claude Code](https://code.claude.com/docs/en/skills). L'organisation et les workflows d'Orka sont les choix de ce projet.
+Licence [MIT](LICENSE), incluse dans le ZIP et les installations.
