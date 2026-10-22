@@ -1,0 +1,88 @@
+{
+  "format": 1,
+  "id": "l4-precontrole-2026-10-22",
+  "proprietaire": "coordinateur de maintenance",
+  "version": 1,
+  "date_protocole": "2026-10-22",
+  "campagne": "ecc-01-l4-2026-10-22",
+  "source_git": "0fb53da",
+  "decision": "session_actuelle_inadaptee_aux_essais_comparables",
+  "inspection": "terminee_sans_lancement",
+  "modeles_evaluation_lances": 0,
+  "sous_agents_lances": 0,
+  "cas_reserve_consulte_durant_controle": false,
+  "plan_prive_ou_manifeste_complet_consulte": false,
+  "observations_importees": 0,
+  "constats": [
+    {
+      "id": "contexte",
+      "etat": "ecart",
+      "preuve": "Historique de préparation et instructions du dépôt présents dans la conversation ; catalogue avec plusieurs entrées Orka.",
+      "consequence": "Cette conversation ne peut pas servir de production neutre ; aucun nouveau contexte testé."
+    },
+    {
+      "id": "permissions",
+      "etat": "ecart",
+      "preuve": "Session : filesystem unrestricted, network enabled, approval never. Outils natifs partagent le répertoire ; aucun cloisonnement par enfant exposé.",
+      "consequence": "Un enfant sans historique ne prouverait pas un périmètre de fichiers ou réseau fermé."
+    },
+    {
+      "id": "versions",
+      "etat": "conforme",
+      "preuve": "41 fichiers référence et 44 fichiers candidate vérifiés sélectivement contre les empreintes publiques, licences comprises.",
+      "consequence": "Copies disponibles et intègres ; activation effective non testée."
+    },
+    {
+      "id": "reglages",
+      "etat": "non_verifie",
+      "preuve": "Configuration personnelle déclarée relevée localement ; aucun relevé natif des réglages effectivement appliqués. Pas de fichier de configuration projet observé.",
+      "consequence": "Ne pas remplacer les paramètres hérités null du plan ni assimiler une configuration à une mesure."
+    },
+    {
+      "id": "capacite",
+      "etat": "disponible_declaree",
+      "preuve": "Quatre places globales annoncées ; inventaire natif : racine active et trois enfants historiques terminés.",
+      "consequence": "Capacité annoncée compatible avec deux contextes simultanés au maximum prévu ; lancement et arrêt non éprouvés."
+    },
+    {
+      "id": "quota",
+      "etat": "disponible_observe",
+      "preuve": "Outil natif de quota consulté une fois, ordinaryUsageAllowed true ; valeurs personnelles non publiées.",
+      "consequence": "Pas de réservation, de budget monétaire ni de garantie de terminer 18 essais."
+    },
+    {
+      "id": "python",
+      "etat": "ecart_avec_alternative_disponible",
+      "preuve": "Python par défaut 3.9.6 ; maintenance hors ligne Python 3.13.14 disponible.",
+      "consequence": "Utiliser un interpréteur compatible pour les helpers facultatifs ; cœur documentaire sans Python."
+    },
+    {
+      "id": "stockage",
+      "etat": "conforme_dans_perimetre_sonde",
+      "preuve": "Sonde locale indépendante : lecture/écriture UTF-8 hors dépôt réussie, dossier supprimé ; environ 40 Go libres.",
+      "consequence": "Ne démontre ni sauvegarde ni neutralité du contexte modèle."
+    },
+    {
+      "id": "mesures_et_arret",
+      "etat": "non_verifie",
+      "preuve": "Interfaces d'inventaire, interruption et attente exposées ; aucun lancement, arrêt natif ou relevé par essai testé.",
+      "consequence": "Temps limite opérateur seulement ; coûts, tokens, réglages appliqués et exhaustivité des lectures restent inconnus."
+    },
+    {
+      "id": "reserve",
+      "etat": "non_consulte",
+      "preuve": "Lectures limitées aux documents publics, versions listées, métadonnées ciblées des installations et réglages. Aucun répertoire de résultats observé.",
+      "consequence": "Pas de relecture des pièces réservées ni de revalidation intégrale du sceau de campagne ; aucun résultat ajouté."
+    }
+  ],
+  "limites": [
+    "Constat actuel du poste et de ses outils, pas un essai de modèle ni une qualification L4.",
+    "Aucun journal indépendant de tous les accès ; non-consultation attestée par les opérations de cette vérification.",
+    "Copies et données historiques conservées ; aucun paramètre personnel modifié.",
+    "Les valeurs de quota et réglages personnels restent locales ; elles sont transitoires et ne décrivent pas des paramètres appliqués à un futur essai."
+  ],
+  "sources_documentaires": [
+    "https://learn.chatgpt.com/docs/agent-configuration/subagents",
+    "https://learn.chatgpt.com/docs/agent-approvals-security"
+  ]
+}
