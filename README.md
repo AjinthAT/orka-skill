@@ -41,12 +41,36 @@ Start with the mission you actually need. A marketing request does not require a
 ## How a mission works
 
 ```mermaid
-flowchart LR
-    A[Your brief] --> B[Coordinator]
-    B --> C[Relevant specialists]
-    C --> D[Review and objections]
-    D --> E[Deliverables and next steps]
+flowchart TB
+    Brief["Your brief<br/>Goal, context and constraints"]:::lead
+    Coordinator["Coordinator<br/>Scope, tasks and acceptance criteria"]:::lead
+    Brief --> Coordinator
+
+    subgraph Work["Selected specialist work"]
+        direction LR
+        Market["Market and<br/>competition"]:::team
+        Product["Product and<br/>design"]:::team
+        Engineering["Engineering and<br/>feasibility"]:::team
+    end
+
+    Coordinator --> Market
+    Coordinator --> Product
+    Coordinator --> Engineering
+    Market --> Review
+    Product --> Review
+    Engineering --> Review
+    Review["Critical review<br/>Evidence, objections and gaps"]:::review
+    Review -. Targeted corrections within mission limits .-> Coordinator
+    Review --> Delivery["Reviewed deliverables<br/>Recommendation, evidence and open questions"]:::output
+    Delivery --> Decision["Your next decision"]:::lead
+
+    classDef lead fill:#dff6ed,stroke:#3a8b70,color:#163e32,stroke-width:2px;
+    classDef team fill:#eaf2fb,stroke:#7b9bbd,color:#203c59;
+    classDef review fill:#fff3dc,stroke:#c49a4a,color:#644b1d;
+    classDef output fill:#eef0f6,stroke:#939bb2,color:#343d55;
 ```
+
+*Example of a study: the coordinator selects only the roles needed. Work can run in parallel when tools, dependencies and permissions allow it. Unresolved criteria remain explicit in a partial delivery.*
 
 1. **Frame:** establish scope, inputs, constraints and acceptance criteria.
 2. **Assign:** select specialists, identify dependencies and give each task a distinct output.
@@ -59,6 +83,29 @@ An idea study may end with a recommendation to test, change or stop the project.
 
 **28 roles across 8 teams**, available as a catalogue rather than 28 agents that must all run at once.
 
+```mermaid
+flowchart LR
+    Coordinator(["Mission coordinator"]):::lead
+    Coordinator <--> Strategy["Direction and strategy"]:::team
+    Coordinator <--> Marketing["Marketing"]:::team
+    Coordinator <--> Sales["Sales"]:::team
+    Coordinator <--> Product["Product and design"]:::team
+    Coordinator <--> Engineering["Engineering"]:::team
+    Coordinator <--> Finance["Finance and administration"]:::team
+    Coordinator <--> HR["Human resources"]:::team
+    Coordinator <--> Customers["Customer relations"]:::team
+
+    classDef lead fill:#dff6ed,stroke:#3a8b70,color:#163e32,stroke-width:2px;
+    classDef team fill:#eaf2fb,stroke:#7b9bbd,color:#203c59;
+    classDef review fill:#fff3dc,stroke:#c49a4a,color:#644b1d;
+    classDef output fill:#eef0f6,stroke:#939bb2,color:#343d55;
+```
+
+*The coordinator frames assignments, collects results and relays useful questions between teams. Arrows describe working relationships, not eight teams running permanently.*
+
+<details>
+<summary><strong>Explore the specialties in each team</strong></summary>
+
 | Team | Specialties |
 |---|---|
 | **Direction & strategy** | Coordination, market research, competition, critical review |
@@ -69,6 +116,8 @@ An idea study may end with a recommendation to test, change or stop the project.
 | **Finance & administration** | Budgets, economics, administrative tracking |
 | **Human resources** | HR leadership, recruiting, onboarding, training |
 | **Customer relations** | Support, adoption, retention |
+
+</details>
 
 The [nine workflows](.agents/skills/orka/references/workflows-entreprise.md) cover studies, marketing, sales, delivery, launch, customer relations, finance, HR and business steering. [Explore the roles →](.agents/skills/orka/references/roles.md)
 
@@ -82,6 +131,26 @@ The [nine workflows](.agents/skills/orka/references/workflows-entreprise.md) cov
 | **Optional local tools** | Prepare task requests and track dependencies, reservations, attempts and artifact acceptance |
 
 The local tools use Python and SQLite, with no third-party Python packages. They prepare and record work; model execution comes from the assistant. Installation itself does not start agents, provision services or require an API key. Model usage remains subject to your assistant's plan and costs.
+
+## What a study delivers
+
+Start with the short decision summary, then follow the links to the detail you need.
+
+```mermaid
+flowchart TB
+    Summary["synthese.md<br/>One-page decision summary"]:::lead
+    Summary --> Dossier["dossier.md<br/>Detailed recommendation and reasoning"]:::output
+    Dossier --> Evidence["analyses/ and sources.md<br/>Evidence, calculations and limits"]:::team
+    Dossier --> Rules["Reference documents<br/>Current rules and acceptance criteria"]:::team
+    Dossier -. Trace earlier choices .-> History["Dated history<br/>Replaced proposals and reasons for change"]:::output
+
+    classDef lead fill:#dff6ed,stroke:#3a8b70,color:#163e32,stroke-width:2px;
+    classDef team fill:#eaf2fb,stroke:#7b9bbd,color:#203c59;
+    classDef review fill:#fff3dc,stroke:#c49a4a,color:#644b1d;
+    classDef output fill:#eef0f6,stroke:#939bb2,color:#343d55;
+```
+
+*Illustrative study structure. Documents are created only when useful; a compact mission can keep its summary, result and checks in one file. Recommendations remain separate from your authorization to act.*
 
 ## Your first mission
 

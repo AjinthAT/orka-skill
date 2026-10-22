@@ -43,12 +43,36 @@ Commencez par la mission dont vous avez besoin. Une demande marketing n'impose p
 ## Comment se déroule une mission ?
 
 ```mermaid
-flowchart LR
-    A[Votre brief] --> B[Coordinateur]
-    B --> C[Spécialistes utiles]
-    C --> D[Revue et objections]
-    D --> E[Livrables et prochaines étapes]
+flowchart TB
+    Brief["Votre brief<br/>Objectif, contexte et contraintes"]:::lead
+    Coordinator["Coordinateur<br/>Périmètre, tâches et critères d'acceptation"]:::lead
+    Brief --> Coordinator
+
+    subgraph Work["Travail des spécialistes sélectionnés"]
+        direction LR
+        Market["Marché et<br/>concurrence"]:::team
+        Product["Produit et<br/>design"]:::team
+        Engineering["Technique et<br/>faisabilité"]:::team
+    end
+
+    Coordinator --> Market
+    Coordinator --> Product
+    Coordinator --> Engineering
+    Market --> Review
+    Product --> Review
+    Engineering --> Review
+    Review["Revue critique<br/>Preuves, objections et manques"]:::review
+    Review -. Corrections ciblées dans les limites de mission .-> Coordinator
+    Review --> Delivery["Livrables vérifiés<br/>Recommandation, preuves et questions ouvertes"]:::output
+    Delivery --> Decision["Votre prochaine décision"]:::lead
+
+    classDef lead fill:#dff6ed,stroke:#3a8b70,color:#163e32,stroke-width:2px;
+    classDef team fill:#eaf2fb,stroke:#7b9bbd,color:#203c59;
+    classDef review fill:#fff3dc,stroke:#c49a4a,color:#644b1d;
+    classDef output fill:#eef0f6,stroke:#939bb2,color:#343d55;
 ```
+
+*Exemple d'étude : le coordinateur choisit seulement les rôles utiles. Le travail peut avancer en parallèle si les outils, dépendances et autorisations le permettent. Les critères non résolus restent explicites dans une remise partielle.*
 
 1. **Cadrer :** préciser le périmètre, les entrées, les contraintes et les critères d'acceptation.
 2. **Répartir :** choisir les spécialistes, identifier les dépendances et attribuer une sortie distincte par tâche.
@@ -61,6 +85,29 @@ Une étude peut recommander de tester, modifier ou arrêter le projet. L'accord 
 
 **28 rôles répartis en 8 équipes**, disponibles selon la mission. Ce catalogue n'impose pas 28 agents simultanés.
 
+```mermaid
+flowchart LR
+    Coordinator(["Coordinateur de mission"]):::lead
+    Coordinator <--> Strategy["Direction et stratégie"]:::team
+    Coordinator <--> Marketing["Marketing"]:::team
+    Coordinator <--> Sales["Commercial"]:::team
+    Coordinator <--> Product["Produit et design"]:::team
+    Coordinator <--> Engineering["Technique"]:::team
+    Coordinator <--> Finance["Finance et administration"]:::team
+    Coordinator <--> HR["Ressources humaines"]:::team
+    Coordinator <--> Customers["Relation client"]:::team
+
+    classDef lead fill:#dff6ed,stroke:#3a8b70,color:#163e32,stroke-width:2px;
+    classDef team fill:#eaf2fb,stroke:#7b9bbd,color:#203c59;
+    classDef review fill:#fff3dc,stroke:#c49a4a,color:#644b1d;
+    classDef output fill:#eef0f6,stroke:#939bb2,color:#343d55;
+```
+
+*Le coordinateur cadre les tâches, recueille les résultats et relaie les questions utiles entre services. Les flèches représentent des relations de travail, pas huit équipes actives en permanence.*
+
+<details>
+<summary><strong>Voir les spécialités de chaque équipe</strong></summary>
+
 | Équipe | Spécialités |
 |---|---|
 | **Direction et stratégie** | Coordination, étude de marché, concurrence, évaluation critique |
@@ -71,6 +118,8 @@ Une étude peut recommander de tester, modifier ou arrêter le projet. L'accord 
 | **Finance et administration** | Budget, économie du projet, suivi administratif |
 | **Ressources humaines** | DRH, recrutement, intégration, formation |
 | **Relation client** | Support, adoption, fidélisation |
+
+</details>
 
 Les [neuf workflows](.agents/skills/orka/references/workflows-entreprise.md) couvrent étude, marketing, commercial, réalisation, lancement, relation client, finance, RH et pilotage. [Consulter les rôles →](.agents/skills/orka/references/roles.md)
 
@@ -84,6 +133,26 @@ Les [neuf workflows](.agents/skills/orka/references/workflows-entreprise.md) cou
 | **Outils locaux facultatifs** | Préparer les mandats et suivre dépendances, réservations, tentatives et acceptation |
 
 Les outils utilisent Python et SQLite, sans paquet Python tiers. Ils préparent et enregistrent le travail ; l'assistant fournit l'exécution des modèles. L'installation ne lance aucun agent, ne crée aucun service et ne nécessite aucune clé API. L'utilisation des modèles dépend de votre assistant, de votre abonnement et des coûts associés.
+
+## Ce que vous recevez après une étude
+
+Commencez par la synthèse de décision, puis ouvrez les liens vers les détails utiles.
+
+```mermaid
+flowchart TB
+    Summary["synthese.md<br/>Synthèse dirigeant d'une page"]:::lead
+    Summary --> Dossier["dossier.md<br/>Recommandation détaillée et raisonnement"]:::output
+    Dossier --> Evidence["analyses/ et sources.md<br/>Preuves, calculs et limites"]:::team
+    Dossier --> Rules["Documents de référence<br/>Règles et critères d'acceptation actuels"]:::team
+    Dossier -. Retracer les choix antérieurs .-> History["Historique daté<br/>Propositions remplacées et motifs de révision"]:::output
+
+    classDef lead fill:#dff6ed,stroke:#3a8b70,color:#163e32,stroke-width:2px;
+    classDef team fill:#eaf2fb,stroke:#7b9bbd,color:#203c59;
+    classDef review fill:#fff3dc,stroke:#c49a4a,color:#644b1d;
+    classDef output fill:#eef0f6,stroke:#939bb2,color:#343d55;
+```
+
+*Structure d'étude illustrative. Les documents sont créés seulement s'ils sont utiles ; une mission compacte peut réunir synthèse, résultat et vérifications dans un seul fichier. Les recommandations restent distinctes de votre autorisation d'agir.*
 
 ## Votre première mission
 
