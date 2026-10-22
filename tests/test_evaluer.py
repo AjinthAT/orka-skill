@@ -1,6 +1,7 @@
 """Regressions L3 sur observations simulees ; aucun moteur ou agent lance."""
 
 import copy
+from contextlib import closing
 import hashlib
 import importlib.util
 import json
@@ -332,8 +333,9 @@ class EvaluationTests(unittest.TestCase):
     def test_prototypes_and_existing_register_are_never_executed_or_modified(self):
         marker = self.root / "code-execute"
         registre = self.inputs / "registre.sqlite"
-        with sqlite3.connect(registre) as db:
+        with closing(sqlite3.connect(registre)) as db:
             db.execute("CREATE TABLE preuves (texte TEXT)"); db.execute("INSERT INTO preuves VALUES ('historique')")
+            db.commit()
         avant = empreintes(self.inputs)
         d = self.root / "prototype"; r = creer_resultat(d, self.m, 0)
         (d / "prototype.py").write_text("from pathlib import Path\nPath(" + repr(str(marker)) + ").write_text('execute')\n", encoding="utf-8")
@@ -344,7 +346,7 @@ class EvaluationTests(unittest.TestCase):
         self.assertFalse(marker.exists())
         self.assertEqual((d / "prototype.py").read_bytes(), brut)
         self.assertEqual(empreintes(self.inputs), avant)
-        with sqlite3.connect(registre) as db:
+        with closing(sqlite3.connect(registre)) as db:
             self.assertEqual(db.execute("SELECT texte FROM preuves").fetchall(), [("historique",)])
 
     def test_report_is_read_only_and_export_refuses_overwrite(self):

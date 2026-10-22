@@ -21,6 +21,8 @@ La [procédure manuelle](../.agents/skills/orka/references/evaluation-agents.md#
 
 Les 25 tests de l’outil sont des tests de logiciel sur données fabriquées. Ils ne sont pas des réponses de modèles reproduites. La [matrice CI](../.github/workflows/verification.yml) exécute le même vérificateur sur Linux/macOS/Windows avec Python 3.10 et 3.13 ; consulter les [résultats du commit/tag publié](https://github.com/AjinthAT/orka-skill/actions/workflows/verification.yml), sans déduire leur réussite de la seule configuration.
 
+Le [premier passage distant](https://github.com/AjinthAT/orka-skill/actions/runs/39856967584) a conservé un échec Windows/Python 3.13 : une connexion SQLite de fixture restait ouverte et empêchait le nettoyage du dossier temporaire. Le test ferme maintenant explicitement ses deux connexions ; aucun résultat d’évaluation n’a été remplacé et le logiciel de campagne n’ouvre pas cette base.
+
 ## Parcours sans Python
 
 Un [comptage manuel conservé](../evals/outillage-L3-2026-10-22/controle-manuel.md) reprend la matrice fictive ci-dessus : inscrire six lignes, leur état et leur preuve ; compter séparément les deux lignes évaluables, les quatre autres issues et les mesures absentes. Cette lecture et l’édition d’un tableau ne nécessitent aucune exécution Python. Les tests automatisés, le gel des fichiers et le calcul des empreintes utilisent Python séparément. La machine de maintenance dispose de Python ; ce n’est pas un essai d’hôte physiquement dépourvu de Python, et aucun nouvel essai comportemental d’agent n’a été lancé pour ce contrôle documentaire.
