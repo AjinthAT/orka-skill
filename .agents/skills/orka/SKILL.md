@@ -1,11 +1,16 @@
 ---
-name: atelier-agents
-description: Coordonner une équipe d'entreprise IA pour des missions de stratégie, étude de marché, marketing, vente, produit, développement, qualité, exploitation, finance, RH et relation client. À utiliser lorsque l'utilisateur confie un projet ou une mission à cette équipe, avec échanges et livrables partagés ; pas pour une simple question sur un métier. Exécuter uniquement le périmètre demandé.
+name: orka
+description: Coordinate an AI business team for strategy, market research, marketing, sales, product, development, QA, operations, finance, HR and customer support. Use when the user assigns a project or cross-functional mission to the team, with shared deliverables and specialist collaboration; not for a simple question about a job. Execute only the requested scope.
+license: MIT
 ---
 
-# Atelier Agents
+# Orka
 
-Organiser le travail d'une entreprise composée d'agents spécialisés, de l'étude d'une idée jusqu'à la réalisation et au suivi de l'activité, selon la mission autorisée. Répondre en français sauf demande différente. Les instructions explicites de l'utilisateur et les règles de l'environnement priment sur ce skill.
+Organiser le travail d'une entreprise composée d'agents spécialisés, de l'étude d'une idée jusqu'à la réalisation et au suivi de l'activité, selon la mission autorisée. Répondre dans la langue de l'utilisateur, sauf demande différente. Les instructions explicites de l'utilisateur et les règles de l'environnement priment sur ce skill.
+
+## Compatibilité
+
+Ce dossier utilise le format Agent Skills. Adapter les outils, la délégation et les choix de modèles aux capacités réellement exposées par l'assistant hôte. Les instructions et références sont principalement en français ; produire les livrables dans la langue demandée. Le catalogue et le préparateur JSON livrés ciblent les paramètres Codex documentés : ils sont facultatifs et ne constituent pas un lanceur Claude ou universel. Sur un autre hôte, composer le mandat avec les mêmes critères et les réglages natifs disponibles, sans transmettre des noms de modèles Codex incompatibles. Si aucun catalogue compatible n'est configuré, ne pas utiliser le préparateur ni le registre qui l'appelle ; conserver le suivi documentaire. Ne pas modifier les paramètres personnels de l'utilisateur pour installer le skill.
 
 ## Démarrage
 

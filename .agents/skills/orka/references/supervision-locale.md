@@ -19,12 +19,12 @@ Ces contrôles couvrent les opérations passant par cette même base. Ils ne blo
 Depuis la racine du projet :
 
 ```sh
-python3 .agents/skills/atelier-agents/scripts/superviser.py --base .atelier-agents/registre.sqlite initialiser --racine . --capacite 3
+python3 .agents/skills/orka/scripts/superviser.py --base .orka/registre.sqlite initialiser --racine . --capacite 3
 ```
 
 Le répertoire parent est créé si nécessaire. Une base existante n'est jamais remplacée. La racine des livrables est enregistrée sous forme absolue. Tous les coordinateurs qui partagent une capacité doivent utiliser la même base ; deux bases distinctes ne partagent pas leurs réservations.
 
-Le dossier `.atelier-agents/` est ignoré par Git, car les requêtes et leur contexte peuvent contenir des informations de mission. Ce choix ne chiffre pas la base et ne constitue pas une sauvegarde. Aucune base de mission réelle n'a été créée pendant le développement ; les tests utilisent des dossiers temporaires.
+Dans ce dépôt, le dossier `.orka/` est ignoré par Git, car les requêtes et leur contexte peuvent contenir des informations de mission. Après installation dans un autre projet, ajouter la règle correspondante à son fichier d'exclusion ou stocker la base hors du dépôt ; l'installateur ne modifie pas les règles Git du projet hôte. Ce choix ne chiffre pas la base et ne constitue pas une sauvegarde. Aucune base de mission réelle n'a été créée pendant le développement ; les tests utilisent des dossiers temporaires.
 
 ## Enregistrer puis réserver
 
@@ -33,8 +33,8 @@ Le mandat suit [le contrat JSON](prompting-agents.md). Pour ce registre, `sortie
 Exemple de forme de commande, avec un mandat réel préparé par le coordinateur :
 
 ```sh
-python3 .agents/skills/atelier-agents/scripts/superviser.py --base .atelier-agents/registre.sqlite ajouter --mandat chemin/mandat.json --fichier projets/mon-projet/livrables/T-001.md --maximum 2
-python3 .agents/skills/atelier-agents/scripts/superviser.py --base .atelier-agents/registre.sqlite reserver --mission mon-projet --tache T-001
+python3 .agents/skills/orka/scripts/superviser.py --base .orka/registre.sqlite ajouter --mandat chemin/mandat.json --fichier projets/mon-projet/livrables/T-001.md --maximum 2
+python3 .agents/skills/orka/scripts/superviser.py --base .orka/registre.sqlite reserver --mission mon-projet --tache T-001
 ```
 
 Les chemins et identifiants sont à adapter ; les exemples ne désignent pas des missions existantes. Ajouter les dépendances avec `--dependance T-001`. Elles doivent déjà être enregistrées dans la même mission ; ajouter les tâches dans l'ordre de leurs dépendances. Cette version ne modifie pas un graphe existant et refuse les références futures ou à soi-même, ce qui empêche de créer un cycle par l'interface proposée.

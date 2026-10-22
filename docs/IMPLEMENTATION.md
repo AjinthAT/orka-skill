@@ -2,9 +2,9 @@
 
 ## Version actuelle : skill, préparation et supervision locale
 
-Le point d'entrée est [SKILL.md](../.agents/skills/atelier-agents/SKILL.md). Il oriente vers les 8 équipes, leurs 28 rôles, les workflows et les modèles. Son emplacement local suit le format documenté par [OpenAI](https://learn.chatgpt.com/docs/build-skills).
+Le point d'entrée est [SKILL.md](../.agents/skills/orka/SKILL.md). Il oriente vers les 8 équipes, leurs 28 rôles, les workflows et les modèles. Son emplacement local suit le format documenté par [OpenAI](https://learn.chatgpt.com/docs/build-skills).
 
-Le coordinateur est l'agent qui reçoit la demande dans Codex. Il lit le skill et exécute les étapes avec les outils réellement disponibles. Quand l'utilisateur autorise une mission avec sous-agents et que l'environnement le permet, le coordinateur lance les spécialistes et leur transmet les mandats. Les fiches Markdown ne sont pas des configurations natives de processus ou de serveurs.
+Le coordinateur est l'agent qui reçoit la demande dans l'assistant hôte, par exemple Codex ou Claude Code. Il lit le skill et exécute les étapes avec les outils réellement disponibles. Quand l'utilisateur autorise une mission avec sous-agents et que l'environnement le permet, le coordinateur lance les spécialistes et leur transmet les mandats. Les fiches Markdown ne sont pas des configurations natives de processus ou de serveurs.
 
 Les missions produit sont suivies sous `projets/<identifiant>/` et les missions transversales sous `entreprise/missions/<identifiant>/`. Le code est modifié dans le dépôt désigné. Les échanges passent par la messagerie des sous-agents ou sont relayés par le coordinateur ; les fichiers permettent une reprise dans une autre session.
 
@@ -20,51 +20,51 @@ Les fiches restent des instructions de rôle. Elles ne sont pas des fichiers nat
 
 ## Préparation des modèles et des prompts
 
-Le coordinateur porte maintenant la procédure de [gestion des agents](../.agents/skills/atelier-agents/references/orchestration-agents.md). Le catalogue JSON du skill associe les 28 rôles à six profils proposés ; le choix peut être adapté à la tâche avec justification. Il ne modifie pas la configuration personnelle de Codex.
+Le coordinateur porte maintenant la procédure de [gestion des agents](../.agents/skills/orka/references/orchestration-agents.md). Le catalogue JSON du skill associe les 28 rôles à six profils proposés ; le choix peut être adapté à la tâche avec justification. Il ne modifie pas la configuration personnelle de Codex.
 
-L'outil [preparer_agent.py](../.agents/skills/atelier-agents/scripts/preparer_agent.py) prépare le mandat et les paramètres sans dépendance tierce. Il vérifie les champs, le rôle, le profil et la compatibilité modèle/effort connue ; avec des capacités fournies par l'appelant, il refuse aussi les réglages absents de cette déclaration. Il inclut uniquement la fiche du rôle choisi et préserve les critères. Il ne mesure pas un abonnement ni les paramètres effectivement appliqués.
+L'outil [preparer_agent.py](../.agents/skills/orka/scripts/preparer_agent.py) prépare le mandat et les paramètres sans dépendance tierce. Il vérifie les champs, le rôle, le profil et la compatibilité modèle/effort connue ; avec des capacités fournies par l'appelant, il refuse aussi les réglages absents de cette déclaration. Il inclut uniquement la fiche du rôle choisi et préserve les critères. Il ne mesure pas un abonnement ni les paramètres effectivement appliqués.
 
-La sortie contient une requête pour les champs du lanceur de sous-agents exposé dans cette session. Le coordinateur doit vérifier autorisations, dépendances, capacité et interface réelle avant lancement. Aucun service continu ni client API n'est ajouté par ce script. Les capacités déclarées et la validation locale ne prouvent pas qu'un modèle a été exécuté.
+La sortie contient une requête pour les champs d'un lanceur Codex compatible. Elle n'est pas une requête Claude native ; sur un autre hôte, utiliser les mandats documentaires et les outils natifs sans appliquer le catalogue Codex. Le coordinateur doit vérifier autorisations, dépendances, capacité et interface réelle avant lancement. Aucun service continu ni client API n'est ajouté par ce script. Les capacités déclarées et la validation locale ne prouvent pas qu'un modèle a été exécuté.
 
 Les tests locaux se lancent depuis la racine avec :
 
 ```sh
-python3 -B .agents/skills/atelier-agents/scripts/test_preparer_agent.py
+python3 -B .agents/skills/orka/scripts/test_preparer_agent.py
 ```
 
 Ils vérifient notamment le respect du modèle explicite, le refus d'un réglage indisponible, les critères transmis, la préparation des rôles et l'absence d'écrasement des fichiers. Ils ne constituent pas des évaluations du comportement des modèles.
 
 La préparation version 2 conserve aussi le mode explicitement demandé, exige les entrées d'une revue/correction/reprise, distingue les tentatives d'une tâche et refuse les clés JSON dupliquées. L'empreinte de la requête complète distingue un changement de modèle ou d'effort d'un simple changement de prompt. Elle ne fournit pas de contrôle automatique des exécutions en double.
 
-Les futures évolutions suivent [la procédure d'évaluation](../.agents/skills/atelier-agents/references/evaluation-agents.md), qui sépare les tests logiciels, la revue documentaire et les résultats réellement observés sur des modèles. Ce document tient aussi la liste priorisée des renforcements encore à implémenter.
+Les futures évolutions suivent [la procédure d'évaluation](../.agents/skills/orka/references/evaluation-agents.md), qui sépare les tests logiciels, la revue documentaire et les résultats réellement observés sur des modèles. Ce document tient aussi la liste priorisée des renforcements encore à implémenter.
 
 ## Supervision locale livrée
 
-Le script [superviser.py](../.agents/skills/atelier-agents/scripts/superviser.py) fournit un registre SQLite local sans dépendance tierce. Ses transactions contrôlent capacité commune, tâches et fichiers réservés, compteurs de tentatives et événements. Les dépendances doivent être enregistrées avant leurs tâches aval. Chaque tâche conserve sa requête de référence ; une reprise ajoute le constat sans recharger silencieusement le modèle ou les instructions.
+Le script [superviser.py](../.agents/skills/orka/scripts/superviser.py) fournit un registre SQLite local sans dépendance tierce. Ses transactions contrôlent capacité commune, tâches et fichiers réservés, compteurs de tentatives et événements. Les dépendances doivent être enregistrées avant leurs tâches aval. Chaque tâche conserve sa requête de référence ; une reprise ajoute le constat sans recharger silencieusement le modèle ou les instructions.
 
 Les étapes sont distinctes : réservation, lancement extérieur et rattachement, réception du résultat, confirmation de fin du rédacteur, puis acceptation. Une réservation inactive n'est jamais libérée automatiquement. L'acceptation exige les observations de tous les critères et le fichier correspondant à l'empreinte soumise ; les dépendances sont de nouveau examinées. Les identités, constats d'arrêt et paramètres appliqués sont fournis par le coordinateur, sans vérification auprès d'un moteur externe.
 
-Le [guide de supervision](../.agents/skills/atelier-agents/references/supervision-locale.md) décrit l'initialisation explicite, les commandes et les limites. La base n'est pas créée lors de la simple lecture de l'état ; aucune base de mission réelle n'a été initialisée pendant ce développement. Les tests utilisent des dossiers temporaires et aucun modèle.
+Le [guide de supervision](../.agents/skills/orka/references/supervision-locale.md) décrit l'initialisation explicite, les commandes et les limites. La base n'est pas créée lors de la simple lecture de l'état ; aucune base de mission réelle n'a été initialisée pendant ce développement. Les tests utilisent des dossiers temporaires et aucun modèle.
 
 ```sh
-python3 -B .agents/skills/atelier-agents/scripts/test_superviser.py
+python3 -B .agents/skills/orka/scripts/test_superviser.py
 ```
 
 Cette implémentation couvre le registre local, pas le lancement automatique, un service continu ou le contrôle technique d'un outil extérieur. Les réservations n'empêchent pas un processus non enregistré d'écrire sur le disque. Le budget financier, l'annulation d'une tâche et la modification d'un mandat enregistré ne sont pas implémentés dans cette première interface.
 
 ## Pilotage renforcé
 
-Le [pilotage des missions](../.agents/skills/atelier-agents/references/pilotage-missions.md) ajoute une organisation adaptée au résultat attendu : mission compacte, coordination entre services ou décision avec revue critique. Il définit les tâches prêtes, les responsabilités, les preuves d'acceptation et le traitement des résultats affectés par un changement.
+Le [pilotage des missions](../.agents/skills/orka/references/pilotage-missions.md) ajoute une organisation adaptée au résultat attendu : mission compacte, coordination entre services ou décision avec revue critique. Il définit les tâches prêtes, les responsabilités, les preuves d'acceptation et le traitement des résultats affectés par un changement.
 
 Ces règles guident l'exécution dans la session. Les fichiers Markdown ne les imposent pas seuls. Le registre applique déjà capacité et tentatives, unicité des réservations, transitions et preuves structurées d'acceptation dans son périmètre. Les autorisations techniques et le contrôle des processus extérieurs restent à appliquer dans le moteur complet. Les appréciations éditoriales ou métier restent des revues, même si leur résultat est enregistré.
 
-Les [processus communs](../.agents/skills/atelier-agents/references/processus-transverses.md) couvrent les événements entre les workflows : demande nouvelle, changement de périmètre, transmission, incident et clôture. La [gestion documentaire](../.agents/skills/atelier-agents/references/gestion-documentaire.md) précise les versions et les sources de référence. Ces procédures utilisent le suivi existant et n'imposent de nouvelles fiches que lorsque le cas le nécessite.
+Les [processus communs](../.agents/skills/orka/references/processus-transverses.md) couvrent les événements entre les workflows : demande nouvelle, changement de périmètre, transmission, incident et clôture. La [gestion documentaire](../.agents/skills/orka/references/gestion-documentaire.md) précise les versions et les sources de référence. Ces procédures utilisent le suivi existant et n'imposent de nouvelles fiches que lorsque le cas le nécessite.
 
 ## Premier essai utile
 
 Choisir un vrai projet, un marché cible et les contraintes déjà connues. Lancer le skill avec le prompt du [guide de démarrage](../README.md). Examiner ensuite le dossier : les sources justifient-elles les conclusions ? Les objections ont-elles changé quelque chose ? Le prochain test permet-il de réduire une incertitude importante ?
 
-Faire évoluer les instructions à partir des problèmes observés. Les [scénarios de validation](../.agents/skills/atelier-agents/references/validation.md) couvrent les cas incomplets, les désaccords et les outils indisponibles.
+Faire évoluer les instructions à partir des problèmes observés. Les [scénarios de validation](../.agents/skills/orka/references/validation.md) couvrent les cas incomplets, les désaccords et les outils indisponibles.
 
 ## Évolution : une application qui pilote les agents
 

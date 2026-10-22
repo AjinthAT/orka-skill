@@ -1,8 +1,8 @@
-# Instructions du projet Atelier Agents
+# Instructions du projet Orka
 
 Ce dossier définit une équipe d'agents et ses workflows. Il contient les instructions Markdown, un catalogue JSON de profils, un préparateur de mandats et un registre de supervision local persistant. Ces outils ne lancent aucun modèle ni agent.
 
-- Pour une mission confiée à l'équipe de l'entreprise, lire [.agents/skills/atelier-agents/SKILL.md](.agents/skills/atelier-agents/SKILL.md), puis uniquement les références utiles à la mission.
+- Pour une mission confiée à l'équipe de l'entreprise, lire [.agents/skills/orka/SKILL.md](.agents/skills/orka/SKILL.md), puis uniquement les références utiles à la mission.
 - Pour modifier le système lui-même, travailler sur les instructions et leur cohérence ; ne pas lancer une étude commerciale automatiquement.
 - Conserver la distinction entre procédures documentées, agents réellement exécutés et fonctionnalités futures.
 - Les missions d'un produit vont dans `projets/<identifiant>/` ; les missions transversales dans `entreprise/missions/<identifiant>/`. Ne pas mélanger leurs preuves et décisions. Le code reste dans le dépôt de développement désigné.

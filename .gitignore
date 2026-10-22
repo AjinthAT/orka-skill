@@ -1,5 +1,10 @@
+.orka/
 .atelier-agents/
 .entreprise-ia/
+.serena/
+dist/
+projets/
+entreprise/missions/
 __pycache__/
 *.pyc
 .DS_Store

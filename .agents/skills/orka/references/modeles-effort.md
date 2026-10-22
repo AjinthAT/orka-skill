@@ -1,6 +1,8 @@
 # Choisir modèle et effort
 
-Les profils sont des choix de départ du projet, à évaluer sur les tâches réelles. Ils ne garantissent ni qualité ni économie. Les modèles et efforts ci-dessous étaient exposés par les outils de cette session le 22 octobre 2026 ; leur disponibilité doit être vérifiée au lancement suivant. Le catalogue ne contient aucun tarif ni budget inventé.
+Ces réglages constituent le profil Codex fourni avec Orka, pas un catalogue universel. Pour Claude ou un autre assistant, conserver les critères de choix et utiliser les modèles et réglages natifs disponibles. Sans catalogue local compatible, préparer les mandats directement et utiliser le suivi documentaire ; le préparateur JSON et le registre qui l'appelle restent facultatifs et spécifiques au catalogue fourni.
+
+Les profils sont des choix de départ du projet, à évaluer sur les tâches réelles. Ils ne garantissent ni qualité ni économie. Les modèles et efforts ci-dessous étaient exposés dans l’environnement de développement de référence le 22 octobre 2026 ; leur disponibilité doit être vérifiée au lancement suivant. Le catalogue ne contient aucun tarif ni budget inventé.
 
 ## Profils proposés
 
@@ -37,4 +39,4 @@ Le script de préparation refuse un couple absent du catalogue ou des capacités
 
 OpenAI documente les réglages par agent et les règles d'héritage dans [Subagents](https://learn.chatgpt.com/docs/agent-configuration/subagents). Le choix selon le travail et les compromis est abordé dans [Model selection](https://developers.openai.com/api/docs/guides/model-selection). Les profils et seuils d'escalade ci-dessus sont notre politique proposée, pas des performances certifiées par ces sources.
 
-Le CLI local observé est en version 0.149.0 et la configuration personnelle indique gpt-6.1-sol avec effort high. Ce sont des observations de configuration, pas une preuve du modèle effectivement utilisé par chaque exécution. Cette mission ne modifie pas la configuration personnelle ni ne dépend d'une découverte automatique de fichiers d'agents natifs.
+Un catalogue de paramètres demandés ne prouve pas le modèle effectivement utilisé par une exécution. Le skill ne modifie pas la configuration personnelle et ne dépend pas de fichiers natifs d'agents persistants.

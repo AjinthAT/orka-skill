@@ -37,7 +37,7 @@ Une correction décrit critère non satisfait, observation et version concernée
 Un [mandat de démonstration](../assets/mandat-exemple.json) permet de vérifier le fonctionnement sans étude de marché ni données réelles. Depuis la racine du projet :
 
 ```sh
-python3 .agents/skills/atelier-agents/scripts/preparer_agent.py --mandat .agents/skills/atelier-agents/assets/mandat-exemple.json
+python3 .agents/skills/orka/scripts/preparer_agent.py --mandat .agents/skills/orka/assets/mandat-exemple.json
 ```
 
 Le résultat JSON de format version 2 contient le prompt et son empreinte, une empreinte de la requête complète incluant modèle et effort, la version du catalogue, le profil, la tentative et les paramètres demandés. L'état reste `prepare_non_lance` et les paramètres appliqués restent inconnus. Les anciens fichiers de requête restent des traces préparées, pas des exécutions confirmées.
