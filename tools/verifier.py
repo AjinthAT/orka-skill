@@ -53,7 +53,7 @@ def ancres(contenu):
 
 def verifier_liens():
     # Index publics uniquement : les captures brutes gardent leurs liens historiques.
-    fichiers = [ROOT / "README.md", ROOT / "README.fr.md", ROOT / "AGENTS.md",
+    fichiers = [ROOT / "README.md", ROOT / "README.fr.md", ROOT / "AGENTS.md", ROOT / "CONTRIBUTING.md",
                 ROOT / "evals/README.md", *sorted((ROOT / "evals").glob("*/README.md")),
                 *sorted((ROOT / "docs").rglob("*.md")), *sorted(SKILL.rglob("*.md"))]
     total, erreurs = 0, []

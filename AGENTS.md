@@ -1,6 +1,6 @@
 # Instructions du projet Orka
 
-Ce dossier définit une équipe d'agents et ses workflows. Il contient les instructions Markdown, un catalogue JSON de profils, un préparateur de mandats et un registre de supervision local persistant. Ces outils ne lancent aucun modèle ni agent.
+Ce dépôt distribue le skill Orka : instructions Markdown, catalogue JSON de profils et outils Python facultatifs de préparation, supervision, bilan et diagnostic. Ces outils ne lancent aucun modèle ni agent. Pour la maintenance du dépôt, suivre [le guide de contribution](CONTRIBUTING.md).
 
 - Pour une mission confiée à l'équipe de l'entreprise, lire [.agents/skills/orka/SKILL.md](.agents/skills/orka/SKILL.md), puis uniquement les références utiles à la mission.
 - Pour modifier le système lui-même, travailler sur les instructions et leur cohérence ; ne pas lancer une étude commerciale automatiquement.

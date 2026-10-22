@@ -11,7 +11,7 @@
   <a href="README.md">English</a> ·
   <a href="#installation">Installer</a> ·
   <a href="#votre-première-mission">Commencer</a> ·
-  <a href="evals/pilote-2026-10-22/README.md">Résultats d’évaluation</a> ·
+  <a href="evals/README.md">Résultats d’évaluation</a> ·
   <a href="#documentation-et-développement">Guides</a>
 </p>
 
@@ -106,9 +106,13 @@ Ces outils ne lancent pas les modèles, ne collectent pas les tokens et n’impo
 
 ## Résultats d’évaluation
 
-[Consulter le premier pilote →](evals/pilote-2026-10-22/README.md) — trois cas synthétiques comparant chacun un assistant seul, Orka sans délégation et Orka avec deux spécialistes.
+| Évaluation | Périmètre et limites |
+|---|---|
+| [Premier pilote comparatif](evals/pilote-2026-10-22/README.md) | Orka 0.4.0, trois cas et trois conditions, un essai par cellule. Neuf livrables satisfont les critères examinés ; une lecture du skill hors périmètre limite la comparabilité. |
+| [Découverte depuis le README](evals/decouverte-2026-10-22/README.md) | Un parcours en contexte neuf ; activation par l’hôte et missions complètes non testées. |
+| [Réception L2](evals/contexte-L2-2026-10-22/README.md) | Trois tâches fictives sur le contexte ciblé, les versions et les conditions d’arrêt ; sans comparaison de modèles ni audit indépendant des accès. |
 
-Les neuf livrables satisfont les critères examinés. **Aucun avantage de qualité ou de coût n’est établi.** Un spécialiste a lu Orka hors de la copie figée, ce qui limite la comparabilité de cette cellule. L’index donne accès aux livrables, vérifications, traces et prompts originaux. Ce pilote évalue Orka 0.4.0 dans Codex, avec un essai par cellule ; tokens et coûts sont indisponibles.
+**Aucun avantage de qualité ou de coût n’est établi.** Tokens et coûts sont indisponibles. L’[index des évaluations](evals/README.md) donne accès aux sorties, prompts, empreintes et limites de méthode conservés.
 
 ## Documentation et développement
 
@@ -124,15 +128,6 @@ Le [suivi ECC-01](docs/LOT-ECC-01.md) distingue L1, diagnostic livré en 0.5.0, 
 | [Implémentation](docs/IMPLEMENTATION.md) | Supervision locale, capacités disponibles et évolutions |
 | [Évaluations](evals/README.md) | Cas, résultats conservés et limites de méthode |
 
-Conservez les données privées de mission hors de ce dépôt public. Les missions produit utilisent `projets/<id>/` ; les missions transversales, `entreprise/missions/<id>/`. Le code applicatif reste dans son dépôt désigné.
-
-Pour vérifier le dépôt depuis sa racine :
-
-```sh
-python3 -m pip install -r requirements-dev.txt
-python3 -B tools/verifier.py
-```
-
-Le vérificateur contrôle métadonnées, liens locaux, tests après déplacement et contenu du ZIP. GitHub Actions l’exécute sur Linux, macOS et Windows avec Python 3.10 et 3.13. Pour contribuer par issue ou pull request, décrivez le problème observé et les vérifications utiles.
+Le [guide de contribution](CONTRIBUTING.md), en anglais, centralise l’organisation du dépôt, les commandes de vérification, la construction du ZIP et la conservation des évaluations. Pour contribuer par issue ou pull request, décrivez le problème observé et les vérifications utiles. Gardez les données privées de mission dans leur espace désigné, hors des contributions publiques.
 
 Licence [MIT](LICENSE), incluse dans le ZIP et les installations.

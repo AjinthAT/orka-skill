@@ -11,7 +11,7 @@
   <a href="README.fr.md">Français</a> ·
   <a href="#installation">Install</a> ·
   <a href="#your-first-mission">Start</a> ·
-  <a href="evals/pilote-2026-10-22/README.md">Evaluation results</a> ·
+  <a href="evals/README.md">Evaluation results</a> ·
   <a href="#documentation">Guides</a>
 </p>
 
@@ -106,9 +106,13 @@ These helpers do not launch models, collect token telemetry or enforce financial
 
 ## Evaluation results
 
-[Browse the first pilot →](evals/pilote-2026-10-22/README.md) — three synthetic cases, each comparing an assistant alone, Orka without delegation and Orka with two specialists.
+| Evaluation | Scope and limits |
+|---|---|
+| [First comparative pilot](evals/pilote-2026-10-22/README.md) | Orka 0.4.0, three cases and three conditions, one run per cell. Nine outputs met the reviewed criteria; one out-of-scope skill read limits comparability. |
+| [README discovery](evals/decouverte-2026-10-22/README.md) | One fresh-context discovery route; host activation and complete missions were not tested. |
+| [L2 acceptance](evals/contexte-L2-2026-10-22/README.md) | Three synthetic tasks checking targeted context, version changes and stopping conditions; no reference-model comparison or independent access audit. |
 
-The nine delivered outputs met the reviewed artifact criteria. **No quality or cost advantage is established.** One specialist read Orka outside the frozen copy, limiting that cell's comparability. The index links directly to captured deliverables, checks, traces and original prompts. The pilot evaluated Orka 0.4.0 in Codex, with one run per cell; tokens and costs were unavailable.
+**No quality or cost advantage is established.** Tokens and costs were unavailable. The [evaluation index](evals/README.md) links to preserved outputs, prompts, hashes and methodological limits.
 
 ## Documentation
 
@@ -126,15 +130,6 @@ The nine delivered outputs met the reviewed artifact criteria. **No quality or c
 
 [ECC-01 progress](docs/LOT-ECC-01.md) — L1 installation diagnostics delivered in 0.5.0; L2 document-based progressive context added in 0.6.0. Repeated-evaluation tooling and comparative qualification remain planned. Specification and acceptance checks are in French.
 
-Keep private mission data out of this public distribution repository. Product mission documents use `projets/<id>/`; cross-company missions use `entreprise/missions/<id>/`. Application code stays in its designated repository.
-
-To check the repository from its root:
-
-```sh
-python3 -m pip install -r requirements-dev.txt
-python3 -B tools/verifier.py
-```
-
-The verifier checks metadata, local links, tests after relocation and ZIP contents. GitHub Actions runs it on Linux, macOS and Windows with Python 3.10 and 3.13. Contributions through issues and pull requests should describe the observed problem and relevant checks.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for repository layout, verification commands, ZIP builds and preservation of evaluation records. Describe the observed problem and relevant checks in issues or pull requests. Keep private mission data in its designated workspace, outside public contributions.
 
 [MIT license](LICENSE), included in the skill ZIP and installations.

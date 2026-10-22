@@ -2,6 +2,7 @@
 .atelier-agents/
 .entreprise-ia/
 .serena/
+.venv/
 dist/
 projets/
 entreprise/missions/
