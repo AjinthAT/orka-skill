@@ -35,6 +35,14 @@ For repeated-evaluation preparation and reporting, see [EVALUATIONS.md](docs/EVA
 
 The optional [file-tool MCP bridge](tools/raccorder_fichiers.py) is also repository-only and uses the standard library. Its [transport regressions](tests/test_raccorder_fichiers.py) run with temporary fake adapters, without Docker, network or models. The [independent connection probes](evals/raccordement-L4-2026-10-23/README.md) are software evidence, not L4 model runs or certification of a host's context isolation.
 
+The separate [SDK–Inspect P0/P1 prototype](docs/PROTOTYPE-SDK-INSPECT.md) freezes new synthetic fixtures and runs only three file operations. Its portable contract tests are included in the verifier; the backend regressions require Linux `openat2`. The opt-in Docker suite runs them in the pinned, network-disabled Python image, without SDK installation or model calls. It requires the image to be cached first and never pulls it automatically. See its [acceptance record](docs/VALIDATION-PROTOTYPE-P01.md); this does not execute or alter L4.
+
+Its optional [Claude Agent SDK adapter](docs/ADAPTATEUR-CLAUDE-SDK.md) has a separate dependency lock and opt-in offline tests of the real in-memory MCP catalogue, SDK configuration, and Docker binding. These tests do not start Claude Code or call a model. Neither SDK is required for ordinary repository verification or skill installation.
+
+The [simulated Claude transport](tools/prototype_sdk_inspect/claude_simulated.py) also exercises the real SDK client and control protocol in memory, checking the serialized catalogue before every scripted generation. Its [regressions](tests/test_claude_simulated.py) include late catalogue drift and blocking a planned file write; the default CLI transport and network are trapped. See the [software acceptance record](docs/VALIDATION-TRANSPORT-CLAUDE-SIMULE.md). This simulation does not certify a real provider or Claude Code CLI run.
+
+The optional [Inspect integration](docs/INSPECT-CLAUDE-SIMULE.md) runs that simulation with a custom solver and deterministic scorers of physical output and execution evidence. It has a separate combined lock, 11 frozen positive/negative scenarios and an explicit guard forbidding even mock model generation. Portable scorer tests join ordinary verification; framework and Docker tests are opt-in. See its [acceptance record](docs/VALIDATION-INSPECT-CLAUDE-SIMULE.md).
+
 ## Preserve evaluation records
 
 Keep captured inputs, prompts, outputs and their manifests unchanged. Add new runs in a separate directory, with explicit criteria, source versions and available measurements. Preserve failed attempts and protocol deviations. The `evals/** -text` attribute preserves captured bytes even on CRLF-configured checkouts. Do not renormalize this directory. Do not reformat historical JSON or replace absolute paths inside raw captures merely to tidy them; portable indexes provide navigation without altering the originals.

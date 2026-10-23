@@ -1,0 +1,11 @@
+{
+  "id": "complet",
+  "instruction": "Lis la fiche et rends le total et la marge dans sorties/livrable.json. Toutes les données sont fictives.",
+  "inputs": {
+    "entrees/fiche.md": "Simulation nouvelle P01. Lot de 4 capteurs à 25 EUR chacun. Plafond : 130 EUR.\n"
+  },
+  "expected": {
+    "total": 100,
+    "marge": 30
+  }
+}

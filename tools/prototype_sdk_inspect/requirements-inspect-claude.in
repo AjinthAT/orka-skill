@@ -1,0 +1,4 @@
+# Separate optional offline harness; existing P0/P1 and Claude locks stay frozen.
+inspect-ai==0.3.283
+claude-agent-sdk==0.2.173
+mcp==2.3.0
