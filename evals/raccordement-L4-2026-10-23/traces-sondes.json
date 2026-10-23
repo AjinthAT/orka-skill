@@ -1,0 +1,738 @@
+[
+  {
+    "sonde": "sonde-a",
+    "messages": [
+      {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "initialize",
+        "params": {
+          "protocolVersion": "2025-11-25",
+          "capabilities": {},
+          "clientInfo": {
+            "name": "sonde-logicielle-sans-modele",
+            "version": "1"
+          }
+        }
+      },
+      {
+        "jsonrpc": "2.0",
+        "method": "notifications/initialized"
+      },
+      {
+        "jsonrpc": "2.0",
+        "id": 2,
+        "method": "tools/list"
+      },
+      {
+        "jsonrpc": "2.0",
+        "id": 3,
+        "method": "tools/call",
+        "params": {
+          "name": "lister",
+          "arguments": {}
+        }
+      },
+      {
+        "jsonrpc": "2.0",
+        "id": 4,
+        "method": "tools/call",
+        "params": {
+          "name": "lire",
+          "arguments": {
+            "chemin": "notice.md"
+          }
+        }
+      },
+      {
+        "jsonrpc": "2.0",
+        "id": 5,
+        "method": "tools/call",
+        "params": {
+          "name": "ecrire",
+          "arguments": {
+            "chemin": "sorties/note.md",
+            "contenu": "Sonde transport UTF-8 : é.\n"
+          }
+        }
+      },
+      {
+        "jsonrpc": "2.0",
+        "id": 6,
+        "method": "tools/call",
+        "params": {
+          "name": "lire",
+          "arguments": {
+            "chemin": "sorties/note.md"
+          }
+        }
+      },
+      {
+        "jsonrpc": "2.0",
+        "id": 7,
+        "method": "tools/call",
+        "params": {
+          "name": "lire",
+          "arguments": {
+            "chemin": "/etc/passwd"
+          }
+        }
+      },
+      {
+        "jsonrpc": "2.0",
+        "id": 8,
+        "method": "tools/call",
+        "params": {
+          "name": "lire",
+          "arguments": {
+            "chemin": "../controle/environnement.json"
+          }
+        }
+      },
+      {
+        "jsonrpc": "2.0",
+        "id": 9,
+        "method": "tools/call",
+        "params": {
+          "name": "lister",
+          "arguments": {
+            "execution": "other-slot"
+          }
+        }
+      },
+      {
+        "jsonrpc": "2.0",
+        "id": 10,
+        "method": "tools/call",
+        "params": {
+          "name": "exec",
+          "arguments": {
+            "command": "anything"
+          }
+        }
+      },
+      {
+        "jsonrpc": "2.0",
+        "id": 11,
+        "method": "tools/list"
+      }
+    ],
+    "reponses": [
+      {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "result": {
+          "protocolVersion": "2025-11-25",
+          "capabilities": {
+            "tools": {}
+          },
+          "serverInfo": {
+            "name": "orka-files",
+            "version": "0.1.0"
+          }
+        }
+      },
+      {
+        "jsonrpc": "2.0",
+        "id": 2,
+        "result": {
+          "tools": [
+            {
+              "name": "lister",
+              "description": "Lister les fichiers autorisés",
+              "inputSchema": {
+                "type": "object",
+                "properties": {},
+                "required": [],
+                "additionalProperties": false
+              },
+              "annotations": {
+                "readOnlyHint": true,
+                "openWorldHint": false
+              }
+            },
+            {
+              "name": "lire",
+              "description": "Lire un fichier autorisé",
+              "inputSchema": {
+                "type": "object",
+                "properties": {
+                  "chemin": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "chemin"
+                ],
+                "additionalProperties": false
+              },
+              "annotations": {
+                "readOnlyHint": true,
+                "openWorldHint": false
+              }
+            },
+            {
+              "name": "ecrire",
+              "description": "Écrire un livrable autorisé",
+              "inputSchema": {
+                "type": "object",
+                "properties": {
+                  "chemin": {
+                    "type": "string"
+                  },
+                  "contenu": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "chemin",
+                  "contenu"
+                ],
+                "additionalProperties": false
+              },
+              "annotations": {
+                "readOnlyHint": false,
+                "openWorldHint": false
+              }
+            }
+          ]
+        }
+      },
+      {
+        "jsonrpc": "2.0",
+        "id": 3,
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"ok\": true, \"entrees\": [\"notice.md\"], \"sorties_autorisees\": [\"sorties/livrable.json\", \"sorties/note.md\"]}"
+            }
+          ],
+          "isError": false
+        }
+      },
+      {
+        "jsonrpc": "2.0",
+        "id": 4,
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"ok\": true, \"chemin\": \"notice.md\", \"contenu\": \"Sonde indépendante ALPHA : aucune donnée ni instruction L4.\\n\"}"
+            }
+          ],
+          "isError": false
+        }
+      },
+      {
+        "jsonrpc": "2.0",
+        "id": 5,
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"ok\": true, \"chemin\": \"sorties/note.md\", \"octets\": 28}"
+            }
+          ],
+          "isError": false
+        }
+      },
+      {
+        "jsonrpc": "2.0",
+        "id": 6,
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"ok\": true, \"chemin\": \"sorties/note.md\", \"contenu\": \"Sonde transport UTF-8 : é.\\n\"}"
+            }
+          ],
+          "isError": false
+        }
+      },
+      {
+        "jsonrpc": "2.0",
+        "id": 7,
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"ok\": false, \"erreur\": \"Requête refusée ou opération locale impossible\"}"
+            }
+          ],
+          "isError": true
+        }
+      },
+      {
+        "jsonrpc": "2.0",
+        "id": 8,
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"ok\": false, \"erreur\": \"Requête refusée ou opération locale impossible\"}"
+            }
+          ],
+          "isError": true
+        }
+      },
+      {
+        "jsonrpc": "2.0",
+        "id": 9,
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Arguments refusés"
+            }
+          ],
+          "isError": true
+        }
+      },
+      {
+        "jsonrpc": "2.0",
+        "id": 10,
+        "error": {
+          "code": -32602,
+          "message": "Unknown tool or extra parameters"
+        }
+      },
+      {
+        "jsonrpc": "2.0",
+        "id": 11,
+        "result": {
+          "tools": [
+            {
+              "name": "lister",
+              "description": "Lister les fichiers autorisés",
+              "inputSchema": {
+                "type": "object",
+                "properties": {},
+                "required": [],
+                "additionalProperties": false
+              },
+              "annotations": {
+                "readOnlyHint": true,
+                "openWorldHint": false
+              }
+            },
+            {
+              "name": "lire",
+              "description": "Lire un fichier autorisé",
+              "inputSchema": {
+                "type": "object",
+                "properties": {
+                  "chemin": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "chemin"
+                ],
+                "additionalProperties": false
+              },
+              "annotations": {
+                "readOnlyHint": true,
+                "openWorldHint": false
+              }
+            },
+            {
+              "name": "ecrire",
+              "description": "Écrire un livrable autorisé",
+              "inputSchema": {
+                "type": "object",
+                "properties": {
+                  "chemin": {
+                    "type": "string"
+                  },
+                  "contenu": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "chemin",
+                  "contenu"
+                ],
+                "additionalProperties": false
+              },
+              "annotations": {
+                "readOnlyHint": false,
+                "openWorldHint": false
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "processus_termine_sur_eof": true,
+    "stderr_vide": true
+  },
+  {
+    "sonde": "sonde-b",
+    "messages": [
+      {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "initialize",
+        "params": {
+          "protocolVersion": "2025-11-25",
+          "capabilities": {},
+          "clientInfo": {
+            "name": "sonde-logicielle-sans-modele",
+            "version": "1"
+          }
+        }
+      },
+      {
+        "jsonrpc": "2.0",
+        "method": "notifications/initialized"
+      },
+      {
+        "jsonrpc": "2.0",
+        "id": 2,
+        "method": "tools/list"
+      },
+      {
+        "jsonrpc": "2.0",
+        "id": 3,
+        "method": "tools/call",
+        "params": {
+          "name": "lister",
+          "arguments": {}
+        }
+      },
+      {
+        "jsonrpc": "2.0",
+        "id": 4,
+        "method": "tools/call",
+        "params": {
+          "name": "lire",
+          "arguments": {
+            "chemin": "notice.md"
+          }
+        }
+      },
+      {
+        "jsonrpc": "2.0",
+        "id": 5,
+        "method": "tools/call",
+        "params": {
+          "name": "ecrire",
+          "arguments": {
+            "chemin": "sorties/note.md",
+            "contenu": "Sonde transport UTF-8 : é.\n"
+          }
+        }
+      },
+      {
+        "jsonrpc": "2.0",
+        "id": 6,
+        "method": "tools/call",
+        "params": {
+          "name": "lire",
+          "arguments": {
+            "chemin": "sorties/note.md"
+          }
+        }
+      },
+      {
+        "jsonrpc": "2.0",
+        "id": 7,
+        "method": "tools/call",
+        "params": {
+          "name": "lire",
+          "arguments": {
+            "chemin": "/etc/passwd"
+          }
+        }
+      },
+      {
+        "jsonrpc": "2.0",
+        "id": 8,
+        "method": "tools/call",
+        "params": {
+          "name": "lire",
+          "arguments": {
+            "chemin": "../controle/environnement.json"
+          }
+        }
+      },
+      {
+        "jsonrpc": "2.0",
+        "id": 9,
+        "method": "tools/call",
+        "params": {
+          "name": "lister",
+          "arguments": {
+            "execution": "other-slot"
+          }
+        }
+      },
+      {
+        "jsonrpc": "2.0",
+        "id": 10,
+        "method": "tools/call",
+        "params": {
+          "name": "exec",
+          "arguments": {
+            "command": "anything"
+          }
+        }
+      },
+      {
+        "jsonrpc": "2.0",
+        "id": 11,
+        "method": "tools/list"
+      }
+    ],
+    "reponses": [
+      {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "result": {
+          "protocolVersion": "2025-11-25",
+          "capabilities": {
+            "tools": {}
+          },
+          "serverInfo": {
+            "name": "orka-files",
+            "version": "0.1.0"
+          }
+        }
+      },
+      {
+        "jsonrpc": "2.0",
+        "id": 2,
+        "result": {
+          "tools": [
+            {
+              "name": "lister",
+              "description": "Lister les fichiers autorisés",
+              "inputSchema": {
+                "type": "object",
+                "properties": {},
+                "required": [],
+                "additionalProperties": false
+              },
+              "annotations": {
+                "readOnlyHint": true,
+                "openWorldHint": false
+              }
+            },
+            {
+              "name": "lire",
+              "description": "Lire un fichier autorisé",
+              "inputSchema": {
+                "type": "object",
+                "properties": {
+                  "chemin": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "chemin"
+                ],
+                "additionalProperties": false
+              },
+              "annotations": {
+                "readOnlyHint": true,
+                "openWorldHint": false
+              }
+            },
+            {
+              "name": "ecrire",
+              "description": "Écrire un livrable autorisé",
+              "inputSchema": {
+                "type": "object",
+                "properties": {
+                  "chemin": {
+                    "type": "string"
+                  },
+                  "contenu": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "chemin",
+                  "contenu"
+                ],
+                "additionalProperties": false
+              },
+              "annotations": {
+                "readOnlyHint": false,
+                "openWorldHint": false
+              }
+            }
+          ]
+        }
+      },
+      {
+        "jsonrpc": "2.0",
+        "id": 3,
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"ok\": true, \"entrees\": [\"notice.md\"], \"sorties_autorisees\": [\"sorties/livrable.json\", \"sorties/note.md\"]}"
+            }
+          ],
+          "isError": false
+        }
+      },
+      {
+        "jsonrpc": "2.0",
+        "id": 4,
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"ok\": true, \"chemin\": \"notice.md\", \"contenu\": \"Sonde indépendante BETA : aucune donnée ni instruction L4.\\n\"}"
+            }
+          ],
+          "isError": false
+        }
+      },
+      {
+        "jsonrpc": "2.0",
+        "id": 5,
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"ok\": true, \"chemin\": \"sorties/note.md\", \"octets\": 28}"
+            }
+          ],
+          "isError": false
+        }
+      },
+      {
+        "jsonrpc": "2.0",
+        "id": 6,
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"ok\": true, \"chemin\": \"sorties/note.md\", \"contenu\": \"Sonde transport UTF-8 : é.\\n\"}"
+            }
+          ],
+          "isError": false
+        }
+      },
+      {
+        "jsonrpc": "2.0",
+        "id": 7,
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"ok\": false, \"erreur\": \"Requête refusée ou opération locale impossible\"}"
+            }
+          ],
+          "isError": true
+        }
+      },
+      {
+        "jsonrpc": "2.0",
+        "id": 8,
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"ok\": false, \"erreur\": \"Requête refusée ou opération locale impossible\"}"
+            }
+          ],
+          "isError": true
+        }
+      },
+      {
+        "jsonrpc": "2.0",
+        "id": 9,
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Arguments refusés"
+            }
+          ],
+          "isError": true
+        }
+      },
+      {
+        "jsonrpc": "2.0",
+        "id": 10,
+        "error": {
+          "code": -32602,
+          "message": "Unknown tool or extra parameters"
+        }
+      },
+      {
+        "jsonrpc": "2.0",
+        "id": 11,
+        "result": {
+          "tools": [
+            {
+              "name": "lister",
+              "description": "Lister les fichiers autorisés",
+              "inputSchema": {
+                "type": "object",
+                "properties": {},
+                "required": [],
+                "additionalProperties": false
+              },
+              "annotations": {
+                "readOnlyHint": true,
+                "openWorldHint": false
+              }
+            },
+            {
+              "name": "lire",
+              "description": "Lire un fichier autorisé",
+              "inputSchema": {
+                "type": "object",
+                "properties": {
+                  "chemin": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "chemin"
+                ],
+                "additionalProperties": false
+              },
+              "annotations": {
+                "readOnlyHint": true,
+                "openWorldHint": false
+              }
+            },
+            {
+              "name": "ecrire",
+              "description": "Écrire un livrable autorisé",
+              "inputSchema": {
+                "type": "object",
+                "properties": {
+                  "chemin": {
+                    "type": "string"
+                  },
+                  "contenu": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "chemin",
+                  "contenu"
+                ],
+                "additionalProperties": false
+              },
+              "annotations": {
+                "readOnlyHint": false,
+                "openWorldHint": false
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "processus_termine_sur_eof": true,
+    "stderr_vide": true
+  }
+]

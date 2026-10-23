@@ -118,6 +118,8 @@ The frozen operator schedule puts all development slots before reserved slots wh
 
 The subsequent [host preflight](../evals/precontrole-L4-2026-10-22/README.md) found the maintenance context unsuitable for production. The [23 October file-environment preparation](../evals/environnement-L4-2026-10-23/README.md) creates twelve separate development directories and stopped containers with software-tested file/network boundaries. No model client or fresh conversation is connected; this is not an executed L4 campaign. The reserved case remains unprovisioned and the original campaign unchanged.
 
+The [MCP connection preparation](../evals/raccordement-L4-2026-10-23/README.md) adds an optional repository-only [stdio bridge](../tools/raccorder_fichiers.py), not part of the skill ZIP. An operator fixes the file adapter, its SHA-256 and execution outside tool arguments. Only `lister`, `lire` and `ecrire` are exposed. Two independent fictitious software probes exercise the transport and Docker file backend; no real model session or personal configuration is created. The inactive local templates do not remove native host tools or establish a neutral conversation. Keep that native-host check separate from protocol and file-tool checks.
+
 ## Preservation and limits
 
 The [software regressions](../tests/test_evaluer.py) use temporary folders and fabricated data. Existing evaluation directories, personal installations, settings and SQLite registers are not migrated or rewritten. Frozen campaigns can be moved with their copies intact. A prototype output is copied and hashed, never imported as code or executed; rechecking a prototype separately must use another temporary copy and its own authorization.

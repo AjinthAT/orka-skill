@@ -33,6 +33,8 @@ For changes to agent behavior, follow the [evaluation procedure](.agents/skills/
 
 For repeated-evaluation preparation and reporting, see [EVALUATIONS.md](docs/EVALUATIONS.md). The optional `tools/evaluer.py` uses only the standard library, freezes supplied inputs and imports observations without launching models. Its [regression suite](tests/test_evaluer.py) is included in the repository verifier; fabricated observations remain separate from real model executions.
 
+The optional [file-tool MCP bridge](tools/raccorder_fichiers.py) is also repository-only and uses the standard library. Its [transport regressions](tests/test_raccorder_fichiers.py) run with temporary fake adapters, without Docker, network or models. The [independent connection probes](evals/raccordement-L4-2026-10-23/README.md) are software evidence, not L4 model runs or certification of a host's context isolation.
+
 ## Preserve evaluation records
 
 Keep captured inputs, prompts, outputs and their manifests unchanged. Add new runs in a separate directory, with explicit criteria, source versions and available measurements. Preserve failed attempts and protocol deviations. The `evals/** -text` attribute preserves captured bytes even on CRLF-configured checkouts. Do not renormalize this directory. Do not reformat historical JSON or replace absolute paths inside raw captures merely to tidy them; portable indexes provide navigation without altering the originals.

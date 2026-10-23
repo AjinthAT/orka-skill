@@ -1,0 +1,54 @@
+{
+  "format": 1,
+  "date": "2026-10-23",
+  "proprietaire": "coordinateur de maintenance",
+  "etat": "raccordement_logiciel_prepare_non_installe",
+  "campagne_originale": "ecc-01-l4-2026-10-22",
+  "sonde_independante": {
+    "sondes": 2,
+    "protocolVersion": "2025-11-25",
+    "messages_par_sonde": 12,
+    "reponses_par_sonde": 11,
+    "backend_sha256": "f93a63f1a835dc1c7842c2abaf2b3fab4d0ef5a7d420c9c7f7ec3cb11f8ae8a5",
+    "pont_sha256": "addec685738d4820edabad224014e40afd584241a45d3c32052d6847dbf840c4",
+    "modeles_lances": 0,
+    "sessions_codex_creees": 0,
+    "gabarits_crees": 14,
+    "gabarits_actives": 0,
+    "reserve_ou_plan_prive_lu": false
+  },
+  "tests_regression_transport": 10,
+  "traces_sha256": "42bccdae65fe3ed9943d6be4b2629a8b9d44eed00fbd5215746c5439e269fadd",
+  "documents_et_reglages_proteges_identiques": 13,
+  "environnements_L4_non_demarres_sorties_vides": 12,
+  "resultats_L4_importes": 0,
+  "reserve_ou_criteres_prives_consultes": false,
+  "configuration_personnelle_modifiee": false,
+  "modeles_ou_sessions_codex_lances": 0,
+  "cadre": "Logiciel stdio MCP et fichiers Docker seulement ; aucune comparaison comportementale L4.",
+  "non_verifies": [
+    "activation dans un vrai client Codex",
+    "neutralité de son contexte et catalogue effectivement restreint",
+    "modèle/effort appliqués, tokens, coûts, lectures exhaustives et arrêt natif",
+    "compatibilité du nouvel arrangement avec le protocole original et qualification E7"
+  ],
+  "source_specification": "MCP 2025-11-25 (outils stdio), 2025-06-18 compatible ; aucune compatibilité complète 2026 revendiquée",
+  "version_finale": {
+    "raison": "UTF-8 explicite du sous-processus et du transport stdio",
+    "connexions_logicielles_initiales": 2,
+    "connexions_logicielles_recontrole_final": 2,
+    "reponses_identiques": true,
+    "modeles_lances": 0,
+    "pont_sha256": "c46d21a508dbd647c5115a7d37c5b25cd70853d877d048c848b3bd5c8f212577",
+    "connexions_logicielles_recontrole_intermediaire": 2
+  },
+  "verification_finale": {
+    "gabarits_TOML_valides_inactifs": 14,
+    "instantane_cible_inchange": true,
+    "L4_resultats_absents": true,
+    "tests_racine_du_depot": 43,
+    "liens_locaux_verifies": 461,
+    "archive_skill_inchangee_et_conforme": true,
+    "pont_sha256": "c46d21a508dbd647c5115a7d37c5b25cd70853d877d048c848b3bd5c8f212577"
+  }
+}
