@@ -1,6 +1,6 @@
 # Implémentation d’Orka
 
-Propriétaire : coordinateur de maintenance. Version documentaire : 3, 22 octobre 2026. Périmètre : aperçu de la distribution 0.7.0. Les procédures détaillées restent dans les références liées ; l’historique des changements reste dans Git et les rapports de validation.
+Propriétaire : coordinateur de maintenance. Version documentaire : 4, 23 octobre 2026. Périmètre : aperçu de la distribution 0.8.0. Les procédures détaillées restent dans les références liées ; l’historique des changements reste dans Git et les rapports de validation.
 
 ## Ce qui fonctionne aujourd’hui
 
@@ -32,14 +32,15 @@ Ces outils nécessitent Python 3.10+ et sa bibliothèque standard, sans SDK ni p
 | Outil | Fonction disponible | Limite principale |
 |---|---|---|
 | [Installateur](../install.py) | Copier le skill complet ou construire son ZIP, licence comprise | Refuse une destination existante ; aucun téléchargement ni activation de l’hôte |
-| [Préparateur](../.agents/skills/orka/scripts/preparer_agent.py) | Valider le mandat et composer consignes communes, fiche du rôle et requête | Catalogue Codex fourni ; paramètres appliqués inconnus et état préparé non lancé |
-| [Registre](../.agents/skills/orka/scripts/superviser.py) | Persister tâches, réservations, tentatives, versions et événements dans SQLite | Identités et fins de rédacteurs déclarées par le coordinateur ; ne contrôle pas les processus extérieurs |
+| [Préparateur Codex](../.agents/skills/orka/scripts/preparer_agent.py) | Valider le mandat et composer consignes communes, fiche du rôle et requête | Catalogue Codex fourni ; paramètres appliqués inconnus et état préparé non lancé |
+| [Préparateur Claude](../.agents/skills/orka/scripts/preparer_agent_claude.py) | Valider le même mandat et exporter une définition native Claude Code/Agent SDK | Catalogue documentaire distinct ; ne configure pas les permissions et ne raccorde pas le registre |
+| [Registre Codex](../.agents/skills/orka/scripts/superviser.py) | Persister tâches, réservations, tentatives, versions et événements dans SQLite | Identités et fins de rédacteurs déclarées par le coordinateur ; ne contrôle pas les processus extérieurs |
 | [Bilan](../.agents/skills/orka/scripts/bilan_agents.py) | Agréger un relevé fourni avec couverture, dénominateurs et coûts séparés | Pas de collecte, tarification automatique ou détection d’omissions dissimulées |
 | [Diagnostic](../.agents/skills/orka/scripts/diagnostiquer.py) | Examiner un dossier explicite en lecture seule et comparer une référence facultative | Pas de réparation, d’authentification de la référence ou de preuve d’activation |
 
 ### Mandats et réglages
 
-Le [contrat de mandat](../.agents/skills/orka/references/prompting-agents.md) conserve modes, tentatives, critères et réglages explicites. Les clés inconnues ou dupliquées et les couples modèle/effort incompatibles sont refusés. Le préparateur produit des empreintes de prompt et de requête, sans prouver leur lecture ou leur exécution. Sur un hôte sans catalogue compatible, utiliser les documents et réglages natifs.
+Le [contrat de mandat](../.agents/skills/orka/references/prompting-agents.md) conserve modes, tentatives, critères et réglages explicites. Les clés inconnues ou dupliquées et les couples modèle/effort incompatibles sont refusés. Le préparateur produit des empreintes de prompt et de requête, sans prouver leur lecture ou leur exécution. Les [profils RH Claude](../.agents/skills/orka/references/modeles-effort-claude.md) conservent les mêmes rôles et règles métier avec un catalogue et un export natifs distincts. La disponibilité du compte reste à vérifier ; aucun repli automatique. Sur un hôte sans catalogue compatible, utiliser les documents et réglages natifs.
 
 ### Supervision et conservation
 
@@ -64,6 +65,8 @@ L’outil de maintenance [evaluer.py](../tools/evaluer.py), hors ZIP installé, 
 La [matrice CI](../.github/workflows/verification.yml) couvre Linux/macOS/Windows avec Python 3.10 et 3.13. Le tag doit correspondre à la version déclarée. Une configuration de CI ne prouve pas qu’une exécution donnée a réussi : consulter ses résultats.
 
 Les [évaluations conservées](../evals/README.md) distinguent pilote comparatif 0.4.0, découverte depuis le README et réception ciblée L2. Les [preuves L1](VALIDATION-L1.md) et [L2](VALIDATION-L2.md) décrivent leur portée. Ni les tests logiciels ni les essais ciblés n’établissent un gain général de qualité ou de coût ; les réglages appliqués et mesures absents restent inconnus. Les originaux sont conservés hors du paquet installé.
+
+La [réception RH Claude](VALIDATION-RH-CLAUDE.md) documente le catalogue et l'export natif 0.8.0, les régressions hors ligne et les fichiers figés préservés. Elle ne qualifie pas les performances des modèles ni leur disponibilité sur un compte.
 
 ## Ce qui reste à construire
 

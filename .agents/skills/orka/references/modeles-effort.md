@@ -1,6 +1,6 @@
 # Choisir modèle et effort
 
-Ces réglages constituent le profil Codex fourni avec Orka, pas un catalogue universel. Pour Claude ou un autre assistant, conserver les critères de choix et utiliser les modèles et réglages natifs disponibles. Sans catalogue local compatible, préparer les mandats directement et utiliser le suivi documentaire ; le préparateur JSON et le registre qui l'appelle restent facultatifs et spécifiques au catalogue fourni.
+Les réglages ci-dessous constituent les profils Codex fournis avec Orka. Pour Claude Code/Agent SDK, utiliser les [profils Claude et leur préparateur natif](modeles-effort-claude.md). Les critères de choix restent communs, les identifiants et paramètres de lancement sont distincts. Sans catalogue compatible avec l'hôte, préparer les mandats directement et utiliser le suivi documentaire. Le registre SQLite reste spécifique au préparateur Codex.
 
 Les profils sont des choix de départ du projet, à évaluer sur les tâches réelles. Ils ne garantissent ni qualité ni économie. Les modèles et efforts ci-dessous étaient exposés dans l’environnement de développement de référence le 22 octobre 2026 ; leur disponibilité doit être vérifiée au lancement suivant. Le catalogue ne contient aucun tarif ni budget inventé.
 

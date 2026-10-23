@@ -42,6 +42,8 @@ Dans ce dépôt, le dossier `.orka/` est ignoré par Git, car les requêtes et l
 
 ## Enregistrer puis réserver
 
+Ce registre appelle le préparateur Codex et conserve ses paramètres ; il n'accepte pas les définitions natives du préparateur Claude. Pour Claude, utiliser le [suivi documentaire](modeles-effort-claude.md#contrôles-avant-une-éventuelle-exécution).
+
 Le mandat suit [le contrat JSON](prompting-agents.md). Pour ce registre, `sortie` doit désigner un fichier local sous la racine choisie et correspondre au paramètre `--fichier`. Un simple résultat conversationnel reste utilisable avec le préparateur seul.
 
 Exemple de forme de commande, avec un mandat réel préparé par le coordinateur :

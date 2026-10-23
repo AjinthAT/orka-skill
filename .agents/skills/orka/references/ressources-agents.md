@@ -4,7 +4,7 @@ Le service RH d'Orka gère par défaut les ressources des agents IA. Le DRH cons
 
 ## Préparer l'allocation
 
-Pour chaque tâche, retenir un résultat vérifiable, un rôle utile, le contexte minimal, un profil et un effort adaptés. Les [profils existants](modeles-effort.md) restent des points de départ ; respecter les choix explicites et vérifier les capacités réelles de l'hôte avant lancement.
+Pour chaque tâche, retenir un résultat vérifiable, un rôle utile, le contexte minimal, un profil et un effort adaptés. Les profils [Codex](modeles-effort.md) et [Claude](modeles-effort-claude.md) restent des points de départ ; respecter les choix explicites et vérifier les capacités réelles de l'hôte avant lancement.
 
 | Travail réel | Choix de départ à examiner | Vérification nécessaire |
 |---|---|---|
@@ -16,7 +16,7 @@ Pour chaque tâche, retenir un résultat vérifiable, un rôle utile, le context
 
 Le titre du rôle ne fixe pas un modèle permanent. Un analyste peut utiliser un profil léger pour extraire un tableau puis un profil plus exigeant pour interpréter un désaccord. Ne pas accroître l'effort pour compenser une source absente. L'effort de raisonnement, la longueur de réponse, la fenêtre de contexte et le plafond de tokens sont distincts ; aucun ne garantit à lui seul un coût ou une qualité.
 
-Le préparateur accepte déjà les champs `profil`, `modele` et `effort` du mandat, ainsi qu'un fichier de capacités déclarées. Ces champs préparent des paramètres demandés ; ils ne configurent pas les comptes ni un moteur universel. Ses champs autorisés restent ceux de [son guide](prompting-agents.md) : le budget et la consommation ci-dessous sont un suivi documentaire, pas de nouveaux paramètres de lancement.
+Les préparateurs Codex et Claude acceptent les champs `profil`, `modele` et `effort` du mandat, ainsi qu'un fichier de capacités déclarées. Ces champs préparent des paramètres demandés ; ils ne configurent pas les comptes ni un moteur universel. Leurs champs autorisés restent ceux de [son guide](prompting-agents.md) : le budget et la consommation ci-dessous sont un suivi documentaire, pas de nouveaux paramètres de lancement.
 
 ## Plan puis consommation constatée
 

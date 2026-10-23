@@ -29,6 +29,8 @@ Orka, briefly explain how you work and help me choose a first mission for my pro
 
 If you have already provided a concrete assignment, Orka starts that work directly. You can request this guide at any time; reading it is not a prerequisite for each project.
 
+For RH profiles and request preparation, choose the [Codex](references/modeles-effort.md) or [Claude Code/Agent SDK](references/modeles-effort-claude.md) reference. The SQLite registry currently uses the Codex format; Claude uses document-based tracking.
+
 ## 2. Give it a useful assignment
 
 Share what you know: the project or problem, the result you want, the working folder and material constraints. Add audience, country, deadline or budget when known and relevant. An early idea is enough to start clarification; Orka should distinguish your choices, verified facts and hypotheses.

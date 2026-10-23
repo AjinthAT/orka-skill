@@ -8,7 +8,7 @@
 - Interlocuteurs : responsables de service, finance et coordinateur.
 - Contrôle : séparer paramètres demandés et appliqués, budget souhaité et plafond techniquement contrôlé. Aucune consommation ni économie inventée ; respecter les modèles explicitement demandés et les autorisations de la session.
 
-Appliquer la [gestion des ressources IA](../ressources-agents.md) et les [profils modèle/effort](../modeles-effort.md). Le coordinateur garde les lancements et la capacité commune ; le DRH conseille sans devenir un deuxième orchestrateur. Sur une petite mission, le coordinateur porte aussi cette responsabilité.
+Appliquer la [gestion des ressources IA](../ressources-agents.md) et les profils modèle/effort [Codex](../modeles-effort.md) ou [Claude](../modeles-effort-claude.md) selon l'hôte. Le catalogue Claude garde les mêmes rôles ; il propose une allocation à qualifier, sans présumer l'accès aux modèles. Le coordinateur garde les lancements et la capacité commune ; le DRH conseille sans devenir un deuxième orchestrateur. Sur une petite mission, le coordinateur porte aussi cette responsabilité.
 
 Si des tentatives et mesures sont disponibles, utiliser le [bilan local](../bilan-agents.md). Examiner résultats, reprises et couverture de mesure ensemble ; ne pas recommander un modèle uniquement sur son coût apparent ou une comparaison de tâches différentes.
 
