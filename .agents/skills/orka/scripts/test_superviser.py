@@ -184,6 +184,142 @@ class SupervisionTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.ajouter(fichier=str(self.base))
 
+    def verifier_reservation_refusee_sans_effet(self, tache, message):
+        avant = dict(self.sup.tache("test", tache))
+        journal = self.sup.journal()
+        actives = self.sup.etat()["actives"]
+        with self.assertRaisesRegex(ValueError, message):
+            self.sup.reserver("test", tache)
+        self.assertEqual(dict(self.sup.tache("test", tache)), avant)
+        self.assertEqual(self.sup.journal(), journal)
+        self.assertEqual(self.sup.etat()["actives"], actives)
+
+    def lien_physique(self, source, destination):
+        try:
+            os.link(source, destination)
+        except OSError:
+            self.skipTest("Liens physiques indisponibles")
+
+    def test_reservation_revalide_sortie_devenue_lien_symbolique(self):
+        with tempfile.TemporaryDirectory() as externe:
+            for numero, cible in enumerate((self.racine / "autre.md", Path(externe) / "externe.md")):
+                with self.subTest(cible=cible):
+                    tache = f"T{numero}"
+                    self.ajouter(tache)
+                    cible.write_text("Source preservee", encoding="utf-8")
+                    try:
+                        (self.racine / (tache + ".md")).symlink_to(cible)
+                    except OSError:
+                        self.skipTest("Liens symboliques indisponibles")
+                    self.verifier_reservation_refusee_sans_effet(tache, "chemin|racine")
+                    self.assertEqual(cible.read_text(encoding="utf-8"), "Source preservee")
+
+    def test_reservation_revalide_parent_devenu_lien_symbolique(self):
+        dossier = self.racine / "livrables"
+        dossier.mkdir()
+        self.ajouter(fichier="livrables/T1.md")
+        dossier.rmdir()
+        with tempfile.TemporaryDirectory() as externe:
+            try:
+                dossier.symlink_to(externe, target_is_directory=True)
+            except OSError:
+                self.skipTest("Liens symboliques indisponibles")
+            self.verifier_reservation_refusee_sans_effet("T1", "racine")
+            self.assertEqual(list(Path(externe).iterdir()), [])
+
+    def test_reservation_refuse_sortie_devenue_repertoire(self):
+        self.ajouter()
+        (self.racine / "T1.md").mkdir()
+        self.verifier_reservation_refusee_sans_effet("T1", "fichier")
+
+    def test_alias_physiques_de_sorties_partagent_la_reservation(self):
+        self.sup.db.execute("UPDATE configuration SET capacite=2")
+        self.sup.capacite = 2
+        source, alias = self.racine / "source.md", self.racine / "alias.md"
+        source.write_text("Source preservee", encoding="utf-8")
+        self.lien_physique(source, alias)
+        self.ajouter("T1", fichier=str(source))
+        self.ajouter("T2", fichier=str(alias))
+        identifiant = self.sup.reserver("test", "T1")["execution_id"]
+        self.verifier_reservation_refusee_sans_effet("T2", "Fichier deja reserve")
+        self.assertFalse(self.sup.etat()["taches"][1]["prete"])
+        self.sup.liberer(identifiant, "Reservation non lancee")
+        self.assertTrue(self.sup.etat()["taches"][1]["prete"])
+        self.assertEqual(self.sup.reserver("test", "T2")["phase"], "reservee")
+        self.assertEqual(source.read_text(encoding="utf-8"), "Source preservee")
+
+    def test_sorties_distinctes_de_contenu_identique_restent_reservables(self):
+        self.sup.db.execute("UPDATE configuration SET capacite=2")
+        self.sup.capacite = 2
+        for tache in ("T1", "T2"):
+            (self.racine / (tache + ".md")).write_text("Contenu identique", encoding="utf-8")
+            self.ajouter(tache)
+            self.assertEqual(self.sup.reserver("test", tache)["phase"], "reservee")
+        self.assertEqual(len(self.sup.etat()["actives"]), 2)
+
+    def test_alias_physique_actif_bloque_acceptation_et_reexamen(self):
+        self.ajouter()
+        identifiant = self.produire()
+        self.sup.liberer(identifiant, "Fin de la simulation")
+        self.lien_physique(self.racine / "T1.md", self.racine / "alias.md")
+        self.ajouter("T2", fichier="alias.md")
+        autre = self.sup.reserver("test", "T2")["execution_id"]
+        with self.assertRaisesRegex(ValueError, "redacteur actif"):
+            self.sup.accepter("test", "T1", "coordinateur")
+        self.sup.liberer(autre, "Reservation non lancee")
+        self.sup.accepter("test", "T1", "coordinateur")
+        self.sup.reprendre("test", "T2", "Nouvelle reservation de test")
+        self.sup.reserver("test", "T2")
+        self.assertFalse(self.sup.reference_valide(self.sup.tache("test", "T1")))
+        with self.assertRaisesRegex(ValueError, "redacteur"):
+            self.sup.reexaminer("test", "T1", "Reexamen de test", "coordinateur")
+
+    def test_alias_physiques_du_registre_et_fichiers_techniques_refuses(self):
+        for suffixe in ("", "-journal", "-wal", "-shm"):
+            with self.subTest(suffixe=suffixe):
+                protege = Path(str(self.base) + suffixe)
+                if suffixe:
+                    protege.write_bytes(b"Fichier technique simule")
+                alias = self.racine / ("alias" + suffixe + ".md")
+                self.lien_physique(protege, alias)
+                avant = protege.read_bytes()
+                with self.assertRaisesRegex(ValueError, "registre"):
+                    self.ajouter(fichier=str(alias))
+                self.assertEqual(protege.read_bytes(), avant)
+                alias.unlink()
+                if suffixe:
+                    protege.unlink()
+        self.assertEqual(self.sup.etat()["taches"], [])
+
+    def test_reservation_revalide_alias_physique_du_registre_cree_apres_ajout(self):
+        self.ajouter()
+        self.lien_physique(self.base, self.racine / "T1.md")
+        self.verifier_reservation_refusee_sans_effet("T1", "registre")
+
+    def test_deux_connexions_ne_reservent_pas_deux_alias_physiques(self):
+        self.sup.db.execute("UPDATE configuration SET capacite=2")
+        self.sup.capacite = 2
+        source = self.racine / "T1.md"
+        source.write_text("Source preservee", encoding="utf-8")
+        self.lien_physique(source, self.racine / "T2.md")
+        self.ajouter("T1")
+        self.ajouter("T2")
+
+        def reserver(tache):
+            connexion = Superviseur(self.base)
+            try:
+                return connexion.reserver("test", tache)
+            except ValueError as exc:
+                return str(exc)
+            finally:
+                connexion.fermer()
+
+        with ThreadPoolExecutor(max_workers=2) as pool:
+            resultats = list(pool.map(reserver, ("T1", "T2")))
+        self.assertEqual(sum(isinstance(r, dict) for r in resultats), 1)
+        self.assertTrue(any("Fichier deja reserve" in r for r in resultats if isinstance(r, str)))
+        self.assertEqual(len(self.sup.etat()["actives"]), 1)
+
     def test_requete_est_figee_et_ne_recharge_pas_les_profils_a_la_reservation(self):
         self.ajouter()
         with patch("superviser.preparer", side_effect=AssertionError("Ne pas recompiler")):
