@@ -116,6 +116,8 @@ The [L4 protocol and public commitments](../evals/preparation-L4-2026-10-22/READ
 
 The frozen operator schedule puts all development slots before reserved slots while preserving version alternation within each pair. Matrix IDs are unchanged; the schedule is explicit, fixed before observations and recorded separately. Do not supply the complete manifest or operator files to an evaluated agent. Inspect inherited host instructions and skills before a future launch; merely declaring a fresh context does not enforce isolation.
 
+The subsequent [host preflight](../evals/precontrole-L4-2026-10-22/README.md) found the maintenance context unsuitable for production. The [23 October file-environment preparation](../evals/environnement-L4-2026-10-23/README.md) creates twelve separate development directories and stopped containers with software-tested file/network boundaries. No model client or fresh conversation is connected; this is not an executed L4 campaign. The reserved case remains unprovisioned and the original campaign unchanged.
+
 ## Preservation and limits
 
 The [software regressions](../tests/test_evaluer.py) use temporary folders and fabricated data. Existing evaluation directories, personal installations, settings and SQLite registers are not migrated or rewritten. Frozen campaigns can be moved with their copies intact. A prototype output is copied and hashed, never imported as code or executed; rechecking a prototype separately must use another temporary copy and its own authorization.

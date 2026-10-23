@@ -4,6 +4,7 @@ This directory contains evaluation protocols, captured agent outputs and explici
 
 | Evaluation | Scope |
 |---|---|
+| [L4 isolated file environments](environnement-L4-2026-10-23/README.md) | Twelve separate development environments, exact selected inputs, stopped containers and 108 passing software probes. No model connected or launched; reserved case and frozen campaign preserved. |
 | [L4 execution preflight](precontrole-L4-2026-10-22/README.md) | Host and settings inspection only; current context unsuitable for comparable runs. No model launched or reserved content opened; original campaign unchanged. |
 | [L4 frozen preparation](preparation-L4-2026-10-22/README.md) | Three new cases, two fixed instruction versions and 18 unlaunched slots. Public protocol and hashes; reserved content and exact criteria retained locally. No model run or comparative result. |
 | [L3 software example](outillage-L3-2026-10-22/README.md) | Six prepared slots and five fabricated observations exercising preparation, imports, partial reporting and denominators. No model or agent launched; not the L4 comparison. |

@@ -1,0 +1,297 @@
+{
+  "format": 1,
+  "id": "orka-l4-env-20261023",
+  "date": "2026-10-23",
+  "proprietaire": "coordinateur de maintenance",
+  "campagne_originale": "ecc-01-l4-2026-10-22",
+  "empreinte_campagne_originale_publique": "4a95455067551fd9179f16916d0dbed74decef005569caa005b9e239656b2f7b",
+  "etat": "environnement_fichiers_prepare_raccordement_modele_non_valide",
+  "image": "alpine@sha256:2e0b81d60597f449baa56dc25d355367869d2dca4cd57e866f1e2b52af3eb55f",
+  "image_locale_id": "sha256:2e0b81d60597f449baa56dc25d355367869d2dca4cd57e866f1e2b52af3eb55f",
+  "docker_server": "29.8.2",
+  "essais_developpement": [
+    {
+      "execution": "e0001",
+      "cas": "tournee-complete",
+      "version": "reference",
+      "repetition": 1,
+      "etat": "prepare_non_demarre",
+      "fichiers_entree": 42,
+      "prompt_sha256": "b53d3dea37c17e7e1ca50dd91c82a2d42480771ad65ace65b76360ed18d7d188",
+      "controles": {
+        "lecture_piece_autorisee": true,
+        "entrees_lecture_seule": true,
+        "racine_lecture_seule": true,
+        "sorties_lecture_ecriture": true,
+        "controle_operateur_absent": true,
+        "socket_docker_absent": true,
+        "interfaces_locales_seulement": true,
+        "aucune_route_exterieure": true,
+        "pas_de_connexion_exterieure": true
+      }
+    },
+    {
+      "execution": "e0002",
+      "cas": "tournee-complete",
+      "version": "candidate",
+      "repetition": 1,
+      "etat": "prepare_non_demarre",
+      "fichiers_entree": 45,
+      "prompt_sha256": "b53d3dea37c17e7e1ca50dd91c82a2d42480771ad65ace65b76360ed18d7d188",
+      "controles": {
+        "lecture_piece_autorisee": true,
+        "entrees_lecture_seule": true,
+        "racine_lecture_seule": true,
+        "sorties_lecture_ecriture": true,
+        "controle_operateur_absent": true,
+        "socket_docker_absent": true,
+        "interfaces_locales_seulement": true,
+        "aucune_route_exterieure": true,
+        "pas_de_connexion_exterieure": true
+      }
+    },
+    {
+      "execution": "e0003",
+      "cas": "devis-a-obtenir",
+      "version": "candidate",
+      "repetition": 1,
+      "etat": "prepare_non_demarre",
+      "fichiers_entree": 45,
+      "prompt_sha256": "ada6166af26261f3fc084a1b76251f1ba241f0d42286be1935293279655800a4",
+      "controles": {
+        "lecture_piece_autorisee": true,
+        "entrees_lecture_seule": true,
+        "racine_lecture_seule": true,
+        "sorties_lecture_ecriture": true,
+        "controle_operateur_absent": true,
+        "socket_docker_absent": true,
+        "interfaces_locales_seulement": true,
+        "aucune_route_exterieure": true,
+        "pas_de_connexion_exterieure": true
+      }
+    },
+    {
+      "execution": "e0004",
+      "cas": "devis-a-obtenir",
+      "version": "reference",
+      "repetition": 1,
+      "etat": "prepare_non_demarre",
+      "fichiers_entree": 42,
+      "prompt_sha256": "ada6166af26261f3fc084a1b76251f1ba241f0d42286be1935293279655800a4",
+      "controles": {
+        "lecture_piece_autorisee": true,
+        "entrees_lecture_seule": true,
+        "racine_lecture_seule": true,
+        "sorties_lecture_ecriture": true,
+        "controle_operateur_absent": true,
+        "socket_docker_absent": true,
+        "interfaces_locales_seulement": true,
+        "aucune_route_exterieure": true,
+        "pas_de_connexion_exterieure": true
+      }
+    },
+    {
+      "execution": "e0007",
+      "cas": "tournee-complete",
+      "version": "candidate",
+      "repetition": 2,
+      "etat": "prepare_non_demarre",
+      "fichiers_entree": 45,
+      "prompt_sha256": "b53d3dea37c17e7e1ca50dd91c82a2d42480771ad65ace65b76360ed18d7d188",
+      "controles": {
+        "lecture_piece_autorisee": true,
+        "entrees_lecture_seule": true,
+        "racine_lecture_seule": true,
+        "sorties_lecture_ecriture": true,
+        "controle_operateur_absent": true,
+        "socket_docker_absent": true,
+        "interfaces_locales_seulement": true,
+        "aucune_route_exterieure": true,
+        "pas_de_connexion_exterieure": true
+      }
+    },
+    {
+      "execution": "e0008",
+      "cas": "tournee-complete",
+      "version": "reference",
+      "repetition": 2,
+      "etat": "prepare_non_demarre",
+      "fichiers_entree": 42,
+      "prompt_sha256": "b53d3dea37c17e7e1ca50dd91c82a2d42480771ad65ace65b76360ed18d7d188",
+      "controles": {
+        "lecture_piece_autorisee": true,
+        "entrees_lecture_seule": true,
+        "racine_lecture_seule": true,
+        "sorties_lecture_ecriture": true,
+        "controle_operateur_absent": true,
+        "socket_docker_absent": true,
+        "interfaces_locales_seulement": true,
+        "aucune_route_exterieure": true,
+        "pas_de_connexion_exterieure": true
+      }
+    },
+    {
+      "execution": "e0009",
+      "cas": "devis-a-obtenir",
+      "version": "reference",
+      "repetition": 2,
+      "etat": "prepare_non_demarre",
+      "fichiers_entree": 42,
+      "prompt_sha256": "ada6166af26261f3fc084a1b76251f1ba241f0d42286be1935293279655800a4",
+      "controles": {
+        "lecture_piece_autorisee": true,
+        "entrees_lecture_seule": true,
+        "racine_lecture_seule": true,
+        "sorties_lecture_ecriture": true,
+        "controle_operateur_absent": true,
+        "socket_docker_absent": true,
+        "interfaces_locales_seulement": true,
+        "aucune_route_exterieure": true,
+        "pas_de_connexion_exterieure": true
+      }
+    },
+    {
+      "execution": "e0010",
+      "cas": "devis-a-obtenir",
+      "version": "candidate",
+      "repetition": 2,
+      "etat": "prepare_non_demarre",
+      "fichiers_entree": 45,
+      "prompt_sha256": "ada6166af26261f3fc084a1b76251f1ba241f0d42286be1935293279655800a4",
+      "controles": {
+        "lecture_piece_autorisee": true,
+        "entrees_lecture_seule": true,
+        "racine_lecture_seule": true,
+        "sorties_lecture_ecriture": true,
+        "controle_operateur_absent": true,
+        "socket_docker_absent": true,
+        "interfaces_locales_seulement": true,
+        "aucune_route_exterieure": true,
+        "pas_de_connexion_exterieure": true
+      }
+    },
+    {
+      "execution": "e0013",
+      "cas": "tournee-complete",
+      "version": "reference",
+      "repetition": 3,
+      "etat": "prepare_non_demarre",
+      "fichiers_entree": 42,
+      "prompt_sha256": "b53d3dea37c17e7e1ca50dd91c82a2d42480771ad65ace65b76360ed18d7d188",
+      "controles": {
+        "lecture_piece_autorisee": true,
+        "entrees_lecture_seule": true,
+        "racine_lecture_seule": true,
+        "sorties_lecture_ecriture": true,
+        "controle_operateur_absent": true,
+        "socket_docker_absent": true,
+        "interfaces_locales_seulement": true,
+        "aucune_route_exterieure": true,
+        "pas_de_connexion_exterieure": true
+      }
+    },
+    {
+      "execution": "e0014",
+      "cas": "tournee-complete",
+      "version": "candidate",
+      "repetition": 3,
+      "etat": "prepare_non_demarre",
+      "fichiers_entree": 45,
+      "prompt_sha256": "b53d3dea37c17e7e1ca50dd91c82a2d42480771ad65ace65b76360ed18d7d188",
+      "controles": {
+        "lecture_piece_autorisee": true,
+        "entrees_lecture_seule": true,
+        "racine_lecture_seule": true,
+        "sorties_lecture_ecriture": true,
+        "controle_operateur_absent": true,
+        "socket_docker_absent": true,
+        "interfaces_locales_seulement": true,
+        "aucune_route_exterieure": true,
+        "pas_de_connexion_exterieure": true
+      }
+    },
+    {
+      "execution": "e0015",
+      "cas": "devis-a-obtenir",
+      "version": "candidate",
+      "repetition": 3,
+      "etat": "prepare_non_demarre",
+      "fichiers_entree": 45,
+      "prompt_sha256": "ada6166af26261f3fc084a1b76251f1ba241f0d42286be1935293279655800a4",
+      "controles": {
+        "lecture_piece_autorisee": true,
+        "entrees_lecture_seule": true,
+        "racine_lecture_seule": true,
+        "sorties_lecture_ecriture": true,
+        "controle_operateur_absent": true,
+        "socket_docker_absent": true,
+        "interfaces_locales_seulement": true,
+        "aucune_route_exterieure": true,
+        "pas_de_connexion_exterieure": true
+      }
+    },
+    {
+      "execution": "e0016",
+      "cas": "devis-a-obtenir",
+      "version": "reference",
+      "repetition": 3,
+      "etat": "prepare_non_demarre",
+      "fichiers_entree": 42,
+      "prompt_sha256": "ada6166af26261f3fc084a1b76251f1ba241f0d42286be1935293279655800a4",
+      "controles": {
+        "lecture_piece_autorisee": true,
+        "entrees_lecture_seule": true,
+        "racine_lecture_seule": true,
+        "sorties_lecture_ecriture": true,
+        "controle_operateur_absent": true,
+        "socket_docker_absent": true,
+        "interfaces_locales_seulement": true,
+        "aucune_route_exterieure": true,
+        "pas_de_connexion_exterieure": true
+      }
+    }
+  ],
+  "conteneurs_prepares_arretes": 12,
+  "sondes_logicielles_par_essai": 9,
+  "modeles_lances": 0,
+  "observations_importees": 0,
+  "reserve_lu_ou_copie": false,
+  "plan_prive_et_manifeste_complet_lus": false,
+  "documents_originaux_et_parametres_personnels_verifies_identiques": 9,
+  "reglages_personnels_modifies": false,
+  "nouvelle_configuration_codex_creee": false,
+  "limites": [
+    "Isolation des processus logiciels dans Docker, pas certification de neutralité d’une future conversation.",
+    "Le contrôleur hôte et le daemon Docker gardent leurs accès ; ne pas exposer ces outils génériques au modèle évalué.",
+    "Aucun Codex, authentification, réglage effectif, collecte native ou moteur modèle raccordé ou lancé.",
+    "Préparation de la phase développement seulement ; aucun contenu réservé dans les montages.",
+    "Docker est un nouveau moyen d’exécution des outils : toute incompatibilité avec le protocole figé nécessite un nouveau protocole/campagne sans remplacer les originaux.",
+    "Le téléchargement de l’image officielle a utilisé le réseau de l’opérateur ; réseau des conteneurs désactivé.",
+    "Limites ressources des outils locaux, pas un plafond de tokens ou de coûts d’un futur modèle."
+  ],
+  "tentatives_preparation_logicielle": 2,
+  "echec_initial": {
+    "cause": "répertoire du montage enfant sorties absent sous la racine des entrées en lecture seule",
+    "correction": "point de montage créé avant verrouillage",
+    "trace": "locale, dossier frère suffixé -tentative-1",
+    "modeles_lances": 0,
+    "conteneur_initial_jamais_demarre_supprime": 1
+  },
+  "complements_developpement_copies_hors_montages": 3,
+  "verification_finale": {
+    "conteneurs_tous_created_non_running": true,
+    "sorties_vides": true,
+    "inventaires_allowlist_et_octets_conformes": true,
+    "originaux_controles_identiques": true,
+    "resultats_campagne_absents": true,
+    "liens_locaux_verifies": 450
+  },
+  "adaptateur_fichiers": {
+    "interface": "JSON sur entrée/sortie standard, trois actions seulement ; ligne choisie par opérateur hors requête",
+    "sha256": "f93a63f1a835dc1c7842c2abaf2b3fab4d0ef5a7d420c9c7f7ec3cb11f8ae8a5",
+    "controles_logiciels": 21,
+    "conformes": true,
+    "client_modele_raccorde": false,
+    "modele_lance": false
+  }
+}
