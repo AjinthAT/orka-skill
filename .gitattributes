@@ -1,2 +1,12 @@
 # Captured evaluation bytes must retain their recorded hashes on every host.
 evals/** -text
+# Frozen prototype contract and dependency hashes must also survive CRLF checkouts.
+tools/prototype_sdk_inspect/contract.json -text
+tools/prototype_sdk_inspect/requirements.lock -text
+tools/prototype_sdk_inspect/dependency-lock.json -text
+tools/prototype_sdk_inspect/cases/** -text
+tools/prototype_sdk_inspect/requirements-claude.lock -text
+tools/prototype_sdk_inspect/claude-dependency-lock.json -text
+tools/prototype_sdk_inspect/requirements-inspect-claude.lock -text
+tools/prototype_sdk_inspect/inspect-dependency-lock.json -text
+tools/prototype_sdk_inspect/inspect-scenarios.json -text

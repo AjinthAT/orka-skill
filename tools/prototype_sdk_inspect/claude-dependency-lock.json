@@ -1,0 +1,14 @@
+{
+  "format": 1,
+  "date": "2026-10-23",
+  "python": "3.12",
+  "resolution": "uv 0.12.0 --universal",
+  "direct": {
+    "claude-agent-sdk": "0.2.173",
+    "mcp": "2.3.0"
+  },
+  "package_count": 32,
+  "lock_sha256": "dcc116c9e9abd4027adb8c5247384de8bd6736d7419b88485d449fcc97db478b",
+  "contract_sha256": "c4a408a9d8884d0de1b238641615897bcbe1940633e78645c12e8c8e947198d6",
+  "scope": "offline_mcp_and_options_only_no_cli_or_model"
+}

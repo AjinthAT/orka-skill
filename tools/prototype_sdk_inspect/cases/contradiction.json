@@ -1,0 +1,13 @@
+{
+  "id": "contradiction",
+  "instruction": "Compare les deux versions. Rends la quantité courante et conserve la trace de la révision dans sorties/livrable.json.",
+  "inputs": {
+    "entrees/v1.md": "Simulation nouvelle P01. Fiche v1 : 3 bornes.\n",
+    "entrees/v2.md": "Simulation nouvelle P01. Fiche v2 remplaçant v1 : 5 bornes.\n"
+  },
+  "expected": {
+    "quantite_courante": 5,
+    "version": "v2",
+    "ancienne_quantite": 3
+  }
+}

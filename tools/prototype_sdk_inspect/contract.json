@@ -1,0 +1,15 @@
+{
+  "format": 1,
+  "id": "orka-sdk-inspect-p01-v1",
+  "python": "3.12",
+  "image": "python@sha256:a0f57064cbdcd6285fa45f51237ab0b35ea8ebaed06a1f5973e89e19dfb86704",
+  "platform": "linux/arm64",
+  "tools": [
+    {"name": "lister", "parameters": {"type": "object", "properties": {}, "required": [], "additionalProperties": false}},
+    {"name": "lire", "parameters": {"type": "object", "properties": {"chemin": {"type": "string"}}, "required": ["chemin"], "additionalProperties": false}},
+    {"name": "ecrire", "parameters": {"type": "object", "properties": {"chemin": {"type": "string"}, "contenu": {"type": "string"}}, "required": ["chemin", "contenu"], "additionalProperties": false}}
+  ],
+  "limits": {"calls": 24, "seconds": 120, "operation_seconds": 5, "inventory": 64, "read_bytes": 1048576, "write_bytes": 65536, "total_write_bytes": 262144, "request_bytes": 1048576, "generations": 8, "concurrency": 1},
+  "errors": ["arguments_refuses", "outil_inconnu", "chemin_refuse", "absent", "integrite", "fichier_refuse", "existe", "quota", "delai", "erreur_io", "ferme"],
+  "container": {"user": "65532:65532", "memory": 134217728, "pids": 32, "tmpfs": "/tmp:rw,noexec,nosuid,nodev,size=16777216", "label": "orka.prototype.sdk-inspect"}
+}

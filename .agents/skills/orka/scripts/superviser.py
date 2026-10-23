@@ -52,6 +52,16 @@ def empreinte_fichier(path):
     return resultat.hexdigest()
 
 
+def meme_fichier(premier, second):
+    premier, second = Path(premier), Path(second)
+    if premier == second:
+        return True
+    try:
+        return premier.samefile(second)
+    except FileNotFoundError:
+        return False
+
+
 class Superviseur:
     @staticmethod
     def initialiser(base, racine, capacite=3):
@@ -145,11 +155,16 @@ class Superviseur:
             path.relative_to(self.racine)
         except ValueError:
             raise ValueError("Le livrable doit rester dans la racine du registre") from None
-        if str(path) in {str(self.base), *(str(self.base) + suffixe for suffixe in ("-journal", "-wal", "-shm"))}:
+        proteges = (self.base, *(Path(str(self.base) + suffixe) for suffixe in ("-journal", "-wal", "-shm")))
+        if any(meme_fichier(path, protege) for protege in proteges):
             raise ValueError("Le registre et ses fichiers techniques ne sont pas des livrables")
         if path.is_dir():
             raise ValueError("Le livrable doit designer un fichier")
         return str(path)
+
+    def fichier_reserve(self, fichier):
+        return any(meme_fichier(fichier, row[0])
+                   for row in self.db.execute("SELECT fichier FROM tentatives WHERE active=1"))
 
     def tache(self, mission, tache):
         row = self.db.execute("SELECT * FROM taches WHERE mission=? AND id=?", (mission, tache)).fetchone()
@@ -207,7 +222,7 @@ class Superviseur:
         parcours.add(cle)
         row = self.db.execute("SELECT * FROM tentatives WHERE mission=? AND tache=? ORDER BY numero DESC LIMIT 1",
                               (tache["mission"], tache["id"])).fetchone()
-        active = self.db.execute("SELECT 1 FROM tentatives WHERE fichier=? AND active=1", (tache["fichier"],)).fetchone()
+        active = self.fichier_reserve(tache["fichier"])
         try:
             valide = (row is not None and not active and self.chemin(tache["fichier"]) == tache["fichier"]
                     and empreinte_fichier(tache["fichier"]) == row["empreinte"]
@@ -255,13 +270,15 @@ class Superviseur:
             row = self.tache(mission, tache)
             if row["etat"] != "a_faire":
                 raise ValueError("La tache n'est pas prete a etre reservee")
+            if self.chemin(row["fichier"]) != row["fichier"]:
+                raise ValueError("Le chemin du livrable a change")
             if self.manquantes(mission, tache):
                 raise ValueError("Dependances incompletes ou versions a reexaminer")
             if row["tentatives"] >= row["maximum"]:
                 raise ValueError("Limite de tentatives atteinte")
             if self.db.execute("SELECT COUNT(*) FROM tentatives WHERE active=1").fetchone()[0] >= self.capacite:
                 raise ValueError("Capacite globale du registre atteinte")
-            if self.db.execute("SELECT 1 FROM tentatives WHERE fichier=? AND active=1", (row["fichier"],)).fetchone():
+            if self.fichier_reserve(row["fichier"]):
                 raise ValueError("Fichier deja reserve par une autre tentative")
             requete = deepcopy(json.loads(row["requete"]))
             entrees = self.entrees_actuelles(mission, tache)
@@ -352,7 +369,7 @@ class Superviseur:
             if row["etat"] != "a_verifier" or validateur != row["acceptation"]:
                 raise ValueError("Etat ou responsable d'acceptation incorrect")
             tentative = self.db.execute("SELECT * FROM tentatives WHERE mission=? AND tache=? ORDER BY numero DESC LIMIT 1", (mission, tache)).fetchone()
-            if self.db.execute("SELECT 1 FROM tentatives WHERE fichier=? AND active=1", (row["fichier"],)).fetchone():
+            if self.fichier_reserve(row["fichier"]):
                 raise ValueError("Le fichier a encore un redacteur actif")
             observations = json.loads(tentative["observations"])
             if any(item["etat"] != "satisfait" for item in observations.values()):
@@ -369,7 +386,7 @@ class Superviseur:
             row = self.tache(mission, tache)
             if row["etat"] != "terminee" or validateur != row["acceptation"]:
                 raise ValueError("Etat ou responsable de reexamen incorrect")
-            if self.db.execute("SELECT 1 FROM tentatives WHERE fichier=? AND active=1", (row["fichier"],)).fetchone():
+            if self.fichier_reserve(row["fichier"]):
                 raise ValueError("Confirmer la fin du redacteur avant reexamen")
             affectees = self.dependants(mission, tache)
             self.db.execute("UPDATE taches SET etat='a_reexaminer' WHERE mission=? AND id=?", (mission, tache))
@@ -407,7 +424,7 @@ class Superviseur:
             item["entrees_utilisees"] = json.loads(tentative["entrees"]) if tentative and tentative["entrees"] is not None else None
             item["entrees_a_reexaminer"] = self.entrees_invalides(row["mission"], row["id"], tentative["entrees"]) if tentative else []
             item["validite"] = ("valide" if self.reference_valide(row) else "a_reexaminer") if row["etat"] == "terminee" else row["etat"]
-            fichier_reserve = self.db.execute("SELECT 1 FROM tentatives WHERE fichier=? AND active=1", (row["fichier"],)).fetchone()
+            fichier_reserve = self.fichier_reserve(row["fichier"])
             item["prete"] = (row["etat"] == "a_faire" and not item["dependances_a_reexaminer"]
                              and occupation < self.capacite and not fichier_reserve and row["tentatives"] < row["maximum"])
             taches.append(item)

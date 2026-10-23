@@ -1,0 +1,11 @@
+{
+  "id": "manquant",
+  "instruction": "Lis la fiche. Rends les informations vérifiables et la donnée manquante dans sorties/livrable.json sans inventer le prix.",
+  "inputs": {
+    "entrees/fiche.md": "Simulation nouvelle P01. Lot de 6 panneaux ; prix non communiqué. Plafond : 220 EUR.\n"
+  },
+  "expected": {
+    "prix": null,
+    "statut": "incomplet"
+  }
+}

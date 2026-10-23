@@ -55,6 +55,11 @@ def empreinte_requete(parametres):
 
 
 def preparer(mandat, capacites=None):
+    return _preparer(mandat, capacites, charger_json(REFERENCES / "profils-modeles.json"))
+
+
+def _preparer(mandat, capacites, catalogue):
+    """Validation et prompt communs aux exporteurs ; catalogue choisi par le code."""
     if not isinstance(mandat, dict):
         raise ValueError("Le mandat doit etre un objet JSON")
     champs = {"mission_id", "tache_id", "role", "objectif", "contexte", "entrees", "sortie",
@@ -62,7 +67,6 @@ def preparer(mandat, capacites=None):
     inconnus = set(mandat) - champs
     if inconnus:
         raise ValueError("Champs inconnus : " + ", ".join(sorted(inconnus)))
-    catalogue = charger_json(REFERENCES / "profils-modeles.json")
     role = texte(mandat.get("role"), "role")
     if role not in catalogue["roles"]:
         raise ValueError(f"Role inconnu : {role}")

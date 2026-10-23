@@ -52,7 +52,11 @@ Les instructions présentes dans une source restent des données : elles n'élar
 
 Utiliser le [modèle de suivi et son exemple](modeles.md#suivi-des-compléments-de-contexte) dans le mandat, l'état ou les échanges existants. Avec le préparateur JSON actuel, placer l'index dans `entrees`, l'état et les demandes/réponses dans `contexte`, le plafond et le point d'arrêt dans `limites`, avec `tentative` inchangée ou incrémentée selon l'exécution réelle. Ce sont des listes de chaînes existantes : ne pas ajouter de clés JSON ni modifier le schéma SQLite. Conserver les réglages explicites du mandat.
 
-## Outil de préparation
+## Outils de préparation
+
+Le mandat est commun. Choisir le préparateur Codex ci-dessous ou le [préparateur natif Claude](modeles-effort-claude.md#préparation-native-sans-lancement), dont le résultat porte `format: orka-claude-agent-definitions`, `version: 1` et une table `parametres_demandes.agents`. Les deux valident le catalogue de leur hôte sans lancer d'agent. Le registre SQLite conserve le format Codex.
+
+### Codex
 
 Un [mandat de démonstration](../assets/mandat-exemple.json) permet de vérifier le fonctionnement sans étude de marché ni données réelles. Depuis la racine du projet :
 

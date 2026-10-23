@@ -1,0 +1,16 @@
+{
+  "format": 1,
+  "date": "2026-10-23",
+  "python": "3.12",
+  "resolver": "uv 0.12.0 --universal",
+  "direct": {
+    "inspect-ai": "0.3.283",
+    "claude-agent-sdk": "0.2.173",
+    "mcp": "2.3.0"
+  },
+  "package_count": 94,
+  "lock_sha256": "b201ac7a541c3a6e7ef54664e7fa64a33350db8a1a4eaf6b05af2469d74915e6",
+  "contract_sha256": "c4a408a9d8884d0de1b238641615897bcbe1940633e78645c12e8c8e947198d6",
+  "scenarios_sha256": "dfb756113cd4d682b2da1f561b886d0debc8b0ee32e0fba90706d63ca91a61b1",
+  "scope": "inspect_custom_solver_claude_local_simulation_no_model"
+}

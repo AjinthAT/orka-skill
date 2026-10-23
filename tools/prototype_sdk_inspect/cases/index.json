@@ -1,0 +1,10 @@
+{
+  "format": 1,
+  "revision": "p01-cases-v1",
+  "files": {
+    "complet.json": "72c75648813cc0a6f9c3fd85094109a36f17c5099a0e420bc9cab13239089293",
+    "contradiction.json": "820b2438dfde385d3cdad7c6504c5537e488324546b0227cc39669732b791246",
+    "hostile.json": "f9770d02f7aa9d6ad54d7ed47e1c9b9ea5cd57c510ca23ccf939c2fc9fae2ba2",
+    "manquant.json": "bb3dcdf952e149434d53b04973040f4a5580987e1945ed2da29643e56a00bab1"
+  }
+}

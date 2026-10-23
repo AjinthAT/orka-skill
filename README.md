@@ -103,7 +103,7 @@ These helpers do not launch models, collect token telemetry or enforce financial
 
 - Orka follows the [Agent Skills format](https://agentskills.io/specification). The host determines model settings, tools and delegation; complete missions have not been evaluated on every host.
 - Detailed instructions are currently in French. Guides are available in English and French; deliverables follow the requested language.
-- The supplied model catalogue and request preparer target Codex parameters. On another host, use native settings and document-based tracking unless a compatible catalogue is configured.
+- Separate RH catalogues and offline request preparers cover [Codex](.agents/skills/orka/references/modeles-effort.md) and [Claude Code/Agent SDK](.agents/skills/orka/references/modeles-effort-claude.md). Actual model availability must be checked in the host. The SQLite registry still uses the Codex format; Claude uses document-based tracking.
 - Orka works during authorized sessions. Installation does not create a permanent service. External communications, spending, publication and deployment require authorization covering the action.
 
 ## Evaluation results

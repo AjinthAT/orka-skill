@@ -29,6 +29,8 @@ Orka, présente-moi brièvement ton fonctionnement et aide-moi à choisir ma pre
 
 Si vous avez déjà donné une mission concrète, Orka commence celle-ci directement. Vous pouvez demander ce guide à tout moment ; il n'est pas nécessaire de le relire à chaque projet.
 
+Pour les profils RH et la préparation, choisir la référence [Codex](references/modeles-effort.md) ou [Claude Code/Agent SDK](references/modeles-effort-claude.md). Le registre SQLite utilise actuellement le format Codex ; Claude conserve le suivi documentaire.
+
 ## 2. Donner une mission utile
 
 Précisez ce que vous savez : le projet ou problème, le résultat attendu, le dossier de travail et les contraintes importantes. Ajoutez la cible, le pays, l'échéance ou le budget seulement lorsqu'ils sont connus et pertinents. Une idée encore floue suffit pour commencer le cadrage ; Orka doit distinguer vos choix, les faits vérifiés et les hypothèses.
