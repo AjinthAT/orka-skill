@@ -4,6 +4,7 @@ This directory contains evaluation protocols, captured agent outputs and explici
 
 | Evaluation | Scope |
 |---|---|
+| [L4 model-probe launch decision](../docs/DECISION-SONDE-L4.md) | Conditional request resolved without launching a model: the current interfaces do not establish a new context with an exclusive three-tool catalogue. Original campaign and reserved material preserved. |
 | [L4 MCP connection preparation](raccordement-L4-2026-10-23/README.md) | Tools-only stdio bridge, inactive bindings and two independent fictional software probes. No model session, personal config change or reserved-case access; native host isolation remains unverified. |
 | [L4 isolated file environments](environnement-L4-2026-10-23/README.md) | Twelve separate development environments, exact selected inputs, stopped containers and 108 passing software probes. No model connected or launched; reserved case and frozen campaign preserved. |
 | [L4 execution preflight](precontrole-L4-2026-10-22/README.md) | Host and settings inspection only; current context unsuitable for comparable runs. No model launched or reserved content opened; original campaign unchanged. |
