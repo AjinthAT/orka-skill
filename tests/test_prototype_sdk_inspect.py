@@ -107,6 +107,8 @@ class ContractTests(unittest.TestCase):
             self.assertTrue(link.is_symlink())
             prepared = prepare(root / "prepared", "complet")
             p = prepared / "inputs/entrees/fiche.md"
+            # Windows refuses unlink on the read-only fixture; enable this deliberate tamper.
+            p.chmod(0o600)
             p.unlink()
             p.symlink_to(root / "missing")
             with self.assertRaises(ValueError):
