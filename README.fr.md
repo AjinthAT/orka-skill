@@ -23,6 +23,8 @@ Le skill est un dossier d’instructions, de références et d’outils facultat
 
 **28 rôles · 8 équipes · 9 workflows.** Seuls les rôles utiles à la mission sont mobilisés.
 
+**Mode autonome :** sur demande, Orka prend les décisions déléguées, organise un débat borné et un arbitrage lorsque c'est utile, puis poursuit les tâches autorisées après les résultats intermédiaires. Sa [procédure portable](.agents/skills/orka/references/autonomie.md) conserve un point de reprise. L'hôte fournit l'exécution ; ce mode n'installe pas de lanceur permanent. [Premier lot et critères de validation](docs/LOT-AUT-01.md).
+
 ## À quoi sert-il ?
 
 | Mission | Résultat à demander |

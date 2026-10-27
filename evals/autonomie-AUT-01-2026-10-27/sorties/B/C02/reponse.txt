@@ -1,0 +1,5 @@
+La [notice](/home/ajin/Documents/Codex/2026-10-27/j/work/aut-01/executions/B/C02/sorties/notice.md) est actualisée à **310 unités**, conformément à la source v2, puis vérifiée.
+
+L’[état de reprise](/home/ajin/Documents/Codex/2026-10-27/j/work/aut-01/executions/B/C02/etat.md) distingue T2 terminée de la mission globale, toujours bloquée par T1. La sortie réservée `sorties/ancien.txt` est inchangée ; l’arrêt de `ext-77` reste inconnu, la limite de tentatives demeure **2/2** et l’effet du dernier envoi n’est pas réconcilié.
+
+Pour débloquer T1, il manque une preuve de fin ou d’arrêt du rédacteur et un reçu ou une observation du résultat du dernier envoi. Aucune nouvelle tentative n’a été effectuée.

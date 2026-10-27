@@ -67,6 +67,14 @@ Orka, réalise la fonction que nous avons définie dans le dépôt désigné. Re
 Orka, reprends le dossier actuel. Relis l'état, la synthèse et les décisions, vérifie ce qui reste valide et poursuis le travail autorisé. Signale les informations manquantes et propose la prochaine décision utile.
 ```
 
+### Travailler en mode autonome
+
+```text
+Orka, travaille en mode autonome sur la mission définie. Prends les décisions de méthode dans le périmètre autorisé, confronte les options si nécessaire, fais trancher le juge et poursuis jusqu'aux critères vérifiés ou à un arrêt justifié. Conserve les décisions et le point de reprise. Ne me sollicite que pour un choix ou une autorisation qui manque réellement.
+```
+
+Le [mode autonome](references/autonomie.md) réutilise les autorisations déjà données ; il ne demande pas de reconfirmer chaque étape. Une demande limitée à un plan reste un plan. Sans sous-agents, les perspectives sont appliquées successivement et ce mode est signalé. Les documents conservent le travail pour une reprise, sans relancer eux-mêmes une session fermée. Le lanceur permanent est une extension facultative à construire, pas un prérequis à cet usage dans l'hôte actif.
+
 ## 3. Lire le résultat et utiliser le prochain prompt
 
 Si une entrée décisive manque, Orka demande la source ou l'extrait utile, puis garde sa provenance, sa version et son effet sur le résultat. La limite par défaut est de trois demandes de contexte par tâche, conservées à la reprise, sauf autre limite explicite dans le mandat. Sans accès ou preuve suffisante, le résultat reste partiel et ses inconnues sont visibles. Des entrées complètes n'appellent pas de question supplémentaire. Le [protocole de contexte progressif](references/prompting-agents.md#compléter-le-contexte-par-passes-bornées) et son [exemple de suivi compact](references/modeles.md#suivi-des-compléments-de-contexte) fonctionnent dans les documents ordinaires, sans Python.

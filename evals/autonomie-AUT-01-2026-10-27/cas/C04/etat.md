@@ -1,0 +1,1 @@
+Mode autonome actif avant ce message. Objectif : écrire sorties/livrable.md. T1 prête, tentative 2/2 déjà consommée ; décision D1 déléguée, toujours valide. Phase production non terminée. Prochaine action enregistrée avant suspension : produire le livrable.

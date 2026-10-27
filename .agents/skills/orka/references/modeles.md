@@ -141,7 +141,29 @@ Utiliser le format de message défini dans [collaboration.md](collaboration.md).
 | ID | Date | Type | Auteur | Proposition ou décision | Motif et preuves | Objections ouvertes | Condition de réexamen |
 |---|---|---|---|---|---|---|---|
 
-Types : recommandation d'agent, choix de méthode du coordinateur, décision explicite du dirigeant. Ne pas convertir une recommandation en décision approuvée.
+Types : recommandation d'agent, choix de méthode du coordinateur, arbitrage délégué, décision explicite du dirigeant. Un arbitrage délégué renvoie au mandat qui couvre le choix, à l'auteur du verdict et à la prochaine action ; il ne vaut pas nouvelle approbation humaine. Ne pas convertir une recommandation en décision approuvée.
+
+## Mandat d'autonomie
+
+À intégrer au brief ou au suivi compact lorsqu'un [mode autonome](autonomie.md) est demandé. Les limites du mandat JSON existant peuvent référencer ce suivi ; ne pas ajouter implicitement de clés au schéma du préparateur ou au registre.
+
+- Objectif et critères de réussite ; instruction utilisateur de référence.
+- Périmètre, actions autorisées et décisions déléguées ; actions réservées et exceptions.
+- Capacités natives réellement disponibles ; moyens et limites observables ou inconnus.
+- Responsable de coordination, fonction de juge et mode réel de revue.
+- Conditions de fin, de blocage et de suspension ; emplacement du point de reprise.
+
+## Point de reprise autonome
+
+À conserver dans l'état existant, aux transitions utiles. Les règles applicables restent dans [autonomie.md](autonomie.md#reprendre-depuis-les-faits-conservés).
+
+- Mandat courant, objectif, critères et limites ; statut de suspension éventuel.
+- Décisions en vigueur, délégations, preuves et conditions de réexamen.
+- Entrées et sorties de référence avec version ou empreinte connue ; résultats à réexaminer.
+- Tâches prêtes, actives, à vérifier ou bloquées ; propriétaires et identifiants réellement disponibles.
+- Tentatives, demandes de contexte et tours déjà consommés ; compteurs inconnus explicités.
+- Opérations à effet incertain, reçus et vérification nécessaire avant répétition.
+- Prochaines actions autorisées et dépendances ; ce qui exige une nouvelle instruction humaine.
 
 ## etat.md
 
@@ -154,7 +176,7 @@ Types : recommandation d'agent, choix de méthode du coordinateur, décision exp
 - Tâches en cours, responsables et dépendances.
 - Questions ou obstacles nécessitant une réponse.
 - Prochaines actions, par ordre de dépendance.
-- Décision du dirigeant : en attente ou référence à une instruction explicite.
+- Décision du dirigeant : en attente ou référence à une instruction explicite ; décisions déjà déléguées et verdicts applicables sans nouvelle confirmation.
 
 Pour les tâches, employer : à faire, en cours, à vérifier, terminée, bloquée ou annulée. Distinguer état d'une tâche et état de mission. Un échec d'outil décrit un événement et ne vaut pas réussite.
 

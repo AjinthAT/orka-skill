@@ -4,6 +4,7 @@ This directory contains evaluation protocols, captured agent outputs and explici
 
 | Evaluation | Scope |
 |---|---|
+| [AUT-01 autonomous mode](autonomie-AUT-01-2026-10-27/README.md) | Three synthetic cases per reference/candidate condition, plus suspension and no-Python resume checks. Artifact criteria met in both versions; no comparative gain established. Register optionality corrected after review; no permanent runner delivered. |
 | [L4 model-probe launch decision](../docs/DECISION-SONDE-L4.md) | Conditional request resolved without launching a model: the current interfaces do not establish a new context with an exclusive three-tool catalogue. Original campaign and reserved material preserved. |
 | [L4 MCP connection preparation](raccordement-L4-2026-10-23/README.md) | Tools-only stdio bridge, inactive bindings and two independent fictional software probes. No model session, personal config change or reserved-case access; native host isolation remains unverified. |
 | [L4 isolated file environments](environnement-L4-2026-10-23/README.md) | Twelve separate development environments, exact selected inputs, stopped containers and 108 passing software probes. No model connected or launched; reserved case and frozen campaign preserved. |

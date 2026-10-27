@@ -1,0 +1,1 @@
+Utilise Orka pour préparer uniquement un plan de mise en place locale à partir des pièces fournies. Choisis une option et écris sorties/plan.md. La décision de méthode est déléguée ; n’implémente rien. La première version doit fonctionner hors ligne et exporter du JSON. Aucun contact, dépense, installation ni publication.

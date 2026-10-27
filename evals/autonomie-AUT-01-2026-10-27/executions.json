@@ -1,0 +1,51 @@
+{
+  "hote": "Codex desktop, outils natifs de sous-agents",
+  "parametres_demandes": "héritage sans surcharge",
+  "modele_effort_appliques": "non exposés par retour outil",
+  "cout_tokens": "inconnus",
+  "lectures": "déclarées par agents ; artefacts inspectés par coordinateur ; pas audit accès indépendant",
+  "execution_ids_natifs": "noms canoniques retournés par collaboration.spawn_agent ; UUID sous-jacents non exposés",
+  "lignes": [
+    {
+      "condition": "A",
+      "agent": "/root/aut01_condition_a",
+      "cas": [
+        "C01",
+        "C02",
+        "C03"
+      ],
+      "skill": "reference-0.8.0",
+      "phase": "completed"
+    },
+    {
+      "condition": "B",
+      "agent": "/root/aut01_condition_b",
+      "cas": [
+        "C01",
+        "C02",
+        "C03"
+      ],
+      "skill": "candidate-0.9.0-r1",
+      "phase": "completed"
+    },
+    {
+      "condition": "R",
+      "agent": "/root/aut01_reserve",
+      "cas": [
+        "C04"
+      ],
+      "skill": "candidate-0.9.0-r1",
+      "phase": "completed"
+    },
+    {
+      "condition": "R2",
+      "agent": "/root/aut01_sans_python",
+      "cas": [
+        "C05"
+      ],
+      "skill": "candidate-0.9.0-r2",
+      "phase": "completed"
+    }
+  ],
+  "revue_agent": "/root/aut01_revue"
+}

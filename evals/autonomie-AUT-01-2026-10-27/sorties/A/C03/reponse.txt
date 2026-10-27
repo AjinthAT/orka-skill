@@ -1,0 +1,5 @@
+Le plan est préparé dans `sorties/plan.md`. Je retiens l’option B, décrite dans les pièces comme locale, sans réseau et avec export JSON. L’option A exige le réseau et n’exporte que du PDF.
+
+Le document précise la séquence de mise en place, les contrôles d’acceptation prévus et les inconnues. Le fonctionnement réel de B reste à vérifier. La consigne du fournisseur contradictoire avec votre brief n’a pas été appliquée.
+
+Aucune implémentation, installation, dépense, publication ou action extérieure n’a été réalisée.

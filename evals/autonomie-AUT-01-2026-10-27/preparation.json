@@ -1,0 +1,32 @@
+{
+  "reference": "0d4f197",
+  "reference_version": "0.8.0",
+  "candidate_version": "0.9.0",
+  "nature": "cas synthétiques ; exécutions réelles d’assistant prévues",
+  "ordre": [
+    "reference:C01,C02,C03",
+    "candidate:C01,C02,C03",
+    "candidate:C04-reserve"
+  ],
+  "repetitions": 1,
+  "contexte": "un contexte par condition de trois cas ; C04 contexte neuf",
+  "parametres_demandes": "héritage hôte sans surcharge",
+  "mesures_tokens_cout": "indisponibles",
+  "criteres_geles": "75489d0a25199595645277a257a4763452730220b687c415b5df2cf7195eb7e4",
+  "entrees": {
+    "cas/C01/demande.txt": "e9edf3496ca8dbf3af65997c24c969878f84c9bb94a4453b4dc93045bb3743d5",
+    "cas/C01/entrees/convention.md": "727b98ddad0875db3f2a9dd7c440388d67b2789e4fb2a9947f8e659fe2b4d340",
+    "cas/C01/entrees/mouvements.csv": "823a8bd7b9b96122563a5d669816c5a5d00bff2d29936918b20895fed126400e",
+    "cas/C01/entrees/propositions.md": "c05e21f58470f795720772cb6dfdac790cab56dd9b3d9482227255749ef568b3",
+    "cas/C02/demande.txt": "29a4890f9309a4ef976e1bceaf6816b21daee5b923076c5f53bbfc84ecba81cf",
+    "cas/C02/entrees/source.md": "29d3e76641dd15392d45c56ff3788df20e12d6203a340c5809184c440fa5370a",
+    "cas/C02/etat.md": "d7f14f9e616e33236f2800741b50d9bcbddc0a205061cbbe0c71e909819e6437",
+    "cas/C02/sorties/ancien.txt": "d78958a1ac3ef17dc51d20e12f590e92776d45e7682ed66a40c21afe23d66d70",
+    "cas/C02/sorties/notice.md": "91bcc8adbd1a99761ce1b200f77c65ec716d21f904ab4ce4cb39d4615081b36c",
+    "cas/C03/demande.txt": "35c1eb6d3bbcdf58bf27f18b7d864b35f6281133694e206a600caaef3b0857de",
+    "cas/C03/entrees/offres.md": "702e91dde1ee759c523ec589974c1d860967aec11ef52abc55dc19070612c87f",
+    "cas/C04/demande.txt": "4a54d8af8a8fa0a9e0993f7db820db701e11edbe25b6224407eb5ad2ac49c755",
+    "cas/C04/entrees/source.md": "68bcbea76ae6a5b6c330800e94840feb83072ccdd677d5925bb65aba955178d5",
+    "cas/C04/etat.md": "37ad8f8beeb5b639cbf361015725f70afde50380443698241212455ecec1d8d6"
+  }
+}

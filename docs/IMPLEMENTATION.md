@@ -1,6 +1,6 @@
 # Implémentation d’Orka
 
-Propriétaire : coordinateur de maintenance. Version documentaire : 4, 23 octobre 2026. Périmètre : aperçu de la distribution 0.8.0. Les procédures détaillées restent dans les références liées ; l’historique des changements reste dans Git et les rapports de validation.
+Propriétaire : coordinateur de maintenance. Version documentaire : 5, 27 octobre 2026. Périmètre : aperçu de la candidate 0.9.0 et des composants existants. Les procédures détaillées restent dans les références liées ; l'historique des changements reste dans Git et les rapports de validation.
 
 ## Ce qui fonctionne aujourd’hui
 
@@ -11,6 +11,10 @@ Le coordinateur est l’agent principal de la session. Les rôles sont des respo
 Les missions produit sont suivies sous `projets/<id>/`, les missions transversales sous `entreprise/missions/<id>/`. Le code reste dans son dépôt désigné. Les fichiers conservent l’état et les preuves ; ils ne relancent rien seuls et ne constituent pas une sauvegarde automatique.
 
 ## Procédures documentaires
+
+La candidate 0.9.0 ajoute le [mode autonome portable](../.agents/skills/orka/references/autonomie.md) : décisions déléguées, fonction de juge attribuée aux rôles existants, poursuite après remise et point de reprise. Son [premier lot AUT-01](LOT-AUT-01.md) définit périmètre et critères. Il s'agit de consignes exécutées avec les outils natifs de l'hôte, pas d'un nouveau service. La reprise reste déclenchée par l'hôte ou une instruction ; aucune continuation après fermeture n'est fournie par ces fichiers.
+
+La [réception ciblée](../evals/autonomie-AUT-01-2026-10-27/README.md) compare trois cas locaux par version, puis vérifie suspension et reprise sans Python. Les contrôles sur pièces sont satisfaits dans les deux versions ; aucun gain général ou comparatif n'est démontré. Le suivi documentaire est possible aussi sous Codex ; l'utilisation d'un registre existant ne peut pas être contournée par un changement silencieux de mode.
 
 | Besoin | Référence |
 |---|---|

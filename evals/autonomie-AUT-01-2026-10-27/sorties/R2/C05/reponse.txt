@@ -1,0 +1,7 @@
+La notice de 29 mots est rédigée dans `sorties/notice.md` à partir de la source v2 ; `etat.md` est actualisé. Vérification par autocontrôle, sans revue indépendante.
+
+**Prochain prompt à copier**
+
+```text
+Si la source du carnet local évolue, actualise la notice du dossier C05 et son état en conservant la limite de 80 mots et le travail exclusivement local.
+```

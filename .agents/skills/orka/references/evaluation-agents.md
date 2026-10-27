@@ -37,6 +37,14 @@ Une nouvelle remise ne remplace pas l'original. Pour reprendre un essai, conserv
 
 Le dépôt fournit l'outil facultatif `tools/evaluer.py` pour figer une campagne, importer des résultats fournis et produire un bilan JSON. Il ne lance aucun modèle, agent, réseau ou code inspecté. C'est un outil de maintenance du dépôt, **absent du ZIP du skill**, Python 3.10+ et bibliothèque standard uniquement. Son [guide et ses formats](https://github.com/AjinthAT/orka-skill/blob/main/docs/EVALUATIONS.md) décrivent les contrôles, refus et limites. Les nouveaux essais vont par défaut sous `.orka/evaluations/` ; ne pas réécrire les captures publiques existantes. L'outil ne remplace ni le contrôle des autorisations, ni l'authenticité des sources, ni la décision de qualification.
 
+## Maintenance AUT 01 Mode autonome portable
+
+Candidate 0.9.0, référence `0d4f197` (0.8.0), 27 octobre 2026. Ajout d'un parcours explicite pour décisions déléguées, juge, poursuite et point de reprise avec les moyens de l'hôte. Les règles détaillées restent dans [autonomie.md](autonomie.md). Aucun lanceur permanent n'est livré.
+
+Trois cas synthétiques ont été exécutés avec chacune des deux versions, sans délégation interne : bilan local avec arbitrage, reprise avec sortie réservée et effet inconnu, plan limité avec instruction externe hostile. Les six remises satisfont les critères examinés sur les artefacts ; aucun avantage comparatif n'est établi. Un cas réservé vérifie ensuite la suspension explicite sur r1. Une revue indépendante relève un conflit sur le registre : r2 rend explicite le suivi documentaire sans Python tout en préservant l'autorité d'une base existante. Un nouveau cas réservé vérifie ce parcours après correction.
+
+Le dossier `evals/autonomie-AUT-01-2026-10-27/` du dépôt conserve préparations, critères, empreintes, prompts, réponses et revue. Trois cas d'une condition partagent un contexte ; un passage par cellule, hôte commun, accès instruits sans cloisonnement et revue des artefacts non aveugle. Les valeurs modèle/effort appliquées et la consommation sont inconnues. Ces observations ne qualifient ni un juge multiagent distinct, ni la reprise après crash, ni les budgets techniques, ni la continuation hors session. Les preuves ajoutées après le gel des instructions sont distinguées des versions effectivement testées.
+
 ## Premier pilote exécuté : Orka 0.4.0, 22 octobre 2026
 
 Le [rapport public et ses preuves](https://github.com/AjinthAT/orka-skill/blob/main/evals/pilote-2026-10-22/rapport.md) conserve trois cas synthétiques : annonce JSON, étude documentaire incomplète et reprise après changement de décision. Neuf coordinateurs en contextes neufs comparent assistant seul, Orka sans délégation et Orka avec deux spécialistes imposés par cas. Six spécialistes ont effectivement été lancés ; les sorties, critères prédéfinis, empreintes, observations et recontrôles sont conservés dans le dépôt, hors du paquet installé.

@@ -69,6 +69,14 @@ Orka, implement the feature we defined in the designated repository. Reuse the a
 Orka, resume the current project. Read its status, summary and decisions, check what remains valid and continue the authorized work. Identify missing information and propose the next useful decision.
 ```
 
+### Work autonomously
+
+```text
+Orka, work autonomously on the agreed mission. Take method decisions within the authorized scope, compare options when needed, have the judge resolve them and continue until the criteria are verified or a justified stopping condition is reached. Preserve decisions and a resume checkpoint. Ask me only for a genuinely missing choice or authorization.
+```
+
+The [autonomous mode](references/autonomie.md), currently documented in French, reuses existing authorization instead of asking for confirmation after every step. A plan-only request remains a plan. Without subagents, Orka applies the perspectives sequentially and says so. Documents preserve work for resumption; they do not restart a closed session. A permanent runner is an optional future extension, not a prerequisite for using this mode in an active host.
+
 ## 3. Read the result and use the next prompt
 
 Start with the summary: result, evidence, unknowns and the decision needed. Follow the linked files for detail. A small mission can use one combined deliverable.

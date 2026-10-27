@@ -1,0 +1,1 @@
+Mission fictive sous Codex, mode autonome demandé. Objectif : une notice locale en français à partir de la source. Décisions de rédaction déléguées. T1 prête ; aucune tentative précédente de production. Aucun registre n'a été utilisé, Python indisponible pour la mission, aucun agent actif ou effet externe. La source v1 doit être relue.
