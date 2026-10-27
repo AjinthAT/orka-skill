@@ -8,7 +8,7 @@ import subprocess
 import sys
 import time
 
-from .stockage import ecrire, empreinte, evenements, lire, observer
+from .stockage import echeance_comparable, ecrire, empreinte, evenements, lire, observer
 
 
 TRAVAILLEUR = Path(__file__).with_name("travailleur.py")
@@ -20,6 +20,9 @@ class ProcessusFixes:
 
     def launch(self, dossier):
         dossier = Path(dossier)
+        spec = lire(dossier / "requete.json")
+        if not echeance_comparable(spec) or time.monotonic() >= spec["echeance_monotone"]:
+            raise ValueError("Échéance expirée ou démarrage machine incompatible : aucun lancement")
         # Aucun shell, pipe bloquant, outil fournisseur ou commande configurable.
         with (dossier / "stdout.log").open("xb") as sortie, (dossier / "stderr.log").open("xb") as erreur:
             enfant = subprocess.Popen(
@@ -73,6 +76,8 @@ class ProcessusFixes:
     def stop(self, dossier):
         """Un délai seul ne donne jamais un reçu d'arrêt."""
         dossier = Path(dossier)
+        if not echeance_comparable(lire(dossier / "requete.json")):
+            return None
         debut = self.correlation(dossier)
         if debut is None:
             return None
@@ -85,7 +90,10 @@ class ProcessusFixes:
                     enfant.wait(timeout=1)
                 except subprocess.TimeoutExpired:
                     enfant.kill()
-                    enfant.wait(timeout=1)
+                    try:
+                        enfant.wait(timeout=1)
+                    except subprocess.TimeoutExpired:
+                        return None  # Un signal envoyé ne confirme jamais l'arrêt.
             return self._consigner_arret(dossier, debut, enfant.returncode, "waitpid contrôleur", True)
         if observer(debut["identite"]) != "actif":
             return self.reconcile(dossier, attendre=False)
@@ -113,6 +121,8 @@ class ProcessusFixes:
     def reconcile(self, dossier, attendre=True):
         dossier = Path(dossier)
         spec = lire(dossier / "requete.json")
+        if not echeance_comparable(spec):
+            return None
         while True:
             debut = self.correlation(dossier)
             enfant = self.enfants.get(str(dossier))
@@ -124,7 +134,10 @@ class ProcessusFixes:
                         raise ValueError("Preuve d'arrêt non corrélée")
                     if etat in ("absent", "remplace", "arrete"):
                         if enfant is not None:
-                            enfant.wait(timeout=1)
+                            try:
+                                enfant.wait(timeout=1)
+                            except subprocess.TimeoutExpired:
+                                return None
                         return preuve
                     return None
                 if enfant is not None and enfant.poll() is not None:
@@ -153,24 +166,34 @@ class ProcessusFixes:
             time.sleep(.01)
 
     def fermer(self):
+        incomplets = []
         for dossier, enfant in self.enfants.items():
-            if enfant.poll() is None:
-                # Attendre brièvement le reçu de naissance avant un arrêt ciblé.
-                fin = time.monotonic() + 1
-                while not (Path(dossier) / "demarre.json").exists() and time.monotonic() < fin:
-                    time.sleep(.01)
-                if (Path(dossier) / "demarre.json").exists():
-                    try:
-                        self.stop(dossier)
-                    except (ValueError, OSError, KeyError, TypeError):
-                        # Reçu illisible : on peut encore récolter notre propre enfant,
-                        # sans inventer de preuve corrélée ni libérer sa réservation.
+            try:
+                if enfant.poll() is None:
+                    # Attendre brièvement le reçu de naissance avant un arrêt ciblé.
+                    fin = time.monotonic() + 1
+                    while not (Path(dossier) / "demarre.json").exists() and time.monotonic() < fin:
+                        time.sleep(.01)
+                    if (Path(dossier) / "demarre.json").exists():
+                        try:
+                            preuve = self.stop(dossier)
+                        except (ValueError, OSError, KeyError, TypeError):
+                            preuve = None
+                        if preuve is not None:
+                            continue
+                        # Reçu absent/invalide ou arrêt encore incertain : récolter
+                        # seulement notre enfant, sans libérer sa réservation.
                         if enfant.poll() is None:
                             enfant.kill()
                         enfant.wait(timeout=1)
+                        # Si l'attente finit par réussir, conserver la preuve quand
+                        # la corrélation est valide. Sinon la réservation reste inconnue.
+                        self.stop(dossier)
+                    else:
+                        enfant.kill()
+                        enfant.wait(timeout=1)
                 else:
-                    # Enfant direct de confiance, encore possédé : waitpid est sûr.
-                    enfant.kill()
                     enfant.wait(timeout=1)
-            else:
-                enfant.wait(timeout=1)
+            except (subprocess.TimeoutExpired, OSError, ValueError, KeyError, TypeError):
+                incomplets.append(dossier)
+        return incomplets

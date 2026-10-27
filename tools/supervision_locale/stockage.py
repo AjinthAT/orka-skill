@@ -3,6 +3,7 @@
 from contextlib import contextmanager
 import hashlib
 import json
+import math
 import os
 from pathlib import Path
 import sys
@@ -63,17 +64,30 @@ def verifier_plateforme():
         raise ValueError("AUT-02A qualifié uniquement sur Linux avec /proc et flock")
 
 
+def demarrage_machine():
+    return Path("/proc/sys/kernel/random/boot_id").read_text().strip()
+
+
+def echeance_comparable(spec):
+    """Une valeur monotone persistée n'est comparable que dans le même boot."""
+    return (isinstance(spec, dict) and isinstance(spec.get("demarrage_machine"), str)
+            and bool(spec["demarrage_machine"])
+            and spec["demarrage_machine"] == demarrage_machine()
+            and type(spec.get("echeance_monotone")) in (int, float)
+            and math.isfinite(spec["echeance_monotone"]))
+
+
 def identite(pid):
     """PID + naissance noyau + démarrage machine ; le PID seul ne suffit pas."""
     verifier_plateforme()
     texte = Path(f"/proc/{pid}/stat").read_text(encoding="utf-8")
     champs = texte[texte.rfind(")") + 2:].split()
     return {"pid": pid, "naissance": champs[19],
-            "boot": Path("/proc/sys/kernel/random/boot_id").read_text().strip()}, champs[0]
+            "boot": demarrage_machine()}, champs[0]
 
 
 def observer(identifiant):
-    if identifiant["boot"] != Path("/proc/sys/kernel/random/boot_id").read_text().strip():
+    if identifiant["boot"] != demarrage_machine():
         return "inconnu"
     try:
         actuelle, etat = identite(identifiant["pid"])

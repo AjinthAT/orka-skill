@@ -1,6 +1,6 @@
 # Réception AUT-02A
 
-Propriétaire : coordinateur de maintenance. Version documentaire : 1, 27 octobre 2026. Périmètre : [lot AUT-02](LOT-AUT-02.md), étape A uniquement. État : implémenté et vérifié dans le périmètre logiciel Linux ci-dessous. Base : AUT-01 `a9d4a11` ; empreintes exactes du code dans les nouvelles captures.
+Propriétaire : coordinateur de maintenance. Version documentaire : 2, 27 octobre 2026. Périmètre : [lot AUT-02](LOT-AUT-02.md), étape A uniquement, puis corrections de sa revue. Base : AUT-01 `a9d4a11` ; première réception sur `ce644e6`. Les preuves initiales sont conservées ; la réception des corrections est distinguée ci-dessous.
 
 ## Résultat et périmètre
 
@@ -8,7 +8,7 @@ Le superviseur facultatif est dans [tools/supervision_locale](../tools/supervisi
 
 La recette nominale exécute T1 deux fois (code 75 puis résultat correct), accepte le total net 115 recalculé, puis exécute et accepte T2 dépendante. Chaque tentative conserve sa requête, ses entrées, l'identité réelle du processus, ses sorties et son arrêt observé. Aucun profil demandé dans le registre n'est déclaré appliqué à un modèle.
 
-Les [captures nouvelles](../evals/supervision-AUT-02A-2026-10-27/README.md) conservent trois parcours : nominal réussi, mauvais total refusé malgré code 0 et crash réel après publication suivi d'une reprise réussie sans quatrième travailleur. Les empreintes des fichiers bruts figurent dans leur manifeste. Ces captures ont été produites après la suite globale, avec le même code source.
+Les [captures initiales](../evals/supervision-AUT-02A-2026-10-27/README.md) conservent trois parcours : nominal réussi, mauvais total refusé malgré code 0 et crash réel après publication suivi d'une reprise réussie sans quatrième travailleur. Les empreintes des fichiers bruts figurent dans leur manifeste. Elles décrivent la révision initiale `ce644e6`, avant les corrections de revue, et restent inchangées.
 
 ## Contrôles
 
@@ -30,7 +30,17 @@ La [suite AUT-02A](../tests/test_supervision_locale.py) utilise des dossiers tem
 | A13 | `appels_modeles=0`, type logiciel explicite, paramètres appliqués inconnus ; pas de lecture de configuration/authentification fournisseur |
 | A14 | Suite globale, paquet et liens valides ; aucune modification du cœur distribué, des captures historiques, du prototype ou de L4 ; pas de migration de schéma |
 
-Vérification finale exécutée : `python -B tools/verifier.py`, code de sortie 0, **166 tests recensés : 125 réussis et 41 optionnels ignorés**, dont les **35 nouveaux tests AUT-02A réussis**. Le vérificateur confirme les liens maintenus, l'installation déplacée des outils historiques, le contenu exact du ZIP et sa version 0.9.0. `git diff --check` est également propre. Aucun test optionnel SDK/Docker/modèle n'a été activé.
+Première vérification, avant revue : `python -B tools/verifier.py`, code de sortie 0, **166 tests recensés : 125 réussis et 41 optionnels ignorés**, dont les **35 tests AUT-02A réussis**. Le vérificateur confirmait les liens maintenus, l'installation déplacée des outils historiques, le contenu exact du ZIP et sa version 0.9.0. Ces résultats n'avaient pas couvert les trois défauts de revue ci-dessous.
+
+## Corrections de revue
+
+1. **Échéance et démarrage machine.** La requête fige le démarrage avec son échéance monotone. Le contrôleur et l'adaptateur refusent immédiatement une échéance d'un autre démarrage ou sans provenance, sans attendre, signaler un PID ou relancer le travailleur. La réservation reste active.
+2. **Interruption pendant l'ouverture SQLite.** Le gestionnaire `KeyboardInterrupt` couvre l'ouverture du registre sous le verrou du contrôleur. La suspension est persistée, même sans objet registre disponible ; une reprise normale ne la lève pas.
+3. **Arrêt non confirmé.** L'expiration de la dernière attente après `kill` retourne un constat inconnu. Le nettoyage borné collecte les arrêts non confirmés ; le JSON final est partiel et conserve les réservations, sans preuve d'arrêt inventée ni exception de délai non gérée. Un résultat de tâches complet ne masque pas un nettoyage incomplet.
+
+Sept tests de régression complètent les 35 tests initiaux : changement de démarrage dans le contrôleur et l'adaptateur, démarrage absent, `SIGINT` réel pendant une ouverture SQLite verrouillée, interruption sans objet registre, absence de confirmation après `kill`, nettoyage sans reçu et interdiction d'un succès après nettoyage incomplet. Les variantes regroupées dans un même test restent distinctes dans les assertions. Les délais non confirmés et le redémarrage machine sont simulés ; aucun redémarrage de l'hôte n'est effectué.
+
+La [réception corrective](../evals/corrections-AUT-02A-2026-10-27/README.md) conserve les nouveaux résultats, sans réécrire les anciennes captures. **Vérification globale corrigée : 173 tests recensés, 132 réussis et 41 optionnels ignorés**, dont les **42 tests AUT-02A réussis** (35 initiaux et sept régressions). Les sept nouvelles régressions échouent chacune sur une copie temporaire de `ce644e6` ; les journaux avant/après sont conservés. Le paquet portable 0.9.0, les liens maintenus et les empreintes des nouvelles captures sont vérifiés ; le diff est propre. Un nouveau parcours nominal réussit avec trois travailleurs, sans appel modèle.
 
 ## Limites de la réception
 

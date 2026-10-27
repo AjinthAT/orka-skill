@@ -4,12 +4,13 @@ import json
 import os
 from pathlib import Path
 import signal
+import sqlite3
 import subprocess
 import sys
 import tempfile
 import time
 import unittest
-from unittest.mock import patch
+from unittest.mock import Mock, patch
 
 from tools.supervision_locale.controleur import Controleur, MISSION, Superviseur, creer, etat, suspendre
 from tools.supervision_locale.processus import ProcessusFixes, TRAVAILLEUR
@@ -318,6 +319,133 @@ Controleur(sys.argv[1], point).run()
         self.assertNotEqual(observer(preuve["identite"]), "actif")
         self.assertEqual(self.executer()["etat"], "partiel")
         self.assertEqual(len(self.dossiers()), 1)
+
+    def test_regression_sigint_pendant_ouverture_sqlite_suspend(self):
+        import fcntl
+        self.creer()
+        base = sqlite3.connect(self.destination / "registre.sqlite")
+        base.execute("BEGIN EXCLUSIVE")
+        processus = subprocess.Popen([sys.executable, "-B", "-m", "tools.supervision_locale", "resume",
+                                      "--destination", str(self.destination)], cwd=ROOT,
+                                     stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+        try:
+            limite, pris = time.monotonic() + 3, False
+            while time.monotonic() < limite and not pris:
+                path = self.destination / "controleur.lock"
+                if path.exists():
+                    with path.open("a+") as flux:
+                        try:
+                            fcntl.flock(flux, fcntl.LOCK_EX | fcntl.LOCK_NB)
+                            fcntl.flock(flux, fcntl.LOCK_UN)
+                        except BlockingIOError:
+                            pris = True
+                time.sleep(.01)
+            self.assertTrue(pris)
+            time.sleep(.1)
+            processus.send_signal(signal.SIGINT)
+            time.sleep(.1)
+            base.rollback()
+            sortie, erreur = processus.communicate(timeout=5)
+        finally:
+            base.close()
+            if processus.poll() is None:
+                processus.kill()
+                processus.communicate(timeout=5)
+        self.assertEqual(processus.returncode, 2, erreur)
+        resultat = json.loads(sortie)
+        self.assertEqual(resultat["etat"], "partiel")
+        self.assertIsNone(resultat["registre"])
+        self.assertTrue(lire(self.destination / "controle.json")["suspendue"])
+        self.assertEqual(self.executer()["etat"], "partiel")
+        self.assertEqual(self.dossiers(), [])
+        self.assertEqual(self.executer(reprendre_suspension=True)["etat"], "succes")
+
+    def test_regression_interruption_sans_objet_registre(self):
+        self.creer()
+        with patch("tools.supervision_locale.controleur.Superviseur", side_effect=KeyboardInterrupt):
+            resultat = self.executer()
+        self.assertEqual(resultat["etat"], "partiel")
+        self.assertIsNone(resultat["registre"])
+        self.assertTrue(lire(self.destination / "controle.json")["suspendue"])
+        self.assertEqual(self.executer()["etat"], "partiel")
+        self.assertEqual(self.dossiers(), [])
+
+    def test_regression_reboot_sans_recu_ne_reutilise_pas_echeance(self):
+        self.crash("intention")
+        with patch("tools.supervision_locale.stockage.demarrage_machine", return_value="autre-boot", create=True), \
+                patch("tools.supervision_locale.controleur.time.monotonic", return_value=1.), \
+                patch("tools.supervision_locale.controleur.time.sleep", side_effect=AssertionError("Attente entre deux boots")), \
+                patch("subprocess.Popen", side_effect=AssertionError("Nouveau lancement interdit")):
+            resultat = self.executer()
+        self.assertEqual(resultat["etat"], "partiel")
+        self.assertEqual(len(resultat["registre"]["actives"]), 1)
+        self.assertEqual(self.tableau()["T1"]["tentatives"], 1)
+        self.assertFalse(any((d / "demarre.json").exists() for d in self.dossiers()))
+
+    def test_regression_adaptateur_reboot_et_boot_absent_refuses(self):
+        self.crash("intention")
+        dossier, = self.dossiers()
+        with patch("tools.supervision_locale.stockage.demarrage_machine", return_value="autre-boot", create=True), \
+                patch("tools.supervision_locale.processus.time.monotonic", return_value=1.), \
+                patch("tools.supervision_locale.processus.time.sleep", side_effect=AssertionError("Attente inter-boot")):
+            self.assertIsNone(ProcessusFixes().reconcile(dossier))
+        spec = lire(dossier / "requete.json")
+        spec.pop("demarrage_machine", None)
+        ecrire(dossier / "requete.json", spec)
+        with patch("tools.supervision_locale.processus.time.monotonic", return_value=1.), \
+                patch("tools.supervision_locale.processus.time.sleep", side_effect=AssertionError("Boot non déclaré")):
+            self.assertIsNone(ProcessusFixes().reconcile(dossier))
+
+    def test_regression_wait_apres_kill_retourne_partiel_sans_fausse_preuve(self):
+        self.creer(incident="silence", delai=.2)
+        controleur = Controleur(self.destination)
+        try:
+            # Ni l'attente bloquante ni le sondage non bloquant ne confirment la fin.
+            with patch.object(subprocess.Popen, "wait", side_effect=subprocess.TimeoutExpired("travailleur-fixe", 1)), \
+                    patch.object(subprocess.Popen, "poll", return_value=None):
+                resultat = controleur.run()
+        finally:
+            for enfant in controleur.adaptateur.enfants.values():
+                if enfant.poll() is None:
+                    enfant.kill()
+                enfant.wait(timeout=3)
+        self.assertEqual(resultat["etat"], "partiel")
+        self.assertEqual(len(resultat["registre"]["actives"]), 1)
+        self.assertTrue(resultat["arrets_non_confirmes"])
+        self.assertFalse((self.dossiers()[0] / "arret.json").exists())
+        self.assertEqual(self.tableau()["T1"]["tentatives"], 1)
+        json.dumps(resultat)  # La CLI peut rendre l'état au lieu d'un traceback.
+
+    def test_regression_nettoyage_sans_recu_tolere_wait_non_confirme(self):
+        self.creer()
+        dossier = self.destination / "executions" / "logiciel-simule"
+        dossier.mkdir()
+        enfant = Mock()
+        enfant.poll.return_value = None
+        enfant.wait.side_effect = subprocess.TimeoutExpired("logiciel-simule", 1)
+        adaptateur = ProcessusFixes()
+        adaptateur.enfants[str(dossier)] = enfant
+        with patch("tools.supervision_locale.processus.time.sleep"), \
+                patch("tools.supervision_locale.processus.time.monotonic", side_effect=[0., 2.]):
+            incomplets = adaptateur.fermer()
+        self.assertEqual(incomplets, [str(dossier)])
+        enfant.kill.assert_called_once()
+        self.assertFalse((dossier / "arret.json").exists())
+
+    def test_regression_nettoyage_incomplet_interdit_succes(self):
+        self.creer()
+        controleur = Controleur(self.destination)
+        fermer = controleur.adaptateur.fermer
+
+        def incomplet():
+            fermer()  # Récolter réellement les trois travailleurs avant la simulation.
+            return [str(self.destination / "executions" / "inconnu-simule")]
+
+        with patch.object(controleur.adaptateur, "fermer", side_effect=incomplet):
+            resultat = controleur.run()
+        self.assertEqual(resultat["etat"], "partiel")
+        self.assertEqual(resultat["arrets_non_confirmes"], ["inconnu-simule"])
+        self.assertTrue(all(t["etat"] == "terminee" for t in resultat["registre"]["taches"]))
 
     def test_source_modifiee_avant_reprise_refusee(self):
         self.crash("liberee")

@@ -6,11 +6,13 @@ import json
 import math
 from pathlib import Path
 import sqlite3
+import subprocess
 import sys
 import time
 
 from .processus import ProcessusFixes
-from .stockage import ajouter, ecrire, empreinte, evenements, lire, verrou, verifier_plateforme
+from .stockage import (ajouter, demarrage_machine, echeance_comparable, ecrire, empreinte,
+                       evenements, lire, verrou, verifier_plateforme)
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -147,6 +149,7 @@ class Controleur:
             "execution_id": execution, "tache": tache, "numero": row["numero"],
             "incident": config["incident"], "source_sha256": attendue,
             "requete_registre_sha256": allocation["requete"]["empreinte_requete"],
+            "demarrage_machine": demarrage_machine(),
             "echeance_monotone": time.monotonic() + config["delai"]})
         self.entrees_valides()
         self.log("intention_lancement", execution_id=execution, numero=row["numero"], tache=tache,
@@ -202,6 +205,10 @@ class Controleur:
                 or spec["numero"] != row["numero"]
                 or spec["requete_registre_sha256"] != requete["empreinte_requete"]):
             raise ValueError("Intention et requête du registre non corrélées")
+        if not echeance_comparable(spec):
+            self.log("echeance_inconnue", execution_id=execution,
+                     motif="Démarrage machine différent ou non déclaré ; réservation conservée")
+            return False
         # Rattacher dès que la naissance est observée, avant d'attendre la fin.
         observation = self.adaptateur.observe(dossier)
         while observation["correlation"] is None and time.monotonic() < spec["echeance_monotone"]:
@@ -295,68 +302,85 @@ class Controleur:
         return autorisee
 
     def resultat(self, motif=None):
-        etat = self.reg.etat(MISSION)
-        complet = (not etat["actives"] and len(etat["taches"]) == 2
+        etat = self.reg.etat(MISSION) if self.reg is not None else None
+        complet = (etat is not None and not etat["actives"] and len(etat["taches"]) == 2
                    and all(t["etat"] == "terminee" and t["validite"] == "valide" for t in etat["taches"]))
         return {"etat": "succes" if complet and motif is None else "partiel", "motif": motif,
                 "registre": etat, "appels_modeles": 0, "type_execution": "processus_logiciel_fixe"}
 
+    def _poursuivre(self, reprendre_suspension):
+        self.configuration()
+        if lire(self.racine / "controle.json")["suspendue"]:
+            if not reprendre_suspension:
+                return self.resultat("Mission suspendue ; reprise explicite requise")
+            ecrire(self.racine / "controle.json", {"suspendue": False})
+            self.log("suspension_levee_explicitement")
+        self.entrees_valides()
+        # Le registre détermine les états ; les reçus n'en sont pas une copie.
+        while True:
+            self.entrees_valides()
+            actives = self.reg.etat(MISSION)["actives"]
+            if actives:
+                if len(actives) != 1 or not self.traiter(actives[0]["id"]):
+                    return self.resultat("Lancement ou effet inconnu ; réservation conservée")
+                continue
+            avance = False
+            for tache in ("T1", "T2"):
+                row = self.reg.tache(MISSION, tache)
+                if row["etat"] == "a_verifier":
+                    self.accepter(tache, self.derniere(tache)["id"])
+                    avance = True
+                    break
+                if row["etat"] == "bloquee" and self.reprise_autorisee(tache):
+                    self.reg.reprendre(MISSION, tache, "Code 75 récupérable du scénario fixe ; arrêt confirmé et délégation valide")
+                    self.point_controle("reprise_preparee")
+                    self.log("reprise_autorisee", tache=tache)
+                    avance = True
+                    break
+                if (row["etat"] == "a_faire" and not self.reg.manquantes(MISSION, tache)
+                        and row["tentatives"] < row["maximum"]):
+                    self.preparer(tache)
+                    avance = True
+                    break
+            if not avance:
+                resultat = self.resultat()
+                if resultat["etat"] != "succes":
+                    resultat["motif"] = "Aucune tâche prête : résultat refusé, reprise interdite ou limite atteinte"
+                return resultat
+
     def run(self, reprendre_suspension=False):
         with verrou(self.racine) as verifier:
             self.verifier_verrou = verifier
-            self.reg = Superviseur(self.racine / "registre.sqlite")
+            self.reg = None
+            resultat = None
             try:
-                self.configuration()
-                if lire(self.racine / "controle.json")["suspendue"]:
-                    if not reprendre_suspension:
-                        return self.resultat("Mission suspendue ; reprise explicite requise")
-                    ecrire(self.racine / "controle.json", {"suspendue": False})
-                    self.log("suspension_levee_explicitement")
-                self.entrees_valides()
-                # Le registre détermine les états ; les reçus n'en sont pas une copie.
-                while True:
-                    self.entrees_valides()
-                    actives = self.reg.etat(MISSION)["actives"]
-                    if actives:
-                        if len(actives) != 1 or not self.traiter(actives[0]["id"]):
-                            return self.resultat("Lancement ou effet inconnu ; réservation conservée")
-                        continue
-                    avance = False
-                    for tache in ("T1", "T2"):
-                        row = self.reg.tache(MISSION, tache)
-                        if row["etat"] == "a_verifier":
-                            self.accepter(tache, self.derniere(tache)["id"])
-                            avance = True
-                            break
-                        if row["etat"] == "bloquee" and self.reprise_autorisee(tache):
-                            self.reg.reprendre(MISSION, tache, "Code 75 récupérable du scénario fixe ; arrêt confirmé et délégation valide")
-                            self.point_controle("reprise_preparee")
-                            self.log("reprise_autorisee", tache=tache)
-                            avance = True
-                            break
-                        if (row["etat"] == "a_faire" and not self.reg.manquantes(MISSION, tache)
-                                and row["tentatives"] < row["maximum"]):
-                            self.preparer(tache)
-                            avance = True
-                            break
-                    if not avance:
-                        resultat = self.resultat()
-                        if resultat["etat"] != "succes":
-                            resultat["motif"] = "Aucune tâche prête : résultat refusé, reprise interdite ou limite atteinte"
-                        return resultat
+                # L'interruption peut arriver pendant l'ouverture SQLite elle-même.
+                self.reg = Superviseur(self.racine / "registre.sqlite")
+                resultat = self._poursuivre(reprendre_suspension)
             except KeyboardInterrupt:
                 ecrire(self.racine / "controle.json", {"suspendue": True})
                 self.log("suspension_utilisateur")
-                return self.resultat("Mission suspendue par interruption explicite")
-            except (ValueError, OSError, KeyError, TypeError, sqlite3.Error) as erreur:
-                return self.resultat(str(erreur))
+                resultat = self.resultat("Mission suspendue par interruption explicite")
+            except (ValueError, OSError, KeyError, TypeError, sqlite3.Error, subprocess.TimeoutExpired) as erreur:
+                if self.reg is None:
+                    raise  # La CLI distingue encore une base absente ou endommagée.
+                resultat = self.resultat(str(erreur))
             finally:
                 # Une exception ordinaire ne laisse pas un enfant possédé tourner.
                 # os._exit/crash machine échappent à finally : resume réconcilie.
                 try:
-                    self.adaptateur.fermer()
+                    try:
+                        incomplets = self.adaptateur.fermer()
+                    except subprocess.TimeoutExpired:
+                        incomplets = list(self.adaptateur.enfants)
+                    if incomplets and resultat is not None:
+                        resultat["etat"] = "partiel"
+                        resultat["motif"] = "Arrêt non confirmé pendant le nettoyage ; réservations conservées"
+                        resultat["arrets_non_confirmes"] = [Path(p).name for p in incomplets]
                 finally:
-                    self.reg.fermer()
+                    if self.reg is not None:
+                        self.reg.fermer()
+            return resultat
 
 
 def suspendre(destination):

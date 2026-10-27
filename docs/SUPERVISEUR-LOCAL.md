@@ -1,6 +1,6 @@
 # Superviseur facultatif AUT-02A
 
-Propriétaire : coordinateur de maintenance. Version documentaire : 1, 27 octobre 2026. Périmètre : recette logicielle hors ligne du dépôt, qualifiée initialement sur Linux/Python 3.14. Le [lot AUT-02](LOT-AUT-02.md) définit les critères ; la [réception](VALIDATION-AUT-02A.md) précise les preuves et limites.
+Propriétaire : coordinateur de maintenance. Version documentaire : 2, 27 octobre 2026. Périmètre : recette logicielle hors ligne du dépôt, qualifiée initialement sur Linux/Python 3.14, avec corrections de reprise et d'arrêt issues de la revue. Le [lot AUT-02](LOT-AUT-02.md) définit les critères ; la [réception](VALIDATION-AUT-02A.md) précise les preuves et limites.
 
 ## Exécuter le premier parcours
 
@@ -27,7 +27,11 @@ python -B -m tools.supervision_locale resume --destination .orka/aut02/essai-01
 
 `resume` rouvre la même base, sans remettre les compteurs à zéro. Il réconcilie les réservations avec les reçus et les identités Linux (PID, naissance noyau et démarrage machine). Un travailleur encore actif est attendu, puis arrêté à son échéance si un arrêt ciblé est possible. Après perte du parent, l'arrêt ciblé utilise `pidfd` lorsqu'il est disponible ; sinon l'état reste partiel. Un PID seul ou un délai expiré ne vaut pas preuve d'arrêt.
 
-`Ctrl+C` suspend la mission, conserve les réservations et arrête les enfants encore possédés avant la sortie du contrôleur. La commande de suspension ci-dessous s'utilise entre deux exécutions du contrôleur ; pendant une exécution, utiliser `Ctrl+C`. Aucun service ne redémarre automatiquement.
+L'échéance monotone est rattachée au démarrage machine dans chaque requête. Si ce démarrage diffère, ou n'est pas déclaré, aucune comparaison temporelle, attente d'ancien lancement ou nouvelle exécution n'est autorisée : la réservation reste conservée et l'état est partiel. Une ancienne mission dont le code a changé reste soumise à la requalification déjà prévue ; ces corrections ne migrent pas silencieusement ses preuves.
+
+`Ctrl+C` suspend la mission et conserve les réservations, y compris si l'ouverture du registre est interrompue après acquisition du verrou du contrôleur. Dans ce cas, le JSON retourne `registre: null` car aucun état du registre n'a pu être lu ; la suspension persiste dans `controle.json`. Les enfants possédés font l'objet d'une tentative d'arrêt bornée. La commande de suspension ci-dessous s'utilise entre deux exécutions du contrôleur ; pendant une exécution, utiliser `Ctrl+C`. Aucun service ne redémarre automatiquement.
+
+Si la fin d'un enfant ne peut pas être confirmée après les signaux et attentes bornées, le contrôleur retourne un état partiel avec `arrets_non_confirmes`. Aucun reçu d'arrêt n'est fabriqué et aucune réservation n'est libérée sur cette seule tentative d'arrêt. Un nettoyage incomplet interdit le succès, même si les tâches ont déjà été acceptées dans le registre.
 
 ```sh
 python -B -m tools.supervision_locale suspendre --destination .orka/aut02/essai-01
@@ -72,7 +76,7 @@ Ce sont des programmes de recette fixes, sans descendants. Les échecs n'entraî
 | `controle.json` | Suspension explicite ; aucun état de tâche dupliqué |
 | `controleur.lock` | Exclusion locale par `flock`, jamais déverrouillée par suppression du fichier |
 | `controleur.jsonl` | Intentions de lancement, décisions et constats ; un journal tronqué bloque la reprise |
-| `executions/<id>/requete.json` | Corrélation avec la requête réservée, entrée figée, numéro et échéance monotone |
+| `executions/<id>/requete.json` | Corrélation avec la requête réservée, entrée figée, numéro, échéance monotone et démarrage machine associé |
 | `executions/<id>/demarre.json`, `termine.json` | Reçus du programme fixe ; une fin déclarée doit être corroborée par l'arrêt de sa naissance Linux |
 | `executions/<id>/arret.json` | Preuve de fin recueillie par le contrôleur, avec sa provenance |
 | `executions/<id>/resultat.json` | Sortie de tentative, conservée même si incorrecte ; aucun accès direct du travailleur à la publication canonique |
