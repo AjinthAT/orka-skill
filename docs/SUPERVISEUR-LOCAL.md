@@ -1,6 +1,6 @@
 # Superviseur facultatif AUT-02A
 
-Propriétaire : coordinateur de maintenance. Version documentaire : 2, 27 octobre 2026. Périmètre : recette logicielle hors ligne du dépôt, qualifiée initialement sur Linux/Python 3.14, avec corrections de reprise et d'arrêt issues de la revue. Le [lot AUT-02](LOT-AUT-02.md) définit les critères ; la [réception](VALIDATION-AUT-02A.md) précise les preuves et limites.
+Propriétaire : coordinateur de maintenance. Version documentaire : 3, 27 octobre 2026. Périmètre : recette logicielle hors ligne du dépôt, qualifiée initialement sur Linux/Python 3.14, avec corrections de reprise, d'arrêt et de suspension pendant le nettoyage. Le [lot AUT-02](LOT-AUT-02.md) définit les critères ; la [réception](VALIDATION-AUT-02A.md) précise les preuves et limites.
 
 ## Exécuter le premier parcours
 
@@ -32,6 +32,8 @@ L'échéance monotone est rattachée au démarrage machine dans chaque requête.
 `Ctrl+C` suspend la mission et conserve les réservations, y compris si l'ouverture du registre est interrompue après acquisition du verrou du contrôleur. Dans ce cas, le JSON retourne `registre: null` car aucun état du registre n'a pu être lu ; la suspension persiste dans `controle.json`. Les enfants possédés font l'objet d'une tentative d'arrêt bornée. La commande de suspension ci-dessous s'utilise entre deux exécutions du contrôleur ; pendant une exécution, utiliser `Ctrl+C`. Aucun service ne redémarre automatiquement.
 
 Si la fin d'un enfant ne peut pas être confirmée après les signaux et attentes bornées, le contrôleur retourne un état partiel avec `arrets_non_confirmes`. Aucun reçu d'arrêt n'est fabriqué et aucune réservation n'est libérée sur cette seule tentative d'arrêt. Un nettoyage incomplet interdit le succès, même si les tâches ont déjà été acceptées dans le registre.
+
+Un premier `Ctrl+C` reçu pendant le nettoyage, y compris pendant la fermeture du registre, est mémorisé sans interrompre les opérations d'arrêt bornées. La suspension est ensuite persistée et le JSON final reste partiel. Les signaux répétés pendant cette phase ne recommencent pas les attentes. Dans le thread principal, le gestionnaire de `SIGINT` est remplacé uniquement pendant la finalisation, puis rétabli ; il ne fait aucune écriture depuis le signal lui-même. Le contrôle des réservations reste inchangé.
 
 ```sh
 python -B -m tools.supervision_locale suspendre --destination .orka/aut02/essai-01

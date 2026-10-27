@@ -1,6 +1,6 @@
 # Réception AUT-02A
 
-Propriétaire : coordinateur de maintenance. Version documentaire : 2, 27 octobre 2026. Périmètre : [lot AUT-02](LOT-AUT-02.md), étape A uniquement, puis corrections de sa revue. Base : AUT-01 `a9d4a11` ; première réception sur `ce644e6`. Les preuves initiales sont conservées ; la réception des corrections est distinguée ci-dessous.
+Propriétaire : coordinateur de maintenance. Version documentaire : 3, 27 octobre 2026. Périmètre : [lot AUT-02](LOT-AUT-02.md), étape A uniquement, puis corrections de ses revues. Base : AUT-01 `a9d4a11` ; première réception sur `ce644e6`, premières corrections sur `697d5a0`. Les preuves précédentes sont conservées ; chaque réception est distinguée ci-dessous.
 
 ## Résultat et périmètre
 
@@ -40,7 +40,15 @@ Première vérification, avant revue : `python -B tools/verifier.py`, code de so
 
 Sept tests de régression complètent les 35 tests initiaux : changement de démarrage dans le contrôleur et l'adaptateur, démarrage absent, `SIGINT` réel pendant une ouverture SQLite verrouillée, interruption sans objet registre, absence de confirmation après `kill`, nettoyage sans reçu et interdiction d'un succès après nettoyage incomplet. Les variantes regroupées dans un même test restent distinctes dans les assertions. Les délais non confirmés et le redémarrage machine sont simulés ; aucun redémarrage de l'hôte n'est effectué.
 
-La [réception corrective](../evals/corrections-AUT-02A-2026-10-27/README.md) conserve les nouveaux résultats, sans réécrire les anciennes captures. **Vérification globale corrigée : 173 tests recensés, 132 réussis et 41 optionnels ignorés**, dont les **42 tests AUT-02A réussis** (35 initiaux et sept régressions). Les sept nouvelles régressions échouent chacune sur une copie temporaire de `ce644e6` ; les journaux avant/après sont conservés. Le paquet portable 0.9.0, les liens maintenus et les empreintes des nouvelles captures sont vérifiés ; le diff est propre. Un nouveau parcours nominal réussit avec trois travailleurs, sans appel modèle.
+La [première réception corrective](../evals/corrections-AUT-02A-2026-10-27/README.md), sur `697d5a0`, conserve ses résultats sans réécrire les anciennes captures : **173 tests recensés, 132 réussis et 41 optionnels ignorés**, dont les **42 tests AUT-02A réussis** (35 initiaux et sept régressions). Les sept régressions échouent chacune sur une copie temporaire de `ce644e6` ; les journaux avant/après sont conservés. Le paquet portable 0.9.0, les liens maintenus et les empreintes des captures étaient vérifiés ; un parcours nominal réussissait avec trois travailleurs, sans appel modèle.
+
+## SIGINT pendant le nettoyage
+
+La relecture de `697d5a0` a trouvé un chemin supplémentaire : un premier `SIGINT` pouvait interrompre le bloc `finally`, après la sortie de la boucle principale. La finalisation mémorise maintenant ce signal sans lever d'exception depuis son gestionnaire, poursuit les arrêts bornés et ferme le registre. Elle persiste ensuite la suspension et rend un JSON partiel à partir du dernier état déjà lu. Le gestionnaire de signal précédent est rétabli à la sortie de cette phase ; aucune écriture ne se fait dans le gestionnaire du signal.
+
+Trois régressions couvrent un SIGINT réel pendant le nettoyage d'un travailleur mis en pause, un SIGINT pendant la fermeture du registre, et des signaux répétés avec arrêt simulé non confirmé. Dans ce dernier cas, les attentes ne recommencent pas, la réservation reste active et aucun reçu d'arrêt n'est fabriqué. La reprise sans levée explicite respecte la suspension.
+
+La [nouvelle réception](../evals/sigint-nettoyage-AUT-02A-2026-10-27/README.md) conserve les trois échecs sur la référence et les résultats corrigés. **Validation globale finale : 176 tests recensés, 135 réussis et 41 optionnels ignorés**, dont les **45 tests AUT-02A réussis**. Le paquet portable reste en 0.9.0 ; le cœur et toutes les captures précédentes sont inchangés. La sonde réelle rend un JSON partiel, conserve la suspension et observe le travailleur arrêté. Aucun modèle, noyau volontairement bloqué ou redémarrage de machine n'est impliqué.
 
 ## Limites de la réception
 
@@ -49,3 +57,5 @@ Qualification initiale sur Linux x86_64/Python 3.14.3 avec `/proc`, `flock` et `
 Un lancement sans preuve suffisante, un journal tronqué ou un changement de code/mandat garde un état partiel. Aucun outil de forçage ou de remise à zéro n'est fourni. Les programmes fixes n'ont pas de descendants ; ce résultat ne qualifie ni des commandes arbitraires, ni le CLI Codex, ni un sandbox. Aucun service permanent, agent modèle, juge IA ou gain comparatif de qualité n'est revendiqué.
 
 La documentation Python a été consultée via Context7 (`/python/cpython`) pour les [délais de `Popen.wait`](https://github.com/python/cpython/blob/main/Doc/library/subprocess.rst) et [verrous `flock`](https://github.com/python/cpython/blob/main/Doc/library/fcntl.rst). Un délai expiré ne termine pas un processus ; l'implémentation exige un constat distinct avant libération.
+
+La [gestion Python des signaux](https://github.com/python/cpython/blob/main/Doc/library/signal.rst) a également été consultée pour la mémorisation de SIGINT pendant une section critique et la restauration du gestionnaire précédent dans le thread principal.

@@ -1,13 +1,16 @@
 """Boucle AUT-02A : tâches dans le registre v2, processus dans des reçus corrélés."""
 
 import csv
+from contextlib import contextmanager
 import hashlib
 import json
 import math
 from pathlib import Path
+import signal
 import sqlite3
 import subprocess
 import sys
+import threading
 import time
 
 from .processus import ProcessusFixes
@@ -26,6 +29,27 @@ finally:
 MISSION = "AUT-02A"
 INCIDENTS = ("aucun", "erreur-permanente", "epuisement", "sortie-absente",
              "mauvais-total", "mauvais-type", "silence", "retour-tardif")
+
+
+@contextmanager
+def _sigint_differe():
+    """Ne pas interrompre un arrêt borné ; aucun I/O dans le gestionnaire."""
+    interruption = {"recue": False}
+
+    def memoriser(numero, frame):
+        interruption["recue"] = True
+
+    ancien, installe = None, False
+    if threading.current_thread() is threading.main_thread():
+        ancien = signal.getsignal(signal.SIGINT)
+        if ancien is not None and ancien != signal.SIG_IGN:
+            signal.signal(signal.SIGINT, memoriser)
+            installe = True
+    try:
+        yield interruption
+    finally:
+        if installe:
+            signal.signal(signal.SIGINT, ancien)
 
 
 def codes_sources():
@@ -348,6 +372,53 @@ class Controleur:
                     resultat["motif"] = "Aucune tâche prête : résultat refusé, reprise interdite ou limite atteinte"
                 return resultat
 
+    def _finaliser(self, resultat):
+        # Le premier SIGINT peut arriver dans ce nettoyage, pas seulement dans
+        # la boucle principale. Les suivants ne doivent pas abandonner l'arrêt.
+        with _sigint_differe() as interruption:
+            incomplets = []
+            registre_non_ferme = False
+            try:
+                for _ in range(2):
+                    try:
+                        incomplets = self.adaptateur.fermer()
+                        break
+                    except KeyboardInterrupt:
+                        # Cancellation levée directement par un adaptateur, distincte
+                        # du signal réel différé ; une seule reprise de nettoyage.
+                        interruption["recue"] = True
+                    except subprocess.TimeoutExpired:
+                        incomplets = list(self.adaptateur.enfants)
+                        break
+                else:
+                    incomplets = list(self.adaptateur.enfants)
+            finally:
+                if self.reg is not None:
+                    for _ in range(2):
+                        try:
+                            self.reg.fermer()
+                            break
+                        except KeyboardInterrupt:
+                            interruption["recue"] = True
+                    else:
+                        registre_non_ferme = True
+            # Utiliser le dernier état déjà lu : la connexion est maintenant fermée.
+            if interruption["recue"]:
+                ecrire(self.racine / "controle.json", {"suspendue": True})
+                self.log("suspension_utilisateur_pendant_nettoyage")
+                if resultat is None:
+                    resultat = {"registre": None, "appels_modeles": 0,
+                                "type_execution": "processus_logiciel_fixe"}
+                resultat.update(etat="partiel", motif="Mission suspendue pendant le nettoyage")
+            if resultat is not None and incomplets:
+                resultat["etat"] = "partiel"
+                motif = "arrêt non confirmé pendant le nettoyage ; réservations conservées"
+                resultat["motif"] = ((resultat["motif"] + "; " + motif) if interruption["recue"] else motif)
+                resultat["arrets_non_confirmes"] = [Path(p).name for p in incomplets]
+            if resultat is not None and registre_non_ferme:
+                resultat["fermeture_registre_non_confirmee"] = True
+            return resultat
+
     def run(self, reprendre_suspension=False):
         with verrou(self.racine) as verifier:
             self.verifier_verrou = verifier
@@ -366,20 +437,8 @@ class Controleur:
                     raise  # La CLI distingue encore une base absente ou endommagée.
                 resultat = self.resultat(str(erreur))
             finally:
-                # Une exception ordinaire ne laisse pas un enfant possédé tourner.
                 # os._exit/crash machine échappent à finally : resume réconcilie.
-                try:
-                    try:
-                        incomplets = self.adaptateur.fermer()
-                    except subprocess.TimeoutExpired:
-                        incomplets = list(self.adaptateur.enfants)
-                    if incomplets and resultat is not None:
-                        resultat["etat"] = "partiel"
-                        resultat["motif"] = "Arrêt non confirmé pendant le nettoyage ; réservations conservées"
-                        resultat["arrets_non_confirmes"] = [Path(p).name for p in incomplets]
-                finally:
-                    if self.reg is not None:
-                        self.reg.fermer()
+                resultat = self._finaliser(resultat)
             return resultat
 
 

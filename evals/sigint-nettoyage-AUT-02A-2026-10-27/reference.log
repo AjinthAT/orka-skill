@@ -1,0 +1,91 @@
+test_sigint_nettoyage_pendant_fermeture_registre_et_handler_restaure (test_supervision_locale.SupervisionLocaleTests.test_sigint_nettoyage_pendant_fermeture_registre_et_handler_restaure) ... FAIL
+test_sigint_nettoyage_reel_suspend_et_arrete_travailleur (test_supervision_locale.SupervisionLocaleTests.test_sigint_nettoyage_reel_suspend_et_arrete_travailleur) ... FAIL
+test_sigint_nettoyage_repetes_et_arret_non_confirme (test_supervision_locale.SupervisionLocaleTests.test_sigint_nettoyage_repetes_et_arret_non_confirme) ... FAIL
+
+======================================================================
+FAIL: test_sigint_nettoyage_pendant_fermeture_registre_et_handler_restaure (test_supervision_locale.SupervisionLocaleTests.test_sigint_nettoyage_pendant_fermeture_registre_et_handler_restaure)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/orka-sigint-reference-mabsp4aj/tests/test_supervision_locale.py", line 531, in test_sigint_nettoyage_pendant_fermeture_registre_et_handler_restaure
+    resultat = self.executer()
+  File "/tmp/orka-sigint-reference-mabsp4aj/tests/test_supervision_locale.py", line 35, in executer
+    return Controleur(self.destination, hook).run(**options)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/tmp/orka-sigint-reference-mabsp4aj/tools/supervision_locale/controleur.py", line 382, in run
+    self.reg.fermer()
+    ~~~~~~~~~~~~~~~^^
+  File "/tmp/orka-sigint-reference-mabsp4aj/tests/test_supervision_locale.py", line 526, in fermeture_interrompue
+    os.kill(os.getpid(), signal.SIGINT)
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/tmp/orka-sigint-reference-mabsp4aj/tests/test_supervision_locale.py", line 533, in test_sigint_nettoyage_pendant_fermeture_registre_et_handler_restaure
+    self.fail("SIGINT échappe pendant la fermeture du registre")
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: SIGINT échappe pendant la fermeture du registre
+
+======================================================================
+FAIL: test_sigint_nettoyage_reel_suspend_et_arrete_travailleur (test_supervision_locale.SupervisionLocaleTests.test_sigint_nettoyage_reel_suspend_et_arrete_travailleur)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/orka-sigint-reference-mabsp4aj/tests/test_supervision_locale.py", line 509, in test_sigint_nettoyage_reel_suspend_et_arrete_travailleur
+    self.assertEqual(proc.returncode, 2, erreur)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: -2 != 2 : Traceback (most recent call last):
+  File "<string>", line 24, in <module>
+    sys.exit(cli.main())
+             ~~~~~~~~^^
+  File "/tmp/orka-sigint-reference-mabsp4aj/tools/supervision_locale/__main__.py", line 32, in main
+    resultat = Controleur(args.destination).run(getattr(args, "reprendre_suspension", False))
+  File "/tmp/orka-sigint-reference-mabsp4aj/tools/supervision_locale/controleur.py", line 373, in run
+    incomplets = self.adaptateur.fermer()
+  File "/tmp/orka-sigint-reference-mabsp4aj/tools/supervision_locale/processus.py", line 179, in fermer
+    preuve = self.stop(dossier)
+  File "/tmp/orka-sigint-reference-mabsp4aj/tools/supervision_locale/processus.py", line 90, in stop
+    enfant.wait(timeout=1)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/usr/lib64/python3.14/subprocess.py", line 1278, in wait
+    return self._wait(timeout=timeout)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.14/subprocess.py", line 2077, in _wait
+    time.sleep(delay)
+    ~~~~~~~~~~^^^^^^^
+KeyboardInterrupt
+
+
+======================================================================
+FAIL: test_sigint_nettoyage_repetes_et_arret_non_confirme (test_supervision_locale.SupervisionLocaleTests.test_sigint_nettoyage_repetes_et_arret_non_confirme)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/orka-sigint-reference-mabsp4aj/tests/test_supervision_locale.py", line 565, in test_sigint_nettoyage_repetes_et_arret_non_confirme
+    resultat = controleur.run()
+  File "/tmp/orka-sigint-reference-mabsp4aj/tools/supervision_locale/controleur.py", line 373, in run
+    incomplets = self.adaptateur.fermer()
+  File "/usr/lib64/python3.14/unittest/mock.py", line 1175, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.14/unittest/mock.py", line 1179, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.14/unittest/mock.py", line 1240, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "/tmp/orka-sigint-reference-mabsp4aj/tests/test_supervision_locale.py", line 555, in nettoyage_interrompu
+    os.kill(os.getpid(), signal.SIGINT)
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/tmp/orka-sigint-reference-mabsp4aj/tests/test_supervision_locale.py", line 567, in test_sigint_nettoyage_repetes_et_arret_non_confirme
+    self.fail("SIGINT répété abandonne le nettoyage")
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: SIGINT répété abandonne le nettoyage
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.681s
+
+FAILED (failures=3)

@@ -447,6 +447,137 @@ Controleur(sys.argv[1], point).run()
         self.assertEqual(resultat["arrets_non_confirmes"], ["inconnu-simule"])
         self.assertTrue(all(t["etat"] == "terminee" for t in resultat["registre"]["taches"]))
 
+    def test_sigint_nettoyage_reel_suspend_et_arrete_travailleur(self):
+        if not hasattr(os, "pidfd_open") or not hasattr(signal, "pidfd_send_signal"):
+            self.skipTest("pidfd requis pour nettoyer la sonde d'une version défaillante")
+        try:
+            fd = os.pidfd_open(os.getpid())
+        except OSError:
+            self.skipTest("pidfd non pris en charge par le noyau")
+        else:
+            os.close(fd)
+        self.creer(incident="silence", delai=5)
+        script = '''import os,signal,sys,time
+from pathlib import Path
+from tools.supervision_locale import __main__ as cli
+from tools.supervision_locale.controleur import Controleur
+from tools.supervision_locale.stockage import ecrire,identite
+racine=Path(sys.argv[1]); c=None
+def point(p):
+    if p=='lancee':
+        dossier=next(iter(c.adaptateur.enfants))
+        fin=time.monotonic()+3
+        while not (Path(dossier)/'demarre.json').exists():
+            assert time.monotonic()<fin
+            time.sleep(.01)
+        enfant=next(iter(c.adaptateur.enfants.values()))
+        os.kill(enfant.pid,signal.SIGSTOP)
+        ecrire(racine/'sonde-nettoyage.json',identite(enfant.pid)[0])
+        raise ValueError('Incident logiciel injecté après lancement')
+def construire(destination):
+    global c
+    c=Controleur(destination,point)
+    return c
+cli.Controleur=construire
+sys.argv=['supervision_locale','resume','--destination',str(racine)]
+sys.exit(cli.main())
+'''
+        proc = subprocess.Popen([sys.executable, "-B", "-c", script, str(self.destination)], cwd=ROOT,
+                                stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+        identifiant = None
+        try:
+            limite = time.monotonic() + 5
+            while not (self.destination / "sonde-nettoyage.json").exists():
+                self.assertLess(time.monotonic(), limite)
+                time.sleep(.01)
+            identifiant = lire(self.destination / "sonde-nettoyage.json")
+            time.sleep(.1)
+            proc.send_signal(signal.SIGINT)
+            sortie, erreur = proc.communicate(timeout=5)
+        finally:
+            if proc.poll() is None:
+                proc.kill()
+                proc.communicate(timeout=5)
+            # Nettoyer aussi le travailleur si la version testée abandonne le nettoyage.
+            if identifiant is not None and observer(identifiant) == "actif":
+                fd = os.pidfd_open(identifiant["pid"])
+                try:
+                    if observer(identifiant) == "actif":
+                        signal.pidfd_send_signal(fd, signal.SIGKILL)
+                finally:
+                    os.close(fd)
+        self.assertEqual(proc.returncode, 2, erreur)
+        resultat = json.loads(sortie)
+        self.assertEqual(resultat["etat"], "partiel")
+        self.assertIn("suspendue", resultat["motif"])
+        self.assertTrue(lire(self.destination / "controle.json")["suspendue"])
+        self.assertNotEqual(observer(identifiant), "actif")
+        self.assertEqual(len(resultat["registre"]["actives"]), 1)
+        self.assertEqual(self.executer()["etat"], "partiel")
+        self.assertEqual(len(self.dossiers()), 1)
+        self.assertEqual(self.tableau()["T1"]["tentatives"], 1)
+
+    def test_sigint_nettoyage_pendant_fermeture_registre_et_handler_restaure(self):
+        self.creer()
+        ancien = signal.getsignal(signal.SIGINT)
+        fermer = Superviseur.fermer
+
+        def fermeture_interrompue(registre):
+            os.kill(os.getpid(), signal.SIGINT)
+            fermer(registre)
+
+        try:
+            with patch.object(Superviseur, "fermer", fermeture_interrompue):
+                resultat = self.executer()
+        except KeyboardInterrupt:
+            self.fail("SIGINT échappe pendant la fermeture du registre")
+        self.assertEqual(resultat["etat"], "partiel")
+        self.assertTrue(lire(self.destination / "controle.json")["suspendue"])
+        self.assertEqual(signal.getsignal(signal.SIGINT), ancien)
+        self.assertTrue(all(t["etat"] == "terminee" for t in resultat["registre"]["taches"]))
+
+    def test_sigint_nettoyage_repetes_et_arret_non_confirme(self):
+        self.creer(incident="silence", delai=5)
+        ancien = signal.getsignal(signal.SIGINT)
+        controleur = Controleur(self.destination)
+        fermer = controleur.adaptateur.fermer
+
+        def incident(point):
+            if point == "lancee":
+                dossier = Path(next(iter(controleur.adaptateur.enfants)))
+                limite = time.monotonic() + 3
+                while not (dossier / "demarre.json").exists():
+                    self.assertLess(time.monotonic(), limite)
+                    time.sleep(.01)
+                raise ValueError("Incident logiciel de recette")
+
+        def nettoyage_interrompu():
+            os.kill(os.getpid(), signal.SIGINT)
+            os.kill(os.getpid(), signal.SIGINT)
+            with patch.object(subprocess.Popen, "wait", side_effect=subprocess.TimeoutExpired("travailleur-fixe", 1)), \
+                    patch.object(subprocess.Popen, "poll", return_value=None):
+                return fermer()
+
+        controleur.point_controle = incident
+        try:
+            with patch.object(controleur.adaptateur, "fermer", side_effect=nettoyage_interrompu) as nettoyage:
+                try:
+                    resultat = controleur.run()
+                except KeyboardInterrupt:
+                    self.fail("SIGINT répété abandonne le nettoyage")
+        finally:
+            for enfant in controleur.adaptateur.enfants.values():
+                if enfant.poll() is None:
+                    enfant.kill()
+                enfant.wait(timeout=3)
+        self.assertEqual(nettoyage.call_count, 1)
+        self.assertEqual(resultat["etat"], "partiel")
+        self.assertTrue(resultat["arrets_non_confirmes"])
+        self.assertTrue(lire(self.destination / "controle.json")["suspendue"])
+        self.assertEqual(signal.getsignal(signal.SIGINT), ancien)
+        self.assertEqual(len(resultat["registre"]["actives"]), 1)
+        self.assertFalse((self.dossiers()[0] / "arret.json").exists())
+
     def test_source_modifiee_avant_reprise_refusee(self):
         self.crash("liberee")
         (self.destination / "entree.csv").write_text("montant\n999\n")
