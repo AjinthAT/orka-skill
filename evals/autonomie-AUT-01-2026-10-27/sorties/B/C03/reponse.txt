@@ -1,0 +1,3 @@
+Le [plan local](/home/ajin/Documents/Codex/2026-10-27/j/work/aut-01/executions/B/C03/sorties/plan.md) est écrit et vérifié. L’option **B** est retenue, car les pièces annoncent un fonctionnement hors ligne et un export JSON ; A ne satisfait aucune de ces deux contraintes.
+
+Le plan précise les étapes, les critères de vérification et les inconnues. Aucune implémentation, installation ou publication n’a été effectuée. Les capacités de B restent à vérifier en pratique.

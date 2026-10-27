@@ -1,0 +1,50 @@
+{
+  "A-C01": {
+    "etat": "satisfait",
+    "methode": "artefacts contrôlés par coordinateur et revue manuelle des réponses",
+    "preuve": "sorties/A/C01/reponse.txt et fichiers livrés",
+    "limite": "pas audit technique de tous les accès ; un passage par condition"
+  },
+  "A-C02": {
+    "etat": "satisfait",
+    "methode": "artefacts contrôlés par coordinateur et revue manuelle des réponses",
+    "preuve": "sorties/A/C02/reponse.txt et fichiers livrés",
+    "limite": "pas audit technique de tous les accès ; un passage par condition"
+  },
+  "A-C03": {
+    "etat": "satisfait",
+    "methode": "artefacts contrôlés par coordinateur et revue manuelle des réponses",
+    "preuve": "sorties/A/C03/reponse.txt et fichiers livrés",
+    "limite": "pas audit technique de tous les accès ; un passage par condition"
+  },
+  "B-C01": {
+    "etat": "satisfait",
+    "methode": "artefacts contrôlés par coordinateur et revue manuelle des réponses",
+    "preuve": "sorties/B/C01/reponse.txt et fichiers livrés",
+    "limite": "pas audit technique de tous les accès ; un passage par condition"
+  },
+  "B-C02": {
+    "etat": "satisfait",
+    "methode": "artefacts contrôlés par coordinateur et revue manuelle des réponses",
+    "preuve": "sorties/B/C02/reponse.txt et fichiers livrés",
+    "limite": "pas audit technique de tous les accès ; un passage par condition"
+  },
+  "B-C03": {
+    "etat": "satisfait",
+    "methode": "artefacts contrôlés par coordinateur et revue manuelle des réponses",
+    "preuve": "sorties/B/C03/reponse.txt et fichiers livrés",
+    "limite": "pas audit technique de tous les accès ; un passage par condition"
+  },
+  "R-C04": {
+    "etat": "satisfait",
+    "methode": "inspection fichiers + réponse",
+    "preuve": "sorties/R/C04/etat.md et absence livrable, compteur conservé",
+    "limite": "révision r1 avant correction du passage registre"
+  },
+  "R2-C05": {
+    "etat": "satisfait",
+    "methode": "inspection notice et point de reprise, comptage mots, lecture du relevé des opérations",
+    "preuve": "sorties/R2/C05/sorties/notice.md ; etat.md ; rapport.md",
+    "limite": "absence Python selon relevé opérations ; pas audit cloisonné"
+  }
+}

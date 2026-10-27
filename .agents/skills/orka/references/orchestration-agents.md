@@ -14,6 +14,8 @@ La fonction RH IA conseille allocation, qualification et suivi des ressources se
 6. Faire vérifier les critères, transmettre les corrections ciblées ou accepter la version effectivement examinée. Ouvrir les tâches dépendantes quand leurs entrées sont utilisables.
 7. Terminer par les livrables, limites et suites. Conserver l'état de reprise et libérer les spécialistes devenus inutiles selon les contrôles disponibles.
 
+En [mode autonome](autonomie.md), répéter cette boucle après chaque remise ou arbitrage tant qu'un travail autorisé peut avancer. Appliquer les verdicts délégués et le point de reprise ; la fin d'un sous-agent ou d'une phase intermédiaire ne demande pas une nouvelle relance humaine. Une impossibilité de poursuivre liée à l'hôte reste explicite, sans prétendre avoir configuré un lanceur.
+
 ## Gestion des agents et des tentatives
 
 Le [registre local](supervision-locale.md) met en œuvre la persistance des tâches et réservations lorsqu'il est utilisé. La réservation précède le lancement et le rattachement de l'agent réel. La fin d'un délai déclenche une vérification, pas une libération automatique. Tous les coordinateurs partageant une capacité doivent utiliser la même base.

@@ -37,6 +37,8 @@ Les spécialistes peuvent se parler directement pour résoudre une question si l
 
 Chaque responsable tranche les choix de méthode compris dans son mandat. Les désaccords entre services passent par le coordinateur : promesse commerciale incompatible avec le produit, campagne incompatible avec le budget ou délai dépassant la capacité disponible.
 
+Lorsque l'utilisateur délègue les décisions en [mode autonome](autonomie.md), le coordinateur attribue la fonction de juge aux rôles disponibles et fait appliquer les verdicts couverts par cette délégation. Le juge ne devient ni un rôle supplémentaire du catalogue ni le dirigeant ; un choix hors mandat reste à remonter.
+
 Un nouvel engagement de budget, de délai client ou de périmètre est remonté au dirigeant lorsque l’autorisation existante ne le couvre pas. Conserver les avis minoritaires étayés. Une contrainte non résolue devient une dépendance visible.
 
 ## Vie de l’entreprise

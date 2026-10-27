@@ -3,7 +3,7 @@ name: orka
 description: Coordinate an AI business team for strategy, market research, marketing, sales, product, development, QA, operations, finance, AI agent resources and customer support. Use when the user assigns a project or cross-functional mission to the team, including vision, innovation or naming with domain checks; not for a simple question about a job. Execute only the requested scope.
 license: MIT
 metadata:
-  version: "0.8.0"
+  version: "0.9.0"
 ---
 
 # Orka
@@ -29,13 +29,15 @@ Pour une question d'installation, utiliser la [procédure de diagnostic](referen
 
 Le rôle coordinateur gère les autres agents selon [l'orchestration](references/orchestration-agents.md). Avant délégation, choisir le [profil modèle/effort](references/modeles-effort.md) et composer le [mandat et le prompt](references/prompting-agents.md). Pour une préparation répétable, utiliser le préparateur correspondant à l'hôte avec un mandat JSON ; il prépare une requête mais ne lance pas l'agent.
 
+Quand l'utilisateur demande de travailler de façon autonome, de prendre les décisions ou de poursuivre sans relances, appliquer le [mode autonome](references/autonomie.md). Reprendre les autorisations existantes, consigner les décisions déléguées et les conditions d'arrêt, puis poursuivre les tâches autorisées jusqu'à leur vérification ou un arrêt justifié. Une demande limitée à un plan reste un plan. Ce mode utilise l'exécution disponible dans l'hôte ; il n'installe aucun lanceur permanent.
+
 Si une pièce décisive manque, appliquer le [contexte progressif](references/prompting-agents.md#compléter-le-contexte-par-passes-bornées), directement ou avec un spécialiste : demandes ciblées et bornées, compteur conservé à la reprise, provenance/version et effet sur les conclusions. Ne pas imposer de complément à une tâche déjà complète. Le suivi reste documentaire, sans Python.
 
 Le service RH vise par défaut les [ressources des agents IA](references/ressources-agents.md) : allocation des modèles/efforts, qualification et consommation observable, sans doublonner l'orchestrateur. Pour cadrer la vision, vérifier les affirmations décisives ou chercher des innovations, lire le passage utile de [vision, preuves et innovation](references/vision-preuves-innovation.md). Pour une demande de nom ou de domaine, appliquer [la recherche de noms et domaines](references/noms-domaines.md), avec statuts et sources datés. Ne pas activer ces parcours sur une mission qui ne les nécessite pas.
 
 Quand une inconnue bloque une décision, utiliser les [expériences et apprentissages](references/experiences-apprentissage.md) : relier hypothèse, test borné, résultat observé et décision, en distinguant faisabilité et adoption. Préserver la mémoire des pistes abandonnées et réexaminer les conclusions dépendant d'une preuve modifiée. Pour analyser des exécutions réellement lancées, le [bilan local des agents](references/bilan-agents.md) agrège un relevé fourni ; il ne collecte pas la consommation.
 
-Pour une mission Codex nécessitant suivi persistant, reprise ou capacité partagée entre coordinateurs, utiliser le [registre de supervision locale](references/supervision-locale.md) avec une base explicitement choisie. Réserver les tâches avant lancement, rattacher les identifiants réels, puis soumettre et faire accepter les versions vérifiées. Les dépendances enregistrées sont vérifiées transitivement et leurs versions figées par tentative ; un résultat périmé exige un réexamen explicite. Migrer une ancienne base v1 selon le guide, sans inventer ses versions d'entrées historiques. Le registre ne remplace ni les outils de lancement ni la vérification des autorisations et de la fin d'un rédacteur.
+Pour une mission Codex où les contrôles techniques de réservation, de capacité partagée ou de versions sont utiles, utiliser le [registre de supervision locale](references/supervision-locale.md) si Python et ce parcours sont disponibles, avec une base explicitement choisie. Sinon, conserver le suivi documentaire, y compris pour la reprise, sans lui attribuer les garanties du registre. Une mission déjà suivie dans une base conserve cette référence ; ne pas contourner une réservation ou un refus en basculant silencieusement vers les documents. Avec le registre, réserver avant lancement, rattacher les identifiants réels, puis soumettre et faire accepter les versions vérifiées. Les dépendances enregistrées sont vérifiées transitivement et leurs versions figées par tentative ; un résultat périmé exige un réexamen explicite. Migrer une ancienne base v1 selon le guide, sans inventer ses versions d'entrées historiques. Le registre ne remplace ni les outils de lancement ni la vérification des autorisations et de la fin d'un rédacteur.
 
 Pour qualifier une demande, gérer un changement, transmettre un résultat, traiter un incident ou clore une mission, consulter le passage utile des [processus communs](references/processus-transverses.md). Pour créer ou modifier une documentation de référence, appliquer [la gestion documentaire](references/gestion-documentaire.md). Ne pas charger ces procédures au complet pour une simple tâche qui n'en a pas besoin.
 
@@ -48,6 +50,8 @@ Sinon, appliquer les points de vue successivement et signaler ce mode. Ne jamais
 Chaque responsable de service décompose sa mission et vérifie les résultats. Le coordinateur réserve les places et lance les spécialistes ; une délégation par un responsable métier exige une allocation explicite compatible avec les outils et autorisations. La limite de concurrence s'applique à toute la mission, délégations imbriquées comprises.
 
 Lancer les tâches prêtes, d'abord celles qui débloquent les autres ou réduisent une incertitude décisive. Donner à chacune un identifiant, un responsable unique et une sortie distincte. Organiser les travaux indépendants avant les arbitrages utiles, puis les échanges et revues adaptés au workflow. Une tâche simple ne nécessite pas une réunion. Vérifier les affirmations décisives ; ne pas considérer le vote des agents comme une preuve. Distinguer recommandation de l'équipe et décision du dirigeant.
+
+En mode autonome, faire trancher les choix délégués par la fonction de juge définie dans [autonomie.md](references/autonomie.md#arbitrer-puis-agir), consigner le verdict et exécuter sa prochaine action autorisée. La remise d'un spécialiste, un arbitrage ou la fin d'une phase intermédiaire ne clôt pas la mission : contrôler les critères, traiter les retours et poursuivre les tâches prêtes. Mettre à jour le [point de reprise](references/modeles.md#point-de-reprise-autonome) aux transitions utiles ; si l'hôte suspend l'exécution, conserver l'état sans promettre de relance automatique.
 
 ## Qualité des preuves
 
@@ -68,6 +72,8 @@ Rendre les livrables définis par le workflow, leurs vérifications, les limites
 À la fin de chaque réponse finale Orka, ajouter un unique **« Prochain prompt à copier »**, traduit dans la langue de l'utilisateur, suivi d'un bloc texte Markdown copiable. Formuler une demande courte et directement réutilisable : prochaine action utile, projet ou dossier connu, résultat attendu et contrainte décisive si nécessaire. Reprendre le contexte réel sans inventer de faits ni laisser de champs à remplir lorsqu'ils sont connus. Si une réponse humaine manque, proposer de clarifier ce point avant le travail dépendant. Si aucune suite immédiate n'est utile, proposer une reprise conditionnée à de nouveaux retours. Respecter toute demande de réponse sans suggestion ou de format exclusif incompatible avec cet ajout.
 
 Terminer d'abord le travail déjà autorisé et réalisable ; le prompt ne sert pas à reporter la fin de la mission à un tour suivant. La proposition reste une suggestion, ne s'exécute pas automatiquement et ne présente pas une phase future comme déjà décidée. Respecter les autorisations existantes sans ajouter de confirmation inutile ni y inclure une action externe non demandée.
+
+En mode autonome, réserver ce prompt à une sortie finale justifiée. Tant qu'une tâche autorisée reste prête ou qu'un travail actif peut être suivi avec les outils disponibles, poursuivre ou attendre par ces outils ; ne pas remplacer la suite par « dis-moi de continuer ». Une interruption ou limite de l'hôte impose un état partiel fidèle, pas une promesse de service continu.
 
 Ne pas étendre une mission à la phase suivante sans instruction la couvrant. Une demande de développement autorise la réalisation définie ; une demande de stratégie marketing autorise sa préparation. Contacter des tiers, engager des dépenses, publier ou déployer nécessite une autorisation couvrant l'action. Respecter les autorisations déjà données ; ne pas les redemander inutilement.
 

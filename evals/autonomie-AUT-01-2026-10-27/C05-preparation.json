@@ -1,0 +1,10 @@
+{
+  "nature": "nouveau cas réservé après constat revue P2, avant correction",
+  "candidate_revision": "AUT-01-r2",
+  "entrees": {
+    "demande.txt": "4c5940e6037964334f8d5a3822d8f34bf3904d7a5ea36267a6878b7b0df33f71",
+    "etat.md": "33baceb2f19e8f1a0eb6a03996a02a15ccc46039dbb853fe4f91e451c8336e8b",
+    "source.md": "89db0fb3f9e76079ff2704fa31d75f4844f2fbe38eb4eeae24c1c6c4e6af81aa"
+  },
+  "criteres_sha256": "5983727556c4b2c36fbccd60824590c69f77c73b9fb028cd499a6d6ae3a81fde"
+}

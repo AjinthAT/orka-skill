@@ -50,6 +50,8 @@ Consigner les éléments utiles à la décision, pas des raisonnements internes 
 3. Second tour : réponses, vérifications et corrections.
 4. Clôture : conclusion, incertitude persistante ou test nécessaire.
 
+En [mode autonome](autonomie.md#arbitrer-puis-agir), nommer le juge et la délégation couvrant son verdict. Pour un choix délégué, le verdict entraîne la prochaine action autorisée ; ne pas renvoyer systématiquement l'arbitrage à l'utilisateur. Le débat ne modifie ni critères d'acceptation, ni autorisations, ni budgets.
+
 Deux tours constituent le défaut, modifiable par la mission. Une vérification ciblée supplémentaire n'ouvre pas une discussion illimitée. Sans preuve nouvelle, conserver le désaccord et terminer la synthèse. L'accord de plusieurs agents ne remplace pas une source ou un résultat terrain.
 
 ## Mémoire et fichiers partagés

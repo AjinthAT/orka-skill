@@ -1,0 +1,7 @@
+Bilan terminé : le total net est 170 (120 + 80 − 30), selon la convention v2. La proposition critique est retenue ; le total de 200 omettait le remboursement.
+
+Fichiers écrits et vérifiés :
+- `sorties/total.json` : champ numérique `total_net` égal à 170.
+- `sorties/resume.md` : calcul, arbitrage et autocontrôle local.
+
+La devise n’est pas fournie. Aucune intervention humaine supplémentaire n’est nécessaire.

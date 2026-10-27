@@ -1,0 +1,5 @@
+`sorties/notice.md` est mise à jour et vérifiée : 310 unités selon la source v2, en remplacement des 250 unités de la v1. `etat.md` conserve l’état de reprise de toute la mission.
+
+T2 est terminée. La livraison globale reste bloquée par T1 : l’arrêt de `ext-77` et l’effet du dernier envoi ne sont pas vérifiables. La sortie réservée `sorties/ancien.txt` est conservée intacte ; le compteur reste à 2/2, sans relance ni réattribution.
+
+Pour débloquer T1, il manque une preuve d’arrêt ou de fin du rédacteur et un reçu ou une observation fiable du dernier envoi. Aucune action extérieure n’a été réalisée.

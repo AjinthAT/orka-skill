@@ -1,0 +1,9 @@
+{
+  "motif": "Clarification des opérations texte disponibles dans cet hôte avant lancement ; aucun résultat encore produit. Aucune modification des critères métier ou du skill après gel r2.",
+  "entrees": {
+    "demande.txt": "96e0f4643150f1e01a30ac9cd984d2effb1d833d7f44aff300c01497dc10ce97",
+    "etat.md": "33baceb2f19e8f1a0eb6a03996a02a15ccc46039dbb853fe4f91e451c8336e8b",
+    "source.md": "89db0fb3f9e76079ff2704fa31d75f4844f2fbe38eb4eeae24c1c6c4e6af81aa"
+  },
+  "criteres_sha256": "2abf0d698af1dff8e07fb55131fc4bd800fc4cf0c2b23772d1be9f4d2d7c1a7f"
+}

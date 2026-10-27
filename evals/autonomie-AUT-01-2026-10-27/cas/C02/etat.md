@@ -1,0 +1,1 @@
+Mission fictive en reprise. T1 : ancien rédacteur fictif ext-77, arrêt inconnu, sortie réservée sorties/ancien.txt ; tentative 2/2, effet du dernier envoi inconnu. Ne dispose d’aucun reçu permettant de réconcilier cet effet. T2 : notice indépendante à réexaminer ; dernière entrée v1, source désormais v2. T1 reste dépendance de la livraison globale, pas de T2.

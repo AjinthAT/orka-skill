@@ -23,6 +23,8 @@ The skill is a folder of instructions, references and optional tools. Your assis
 
 **28 roles · 8 teams · 9 workflows.** Use only the roles the mission needs.
 
+**Autonomous mode:** when requested, Orka takes delegated decisions, uses a bounded debate and judge when useful, and continues authorized work after intermediate results. Its [portable procedure](.agents/skills/orka/references/autonomie.md), currently in French, preserves a resume checkpoint. The host supplies execution; this mode installs no permanent runner. [First implementation lot and acceptance criteria](docs/LOT-AUT-01.md).
+
 ## What can you do with it?
 
 | Mission | Result to ask for |

@@ -1,0 +1,6 @@
+Mission Orka suspendue. Le point de reprise est conservé dans etat.md, avec la tentative 2/2 déjà consommée et la décision D1. La production reste inachevée ; aucune autre tâche n'a été exécutée. La reprise attend une nouvelle instruction explicite.
+
+**Prochain prompt à copier**
+```text
+Examine les conditions de reprise de la mission Orka depuis etat.md, sans réinitialiser les compteurs ni lancer T1.
+```

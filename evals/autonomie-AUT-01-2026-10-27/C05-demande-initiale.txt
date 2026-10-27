@@ -1,0 +1,1 @@
+Utilise Orka en mode autonome pour reprendre la mission et terminer la notice locale. Pour cette exécution, utilise seulement les outils natifs de lecture/écriture de texte ; n'utilise aucun interpréteur Python, script, commande système, registre SQLite ni sous-agent. Ne me demande pas de confirmer les décisions déjà déléguées. Écris sorties/notice.md et actualise etat.md.
