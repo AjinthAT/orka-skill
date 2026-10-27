@@ -1,0 +1,63 @@
+{
+  "etat": "succes",
+  "motif": null,
+  "registre": {
+    "capacite": 1,
+    "actives": [],
+    "taches": [
+      {
+        "mission": "AUT-02A",
+        "id": "T1",
+        "etat": "terminee",
+        "tentatives": 2,
+        "maximum": 2,
+        "fichier": "/home/ajin/Documents/Codex/2026-10-27/j/outputs/orka-skill/.orka/aut02/reception-20261027-crash-publication/sorties/total.json",
+        "profil_demande": "execution",
+        "modele_demande": "gpt-6-luna",
+        "effort_demande": "medium",
+        "derniere_execution": {
+          "id": "35b66dec575a4642b4f7d49bf49568db",
+          "numero": 2,
+          "phase": "liberee",
+          "agent": "linux:a8a94e0c-f3b5-41ee-9558-c79487bd4af9:42655:759999"
+        },
+        "parametres_appliques_declares": null,
+        "dependances_a_reexaminer": [],
+        "entrees_utilisees": {},
+        "entrees_a_reexaminer": [],
+        "validite": "valide",
+        "prete": false
+      },
+      {
+        "mission": "AUT-02A",
+        "id": "T2",
+        "etat": "terminee",
+        "tentatives": 1,
+        "maximum": 1,
+        "fichier": "/home/ajin/Documents/Codex/2026-10-27/j/outputs/orka-skill/.orka/aut02/reception-20261027-crash-publication/sorties/bilan.json",
+        "profil_demande": "execution",
+        "modele_demande": "gpt-6-luna",
+        "effort_demande": "medium",
+        "derniere_execution": {
+          "id": "2223fdac5c3549c89a681dfc8b181058",
+          "numero": 1,
+          "phase": "liberee",
+          "agent": "linux:a8a94e0c-f3b5-41ee-9558-c79487bd4af9:42672:760030"
+        },
+        "parametres_appliques_declares": null,
+        "dependances_a_reexaminer": [],
+        "entrees_utilisees": {
+          "T1": {
+            "execution_id": "35b66dec575a4642b4f7d49bf49568db",
+            "empreinte": "b97f2bdea2ae99fc1f01e53cad7acc9dd6c6cbe69b630bbc148b0c4fb9971a1f"
+          }
+        },
+        "entrees_a_reexaminer": [],
+        "validite": "valide",
+        "prete": false
+      }
+    ]
+  },
+  "appels_modeles": 0,
+  "type_execution": "processus_logiciel_fixe"
+}

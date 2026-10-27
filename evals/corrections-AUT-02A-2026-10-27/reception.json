@@ -1,0 +1,23 @@
+{
+  "revision_reference": "ce644e644359f294aab77534fdb526841fdbd07a",
+  "date": "2026-10-27",
+  "tests_total": 173,
+  "tests_reussis": 132,
+  "tests_ignores": 41,
+  "tests_AUT02A": 42,
+  "regressions_ajoutees": 7,
+  "python": "3.14.3 (main, Mar 26 2026, 00:00:00) [GCC 16.0.1 20260321 (Red Hat 16.0.1-0)]",
+  "code_examine": {
+    "tools/supervision_locale/__init__.py": "c4c0df09f5c71557b3b093072e767623edc7c8145f3482824413c249705f1f60",
+    "tools/supervision_locale/__main__.py": "29e8300cadc205e1a571147306d7acf8d455f8c571eaa68ac116f3521b663fc7",
+    "tools/supervision_locale/controleur.py": "f22349fb0d0420157ceedbe01b5c37a482e1dac11324dc532c44a7bcc20247d5",
+    "tools/supervision_locale/processus.py": "77852c6d5fdb3d418c57fbea5fc47e43ff3fbd2ff3c42993ed96145c9329e64f",
+    "tools/supervision_locale/stockage.py": "4b2325aab12bd4dd6301d5e14e4ab4c5ff2e5a461dbd4a1ec0fe1f08a76ac6ac",
+    "tools/supervision_locale/travailleur.py": "bd61157a715f6ce515ef58f141b622d12239341433937ef63dc9e10d59c204b6",
+    ".agents/skills/orka/scripts/superviser.py": "d613ac10e770e8383ea74c8f7390ad3e7844fbbda4b873ebc3d0729afba724e8"
+  },
+  "suite_tests_sha256": "ad2edc0d2064965d14564d07855192c9655b3d38b20d437a94d4e12a4dfa16fe",
+  "appels_modeles": 0,
+  "redemarrage_machine_reel": false,
+  "delais_non_confirmes_simules": true
+}

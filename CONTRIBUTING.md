@@ -29,6 +29,8 @@ python3 -B tools/verifier.py
 
 The verifier checks metadata, maintained local links, all helper suites after installation in a temporary directory, and ZIP contents. It does not run models or write mission data. The [CI workflow](.github/workflows/verification.yml) runs it on Linux, macOS and Windows with Python 3.10 and 3.13. A configured matrix is distinct from the observed result of a particular run.
 
+The repository-only [AUT-02A supervisor](docs/SUPERVISEUR-LOCAL.md) launches fixed deterministic Python workers, without models, SDKs or network operations. Its Linux-only [lifecycle tests](tests/test_supervision_locale.py) use temporary fixtures and real controller crashes, retries and process termination. They are included in the verifier and explicitly skipped on other platforms; the portable skill and its ZIP do not include this runner.
+
 For changes to agent behavior, follow the [evaluation procedure](.agents/skills/orka/references/evaluation-agents.md). Software checks do not establish better model behavior, lower costs or complete host compatibility.
 
 For repeated-evaluation preparation and reporting, see [EVALUATIONS.md](docs/EVALUATIONS.md). The optional `tools/evaluer.py` uses only the standard library, freezes supplied inputs and imports observations without launching models. Its [regression suite](tests/test_evaluer.py) is included in the repository verifier; fabricated observations remain separate from real model executions.

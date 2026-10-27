@@ -97,6 +97,8 @@ Commencez avec les documents de mission. Le préparateur facultatif rend les man
 
 La préparation et le bilan d’évaluations répétées disposent d’un [outil facultatif de maintenance du dépôt](docs/EVALUATIONS.md), hors ZIP du skill. Il fige les entrées et lit des observations fournies, sans lancer de modèle. La procédure documentaire reste utilisable sans Python.
 
+Le [superviseur facultatif AUT-02A](docs/SUPERVISEUR-LOCAL.md), également hors ZIP, exécute une recette logicielle fixe sur Linux : détecter l'échec, confirmer l'arrêt, reprendre via le registre existant, puis vérifier et poursuivre une tâche dépendante. Il lance des travailleurs Python déterministes, sans modèle. Les autres plateformes et le raccordement à une IA restent à qualifier.
+
 Le [diagnostic d’installation facultatif](.agents/skills/orka/references/diagnostic-installation.md) examine un dossier explicite en lecture seule, avec comparaison optionnelle à une référence. La procédure manuelle sans Python reste disponible ; la présence des fichiers ne prouve pas l’activation par l’hôte.
 
 Ces outils ne lancent pas les modèles, ne collectent pas les tokens et n’imposent pas de plafond financier. L’usage des modèles dépend de l’offre de votre assistant. Les exigences techniques de votre propre projet restent distinctes.

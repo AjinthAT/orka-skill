@@ -1,0 +1,274 @@
+
+=== test_regression_sigint_pendant_ouverture_sqlite_suspend ; sortie 1 ===
+test_regression_sigint_pendant_ouverture_sqlite_suspend (test_supervision_locale.SupervisionLocaleTests.test_regression_sigint_pendant_ouverture_sqlite_suspend) ... FAIL
+
+======================================================================
+FAIL: test_regression_sigint_pendant_ouverture_sqlite_suspend (test_supervision_locale.SupervisionLocaleTests.test_regression_sigint_pendant_ouverture_sqlite_suspend)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/orka-aut02a-reference-967t58ph/tests/test_supervision_locale.py", line 354, in test_regression_sigint_pendant_ouverture_sqlite_suspend
+    self.assertEqual(processus.returncode, 2, erreur)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: -2 != 2 : Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/tmp/orka-aut02a-reference-967t58ph/tools/supervision_locale/__main__.py", line 46, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/tmp/orka-aut02a-reference-967t58ph/tools/supervision_locale/__main__.py", line 32, in main
+    resultat = Controleur(args.destination).run(getattr(args, "reprendre_suspension", False))
+  File "/tmp/orka-aut02a-reference-967t58ph/tools/supervision_locale/controleur.py", line 307, in run
+    self.reg = Superviseur(self.racine / "registre.sqlite")
+               ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/orka-aut02a-reference-967t58ph/.agents/skills/orka/scripts/superviser.py", line 92, in __init__
+    config = self.db.execute("SELECT * FROM configuration WHERE id=1").fetchone()
+             ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.278s
+
+FAILED (failures=1)
+
+=== test_regression_interruption_sans_objet_registre ; sortie -2 ===
+test_regression_interruption_sans_objet_registre (test_supervision_locale.SupervisionLocaleTests.test_regression_interruption_sans_objet_registre) ... Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/usr/lib64/python3.14/unittest/__main__.py", line 18, in <module>
+    main(module=None)
+    ~~~~^^^^^^^^^^^^^
+  File "/usr/lib64/python3.14/unittest/main.py", line 104, in __init__
+    self.runTests()
+    ~~~~~~~~~~~~~^^
+  File "/usr/lib64/python3.14/unittest/main.py", line 270, in runTests
+    self.result = testRunner.run(self.test)
+                  ~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/usr/lib64/python3.14/unittest/runner.py", line 257, in run
+    test(result)
+    ~~~~^^^^^^^^
+  File "/usr/lib64/python3.14/unittest/suite.py", line 84, in __call__
+    return self.run(*args, **kwds)
+           ~~~~~~~~^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.14/unittest/suite.py", line 122, in run
+    test(result)
+    ~~~~^^^^^^^^
+  File "/usr/lib64/python3.14/unittest/suite.py", line 84, in __call__
+    return self.run(*args, **kwds)
+           ~~~~~~~~^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.14/unittest/suite.py", line 122, in run
+    test(result)
+    ~~~~^^^^^^^^
+  File "/usr/lib64/python3.14/unittest/suite.py", line 84, in __call__
+    return self.run(*args, **kwds)
+           ~~~~~~~~^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.14/unittest/suite.py", line 122, in run
+    test(result)
+    ~~~~^^^^^^^^
+  File "/usr/lib64/python3.14/unittest/case.py", line 725, in __call__
+    return self.run(*args, **kwds)
+           ~~~~~~~~^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.14/unittest/case.py", line 669, in run
+    self._callTestMethod(testMethod)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "/usr/lib64/python3.14/unittest/case.py", line 615, in _callTestMethod
+    result = method()
+  File "/tmp/orka-aut02a-reference-967t58ph/tests/test_supervision_locale.py", line 366, in test_regression_interruption_sans_objet_registre
+    resultat = self.executer()
+  File "/tmp/orka-aut02a-reference-967t58ph/tests/test_supervision_locale.py", line 35, in executer
+    return Controleur(self.destination, hook).run(**options)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/tmp/orka-aut02a-reference-967t58ph/tools/supervision_locale/controleur.py", line 307, in run
+    self.reg = Superviseur(self.racine / "registre.sqlite")
+               ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.14/unittest/mock.py", line 1175, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.14/unittest/mock.py", line 1179, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.14/unittest/mock.py", line 1234, in _execute_mock_call
+    raise effect
+KeyboardInterrupt
+
+=== test_regression_reboot_sans_recu_ne_reutilise_pas_echeance ; sortie 1 ===
+test_regression_reboot_sans_recu_ne_reutilise_pas_echeance (test_supervision_locale.SupervisionLocaleTests.test_regression_reboot_sans_recu_ne_reutilise_pas_echeance) ... FAIL
+
+======================================================================
+FAIL: test_regression_reboot_sans_recu_ne_reutilise_pas_echeance (test_supervision_locale.SupervisionLocaleTests.test_regression_reboot_sans_recu_ne_reutilise_pas_echeance)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/orka-aut02a-reference-967t58ph/tests/test_supervision_locale.py", line 379, in test_regression_reboot_sans_recu_ne_reutilise_pas_echeance
+    resultat = self.executer()
+  File "/tmp/orka-aut02a-reference-967t58ph/tests/test_supervision_locale.py", line 35, in executer
+    return Controleur(self.destination, hook).run(**options)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/tmp/orka-aut02a-reference-967t58ph/tools/supervision_locale/controleur.py", line 321, in run
+    if len(actives) != 1 or not self.traiter(actives[0]["id"]):
+                                ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/tmp/orka-aut02a-reference-967t58ph/tools/supervision_locale/controleur.py", line 208, in traiter
+    time.sleep(.01)
+    ~~~~~~~~~~^^^^^
+  File "/usr/lib64/python3.14/unittest/mock.py", line 1175, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.14/unittest/mock.py", line 1179, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.14/unittest/mock.py", line 1234, in _execute_mock_call
+    raise effect
+AssertionError: Attente entre deux boots
+
+----------------------------------------------------------------------
+Ran 1 test in 0.053s
+
+FAILED (failures=1)
+
+=== test_regression_adaptateur_reboot_et_boot_absent_refuses ; sortie 1 ===
+test_regression_adaptateur_reboot_et_boot_absent_refuses (test_supervision_locale.SupervisionLocaleTests.test_regression_adaptateur_reboot_et_boot_absent_refuses) ... FAIL
+
+======================================================================
+FAIL: test_regression_adaptateur_reboot_et_boot_absent_refuses (test_supervision_locale.SupervisionLocaleTests.test_regression_adaptateur_reboot_et_boot_absent_refuses)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/orka-aut02a-reference-967t58ph/tests/test_supervision_locale.py", line 391, in test_regression_adaptateur_reboot_et_boot_absent_refuses
+    self.assertIsNone(ProcessusFixes().reconcile(dossier))
+                      ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/tmp/orka-aut02a-reference-967t58ph/tools/supervision_locale/processus.py", line 153, in reconcile
+    time.sleep(.01)
+    ~~~~~~~~~~^^^^^
+  File "/usr/lib64/python3.14/unittest/mock.py", line 1175, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.14/unittest/mock.py", line 1179, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.14/unittest/mock.py", line 1234, in _execute_mock_call
+    raise effect
+AssertionError: Attente inter-boot
+
+----------------------------------------------------------------------
+Ran 1 test in 0.055s
+
+FAILED (failures=1)
+
+=== test_regression_wait_apres_kill_retourne_partiel_sans_fausse_preuve ; sortie 1 ===
+test_regression_wait_apres_kill_retourne_partiel_sans_fausse_preuve (test_supervision_locale.SupervisionLocaleTests.test_regression_wait_apres_kill_retourne_partiel_sans_fausse_preuve) ... ERROR
+
+======================================================================
+ERROR: test_regression_wait_apres_kill_retourne_partiel_sans_fausse_preuve (test_supervision_locale.SupervisionLocaleTests.test_regression_wait_apres_kill_retourne_partiel_sans_fausse_preuve)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/orka-aut02a-reference-967t58ph/tests/test_supervision_locale.py", line 406, in test_regression_wait_apres_kill_retourne_partiel_sans_fausse_preuve
+    resultat = controleur.run()
+  File "/tmp/orka-aut02a-reference-967t58ph/tools/supervision_locale/controleur.py", line 357, in run
+    self.adaptateur.fermer()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/tmp/orka-aut02a-reference-967t58ph/tools/supervision_locale/processus.py", line 164, in fermer
+    self.stop(dossier)
+    ~~~~~~~~~^^^^^^^^^
+  File "/tmp/orka-aut02a-reference-967t58ph/tools/supervision_locale/processus.py", line 88, in stop
+    enfant.wait(timeout=1)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/usr/lib64/python3.14/unittest/mock.py", line 1175, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.14/unittest/mock.py", line 1179, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.14/unittest/mock.py", line 1234, in _execute_mock_call
+    raise effect
+  File "/tmp/orka-aut02a-reference-967t58ph/tools/supervision_locale/processus.py", line 85, in stop
+    enfant.wait(timeout=1)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/usr/lib64/python3.14/unittest/mock.py", line 1175, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.14/unittest/mock.py", line 1179, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.14/unittest/mock.py", line 1234, in _execute_mock_call
+    raise effect
+  File "/tmp/orka-aut02a-reference-967t58ph/tools/supervision_locale/controleur.py", line 321, in run
+    if len(actives) != 1 or not self.traiter(actives[0]["id"]):
+                                ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/tmp/orka-aut02a-reference-967t58ph/tools/supervision_locale/controleur.py", line 228, in traiter
+    preuve = self.adaptateur.reconcile(dossier)
+  File "/tmp/orka-aut02a-reference-967t58ph/tools/supervision_locale/processus.py", line 152, in reconcile
+    return self.stop(dossier) if debut is not None else None
+           ~~~~~~~~~^^^^^^^^^
+  File "/tmp/orka-aut02a-reference-967t58ph/tools/supervision_locale/processus.py", line 88, in stop
+    enfant.wait(timeout=1)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/usr/lib64/python3.14/unittest/mock.py", line 1175, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.14/unittest/mock.py", line 1179, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.14/unittest/mock.py", line 1234, in _execute_mock_call
+    raise effect
+  File "/tmp/orka-aut02a-reference-967t58ph/tools/supervision_locale/processus.py", line 85, in stop
+    enfant.wait(timeout=1)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/usr/lib64/python3.14/unittest/mock.py", line 1175, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.14/unittest/mock.py", line 1179, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.14/unittest/mock.py", line 1234, in _execute_mock_call
+    raise effect
+subprocess.TimeoutExpired: Command 'travailleur-fixe' timed out after 1 seconds
+
+----------------------------------------------------------------------
+Ran 1 test in 0.214s
+
+FAILED (errors=1)
+
+=== test_regression_nettoyage_sans_recu_tolere_wait_non_confirme ; sortie 1 ===
+test_regression_nettoyage_sans_recu_tolere_wait_non_confirme (test_supervision_locale.SupervisionLocaleTests.test_regression_nettoyage_sans_recu_tolere_wait_non_confirme) ... ERROR
+
+======================================================================
+ERROR: test_regression_nettoyage_sans_recu_tolere_wait_non_confirme (test_supervision_locale.SupervisionLocaleTests.test_regression_nettoyage_sans_recu_tolere_wait_non_confirme)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/orka-aut02a-reference-967t58ph/tests/test_supervision_locale.py", line 430, in test_regression_nettoyage_sans_recu_tolere_wait_non_confirme
+    incomplets = adaptateur.fermer()
+  File "/tmp/orka-aut02a-reference-967t58ph/tools/supervision_locale/processus.py", line 174, in fermer
+    enfant.wait(timeout=1)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/usr/lib64/python3.14/unittest/mock.py", line 1175, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.14/unittest/mock.py", line 1179, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.14/unittest/mock.py", line 1234, in _execute_mock_call
+    raise effect
+subprocess.TimeoutExpired: Command 'logiciel-simule' timed out after 1 seconds
+
+----------------------------------------------------------------------
+Ran 1 test in 0.005s
+
+FAILED (errors=1)
+
+=== test_regression_nettoyage_incomplet_interdit_succes ; sortie 1 ===
+test_regression_nettoyage_incomplet_interdit_succes (test_supervision_locale.SupervisionLocaleTests.test_regression_nettoyage_incomplet_interdit_succes) ... FAIL
+
+======================================================================
+FAIL: test_regression_nettoyage_incomplet_interdit_succes (test_supervision_locale.SupervisionLocaleTests.test_regression_nettoyage_incomplet_interdit_succes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/orka-aut02a-reference-lpmpdewa/tests/test_supervision_locale.py", line 446, in test_regression_nettoyage_incomplet_interdit_succes
+    self.assertEqual(resultat["etat"], "partiel")
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'succes' != 'partiel'
+- succes
++ partiel
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.154s
+
+FAILED (failures=1)

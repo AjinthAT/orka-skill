@@ -1,0 +1,65 @@
+{
+  "etat": "partiel",
+  "motif": "Mission suspendue ; reprise explicite requise",
+  "registre": {
+    "capacite": 1,
+    "actives": [
+      {
+        "id": "5e2ecaa842214f628c792a605fe19eb2",
+        "mission": "AUT-02A",
+        "tache": "T1",
+        "numero": 1,
+        "phase": "reservee",
+        "agent": null,
+        "activite": 1793132490.0003705
+      }
+    ],
+    "taches": [
+      {
+        "mission": "AUT-02A",
+        "id": "T1",
+        "etat": "en_cours",
+        "tentatives": 1,
+        "maximum": 2,
+        "fichier": "/home/ajin/Documents/Codex/2026-10-27/j/outputs/orka-skill/.orka/aut02/sigint-nettoyage-20261027/sorties/total.json",
+        "profil_demande": "execution",
+        "modele_demande": "gpt-6-luna",
+        "effort_demande": "medium",
+        "derniere_execution": {
+          "id": "5e2ecaa842214f628c792a605fe19eb2",
+          "numero": 1,
+          "phase": "reservee",
+          "agent": null
+        },
+        "parametres_appliques_declares": null,
+        "dependances_a_reexaminer": [],
+        "entrees_utilisees": {},
+        "entrees_a_reexaminer": [],
+        "validite": "en_cours",
+        "prete": false
+      },
+      {
+        "mission": "AUT-02A",
+        "id": "T2",
+        "etat": "a_faire",
+        "tentatives": 0,
+        "maximum": 1,
+        "fichier": "/home/ajin/Documents/Codex/2026-10-27/j/outputs/orka-skill/.orka/aut02/sigint-nettoyage-20261027/sorties/bilan.json",
+        "profil_demande": "execution",
+        "modele_demande": "gpt-6-luna",
+        "effort_demande": "medium",
+        "derniere_execution": null,
+        "parametres_appliques_declares": null,
+        "dependances_a_reexaminer": [
+          "T1"
+        ],
+        "entrees_utilisees": null,
+        "entrees_a_reexaminer": [],
+        "validite": "a_faire",
+        "prete": false
+      }
+    ]
+  },
+  "appels_modeles": 0,
+  "type_execution": "processus_logiciel_fixe"
+}

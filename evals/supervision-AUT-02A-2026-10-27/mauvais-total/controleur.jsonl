@@ -1,0 +1,5 @@
+{"appels_modeles": 0, "date": 1793129397.4530158, "execution_id": "a7e770e3cc134756adafaea3b706eead", "numero": 1, "requete_sha256": "5d0a2e1bbffae21a1726ffa79276ec8213f889162b05d190d224bf6f3cbcdbf1", "tache": "T1", "type": "intention_lancement", "type_execution": "processus_logiciel_fixe"}
+{"appels_modeles": 0, "date": 1793129397.4600203, "execution_id": "a7e770e3cc134756adafaea3b706eead", "pid": 42652, "type": "processus_cree", "type_execution": "processus_logiciel_fixe"}
+{"appels_modeles": 0, "date": 1793129397.5613837, "execution_id": "a7e770e3cc134756adafaea3b706eead", "type": "activite_observee", "type_execution": "processus_logiciel_fixe"}
+{"appels_modeles": 0, "date": 1793129397.5867596, "execution_id": "a7e770e3cc134756adafaea3b706eead", "motif": "Résultat métier incorrect ou type invalide", "type": "resultat_refuse", "type_execution": "processus_logiciel_fixe"}
+{"appels_modeles": 0, "date": 1793129397.6189404, "execution_id": "a7e770e3cc134756adafaea3b706eead", "motif": "Arrêt inconnu, timeout ou échec hors du code 75 de ce scénario", "tache": "T1", "type": "reprise_refusee", "type_execution": "processus_logiciel_fixe"}

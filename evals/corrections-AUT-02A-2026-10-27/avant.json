@@ -1,0 +1,34 @@
+{
+  "revision_reference": "ce644e644359f294aab77534fdb526841fdbd07a",
+  "tests_actuels_sur_copie_temporaire": [
+    {
+      "test": "test_regression_sigint_pendant_ouverture_sqlite_suspend",
+      "code_sortie": 1
+    },
+    {
+      "test": "test_regression_interruption_sans_objet_registre",
+      "code_sortie": -2
+    },
+    {
+      "test": "test_regression_reboot_sans_recu_ne_reutilise_pas_echeance",
+      "code_sortie": 1
+    },
+    {
+      "test": "test_regression_adaptateur_reboot_et_boot_absent_refuses",
+      "code_sortie": 1
+    },
+    {
+      "test": "test_regression_wait_apres_kill_retourne_partiel_sans_fausse_preuve",
+      "code_sortie": 1
+    },
+    {
+      "test": "test_regression_nettoyage_sans_recu_tolere_wait_non_confirme",
+      "code_sortie": 1
+    },
+    {
+      "test": "test_regression_nettoyage_incomplet_interdit_succes",
+      "code_sortie": 1
+    }
+  ],
+  "appels_modeles": 0
+}

@@ -4,6 +4,7 @@ This directory contains evaluation protocols, captured agent outputs and explici
 
 | Evaluation | Scope |
 |---|---|
+| [AUT-02A offline supervisor](supervision-AUT-02A-2026-10-27/README.md) | Fixed software workers only: verified failure/retry/dependent-task path, wrong output refused, real controller crash and persistent resume. Initial 35 Linux tests, [seven review regressions](corrections-AUT-02A-2026-10-27/README.md), then [three cleanup-SIGINT regressions](sigint-nettoyage-AUT-02A-2026-10-27/README.md); no model, provider adapter or AI-quality claim. |
 | [AUT-01 autonomous mode](autonomie-AUT-01-2026-10-27/README.md) | Three synthetic cases per reference/candidate condition, plus suspension and no-Python resume checks. Artifact criteria met in both versions; no comparative gain established. Register optionality corrected after review; no permanent runner delivered. |
 | [L4 model-probe launch decision](../docs/DECISION-SONDE-L4.md) | Conditional request resolved without launching a model: the current interfaces do not establish a new context with an exclusive three-tool catalogue. Original campaign and reserved material preserved. |
 | [L4 MCP connection preparation](raccordement-L4-2026-10-23/README.md) | Tools-only stdio bridge, inactive bindings and two independent fictional software probes. No model session, personal config change or reserved-case access; native host isolation remains unverified. |

@@ -2,6 +2,8 @@
 
 Ce dépôt distribue le skill Orka : instructions Markdown, catalogue JSON de profils et outils Python facultatifs de préparation, supervision, bilan et diagnostic. Ces outils ne lancent aucun modèle ni agent. Pour la maintenance du dépôt, suivre [le guide de contribution](CONTRIBUTING.md).
 
+Le superviseur facultatif AUT-02A, dans `tools/supervision_locale/` et hors paquet du skill, lance uniquement des programmes Python déterministes de recette. Il ne lance aucun modèle ni agent IA. Sa qualification initiale est limitée à Linux ; voir [le guide](docs/SUPERVISEUR-LOCAL.md).
+
 - Pour une mission confiée à l'équipe de l'entreprise, lire [.agents/skills/orka/SKILL.md](.agents/skills/orka/SKILL.md), puis uniquement les références utiles à la mission.
 - Pour modifier le système lui-même, travailler sur les instructions et leur cohérence ; ne pas lancer une étude commerciale automatiquement.
 - Conserver la distinction entre procédures documentées, agents réellement exécutés et fonctionnalités futures.

@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "/usr/bin/python",
+    "-B",
+    "-m",
+    "tools.supervision_locale",
+    "demo",
+    "--scenario",
+    "reprise-simple",
+    "--destination",
+    "/home/ajin/Documents/Codex/2026-10-27/j/outputs/orka-skill/.orka/aut02/corrections-20261027-nominal"
+  ],
+  "code_sortie": 0,
+  "appels_modeles": 0,
+  "type_execution": "processus_logiciel_fixe"
+}

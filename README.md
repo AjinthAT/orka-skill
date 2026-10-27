@@ -97,6 +97,8 @@ Start with mission documents. The optional preparer makes requests repeatable; t
 
 Repeated-evaluation preparation and reporting are available as an optional [repository maintenance tool](docs/EVALUATIONS.md), outside the skill ZIP. It freezes inputs and reads supplied observations; it never launches models. The document-based procedure remains usable without Python.
 
+The optional [AUT-02A supervisor](docs/SUPERVISEUR-LOCAL.md), also outside the skill ZIP, runs a fixed offline software scenario on Linux: detect failure, confirm termination, retry within the existing register, then verify and continue to a dependent task. It launches deterministic Python workers and no models. Other platforms and a model-backed adapter remain unqualified.
+
 The optional [installation diagnostic](.agents/skills/orka/references/diagnostic-installation.md) checks an explicit skill folder in read-only mode, with an optional reference comparison. A manual check without Python is documented too; file presence never proves host activation.
 
 These helpers do not launch models, collect token telemetry or enforce financial budgets. Model usage depends on your assistant's plan and costs. Your own project's runtime is a separate choice.

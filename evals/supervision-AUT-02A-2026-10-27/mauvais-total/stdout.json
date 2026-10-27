@@ -1,0 +1,55 @@
+{
+  "etat": "partiel",
+  "motif": "Aucune tâche prête : résultat refusé, reprise interdite ou limite atteinte",
+  "registre": {
+    "capacite": 1,
+    "actives": [],
+    "taches": [
+      {
+        "mission": "AUT-02A",
+        "id": "T1",
+        "etat": "bloquee",
+        "tentatives": 1,
+        "maximum": 2,
+        "fichier": "/home/ajin/Documents/Codex/2026-10-27/j/outputs/orka-skill/.orka/aut02/reception-20261027-mauvais-total/sorties/total.json",
+        "profil_demande": "execution",
+        "modele_demande": "gpt-6-luna",
+        "effort_demande": "medium",
+        "derniere_execution": {
+          "id": "a7e770e3cc134756adafaea3b706eead",
+          "numero": 1,
+          "phase": "liberee",
+          "agent": "linux:a8a94e0c-f3b5-41ee-9558-c79487bd4af9:42652:759929"
+        },
+        "parametres_appliques_declares": null,
+        "dependances_a_reexaminer": [],
+        "entrees_utilisees": {},
+        "entrees_a_reexaminer": [],
+        "validite": "bloquee",
+        "prete": false
+      },
+      {
+        "mission": "AUT-02A",
+        "id": "T2",
+        "etat": "a_faire",
+        "tentatives": 0,
+        "maximum": 1,
+        "fichier": "/home/ajin/Documents/Codex/2026-10-27/j/outputs/orka-skill/.orka/aut02/reception-20261027-mauvais-total/sorties/bilan.json",
+        "profil_demande": "execution",
+        "modele_demande": "gpt-6-luna",
+        "effort_demande": "medium",
+        "derniere_execution": null,
+        "parametres_appliques_declares": null,
+        "dependances_a_reexaminer": [
+          "T1"
+        ],
+        "entrees_utilisees": null,
+        "entrees_a_reexaminer": [],
+        "validite": "a_faire",
+        "prete": false
+      }
+    ]
+  },
+  "appels_modeles": 0,
+  "type_execution": "processus_logiciel_fixe"
+}
