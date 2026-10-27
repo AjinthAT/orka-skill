@@ -1,6 +1,6 @@
 # Implémentation d’Orka
 
-Propriétaire : coordinateur de maintenance. Version documentaire : 5, 27 octobre 2026. Périmètre : aperçu de la candidate 0.9.0 et des composants existants. Les procédures détaillées restent dans les références liées ; l'historique des changements reste dans Git et les rapports de validation.
+Propriétaire : coordinateur de maintenance. Version documentaire : 6, 27 octobre 2026. Périmètre : aperçu de la candidate 0.9.0, du superviseur facultatif AUT-02A et des composants existants. Les procédures détaillées restent dans les références liées ; l'historique des changements reste dans Git et les rapports de validation.
 
 ## Ce qui fonctionne aujourd’hui
 
@@ -32,6 +32,8 @@ Les guides de démarrage [français](../.agents/skills/orka/GUIDE.fr.md) et [ang
 ## Outils locaux facultatifs
 
 Ces outils nécessitent Python 3.10+ et sa bibliothèque standard, sans SDK ni paquet tiers. Ils ne lancent aucun modèle, ne collectent pas les sessions et ne changent pas les paramètres personnels. L’installation par copie ou import ZIP et l’usage documentaire restent sans Python.
+
+Le [superviseur facultatif AUT-02A](SUPERVISEUR-LOCAL.md), distinct des outils distribués dans le skill, lance des programmes Python fixes hors ligne. Il réutilise le registre v2, vérifie la fin des processus, reprend un échec récupérable autorisé et contrôle les résultats avant de poursuivre la tâche dépendante. Sa [réception](VALIDATION-AUT-02A.md) porte sur Linux et les processus logiciels ; aucun modèle, débat IA ou service permanent n'est lancé. Le code réside dans `tools/supervision_locale/`, hors ZIP ; le cœur 0.9.0 et l'installation personnelle restent inchangés.
 
 | Outil | Fonction disponible | Limite principale |
 |---|---|---|
@@ -73,6 +75,8 @@ Les [évaluations conservées](../evals/README.md) distinguent pilote comparatif
 La [réception RH Claude](VALIDATION-RH-CLAUDE.md) documente le catalogue et l'export natif 0.8.0, les régressions hors ligne et les fichiers figés préservés. Elle ne qualifie pas les performances des modèles ni leur disponibilité sur un compte.
 
 ## Ce qui reste à construire
+
+Le [lot AUT-02](LOT-AUT-02.md) sépare AUT-02A, recette hors ligne implémentée, et AUT-02B, adaptateur Codex CLI encore à construire et qualifier. Les [capacités sondées avant implémentation](AUT-02-CAPACITES.json) restent une observation datée de l'hôte, sans essai modèle ni qualification d'un lanceur permanent.
 
 Le [lot ECC-01](LOT-ECC-01.md) distingue L1 livré en 0.5.0, L2 en 0.6.0 et L3, outillage d’évaluations répétées livré en 0.7.0 sur données simulées. La [préparation L4](../evals/preparation-L4-2026-10-22/README.md) fige trois nouveaux cas, deux versions et 18 lignes non lancées ; le réservé et les grilles exactes restent locaux. L4, qualification comparative, reste à réaliser. La procédure d’[évaluation des agents](../.agents/skills/orka/references/evaluation-agents.md) porte les autres renforcements à éprouver.
 

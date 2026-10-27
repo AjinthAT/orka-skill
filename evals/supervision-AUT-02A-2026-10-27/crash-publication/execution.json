@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "/usr/bin/python",
+    "-B",
+    "-m",
+    "tools.supervision_locale",
+    "resume",
+    "--destination",
+    "/home/ajin/Documents/Codex/2026-10-27/j/outputs/orka-skill/.orka/aut02/reception-20261027-crash-publication"
+  ],
+  "code_sortie": 0,
+  "crash_controleur": 89,
+  "type_execution": "processus_logiciel_fixe",
+  "appels_modeles": 0,
+  "runtime_origine": "/home/ajin/Documents/Codex/2026-10-27/j/outputs/orka-skill/.orka/aut02/reception-20261027-crash-publication",
+  "base_registre": "schema_v2_existant_sans_migration"
+}
